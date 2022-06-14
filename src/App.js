@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import pallette from "./styles/pallette.css";
+
+import Header from "./components/header";
+import Screen from "./components/screen";
+import TextBox from "./components/textBox";
+import TextArea from "./components/textArea";
+import MovieClip from "./components/movieClip";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <Screen color="#aaa">
+        <TextBox width="200px" />
+        <TextArea color={pallette.VIOLET}/>
+        <MovieClip />
+      </Screen>
+    </>
   );
 }
 
