@@ -7,7 +7,6 @@ const useResize = () => {
     const [height, setHeight] = useState(window.innerHeight);
 
     const handleResize = debounce(()=>{
-        console.log(window.innerWidth);
         setWidth(window.innerWidth);
         setHeight(window.innerHeight); 
     }, 1000);

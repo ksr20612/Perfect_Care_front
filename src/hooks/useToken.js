@@ -6,12 +6,15 @@ const useToken = (cb) => {
 
     const [isTokenValid, setIsTokenValid] = useState(false);
     const navigate = useNavigate();
-
     const handleError = () => {
         navigate("/");
         toastError("세션이 만료되었습니다. 다시 로그인해주세요.");
         if(cb) cb();
-    }
+    };
+
+    useEffect(()=>{
+        console.log("useToken called");
+    });
 
     return [ isTokenValid ];
 
