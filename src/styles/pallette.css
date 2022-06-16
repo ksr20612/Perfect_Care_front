@@ -1,7 +1,14 @@
 :export {
-    VIOLET : #6667AB;
+
+    BLUE : #1b3050;
+    YELLOW : #f5b117;
+    GREY : #EEE;
+    BLUISH : #cdd1d9;
+
+}
+
+    /* VIOLET : #6667AB;
     GREEN : #85AC94;
     RED : #D3927D;
     YELLOW : #CDB97D;
-    PINK : #E3C1BE;
-}
+    PINK : #E3C1BE; */

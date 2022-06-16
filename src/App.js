@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import pallette from "./styles/pallette.css";
 import Header from "./components/header";
 import Screen from "./components/screen";
+import TextBoxPlain from "./components/textBoxPlain";
 import TextBox from "./components/textBox";
 import TextArea from "./components/textArea";
 import MovieClip from "./components/movieClip";
-import { useQuery } from "@apollo/client";
+import ProgressBar from "./components/progressBar";
 
+import { useQuery } from "@apollo/client";
 import { GET_STANDARD } from "./app/queries";
 
 function App() {
@@ -25,10 +27,12 @@ function App() {
     <>
       <Header/>
       <Screen color="#aaa">
+        <TextBoxPlain />
         <TextBox width="200px" />
-        <TextArea color={pallette.VIOLET}/>
+        <TextArea />
         <MovieClip />
       </Screen>
+      <ProgressBar/>
     </>
   );
 }

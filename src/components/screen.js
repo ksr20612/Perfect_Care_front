@@ -1,29 +1,31 @@
 import styled from "styled-components";
 import pallette from "../styles/pallette.css";
 import { ReactComponent as ArrowIcon } from "../assets/arrow_icon.svg";
+import { darken } from "polished";
 
 const Screen = ({children}) => {
 
     return (
-        <Box>
-            <Arrow />
-            {children}
-            <Arrow className="reversed"/>
-        </Box>
+        <>
+            <Box>
+                <Arrow />
+                {children}
+                <Arrow className="reversed"/>
+            </Box>
+        </>
     )
 }
 
 const Box = styled.div`
-    border : 2px solid rgba(0,0,0,0.5);
     display : flex;
     flex-direction : column;
     width : 80vw;
-    height : 80vh;
+    height : calc(100vh - 6vh);
     background-color : #fff;
     display : flex;
     flex-direction : column;
     align-items : center;
-    margin-top : calc((100vh - 80vh + 5vh) / 2);
+    margin-top : 6vh;
 `
 
 const Arrow = styled(ArrowIcon)`
@@ -32,21 +34,24 @@ const Arrow = styled(ArrowIcon)`
     position : absolute;
     top : 50%;
     right : 0;
-    transform : translate(50%, -50%);
+    transform : translate(50%, -50%) scale(1.5);
     margin-right : 5vw;
+    & > path {
+        fill : ${pallette.YELLOW};
+    }
 
     &.reversed {
         left : 0;
         margin-left : 5vw;
-        transform : translate(-50%, -50%) rotate(180deg);
+        transform : translate(-50%, -50%) rotate(180deg) scale(1.5);
     }
     & > path {
-        transition : all 0.3s ease-in;
+        transition : all 0.2s ease-in;
     }
 
     :hover {
         & > path {
-            fill : ${pallette.VIOLET};
+            fill : ${darken(0.1, pallette.YELLOW)};
         }
     }
 `
