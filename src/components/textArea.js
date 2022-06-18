@@ -3,14 +3,15 @@ import pallette from "../styles/pallette.css";
 import { darken } from "polished";
 
 const TextArea = ({
+    width = "100%",
     value = "", 
-    label = "입력해주세요.",
+    placeholder = "입력해주세요.",
     color = pallette.BLUISH,
     handleChange = f => f
 }) => {
 
     return (
-        <TextBox value={value} placeholder={label} color={color} onChange={(e)=>handleChange(e.currentTarget.value)}/>
+        <TextBox value={value} placeholder={placeholder} width={width} color={color} onChange={(e)=>handleChange(e.currentTarget.value)}/>
     )
 }
 
@@ -26,6 +27,7 @@ const TextBox = styled.textarea`
     outline-color : ${props => props.color}; */
     border : none;
     outline : none;
+    width : ${props => props.width};
     background-color : ${props => props.color};
     border-radius : 1.5vmin;
     transition : all 0.2s ease-out;

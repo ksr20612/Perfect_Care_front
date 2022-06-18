@@ -3,7 +3,7 @@ const Parts = [
         "pageLen" : 5
     },
     {
-        "pageLen" : 6
+        "pageLen" : 7
     },
     {
         "pageLen" : 7

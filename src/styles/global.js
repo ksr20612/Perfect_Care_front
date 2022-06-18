@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import pallette from "./pallette.css";
+import { lighten } from "polished";
 import Bold from "./font/SpoqaHanSansNeo-Bold.ttf";
 import Medium from "./font/SpoqaHanSansNeo-Medium.ttf";
 import Regular from "./font/SpoqaHanSansNeo-Regular.ttf";
@@ -38,13 +39,12 @@ const Global = createGlobalStyle`
         box-sizing : border-box;
     }
     ::-moz-selection {
-        background : ${pallette.DENIM_BLUE_50};
-        color : #fff;
+        background : ${pallette.YELLOW};
+        color : ${pallette.WHITE};
     }
     ::selection {
-        background : ${pallette.DENIM_BLUE_50};
-        color : #fff;
-        border-radius: 40px;
+        background : ${pallette.YELLOW};
+        color : ${pallette.WHITE};
     }
 
     // font

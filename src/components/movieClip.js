@@ -4,6 +4,8 @@ import useResize from "../hooks/useResize";
 
 const MovieClip = ({
     videoId = "NUKKHsgD3rc",
+    width,
+    height,
 }) => {
 
     const [widthFull, heightFull] = useResize();
@@ -15,8 +17,8 @@ const MovieClip = ({
     return (
         <YouTube videoId={videoId}
             opts={{
-                width : (widthFull * 0.8 * 0.9)+"",
-                height : (heightFull * 0.8 * 0.9)+"",
+                width : width || (widthFull * 0.8 * 0.9)+"",
+                height : height || (heightFull * 0.8 * 0.9)+"",
                 palyerVars : {
                     autoplay : 1,
                     rel : 0,

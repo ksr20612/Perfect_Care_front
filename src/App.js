@@ -1,12 +1,8 @@
 import { useEffect } from "react";
 
-import pallette from "./styles/pallette.css";
+import Part2 from "./pages/part2";
 import Header from "./components/header";
 import Screen from "./components/screen";
-import TextBoxPlain from "./components/textBoxPlain";
-import TextBox from "./components/textBox";
-import TextArea from "./components/textArea";
-import MovieClip from "./components/movieClip";
 import ProgressBar from "./components/progressBar";
 
 import { useQuery } from "@apollo/client";
@@ -27,10 +23,7 @@ function App() {
     <>
       <Header/>
       <Screen color="#aaa">
-        <TextBoxPlain />
-        <TextBox width="200px" />
-        <TextArea />
-        <MovieClip />
+        <Part2 />
       </Screen>
       <ProgressBar/>
     </>

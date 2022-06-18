@@ -1,16 +1,25 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import pallette from "../styles/pallette.css";
 import { ReactComponent as ArrowIcon } from "../assets/arrow_icon.svg";
 import { darken } from "polished";
+import { useSelector, useDispatch } from "react-redux";
+import { setPageIdx } from "../features/stateSlice";
 
 const Screen = ({children}) => {
+
+    const currentPage = useSelector(state=>state.state.pageIdx);
+    const dispatch = useDispatch();
+    const handlePage = (v) => {
+        dispatch(setPageIdx(currentPage+v));
+    }
 
     return (
         <>
             <Box>
-                <Arrow />
+                <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
                 {children}
-                <Arrow className="reversed"/>
+                <Arrow onClick={()=>handlePage(1)}/>
             </Box>
         </>
     )
@@ -23,9 +32,8 @@ const Box = styled.div`
     height : calc(100vh - 6vh);
     background-color : #fff;
     display : flex;
-    flex-direction : column;
-    align-items : center;
     margin-top : 6vh;
+    padding : 2vh 2vw;
 `
 
 const Arrow = styled(ArrowIcon)`
