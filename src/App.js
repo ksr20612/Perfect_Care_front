@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import Part2 from "./pages/part2";
+import Part3 from "./pages/part3";
 import Header from "./components/header";
 import Screen from "./components/screen";
 import ProgressBar from "./components/progressBar";
@@ -23,7 +24,7 @@ function App() {
     <>
       <Header/>
       <Screen color="#aaa">
-        <Part2 />
+        <Part3 />
       </Screen>
       <ProgressBar/>
     </>
