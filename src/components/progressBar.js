@@ -38,6 +38,7 @@ const Circle = styled.div`
     height : 1vmax;
     border-radius : 50%;
     background-color : ${pallette.YELLOW};
+    transition : all 0.3s ease-in-out;
 
     &:not(:first-child) {
         margin-left : 3vmax;

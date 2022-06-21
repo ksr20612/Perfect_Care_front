@@ -8,14 +8,14 @@ const Scr1 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="나를 성장시키는 기준"/>
+            <Title title="Part2 가혹한 기준의 덫" subTitle="지난 파트 돌아보기"/>
             <Box>
+                <div>나의 완벽주의는 이런 모습이었어요.</div>
+                <div>나는 <Data></Data> 을 느낀다고 응답했어요.</div>
                 <div>
-                    높고 비현실적인 기준은 나를 실패자로 만들기도 합니다.
+                    내가 바꾸고 싶은 완벽주의의 모습은
                 </div>
-                <div>
-                    나의 기준을 점검하고, 성장시키는 기준으로 바꾸어볼까요?
-                </div>
+                <Data className="ans2"></Data>
             </Box>
         </>
     )
@@ -25,9 +25,40 @@ const Box = styled.div`
     font-family : "Noto_Medium";
     padding : 0 1vw;
     padding-top : 2vh;
+    position : relative;
 
     & > div {
         font-size : 2.6rem;
+        display : flex;
+        align-items : center;
+        display : relative;
+        margin-top : 4vh;
+
+        &:before {
+            content : "";
+            display : absolute;
+            width : 8vmax;
+            height : 8vmax;
+            background-color : ${pallette.GREY};
+            margin-right : 1vw;
+        }
+    }
+`
+const Data = styled.span`
+    width : 8vw;
+    height : 8vh;
+    display : inline-block;
+    background-color : ${pallette.BLUISH};
+    border-radius : 1.5vmin;
+    margin : 0 1ch;
+
+    &.ans2 {
+        position : absolute;
+        display : block;
+        width : 60vw;
+        height : 12vh;
+        left : 12vmax;
+        bottom : -8vh
     }
 `
 
