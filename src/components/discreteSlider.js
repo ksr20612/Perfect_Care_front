@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Slider from '@mui/material/Slider';
 
 const DiscreteSlider = ({
-
+    
 }) => {
 
     return (
@@ -17,6 +17,7 @@ const DiscreteSlider = ({
             marks
             min={0}
             max={10}
+            className="slider"
         />
     )
 }

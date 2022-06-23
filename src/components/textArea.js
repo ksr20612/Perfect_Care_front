@@ -4,6 +4,7 @@ import { darken } from "polished";
 
 const TextArea = ({
     width = "100%",
+    height = "auto",
     value = "", 
     placeholder = "입력해주세요.",
     color = pallette.BLUISH,
@@ -11,7 +12,7 @@ const TextArea = ({
 }) => {
 
     return (
-        <TextBox value={value} placeholder={placeholder} width={width} color={color} onChange={(e)=>handleChange(e.currentTarget.value)}/>
+        <TextBox value={value} placeholder={placeholder} width={width} height={height} color={color} onChange={(e)=>handleChange(e.currentTarget.value)}/>
     )
 }
 
@@ -28,6 +29,7 @@ const TextBox = styled.textarea`
     border : none;
     outline : none;
     width : ${props => props.width};
+    height : ${props => props.height};
     background-color : ${props => props.color};
     border-radius : 1.5vmin;
     transition : all 0.2s ease-out;
