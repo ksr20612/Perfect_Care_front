@@ -19,6 +19,7 @@ const Box = styled.div`
     width : 7vw;
     height : 7vw;
     border-radius : 50%;
+    cursor : pointer;
 `
 
 export default Guru;
