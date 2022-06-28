@@ -8,7 +8,8 @@ const Scr4 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
+            <Title title="Part4 실수가 너무 두려워요" subTitle="실수가 두려운 완벽주의자에게"/>
+            동영상 한개
         </>
     )
 }

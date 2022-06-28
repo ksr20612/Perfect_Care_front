@@ -12,8 +12,8 @@ const Scr7 = () => {
             <Title title="Part3 완벽 관리하기" subTitle="요점 정리"/>
             <Box>
                 <Summary>
-                    <div>언제나 내 생각이 합리적이지만은 않다!</div>
-                    <div>완벽주의를 강화시키는 주범, 인지오류를 밝혀내자</div>
+                    <First>언제나 내 생각이 합리적이지만은 않다!</First>
+                    <Second>완벽주의를 강화시키는 주범, 인지오류를 밝혀내자.</Second>
                 </Summary>
             </Box>
         </>
@@ -27,5 +27,18 @@ const Box = styled.div`
     margin-top : 4vh;
     position : relative;
 `
+const First = styled.div`
+    position : absolute;
+    top : 15%;
+    left : 10%;
+    font-size : 4.0rem;
+`
+const Second = styled.div`
+    position : absolute;
+    top : 30%;
+    left : 10%;
+    font-size : 4.0rem;
+`
+
 
 export default Scr7;

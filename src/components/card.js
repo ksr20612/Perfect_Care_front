@@ -12,14 +12,23 @@ const Card = ({
     color = "black",
 }) => {
 
-    const [isFlipped, setIsFlipped] = useState(false);
+    // 0 : none, 1 : centered , 2 : flipped
+    const [status, setStatus] = useState(0);
     const handleClick = (target) => {
         if(target.classList.contains("slider")) { return; } 
-        setIsFlipped(!isFlipped);
+        switch(status) {
+            case 0 :
+                return setStatus(1);
+            case 1 :
+                return setStatus(2);
+            case 2 : 
+                return setStatus(0);
+            default : return;
+        }
     }
 
     return (
-        <Box className={isFlipped? "flipped" : null} onClick={(e)=>{handleClick(e.target)}} size={size}>
+        <Box className={status === 2? "centered flipped" : status === 1? "centered" : null} onClick={(e)=>{handleClick(e.target)}} size={size}>
             <Front color={color}>
                 <div>#{name}</div>
                 <img src={image} alt={"pic_of_"+name}/>
@@ -45,8 +54,13 @@ const Box = styled.div`
     transition : all 0.3s ease-in-out;
     transform-style : preserve-3d;
 
+    &.centered {
+        transform : scale(1.2);
+        top : 50vh;
+        left : 50vw;
+    }
     &.flipped {
-        transform : rotateY(180deg);
+        transform : scale(1.2) rotateY(180deg);
     }
 `
 const Front = styled.div`

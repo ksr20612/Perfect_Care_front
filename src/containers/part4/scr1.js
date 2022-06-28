@@ -8,7 +8,7 @@ const Scr1 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
+            <Title title="Part4 들어가기 전에..." subTitle="지난 파트 돌아보기"/>
         </>
     )
 }

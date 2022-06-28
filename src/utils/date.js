@@ -1,7 +1,7 @@
 const today = new Date();
 const year = today.getFullYear();
 const month = padZero(today.getMonth() + 1);
-const day = padZero(today.getDay());
+const day = padZero(today.getDate());
 
 const result = `${year}. ${month}. ${day}`;
 
