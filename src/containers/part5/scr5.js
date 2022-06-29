@@ -8,7 +8,7 @@ const Scr5 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
+            <Title title="Part5 완벽을 버릴 때 완벽에 가까워진다" subTitle="불균형 완벽주의 VS 균형있는 완벽주의"/>
         </>
     )
 }

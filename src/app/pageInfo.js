@@ -6,13 +6,13 @@ const Parts = [
         "pageLen" : 7
     },
     {
-        "pageLen" : 7
-    },
-    {
         "pageLen" : 8
     },
     {
-        "pageLen" : 4
+        "pageLen" : 12
+    },
+    {
+        "pageLen" : 8
     },
 ];
 Object.freeze(Parts);

@@ -7,7 +7,7 @@ import pallette from "../styles/pallette.css";
 const ProgressBar = () => {
 
     const curPage = useSelector(state => state.state.pageIdx);
-    const pageLen = getPageLen(2);
+    const pageLen = getPageLen(3);
     // pageLen 가져오기(pageInfo);
 
     return (

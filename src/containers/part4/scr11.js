@@ -4,14 +4,21 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 
-const Scr7 = () => {
+const Scr11 = () => {
 
     return (
         <>
-            <Title title="Part5 완벽을 버릴 때 완벽에 가까워진다" subTitle="내가 통제하는 완벽주의"/>
-            완벽 관찰 일지
+            정리
         </>
     )
 }
+const Box = styled.div`
+    font-family : "Noto_Medium";
+    width : 95%;
+    margin : 0 auto;
+    margin-top : 4vh;
+    position : relative;
+`
 
-export default Scr7;
+
+export default Scr11;

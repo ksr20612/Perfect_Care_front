@@ -4,14 +4,14 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 
-const Scr7 = () => {
+const Scr10 = () => {
 
     return (
         <>
-            <Title title="Part5 완벽을 버릴 때 완벽에 가까워진다" subTitle="내가 통제하는 완벽주의"/>
-            완벽 관찰 일지
+            <Title title="Part4 실수가 너무 두려워요" subTitle="실수를 해보자!"/>
+            기록지 다운로드
         </>
     )
 }
 
-export default Scr7;
+export default Scr10;

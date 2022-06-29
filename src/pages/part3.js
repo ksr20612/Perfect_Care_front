@@ -8,6 +8,7 @@ import Scr4 from "../containers/part3/scr4";
 import Scr5 from "../containers/part3/scr5";
 import Scr6 from "../containers/part3/scr6";
 import Scr7 from "../containers/part3/scr7";
+import Scr8 from "../containers/part3/scr8";
 
 const Part2 = () => {
 
@@ -22,7 +23,8 @@ const Part2 = () => {
                 curPage === 4? <Scr4 /> :
                 curPage === 5? <Scr5 /> :
                 curPage === 6? <Scr6 /> :
-                <Scr7 />
+                curPage === 7? <Scr7 /> :
+                <Scr8 />
             }
         </>
     )

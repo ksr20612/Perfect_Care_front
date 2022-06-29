@@ -1,44 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import pallette from "../../styles/pallette.css";
-import { lighten, darken } from "polished";
-import Title from "../../components/title";
-import Summary from "../../components/summary";
+import BackImg from "../../assets/sample.jpg";
 
-const Scr7 = () => {
+const Scr8 = () => {
+
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="요점 정리"/>
-            <Box>
-                <Summary>
-                    <First>언제나 내 생각이 합리적이지만은 않다!</First>
-                    <Second>완벽주의를 강화시키는 주범, 인지오류를 밝혀내자.</Second>
-                </Summary>
-            </Box>
+            <Img></Img>
+            <Message>지금까지 <strong>부정적인 자동사고</strong>가 나를 괴롭히도록 내버려 두었다면, <br/> 이제는 내가 나를 지키는 경찰이 되어 <strong>인지오류를 체포</strong>해보는 것은 어떨까요?</Message>
         </>
     )
 }
 
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    width : 95%;
-    margin : 0 auto;
-    margin-top : 4vh;
-    position : relative;
+const Img = styled.div`
+    background-image : url(${BackImg});
+    width : 80%;
+    height : 60vh;
+    background-size : contain;
+    background-position : center center;
+    background-repeat : no-repeat;
+    margin : 4vh auto 4vh;
 `
-const First = styled.div`
-    position : absolute;
-    top : 15%;
-    left : 10%;
-    font-size : 4.0rem;
-`
-const Second = styled.div`
-    position : absolute;
-    top : 30%;
-    left : 10%;
-    font-size : 4.0rem;
+const Message = styled.div`
+    text-align : center;
+    font-size : 3.2rem;
+
+    & > strong {
+        font-size : 3.4rem;
+    }
 `
 
-
-export default Scr7;
+export default Scr8;

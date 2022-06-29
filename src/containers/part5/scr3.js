@@ -8,7 +8,8 @@ const Scr3 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
+            <Title title="Part5 완벽을 버릴 때 완벽에 가까워진다" subTitle="내가 통제하는 완벽주의"/>
+            심리검사
         </>
     )
 }
