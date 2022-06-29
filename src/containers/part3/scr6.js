@@ -22,10 +22,10 @@ const Scr6 = () => {
                 <div>
                     <Subtitle>평소에 자주하는 말이나 생각과 비슷한 것을 골라 <span>클릭</span>해보세요.</Subtitle>
                     <Bubbles>
-                        <div>이번 시험도 망치다니, <br/> 내 대학 입시는 망했어.</div>
-                        <div>1등이 아니면 의미없지.</div>
-                        <div>아무리 바빠도 <br/> 운동은 매일 해야해.</div>
-                        <div>지난번 발표때 실수했으니까 오늘도 분명 실수할거야.</div>
+                        <Bubble title="재앙화 사고">이번 시험도 망치다니, <br/> 내 대학 입시는 망했어.</Bubble>
+                        <Bubble title="흑백논리">1등이 아니면 의미없지.</Bubble>
+                        <Bubble title="당위 진술">아무리 바빠도 <br/> 운동은 매일 해야해.</Bubble>
+                        <Bubble title="지나친 일반화">지난번 발표때 실수했으니까 <br/> 오늘도 분명 실수할거야.</Bubble>
                     </Bubbles>
                 </div>
             </Box>

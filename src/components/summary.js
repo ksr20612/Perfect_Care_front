@@ -9,8 +9,6 @@ const Summary = ({
     children
 }) => {
 
-
-
     return (
         <Box>
             <Title>
