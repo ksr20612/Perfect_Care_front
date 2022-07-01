@@ -5,22 +5,21 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
 
-const Scr12 = () => {
+const Scr18 = () => {
 
     return (
         <>
-            <Title title="Part4 실수가 너무 두려워요" subTitle="요점 정리"/>
+            <Title title="Part3 완벽 관리하기" subTitle="요점 정리"/>
             <Box>
                 <Summary>
-                    <First>두려움은 실수를 만드는 재료!</First>
-                    <Second>꾸준한 실수 피드백으로 실수를 마주해보아요.</Second>
-                    <Third>실패는 곧 새로운 도전의 증거,</Third>
-                    <Fourth>실수에 대한 인식을 바꾼다면 더 많은 일을 시도할 수 있어요.</Fourth>
+                    <First>언제나 내 생각이 합리적이지만은 않다!</First>
+                    <Second>완벽주의를 강화시키는 주범, 인지오류를 밝혀내자.</Second>
                 </Summary>
             </Box>
         </>
     )
 }
+
 const Box = styled.div`
     font-family : "Noto_Medium";
     width : 95%;
@@ -29,16 +28,16 @@ const Box = styled.div`
     position : relative;
 `
 const First = styled.div`
-
+    position : absolute;
+    top : 15%;
+    left : 10%;
+    font-size : 4.0rem;
 `
 const Second = styled.div`
-
-`
-const Third = styled.div`
-
-`
-const Fourth = styled.div`
-
+    position : absolute;
+    top : 30%;
+    left : 10%;
+    font-size : 4.0rem;
 `
 
-export default Scr12;
+export default Scr18;

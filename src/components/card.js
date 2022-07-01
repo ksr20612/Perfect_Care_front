@@ -28,20 +28,23 @@ const Card = ({
     }
 
     return (
-        <Box className={status === 2? "centered flipped" : status === 1? "centered" : null} onClick={(e)=>{handleClick(e.target)}} size={size}>
-            <Front color={color}>
-                <div>#{name}</div>
-                <img src={image} alt={"pic_of_"+name}/>
-            </Front>
-            <Back color={color}>
-                <Title>
+        <>
+            <Box className={status === 2? "centered flipped" : status === 1? "centered" : null} onClick={(e)=>{handleClick(e.target)}} size={size}>
+                <Front color={color}>
                     <div>#{name}</div>
                     <img src={image} alt={"pic_of_"+name}/>
-                </Title>
-                <Def>{definition}</Def>
-                <DiscreteSlider/>
-            </Back>
-        </Box>
+                </Front>
+                <Back color={color}>
+                    <Title>
+                        <div>#{name}</div>
+                        <img src={image} alt={"pic_of_"+name}/>
+                    </Title>
+                    <Def>{definition}</Def>
+                    <DiscreteSlider/>
+                </Back>
+            </Box>
+            {status !== 0? <Background onClick={()=>{setStatus(0)}}/> : null}
+        </>
     )
 }
 
@@ -56,8 +59,10 @@ const Box = styled.div`
 
     &.centered {
         transform : scale(1.2);
-        top : 50vh;
-        left : 50vw;
+        position : fixed;
+        z-index : 10;
+        top : calc(50vh - ( ${props => props.size.height} / 2 ));
+        left : calc(50vw - ( ${props => props.size.width} / 2 ));
     }
     &.flipped {
         transform : scale(1.2) rotateY(180deg);
@@ -107,6 +112,15 @@ const Title = styled.div`
 const Def = styled.div`
     word-break : keep-all;
     text-align : center;
+`
+const Background = styled.div`
+    position : fixed;
+    background-color : rgba(0, 0, 0, .5);
+    top : 0;
+    left : 0;
+    width : 100vw;
+    height : 100vh;
+    z-index : 9;
 `
 
 export default Card;

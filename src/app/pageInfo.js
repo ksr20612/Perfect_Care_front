@@ -6,7 +6,7 @@ const Parts = [
         "pageLen" : 7
     },
     {
-        "pageLen" : 8
+        "pageLen" : 19
     },
     {
         "pageLen" : 12

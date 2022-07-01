@@ -9,6 +9,17 @@ import Scr5 from "../containers/part3/scr5";
 import Scr6 from "../containers/part3/scr6";
 import Scr7 from "../containers/part3/scr7";
 import Scr8 from "../containers/part3/scr8";
+import Scr9 from "../containers/part3/scr9";
+import Scr10 from "../containers/part3/scr10";
+import Scr11 from "../containers/part3/scr11";
+import Scr12 from "../containers/part3/scr12";
+import Scr13 from "../containers/part3/scr13";
+import Scr14 from "../containers/part3/scr14";
+import Scr15 from "../containers/part3/scr15";
+import Scr16 from "../containers/part3/scr16";
+import Scr17 from "../containers/part3/scr17";
+import Scr18 from "../containers/part3/scr18";
+import Scr19 from "../containers/part3/scr19";
 
 const Part2 = () => {
 
@@ -24,7 +35,18 @@ const Part2 = () => {
                 curPage === 5? <Scr5 /> :
                 curPage === 6? <Scr6 /> :
                 curPage === 7? <Scr7 /> :
-                <Scr8 />
+                curPage === 8? <Scr8 /> :
+                curPage === 9? <Scr9 /> :
+                curPage === 10? <Scr10 /> :
+                curPage === 11? <Scr11 /> :
+                curPage === 12? <Scr12 /> :
+                curPage === 13? <Scr13 /> :
+                curPage === 14? <Scr14 /> :
+                curPage === 15? <Scr15 /> :
+                curPage === 16? <Scr16 /> :
+                curPage === 17? <Scr17 /> :
+                curPage === 18? <Scr18 /> :
+                <Scr19 />
             }
         </>
     )
