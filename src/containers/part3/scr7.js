@@ -1,34 +1,34 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import BackImg from "../../assets/sample.jpg";
+import pallette from "../../styles/pallette.css";
+import { lighten, darken } from "polished";
+import Title from "../../components/title";
+import BlockBox from "../../components/blockBox";
+import AnswerBox from "../../components/answerBox";
+import TextArea from "../../components/textArea";
 
-const Scr8 = () => {
-
+const Scr7 = () => {
 
     return (
         <>
-            <Img></Img>
-            <Message>지금까지 <strong>부정적인 자동사고</strong>가 나를 괴롭히도록 내버려 두었다면, <br/> 이제는 내가 나를 지키는 경찰이 되어 <strong>인지오류를 체포</strong>해보는 것은 어떨까요?</Message>
+            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Box>
+                <BlockBox title="상황" content=""/>
+                <BlockBox title="기분" content=""/>
+                <BlockBox title="생각" content="" fadein={true}/>
+                <AnswerBox title="그때 떠오른 이미지는 무엇인가요?" index="4/7">
+                    <TextArea height="100%"/>
+                </AnswerBox>
+            </Box>
         </>
     )
 }
 
-const Img = styled.div`
-    background-image : url(${BackImg});
-    width : 80%;
-    height : 60vh;
-    background-size : contain;
-    background-position : center center;
-    background-repeat : no-repeat;
-    margin : 4vh auto 4vh;
-`
-const Message = styled.div`
-    text-align : center;
-    font-size : 3.2rem;
-
-    & > strong {
-        font-size : 3.4rem;
-    }
+const Box = styled.div`
+    font-family : "Noto_Medium";
+    padding : 0 1vw;
+    padding-top : 2vh;
+    position : relative;
 `
 
-export default Scr8;
+export default Scr7;

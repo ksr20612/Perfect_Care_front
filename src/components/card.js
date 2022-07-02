@@ -58,14 +58,14 @@ const Box = styled.div`
     transform-style : preserve-3d;
 
     &.centered {
-        transform : scale(1.2);
+        transform : scale(1.5);
         position : fixed;
         z-index : 10;
         top : calc(50vh - ( ${props => props.size.height} / 2 ));
         left : calc(50vw - ( ${props => props.size.width} / 2 ));
     }
     &.flipped {
-        transform : scale(1.2) rotateY(180deg);
+        transform : scale(1.5) rotateY(180deg);
     }
 `
 const Front = styled.div`
@@ -115,7 +115,8 @@ const Def = styled.div`
 `
 const Background = styled.div`
     position : fixed;
-    background-color : rgba(0, 0, 0, .5);
+    background : hsla(0, 100%, 100%, 0.1);
+    backdrop-filter : saturate(150%) blur(10px);
     top : 0;
     left : 0;
     width : 100vw;

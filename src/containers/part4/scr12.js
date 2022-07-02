@@ -12,10 +12,10 @@ const Scr12 = () => {
             <Title title="Part4 실수가 너무 두려워요" subTitle="요점 정리"/>
             <Box>
                 <Summary>
-                    <First>두려움은 실수를 만드는 재료!</First>
-                    <Second>꾸준한 실수 피드백으로 실수를 마주해보아요.</Second>
-                    <Third>실패는 곧 새로운 도전의 증거,</Third>
-                    <Fourth>실수에 대한 인식을 바꾼다면 더 많은 일을 시도할 수 있어요.</Fourth>
+                    <Line>두려움은 실수를 만드는 재료!</Line>
+                    <Line>꾸준한 실수 피드백으로 실수를 마주해보아요.</Line>
+                    <Line>실패는 곧 새로운 도전의 증거,</Line>
+                    <Line>실수에 대한 인식을 바꾼다면 더 많은 일을 시도할 수 있어요.</Line>
                 </Summary>
             </Box>
         </>
@@ -28,17 +28,16 @@ const Box = styled.div`
     margin-top : 4vh;
     position : relative;
 `
-const First = styled.div`
+const Line = styled.div`
+    width : 100%;
+    margin : 0 auto;
+    padding : 2vmin;
+    font-size : 4.0rem;
+    padding-left : 4vmin;
 
-`
-const Second = styled.div`
-
-`
-const Third = styled.div`
-
-`
-const Fourth = styled.div`
-
+    &:first-of-type {
+        margin-top : 5vh;
+    }
 `
 
 export default Scr12;

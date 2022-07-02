@@ -1,55 +1,33 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Title from "../../components/title";
-import pallette from "../../styles/pallette.css";
-import { lighten } from "polished";
-import TextArea from "../../components/textArea";
-import GuruBox from "../../containers/guruBox";
+import BackImg from "../../assets/sample.jpg";
 
 const Scr17 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="찾았다! 완벽주의의 주범"/>
-            <Box>
-                나의 자동사고
-            </Box>
+            <Img></Img>
+            <Message>지금까지 <strong>부정적인 자동사고</strong>가 나를 괴롭히도록 내버려 두었다면, <br/> 이제는 내가 나를 지키는 경찰이 되어 <strong>인지오류를 체포</strong>해보는 것은 어떨까요?</Message>
         </>
     )
 }
 
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    padding : 0 1vw;
-    padding-top : 2vh;
-    position : relative;
-
-    & > div {
-        font-size : 2.6rem;
-        display : flex;
-        align-items : center;
-    }
-
-    & > .subQuestion {
-        padding-bottom : 2vh;
-    }
+const Img = styled.div`
+    background-image : url(${BackImg});
+    width : 80%;
+    height : 60vh;
+    background-size : contain;
+    background-position : center center;
+    background-repeat : no-repeat;
+    margin : 4vh auto 4vh;
 `
-const Question = styled.div`
-    margin : 5vh auto;
-    background-color : ${lighten(0.4, pallette.YELLOW)};
-    width : 85%;
-    padding : 2.5vmax;
-    display : flex;
-    justify-content : center;
-`
-const Answer = styled.div`
-    margin : 0 auto;
-    width : 85%;
-    flex-direction : column;
-    align-items : unset !important;
+const Message = styled.div`
+    text-align : center;
+    font-size : 3.2rem;
+    word-break : keep-all;
 
-    & > div {
-        margin : 2vh 0;
+    & > strong {
+        font-size : 3.4rem;
     }
 `
 

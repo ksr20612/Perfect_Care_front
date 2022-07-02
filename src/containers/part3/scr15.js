@@ -4,7 +4,7 @@ import Title from "../../components/title";
 import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
 import TextArea from "../../components/textArea";
-import GuruBox from "../../containers/guruBox";
+import GuruBox from "../guruBox";
 
 const Scr15 = () => {
 
@@ -12,7 +12,7 @@ const Scr15 = () => {
         <>
             <Title title="Part3 완벽 관리하기" subTitle="범인을 기억하자 - 인지 오류 찾기"/>
             <Box>
-                문제 / 정답 2
+                문제 / 정답 3
             </Box>
         </>
     )
@@ -52,6 +52,5 @@ const Answer = styled.div`
         margin : 2vh 0;
     }
 `
-
 
 export default Scr15;

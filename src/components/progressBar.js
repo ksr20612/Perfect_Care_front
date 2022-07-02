@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPageLen } from "../app/pageInfo";
 import pallette from "../styles/pallette.css";
@@ -7,8 +8,7 @@ import pallette from "../styles/pallette.css";
 const ProgressBar = () => {
 
     const curPage = useSelector(state => state.state.pageIdx);
-    const pageLen = getPageLen(3);
-    // pageLen 가져오기(pageInfo);
+    const pageLen = getPageLen(useLocation().pathname.substr(1,1));
 
     return (
         <Box>

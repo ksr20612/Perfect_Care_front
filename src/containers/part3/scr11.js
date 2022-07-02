@@ -1,66 +1,109 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Title from "../../components/title";
 import pallette from "../../styles/pallette.css";
-import { lighten } from "polished";
-import TextArea from "../../components/textArea";
-import GuruBox from "../../containers/guruBox";
+import { lighten, darken } from "polished";
+import Title from "../../components/title";
+import Guru from "../../components/guru";
+import Bubble from "../../components/bubble";
 
-const Scr2 = () => {
+const Scr11 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 인지오류"/>
             <Box>
-                <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
-                <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>
-                <Question>
-                    최근에 경험했던 당황스러웠거나, 불안했던 상황을 생각하며 적어보세요.
-                </Question>
-                <Answer>
-                    <div className="subQuestion">✶ 상황 : 누가 / 언제/ 어디서 / 무엇을</div>
-                    <TextArea color={pallette.GREY} width="100%" height="20vh"/>
-                </Answer>
-                <GuruBox />
+                <div>
+                    <Note>용의자인 자동사고를 찾았다면 이 사고가 정말로 완벽주의를 강하게 만든 범인인지 살펴보아요!</Note>
+                    <div>
+                        <Guru></Guru>
+                        <Guru></Guru>
+                    </div>
+                </div>
+                <div>
+                    <Subtitle>평소에 자주하는 말이나 생각과 비슷한 것을 골라 <span>클릭</span>해보세요.</Subtitle>
+                    <Bubbles>
+                        <Bubble title="재앙화 사고">이번 시험도 망치다니, <br/> 내 대학 입시는 망했어.</Bubble>
+                        <Bubble title="흑백논리">1등이 아니면 의미없지.</Bubble>
+                        <Bubble title="당위 진술">아무리 바빠도 <br/> 운동은 매일 해야해.</Bubble>
+                        <Bubble title="지나친 일반화">지난번 발표때 실수했으니까 <br/> 오늘도 분명 실수할거야.</Bubble>
+                    </Bubbles>
+                </div>
             </Box>
         </>
     )
 }
 
 const Box = styled.div`
+    display : flex;
+    align-items : center;
+    width : 90%;
+    height : 70vh;
+    margin-top : 4vh;
+    margin : 4vh auto 0;
+
+    & > div:first-child {
+        width : 30%;
+        height : 100%;
+
+        & > div:last-child {
+            display : flex;
+            width : 100%;
+            justify-content : center;
+            
+            & > div:first-child { margin-right : 1vw; }
+        }
+    }
+    & > div:last-child {
+        width : 70%;
+        height : 100%;
+    }
+`
+const Subtitle = styled.div`
+    font-size : 2.4rem;
     font-family : "Noto_Medium";
-    padding : 0 1vw;
-    padding-top : 2vh;
-    position : relative;
+    width : 100%;
+    text-align : center;
+    margin : 4vh 0;
+
+    & > span {
+        background-color : ${pallette.YELLOW};
+        color : ${pallette.WHITE};
+    }
+`
+const Note = styled.div`
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    width : 20vw;
+    height : 20vw;
+    background-color : ${pallette.YELLOW};
+    font-size : 2.4rem;
+    font-family : "Noto_Medium";
+    padding : 1.5vmax;
+    word-break : keep-all;
+    text-align : center;
+    transform : rotate(5deg);
+    margin-bottom : 10vh;
+`
+const Bubbles = styled.div`
+    display : grid;
+    grid-template-rows : 1fr 1fr;
+    grid-template-columns : 1fr 1fr;
+    width : 100%;
+    height : 80%;
+    font-size : 2.4rem;
 
     & > div {
-        font-size : 2.6rem;
+        margin : 1vmin;
+        padding : 1.5vmin;
+        word-break : keep-all;
         display : flex;
         align-items : center;
-    }
-
-    & > .subQuestion {
-        padding-bottom : 2vh;
-    }
-`
-const Question = styled.div`
-    margin : 5vh auto;
-    background-color : ${lighten(0.4, pallette.YELLOW)};
-    width : 85%;
-    padding : 2.5vmax;
-    display : flex;
-    justify-content : center;
-`
-const Answer = styled.div`
-    margin : 0 auto;
-    width : 85%;
-    flex-direction : column;
-    align-items : unset !important;
-
-    & > div {
-        margin : 2vh 0;
+        justify-content : center;
+        text-align : center;
+        background-color : ${pallette.GREY};
+        border-radius : 10%;
     }
 `
 
-
-export default Scr2;
+export default Scr11;

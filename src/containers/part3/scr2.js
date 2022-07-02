@@ -10,18 +10,11 @@ const Scr2 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라!"/>
             <Box>
-                <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
-                <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>
-                <Question>
-                    최근에 경험했던 당황스러웠거나, 불안했던 상황을 생각하며 적어보세요.
-                </Question>
-                <Answer>
-                    <div className="subQuestion">✶ 상황 : 누가 / 언제/ 어디서 / 무엇을</div>
-                    <TextArea color={pallette.GREY} width="100%" height="20vh"/>
-                </Answer>
-                <GuruBox />
+                <div>본격적으로 완벽주의를 조절하기 위해서는 <br/> 머릿속에 있는 "자동사고"라는 용의자를 찾아야 합니다.</div>
+                <div>내 행동을 만드는 핵심 생각이자, 남의 감정을 좌우하는 자동사고는 내가 완벽주의 성향으로 사고하도록 돕기도 하는데요,</div>
+                <div>"자동사고"가 정말로 완벽주의 성향을 만드는 범인일지 한번 조사해볼까요?</div>
             </Box>
         </>
     )

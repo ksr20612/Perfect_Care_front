@@ -6,7 +6,7 @@ const Parts = [
         "pageLen" : 7
     },
     {
-        "pageLen" : 19
+        "pageLen" : 18
     },
     {
         "pageLen" : 12
@@ -24,5 +24,6 @@ const getPageLen = (partIdx) => {
     return Parts[idx].pageLen || false;
 
 }
+const numParts = Parts.length;
 
-export { getPageLen };
+export { getPageLen, numParts };

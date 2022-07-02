@@ -19,7 +19,8 @@ import Scr15 from "../containers/part3/scr15";
 import Scr16 from "../containers/part3/scr16";
 import Scr17 from "../containers/part3/scr17";
 import Scr18 from "../containers/part3/scr18";
-import Scr19 from "../containers/part3/scr19";
+import Screen from "../components/screen";
+import ProgressBar from "../components/progressBar";
 
 const Part2 = () => {
 
@@ -27,6 +28,7 @@ const Part2 = () => {
 
     return (
         <>
+            <Screen>
             {
                 curPage === 1? <Scr1 /> :
                 curPage === 2? <Scr2 /> :
@@ -45,9 +47,10 @@ const Part2 = () => {
                 curPage === 15? <Scr15 /> :
                 curPage === 16? <Scr16 /> :
                 curPage === 17? <Scr17 /> :
-                curPage === 18? <Scr18 /> :
-                <Scr19 />
+                <Scr18 />
             }
+            </Screen>
+            <ProgressBar/>
         </>
     )
 }

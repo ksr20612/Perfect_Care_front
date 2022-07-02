@@ -8,6 +8,8 @@ import Scr4 from "../containers/part2/scr4";
 import Scr5 from "../containers/part2/scr5";
 import Scr6 from "../containers/part2/scr6";
 import Scr7 from "../containers/part2/scr7";
+import Screen from "../components/screen";
+import ProgressBar from "../components/progressBar";
 
 const Part2 = () => {
 
@@ -15,6 +17,7 @@ const Part2 = () => {
 
     return (
         <>
+            <Screen>
             {
                 curPage === 1? <Scr1 /> :
                 curPage === 2? <Scr2 /> :
@@ -24,6 +27,8 @@ const Part2 = () => {
                 curPage === 6? <Scr6 /> :
                 <Scr7 />
             }
+            </Screen>
+            <ProgressBar/>
         </>
     )
 }
