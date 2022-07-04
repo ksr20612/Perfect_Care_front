@@ -3,21 +3,36 @@ import styled from "styled-components";
 import { lighten, darken } from "polished"
 import pallette from "../styles/pallette.css";
 import Modal from "./modal";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsModalOn, toggleModalOn } from "../features/modalSlice";
 
 const Bubble = ({
     title = `재앙화 사고`,
+    content = `이번 시험도 망치다니, \n 내 대학 입시는 망했어.`,
     children
 }) => {
 
     // 0 : default, 1 : flipped, 2 : popup
     const [status, setStatus] = useState(0);
+    const dispatch = useDispatch();
+    const handleClick = () => {
+        switch(status) {
+            case 0 :
+                return setStatus(1);
+            case 1 :
+                return dispatch(setIsModalOn(true));
+            case 2 :
+                return;
+            default : return;
+        }
+    }
 
     return (
-        <Box className={status===1? "clicked" : null} onClick={(e)=>{setStatus(1)}}>
+        <Box className={status===1? "clicked" : null} onClick={(e)=>{handleClick()}}>
             <Title>{title}</Title>
-            <Speech>{children}</Speech>
+            <Speech>{content}</Speech>
             <Modal>
-
+                {children}
             </Modal>
         </Box>
     )
@@ -57,6 +72,7 @@ const Speech = styled.div`
     font-family : "Noto_medium";
     transform : translateY(-2vh);
     transition : all .3s ease-in;
+    white-space : pre-line;
 `
 
 export default Bubble;
