@@ -15,7 +15,7 @@ const Header = () => {
                 <MenuIcon size="2.4rem"/>
                 <span>메뉴</span>
             </IconWrapper>
-            <div>****</div>
+            <div className="logo">Perfect Care(로고)</div>
             <div className="right">
                 <IconWrapper>
                     <span>커뮤니티</span>
@@ -50,6 +50,10 @@ const Head = styled.div`
     padding : 0 5vw;
     & > .right {
         display : flex;
+    }
+    & > .logo {
+        position : absolute;
+        left : calc((100% - 10vw) / 2);
     }
 `
 const IconWrapper = styled.div`

@@ -5,12 +5,19 @@ import Checkboxes from "../../components/checkboxes";
 import Standards from "../../assets/jsons/standards";
 import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
+import usePageCallback from "../../hooks/usePageCallback";
 
 const Scr2 = () => {
 
-    const handleChange = (e) => {
-        console.log(e.target.value);
+    const handleChange = (type, value) => {
+        console.log({type, value});
     }
+
+    // scr마다 달아줘야함! 
+    const [success, error] = usePageCallback({
+        onPrev : ()=>{console.log("과거로")},
+        onNext : ()=>{console.log("미래로")},
+    });
 
     return (
         <>
@@ -21,25 +28,25 @@ const Scr2 = () => {
                     <tr>
                         <td>학업 / 능력</td>
                         <td>
-                            <Checkboxes items={Standards["학업/능력"]} handleChange={(v)=>console.log(v)}/>
+                            <Checkboxes items={Standards["학업/능력"]} handleChange={(v)=>handleChange("학업/능력", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>외모 / 건강</td>
                         <td>
-                            <Checkboxes items={Standards["외모/건강"]} handleChange={(v)=>console.log(v)}/>
+                            <Checkboxes items={Standards["외모/건강"]} handleChange={(v)=>handleChange("외모/건강", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>대인관계</td>
                         <td>
-                            <Checkboxes items={Standards["대인관계"]} handleChange={(v)=>console.log(v)}/>
+                            <Checkboxes items={Standards["대인관계"]} handleChange={(v)=>handleChange("대인관계", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>성공 / 행복</td>
                         <td>
-                            <Checkboxes items={Standards["성공/행복"]} handleChange={(v)=>console.log(v)}/>
+                            <Checkboxes items={Standards["성공/행복"]} handleChange={(v)=>handleChange("성공/행복", v)}/>
                         </td>
                     </tr>
                 </table>
@@ -60,6 +67,7 @@ const Box = styled.div`
 
     & > table {
         width : 100%;
+        margin-top : 2vh;
     }
 
     & table, & tr, & td {

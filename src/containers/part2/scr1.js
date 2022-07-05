@@ -3,6 +3,7 @@ import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
+import CheckBlue from "../../assets/check_blue.png";
 
 const Scr1 = () => {
 
@@ -39,7 +40,10 @@ const Box = styled.div`
             display : absolute;
             width : 8vmax;
             height : 8vmax;
-            background-color : ${pallette.GREY};
+            background-image : url(${CheckBlue});
+            background-size : contain;
+            background-repeat: no-repeat;
+            background-position: center center;
             margin-right : 1vw;
         }
     }

@@ -20,18 +20,21 @@ const Bubble = ({
             case 0 :
                 return setStatus(1);
             case 1 :
-                return dispatch(setIsModalOn(true));
+                return setStatus(2);
             case 2 :
                 return;
             default : return;
         }
+    }
+    const close = (e) => {
+        setStatus(0);
     }
 
     return (
         <Box className={status===1? "clicked" : null} onClick={(e)=>{handleClick()}}>
             <Title>{title}</Title>
             <Speech>{content}</Speech>
-            <Modal>
+            <Modal size={{width : "50vw", height : "50vh"}} isOn={status===2} close={{on: true, handleClose: (e)=>{close(e)}}}>
                 {children}
             </Modal>
         </Box>
