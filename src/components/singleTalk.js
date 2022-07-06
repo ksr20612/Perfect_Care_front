@@ -18,7 +18,7 @@ const SingleTalk = ({
     },[]);
 
     return (
-        <Box img={image} className={isMe? "me" : null} animate={{ y : [10, 0], opacity : [0, 1], height : }} transition={{delay : transitionDelay}}>
+        <Box img={image} className={isMe? "me" : null} animate={{ y : [10, 0], opacity : [0, 1],}} transition={{delay : transitionDelay}}>
             {isMe? null : <div className="image"/>}
             <div>
                 {isMe? null : <Name>{name}</Name>}
