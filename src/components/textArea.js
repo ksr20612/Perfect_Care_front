@@ -8,11 +8,13 @@ const TextArea = ({
     value = "", 
     placeholder = "입력해주세요.",
     color = pallette.BLUISH,
+    customStyle = {},
+    canBeFocused = true,
     handleChange = f => f
 }) => {
 
     return (
-        <TextBox value={value} placeholder={placeholder} width={width} height={height} color={color} onChange={(e)=>handleChange(e.currentTarget.value)}/>
+        <TextBox value={value} placeholder={placeholder} width={width} height={height} color={color} onChange={(e)=>handleChange(e.currentTarget.value)} style={customStyle} canBeFocused={canBeFocused}/>
     )
 }
 
@@ -35,7 +37,7 @@ const TextBox = styled.textarea`
     transition : all 0.2s ease-out;
 
     &:focus {
-        background-color : ${props => darken(0.1, props.color)};
+        background-color : ${props => props.canBeFocused? darken(0.1, props.color) : "transparent"};
         border : none;
         outline : none;
     }

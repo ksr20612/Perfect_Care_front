@@ -50,13 +50,11 @@ const Screen = ({children}) => {
     }
 
     return (
-        <>
-            <Box>
-                <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
-                {children}
-                <Arrow onClick={()=>handlePage(1)}/>
-            </Box>
-        </>
+        <Box>
+            <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
+            {children}
+            <Arrow onClick={()=>handlePage(1)}/>
+        </Box>
     )
 }
 
@@ -64,6 +62,7 @@ const Box = styled.div`
     display : flex;
     flex-direction : column;
     width : 80vw;
+    max-width : 1180px;
     height : calc(100vh - 6vh);
     background-color : #fff;
     display : flex;

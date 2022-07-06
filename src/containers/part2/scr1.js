@@ -61,8 +61,7 @@ const Data = styled.span`
         display : block;
         width : 60vw;
         height : 12vh;
-        left : 12vmax;
-        bottom : -8vh
+        margin-left : calc(8vmax + 2vmax);
     }
 `
 

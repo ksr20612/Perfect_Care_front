@@ -59,13 +59,12 @@ const Box = styled.div`
     }
 `
 const Data = styled.span`
-    width : 60vw;
+    width : calc(100% - 8vmax);
     height : 16vh;
     display : inline-block;
     background-color : ${pallette.BLUISH};
     border-radius : 1.5vmin;
-    margin : 0 0 0 10vw;
-    
+    margin-left : 8vmax;
 `
 
 export default Scr1;

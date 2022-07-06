@@ -32,6 +32,15 @@ const Standards = {
     }
 
 }
+
+const getChecked = (key) => {
+    const range = Standards[key];
+    for(const item in range) {
+        if(range[item]) return item;
+    }
+}
+
 Object.freeze(Standards);
 
 export default Standards;
+export { getChecked };
