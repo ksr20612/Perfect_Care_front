@@ -60,6 +60,7 @@ const Data = styled.span`
         position : absolute;
         display : block;
         width : 60vw;
+        max-width : 840px;
         height : 12vh;
         margin-left : calc(8vmax + 2vmax);
     }

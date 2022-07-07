@@ -6,11 +6,15 @@ import Standards from "../../assets/jsons/standards";
 import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
 import usePageCallback from "../../hooks/usePageCallback";
+import { useSelector, useDispatch } from "react-redux";
+import { setStandard } from "../../features/parts/part2Slice";
 
 const Scr2 = () => {
 
+    const checks = useSelector(state=>state.part2.scr2);
+    const dispatch = useDispatch();
     const handleChange = (type, value) => {
-        console.log({type, value});
+        dispatch(setStandard({ [type] : value }));
     }
 
     // scr마다 달아줘야함! 
@@ -28,25 +32,25 @@ const Scr2 = () => {
                     <tr>
                         <td>학업 / 능력</td>
                         <td>
-                            <Checkboxes items={Standards["학업/능력"]} handleChange={(v)=>handleChange("학업/능력", v)}/>
+                            <Checkboxes checked={checks.std1} items={Standards["학업/능력"]} handleChange={(v)=>handleChange("std1", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>외모 / 건강</td>
                         <td>
-                            <Checkboxes items={Standards["외모/건강"]} handleChange={(v)=>handleChange("외모/건강", v)}/>
+                            <Checkboxes checked={checks.std2} items={Standards["외모/건강"]} handleChange={(v)=>handleChange("std2", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>대인관계</td>
                         <td>
-                            <Checkboxes items={Standards["대인관계"]} handleChange={(v)=>handleChange("대인관계", v)}/>
+                            <Checkboxes checked={checks.std3} items={Standards["대인관계"]} handleChange={(v)=>handleChange("std3", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>성공 / 행복</td>
                         <td>
-                            <Checkboxes items={Standards["성공/행복"]} handleChange={(v)=>handleChange("성공/행복", v)}/>
+                            <Checkboxes checked={checks.std4} items={Standards["성공/행복"]} handleChange={(v)=>handleChange("std4", v)}/>
                         </td>
                     </tr>
                 </table>

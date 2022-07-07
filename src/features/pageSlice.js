@@ -4,11 +4,15 @@ import { createSlice } from "@reduxjs/toolkit";
 export const PageSlice = createSlice({
     name : "page",
     initialState : {
+        isClicked : false,
         prev : null,
         next : null,
         common : ()=>console.log("페이지 전환"),
     },
     reducers : {
+        setIsClicked : (state, action) => {
+            state.isClicked = action.payload;
+        },
         setPrev : (state, action) => {
             state.prev = action.payload;
         },
@@ -21,5 +25,5 @@ export const PageSlice = createSlice({
     }
 });
 
-export const { setPrev, setNext, setCommon } = PageSlice.actions;
+export const { setIsClicked, setPrev, setNext, setCommon } = PageSlice.actions;
 export default PageSlice.reducer;

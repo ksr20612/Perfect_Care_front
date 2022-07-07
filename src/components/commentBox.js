@@ -7,12 +7,15 @@ import TextArea from "../components/textArea";
 const CommentBox = ({
     width = "40%",
     height = "60vh",
-    userName = "YD",
+    userName = "동연",
     comments = [
         {name : "AB", content : "가나다라마바사아자차카타파하", likes : 0},
         {name : "CD", content : "가나다라마바사아자차카타파하", likes : 0},
         {name : "EF", content : "가나다라마바사아자차카타파하", likes : 0},
     ],
+    value,
+    handleChange = f => f,
+    handleClick = f => f,
 }) => {
 
     return (
@@ -35,7 +38,8 @@ const CommentBox = ({
             </BoxComment>
             <InputComment>
                 <span>{userName}</span>
-                <TextArea color={pallette.WHITE} placeholder="댓글을 남겨주세요."/>
+                <TextArea value={value} handleChange={(v)=>{handleChange(v)}} color={pallette.WHITE} canBeFocused={false} placeholder="댓글을 남겨주세요."/>
+                <Button onClick={(e)=>{handleClick(e)}}>작성</Button>
             </InputComment>
         </Box>
     )
@@ -60,9 +64,11 @@ const BoxComment = styled.div`
 `
 const Comment = styled.div`
 
+    position : relative;
     padding : 1vh 0;
 
     & > span {
+        position : relative;
         display : flex;
         justify-content : center;
         align-items : center;
@@ -70,10 +76,27 @@ const Comment = styled.div`
         border-radius : 50%;
         font-size : calc(1rem + 0.5vw);
         color : ${pallette.WHITE};
-        width : 5vmin;
-        height : 5vmin;
+        width : 4vw;
+        height : 4vw;
         background-color : ${lighten(0.5, pallette.BLUE)};
         margin-right : 0.5vw;
+    }
+
+    &:first-of-type > span:before {
+        position : absolute;
+        content : "윤닥님이 고정함";
+        color : rgba(0, 0, 0, 0.5);
+        font-size : 1.6rem;
+        left : 5.5vw;
+        width : 7vw;
+    }
+    &:first-of-type > span:after {
+        position : absolute;
+        content : "🖈";
+        color : rgba(0, 0, 0, 0.5);
+        font-size : 2.4rem;
+        transform : scaleX(-1);
+        left : 4vw;
     }
 
     & > div {
@@ -90,6 +113,7 @@ const InputComment = styled.div`
     border-top : 1px solid ${darken(0.1, pallette.GREY)};
     padding-top : 2vh;
     display : flex;
+    position : relative;
 
     & > span {
         display : flex;
@@ -99,12 +123,31 @@ const InputComment = styled.div`
         border-radius : 50%;
         font-size : calc(1rem + 0.5vw);
         color : ${pallette.WHITE};
-        width : 5vmin;
-        height : 5vmin;
+        width : 4vw;
+        height : 4vw;
         background-color : ${lighten(0.2, pallette.BLUE)};
         margin-right : 0.5vw;
     }
+`
+const Button = styled.div`
+    width : 50px;
+    height : 30px;
+    background-color : ${lighten(0.5, pallette.BLUE)};
+    font-size : 1.6rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    color : ${pallette.WHITE};
+    border : 1px solid ${lighten(0.47, pallette.BLUE)};
+    cursor : pointer;
+    transition : all .2s ease-in-out;
+    position : absolute;
+    right : 0;
+    bottom : 0;
 
+    &:hover {
+        background-color : ${lighten(0.45, pallette.BLUE)};
+    }
 `
 
 export default CommentBox;

@@ -11,10 +11,6 @@ const Feedback = ({
     children
 }) => {
 
-    useEffect(()=>{
-        console.log({standard, isOn});
-    })
-
     return (
         <Box onClick={()=>handleClick()} className={isOn===true? "on" : (isOn===1? null : "hidden")} transform={(index-1)*6.5}>
             <Standard className={isOn===true? "on" : (isOn===1? null : "hidden")}>{standard}</Standard>

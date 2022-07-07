@@ -37,7 +37,7 @@ const TextBox = styled.textarea`
     transition : all 0.2s ease-out;
 
     &:focus {
-        background-color : ${props => props.canBeFocused? darken(0.1, props.color) : "transparent"};
+        background-color : ${props => props.canBeFocused? darken(0.1, props.color) : props.color};
         border : none;
         outline : none;
     }

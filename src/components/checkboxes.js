@@ -7,24 +7,21 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 
 const Checkboxes = ({
-    items = {
-        "a" : false,
-        "b" : false,
-        "c" : false,
-    },
+    items = [],
+    checked,
     handleChange = f => f,
 }) => {
 
     return (
         <FormGroup>
             {
-                Object.keys(items).map((key)=>{
+                items.map((item)=>{
                     return (
                         <FormControlLabel
                             control={
-                                <Checkbox checked={items[key]} onChange={(e)=>handleChange(e.target.value)} value={key} color="default"/>
+                                <Checkbox checked={item === checked} onChange={(e)=>handleChange(e.target.value)} value={item} color="default"/>
                             }
-                            label={key}
+                            label={item}
                         />
                     )
                 })

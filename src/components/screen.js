@@ -7,11 +7,13 @@ import { darken } from "polished";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setPageIdx } from "../features/stateSlice";
+import { setIsClicked } from "../features/pageSlice";
 import { toastInfo } from "../utils/toast";
 import { getPageLen } from "../app/pageInfo";
 
 const Screen = ({children}) => {
 
+    const isAlreadyClicked = useSelector(state=>state.page.isClicked);
     const currentPage = useSelector(state=>state.state.pageIdx);
     const partIdx = useLocation().pathname.substr(1,1) * 1;
     const pageLen = getPageLen(partIdx);
@@ -22,18 +24,27 @@ const Screen = ({children}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handlePage = (v) => {
+        if(isAlreadyClicked) return;
         if(currentPage+v === 0) {
             return toastInfo("이전 세션으로 이동합니다.", {
+                onOpen : () => {
+                    dispatch(setIsClicked(true));
+                },
                 onClose : () => {
                     navigate(`/${partIdx-1}`);
                     dispatch(setPageIdx(getPageLen(partIdx-1)));
+                    dispatch(setIsClicked(false));
                 }
             });
         }else if(currentPage+v === pageLen + 1) {
             return toastInfo("다음 세션으로 이동합니다.", {
+                onOpen : () => {
+                    dispatch(setIsClicked(true));
+                },
                 onClose : () => {
                     navigate(`/${partIdx+1}`);
                     dispatch(setPageIdx(1));
+                    dispatch(setIsClicked(false));
                 }
             });
         }

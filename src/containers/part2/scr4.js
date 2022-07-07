@@ -6,8 +6,11 @@ import Title from "../../components/title";
 import { getChecked } from "../../assets/jsons/standards";
 import { BsPerson as PersonIcon } from "react-icons/bs";
 import Feedback from "../../components/feedback";
+import { useSelector } from "react-redux";
 
 const Scr4 = () => {
+
+    const checks = useSelector(state=>state.part2.scr2);
 
     const [status, setStatus] = useState(1);
     const [clicked, setClicked] = useState(null);
@@ -31,19 +34,19 @@ const Scr4 = () => {
                     <div>
                         <div>나의 기준은...</div>
                         <Bubble>
-                            <Feedback index={1} isOn={status || (clicked===1)} standard={getChecked("학업/능력")} handleClick={()=>{handleClick(1)}}>
+                            <Feedback index={1} isOn={status || (clicked===1)} standard={checks.std1} handleClick={()=>{handleClick(1)}}>
                                 <div>남들보다 잘한다는 것은 추상적인 목표야.</div>
                                 <div><strong>{"이전에 내가 세웠던 기록보다 잘하고 싶다"}</strong>는 목표로 바꾸는 것은 어떨까?</div>
                             </Feedback>
-                            <Feedback index={2} isOn={status || (clicked===2)} standard={getChecked("외모/건강")} handleClick={()=>{handleClick(2)}}>
+                            <Feedback index={2} isOn={status || (clicked===2)} standard={checks.std2} handleClick={()=>{handleClick(2)}}>
                                 <div>제언</div>
                                 <div>조언</div>
                             </Feedback>
-                            <Feedback index={3} isOn={status || (clicked===3)} standard={getChecked("대인관계")} handleClick={()=>{handleClick(3)}}>
+                            <Feedback index={3} isOn={status || (clicked===3)} standard={checks.std3} handleClick={()=>{handleClick(3)}}>
                                 <div>제언</div>
                                 <div>조언</div>
                             </Feedback>
-                            <Feedback index={4} isOn={status || (clicked===4)} standard={getChecked("성공/행복")} handleClick={()=>{handleClick(4)}}>
+                            <Feedback index={4} isOn={status || (clicked===4)} standard={checks.std4} handleClick={()=>{handleClick(4)}}>
                                 <div>제언</div>
                                 <div>조언</div>
                             </Feedback>
@@ -62,6 +65,10 @@ const Box = styled.div`
 
     & > div {
         font-size : 2.6rem;
+    }
+    font : {
+            size : 2.5rem;
+            weight : bold
     }
 `
 const Container = styled.div`

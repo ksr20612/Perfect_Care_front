@@ -8,6 +8,15 @@ import Comments from "../../components/commentBox";
 
 const Scr5 = () => {
 
+    const [input, setInput] = useState();
+    const handleChange = (v) => {
+        setInput(v);
+    }
+    const handleClick = (e) => {
+        console.log(input);
+        setInput("");
+    }
+
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="완벽주의 내 친구에게"/>
@@ -20,7 +29,7 @@ const Scr5 = () => {
                 </div>
                 <Container>
                     <MovieClip width="100%" height="100%"/>
-                    <Comments>
+                    <Comments value={input} handleChange={(v)=>{handleChange(v)}} handleClick={(e)=>{handleClick(e)}}>
 
                     </Comments>
                 </Container>
