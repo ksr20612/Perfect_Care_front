@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import BackImg from "../../assets/sample.jpg";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr17 = () => {
 

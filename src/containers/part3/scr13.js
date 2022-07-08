@@ -5,13 +5,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
 import TextArea from "../../components/textArea";
 import GuruBox from "../guruBox";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr13 = () => {
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="범인을 기억하자 - 인지 오류 찾기"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 문제 / 정답 1
             </Box>
         </>

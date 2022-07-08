@@ -5,13 +5,14 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import MovieClip from "../../components/movieClip";
 import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr4 = () => {
 
     return (
         <>
             <Title title="Part4 실수가 너무 두려워요" subTitle="실수가 두려운 완벽주의자에게"/>
-            <Box as={motion.div} animate={{ y : [50, 0], opacity : [0, 1]}} transition={{ type : "easeOut", duration : 1}}>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <MovieClip width="100%" height="100%"/>
             </Box>
         </>

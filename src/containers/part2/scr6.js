@@ -4,11 +4,13 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Image from "../../assets/sample.jpg";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr6 = () => {
 
     return (
-        <Box>
+        <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
             <Img src={Image} alt="이미지"/>
             <Content>
                 <div>어떤 일을 맡으면 부담감부터 들고 숨이 막히지 않으셨나요?</div>

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Title from "../../components/title";
 import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr2 = () => {
 

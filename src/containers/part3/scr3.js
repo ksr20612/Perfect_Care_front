@@ -5,34 +5,28 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Card from "../../components/card";
 import SamplePic from "../../assets/sample.jpg";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr3 = () => {
-
-    const [on, setOn] = useState(false);
-
-    useEffect(()=>{
-        setTimeout(()=>{
-            setOn(true);
-        }, 500);
-    }, []);
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라!"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>
                     <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있습니다.</div>
                     <div>형사가 되어 자동사고라는 용의자를 잡아봅시다.</div>
                 </div>
-                <div>
+                <motion.div initial="hidden" animate="visible" variants={fadein} custom={1.5}>
                     <div>이런 걸 작성할 거예요!</div>
-                    <Block className={on? "on" : null}>1. 상황</Block>
-                    <Block className={on? "on" : null}>2. 기분</Block>
-                    <Block className={on? "on" : null}>3. 생각</Block>
-                    <Block className={on? "on" : null}>4. 이미지</Block>
-                    <Block className={on? "on" : null}>5. 나는 어떤 사람?</Block>
-                    <Block className={on? "on" : null}>6. 최악의 경우</Block>
-                </div>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2}>1. 상황</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2.5}>2. 기분</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={3}>3. 생각</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={3.5}>4. 이미지</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4}>5. 나는 어떤 사람?</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4.5}>6. 최악의 경우</Block>
+                </motion.div>
             </Box>
         </>
     )
@@ -63,9 +57,7 @@ const Box = styled.div`
 `
 const Block = styled.div`
     transform : translateY(5vh);
-    opacity : 0;
     scroll-snap-align: center;
-    transition : all 0.5s ease-in-out;
     background-color : ${lighten(0.5, pallette.BLUE)};
     width : 80%;
     height : auto;
@@ -76,33 +68,6 @@ const Block = styled.div`
     font-family : "Noto_Black";
     color : #333;
     box-shadow : 0px 3px 6px #00000029;
-
-    &.on{
-        transform : unset;
-        opacity : 1;
-    }
-
-    &:nth-child(1) {
-        transition-delay : .5s;
-    }
-    &:nth-child(2) {
-        transition-delay : 1s;
-    }
-    &:nth-child(3) {
-        transition-delay : 1.5s;
-    }
-    &:nth-child(4) {
-        transition-delay : 2s;
-    }
-    &:nth-child(5) {
-        transition-delay : 2.5s;
-    }
-    &:nth-child(6) {
-        transition-delay : 3s;
-    }
-    &:nth-child(7) {
-        transition-delay : 3.5s;
-    }
 `
 
 export default Scr3;

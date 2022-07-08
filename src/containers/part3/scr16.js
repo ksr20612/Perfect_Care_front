@@ -7,29 +7,25 @@ import TextArea from "../../components/textArea";
 import GuruBox from "../guruBox";
 import BlockBox from "../../components/blockBox";
 import AnswerBox from "../../components/answerBox";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
+import { useSelector } from "react-redux";
 
 const Scr16 = () => {
 
+    const scr10 = useSelector(state=>state.part3.information.scr10);
+    const scr16 = useSelector(state=>state.part3.information.scr16);
     const [active, setActive] = useState(new Array(4));
     const handleClick = (target) => {
-        console.log(target);
         const newArr = [...active].map((__,i)=>i===target? true : false);
-        console.log(newArr);
         setActive([...active].map((__,i)=>i===target? true : false));
     }
-
-    useEffect(()=>{
-        console.log(active[0]);
-        console.log(active[1]);
-        console.log(active[2]);
-        console.log(active[3]);
-    })
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="찾았다! 완벽주의의 주범"/>
-            <Box>
-                <BlockBox title="나의 자동사고" content="" fadein={true}/>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                <BlockBox title="나의 자동사고" content={scr10} fadein={true}/>
                 <AnswerBox title="내 자동사고의 오류는?">
                     <Options>
                         <Option color="" className={active[0]? "on" : null} onClick={()=>handleClick(0)}>재앙화 사고</Option>

@@ -5,6 +5,8 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import MovieClip from "../../components/movieClip";
 import Comments from "../../components/commentBox";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr5 = () => {
 
@@ -20,7 +22,7 @@ const Scr5 = () => {
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="완벽주의 내 친구에게"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>
                     다음 영상에 나오는 주인공이 내 친구라고 생각했을 때,
                 </div>

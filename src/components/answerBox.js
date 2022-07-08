@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import pallette from "../styles/pallette.css";
+import { motion } from "framer-motion";
+import fadein from "../styles/framer-motion/fadein";
 
 const AnswerBox = ({
     title = "",
@@ -10,7 +12,7 @@ const AnswerBox = ({
 }) => {
 
     return (
-        <Box style={styles}>
+        <Box style={styles} as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.2}>
             <Question>{title}<span>{index}</span></Question>
             {children}
         </Box>
