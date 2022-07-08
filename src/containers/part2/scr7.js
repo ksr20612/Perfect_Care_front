@@ -4,13 +4,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr7 = () => {
 
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="요점 정리"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Summary>
                     <Line>나에게 덫을 놓는 가혹한 기준.</Line>
                     <Line>내가 하는 일들이 버겁게 느껴진다면 기준을 점검해보자.</Line>

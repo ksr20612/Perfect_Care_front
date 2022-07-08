@@ -4,13 +4,14 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import { motion, useMotionValue, useTransform } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const list = { 
     visible : { 
         opacity : 1,
         transition : {
             when : "beforeChildren",
-            staggerChildren : 5,
+            staggerChildren : 1,
         }
     }, 
     hidden : { 
@@ -39,8 +40,8 @@ const Scr1 = () => {
             <br/> <br/>
             <Box as={motion.div} animate={{x : 100}} drag="x" dragConstraints={{left : -100, right : 100}}/>
             <UL as={motion.ul} initial="hidden" animate="visible" variants={list}>
-                <LI as={motion.li} variants={item} />
-                <LI as={motion.li} variants={item} />
+                <LI as={motion.li} />
+                <LI as={motion.li} />
             </UL>
             <Box as={motion.div} drag="x" style={{ x, opacity }} />
             <Box as={motion.div} animate={{x : 100}} transition={{type : "spring", duration : 2, stiffness : 100 }}/>

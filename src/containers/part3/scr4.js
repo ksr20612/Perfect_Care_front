@@ -6,23 +6,33 @@ import Title from "../../components/title";
 import DiscreteSlider from "../../components/discreteSlider";
 import TextArea from "../../components/textArea";
 import GuruBox from "../../containers/guruBox";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
+import { useSelector, useDispatch } from "react-redux";
+import { setScr4 } from "../../features/parts/part3Slice";
 
 const Scr4 = () => {
+
+    const scr4 = useSelector(state=>state.part3.information.scr4);
+    const dispatch = useDispatch();
+    const handleChange = (v) => {
+        dispatch(dispatch(setScr4(v)));
+    }
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
                 <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>
-                <Question>
+                <Question as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
                     최근에 경험했던 당황스러웠거나, 불안했던 상황을 생각하며 적어보세요.
                 </Question>
-                <Answer>
-                    <div className="subQuestion">✶ 상황 : 누가 / 언제/ 어디서 / 무엇을 <span>1/7</span></div>
-                    <TextArea color={pallette.GREY} width="100%" height="20vh"/>
+                <Answer as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
+                    <div className="subQuestion">✶ 상황 : 누가 / 언제 / 어디서 / 무엇을 <span>1/7</span></div>
+                    <TextArea color={pallette.GREY} width="100%" height="20vh" value={scr4} handleChange={(v)=>{handleChange(v)}}/>
                 </Answer>
-                <GuruBox />
+                {/* <GuruBox /> */}
             </Box>
         </>
     )

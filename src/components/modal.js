@@ -4,6 +4,8 @@ import { lighten, darken } from "polished"
 import { useSelector, useDispatch } from "react-redux";
 import { setOpendedModal, setIsModalOn, toggleModalOn } from "../features/modalSlice";
 import pallette from "../styles/pallette.css";
+import { motion } from "framer-motion";
+import fadein from "../styles/framer-motion/fadein";
 
 const Modal = ({
     size = {width : "100%", height : "auto"},

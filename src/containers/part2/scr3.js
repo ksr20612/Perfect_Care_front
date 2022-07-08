@@ -4,13 +4,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import MovieClip from "../../components/movieClip";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr3 = () => {
 
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="비현실적인 기준을 변경하는 방법"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <MovieClip width="100%" height="100%"/>
             </Box>
         </>

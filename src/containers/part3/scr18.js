@@ -4,13 +4,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr18 = () => {
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="요점 정리"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Summary>
                     <First>언제나 내 생각이 합리적이지만은 않다!</First>
                     <Second>완벽주의를 강화시키는 주범, 인지오류를 밝혀내자.</Second>

@@ -4,13 +4,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr12 = () => {
 
     return (
         <>
             <Title title="Part4 실수가 너무 두려워요" subTitle="요점 정리"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Summary>
                     <Line>두려움은 실수를 만드는 재료!</Line>
                     <Line>꾸준한 실수 피드백으로 실수를 마주해보아요.</Line>

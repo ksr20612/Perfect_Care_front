@@ -4,13 +4,15 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import CheckBlue from "../../assets/check_blue.png";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr1 = () => {
 
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="지난 파트 돌아보기"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>나의 완벽주의는 이런 모습이었어요.</div>
                 <div>나는 <Data></Data> 을 느낀다고 응답했어요.</div>
                 <div>
@@ -38,8 +40,8 @@ const Box = styled.div`
         &:before {
             content : "";
             display : absolute;
-            width : 8vmax;
-            height : 8vmax;
+            width : 12vmin;
+            height : 12vmin;
             background-image : url(${CheckBlue});
             background-size : contain;
             background-repeat: no-repeat;

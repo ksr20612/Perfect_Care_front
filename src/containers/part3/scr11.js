@@ -5,13 +5,15 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Guru from "../../components/guru";
 import Bubble from "../../components/bubble";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr11 = () => {
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 인지오류"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>
                     <Note>용의자인 자동사고를 찾았다면 이 사고가 정말로 완벽주의를 강하게 만든 범인인지 살펴보아요!</Note>
                     <div>

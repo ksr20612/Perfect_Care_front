@@ -8,6 +8,8 @@ import { lighten } from "polished";
 import usePageCallback from "../../hooks/usePageCallback";
 import { useSelector, useDispatch } from "react-redux";
 import { setStandard } from "../../features/parts/part2Slice";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr2 = () => {
 
@@ -26,7 +28,7 @@ const Scr2 = () => {
     return (
         <>
             <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
-            <Box>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>각 영역별로 내가 가지고 있는 기준을 선택해 보세요.</div>
                 <table>
                     <tr>

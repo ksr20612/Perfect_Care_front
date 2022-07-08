@@ -5,20 +5,31 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Card from "../../components/card";
 import BlockBox from "../../components/blockBox";
-import SamplePic from "../../assets/sample.jpg";
+import CardList from "../../assets/jsons/cardList";
 import AnswerBox from "../../components/answerBox";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
+import { useSelector, useDispatch } from "react-redux";
+import { setScr5 } from "../../features/parts/part3Slice";
 
 const Scr5 = () => {
+
+    const scr4 = useSelector(state=>state.part3.information.scr4);
+    const scr5 = useSelector(state=>state.part3.information.scr5);
+    const dispatch = useDispatch();
+    const handleChange = (v) => {
+        dispatch(dispatch(setScr5(v)));
+    }
 
     return (
         <>
             <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
             <Box>
-                <BlockBox title="상황" content="심리학개론 수업 중 강의실에서 강단에 서서 40명쯤 되는 학생들 앞에서 발표하는 상황" fadein={true}/>
+                <BlockBox title="상황" content={scr4} fadein={true}/>
                 <AnswerBox title="어떤 감정이 들었나요?" index="2/7">
                     <Deck>
                     {
-                        cardList.map((card, i)=>{
+                        CardList.map((card, i)=>{
                             return (
                                 <div>
                                     <Card name={card.name} definition={card.definition} image={card.image}/>
@@ -76,119 +87,5 @@ const Answer = styled.div`
         }
     }
 `
-
-// 실제로는 fetch해서 가져올 것
-const cardList = [
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    },
-    {
-        name : "화남",
-        definition : "부당한 상황에서 화가 치밀어 오르는 감정",
-        image : SamplePic
-    },
-    {
-        name : "2",
-        definition : "감정에 대한 설명",
-        image : SamplePic
-    }
-]
 
 export default Scr5;
