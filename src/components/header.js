@@ -4,10 +4,30 @@ import pallette from "../styles/pallette.css";
 import { BiMenu as MenuIcon } from "react-icons/bi";
 import { BsPerson as LoginIcon, BsPersonX as LogoutIcon } from "react-icons/bs";
 import { ImBubbles4 as SpeechBubble } from "react-icons/im";
+import PageInfo from "../app/pageInfo";
+import { setPageIdx } from "../features/stateSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
 
     const [isMenuOn, setIsMenuOn] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const partIdx = useLocation().pathname.substr(1,1)*1 - 1;
+    const pageIdx = useSelector(state=>state.state.pageIdx)*1 - 1;
+    const handleLocation = (partIdx, pageIdx) => {
+        const part = partIdx + 1;
+        const page = pageIdx + 1;
+        if(part > 0 && page > 0){
+            if(window.confirm("선택한 섹션으로 이동하시겠습니까?\n현재 화면에서 입력한 정보는 저장됩니다.")) {
+                setIsMenuOn(false);
+                navigate(`/${part}`);
+                dispatch(setPageIdx(page));
+                // 저장 로직 추가
+            }
+        }
+    }
 
     return (
         <Head>
@@ -28,7 +48,22 @@ const Header = () => {
             </div>
             {/* vertical_menu */}
             <ScreenList className={isMenuOn? "on" : null}>
-
+                {
+                    PageInfo.map((part, i)=>{
+                        return (
+                            <>
+                                <PartTitle>{part.title}</PartTitle>
+                                {
+                                    part.pages.map((page, j)=>{
+                                        return (
+                                            <PageTitle className={i===partIdx && j===pageIdx? "cur" : null} onClick={()=>{handleLocation(i, j);}}>{page.title}</PageTitle>
+                                        )
+                                    })
+                                }
+                            </>
+                        )
+                    })
+                }
             </ScreenList>
         </Head>
     )
@@ -86,9 +121,33 @@ const ScreenList = styled.div`
     overflow-y : auto;
     transition : all 0.3s ease-in-out;
     transform : translateX(-100%);
+    padding : 20px;
 
     &.on {
         transform : unset;
+    }
+`
+const PartTitle = styled.div`
+    font-size : 2.4rem;
+    width : 100%;
+    color : black;
+    border-bottom : 1px solid black;
+    margin-top : 20px;
+
+    &:first-of-type {
+        margin-top : 0;
+    }
+`
+const PageTitle = styled.div`
+    font-size : 1.6rem;
+    width : 100%;
+    color : black;
+    margin-top : 10px;
+    padding : 3px;
+    cursor : pointer;
+
+    &.cur {
+        background-color : ${pallette.YELLOW};
     }
 `
 

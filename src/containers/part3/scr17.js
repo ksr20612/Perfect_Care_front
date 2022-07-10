@@ -3,6 +3,7 @@ import styled from "styled-components";
 import BackImg from "../../assets/sample.jpg";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr17 = () => {
 

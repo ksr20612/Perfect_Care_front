@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const StateSlice = createSlice({
     name : "state",
     initialState : {
-        partIdx : 0,
+        partIdx : 0, // url로 관리
         pageIdx : 1,
         loginState : false,
     },

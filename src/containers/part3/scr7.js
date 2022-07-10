@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
 import { setScr7 } from "../../features/parts/part3Slice";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr7 = () => {
 
@@ -24,7 +25,7 @@ const Scr7 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,7)}/>
             <Box>
                 <BlockBox title="상황" content={scr4}/>
                 <BlockBox title="기분" content=""/>

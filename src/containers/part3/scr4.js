@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
 import { setScr4 } from "../../features/parts/part3Slice";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr4 = () => {
 
@@ -21,7 +22,7 @@ const Scr4 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,4)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
                 <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>

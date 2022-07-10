@@ -9,6 +9,7 @@ import Feedback from "../../components/feedback";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr4 = () => {
 
@@ -23,7 +24,7 @@ const Scr4 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="나를 성장시키는 기준"/>
+            <Title title={getPartTitle(2)} subTitle={getPageTitle(2,4)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>
                     높고 비현실적인 기준은 나를 실패자로 만들기도 합니다.

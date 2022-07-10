@@ -5,12 +5,13 @@ import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr2 = () => {
 
     return (
         <>
-            <Title title="Part4 실수가 너무 두려워요" subTitle="완벽주의자 Y양의 실수"/>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,2)}/>
         </>
     )
 }

@@ -8,12 +8,13 @@ import TextArea from "../../components/textArea";
 import GuruBox from "../../containers/guruBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr2 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라! - 자동사고 기록지"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,12)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <MovieClip width="100%" height="100%"/>
             </Box>

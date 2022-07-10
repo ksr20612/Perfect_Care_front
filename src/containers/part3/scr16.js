@@ -10,6 +10,7 @@ import AnswerBox from "../../components/answerBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector } from "react-redux";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr16 = () => {
 
@@ -23,7 +24,7 @@ const Scr16 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="찾았다! 완벽주의의 주범"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,16)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <BlockBox title="나의 자동사고" content={scr10} fadein={true}/>
                 <AnswerBox title="내 자동사고의 오류는?">

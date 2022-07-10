@@ -4,12 +4,13 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr7 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="기준 점검하기"/>
+            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,7)}/>
             <Box>
                 <Summary>
                     <Line>나에게 덫을 놓는 가혹한 기준.</Line>

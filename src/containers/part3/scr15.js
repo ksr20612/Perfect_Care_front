@@ -7,12 +7,13 @@ import TextArea from "../../components/textArea";
 import GuruBox from "../guruBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr15 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="범인을 기억하자 - 인지 오류 찾기"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 문제 / 정답 3
             </Box>

@@ -5,12 +5,13 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr10 = () => {
 
     return (
         <>
-            <Title title="Part4 실수가 너무 두려워요" subTitle="실수를 해보자!"/>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,10)}/>
             기록지 다운로드
         </>
     )

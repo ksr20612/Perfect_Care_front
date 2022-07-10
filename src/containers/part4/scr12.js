@@ -6,12 +6,13 @@ import Title from "../../components/title";
 import Summary from "../../components/summary";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr12 = () => {
 
     return (
         <>
-            <Title title="Part4 실수가 너무 두려워요" subTitle="요점 정리"/>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,12)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Summary>
                     <Line>두려움은 실수를 만드는 재료!</Line>

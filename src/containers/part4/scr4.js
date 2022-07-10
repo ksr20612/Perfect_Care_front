@@ -6,12 +6,13 @@ import Title from "../../components/title";
 import MovieClip from "../../components/movieClip";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr4 = () => {
 
     return (
         <>
-            <Title title="Part4 실수가 너무 두려워요" subTitle="실수가 두려운 완벽주의자에게"/>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,4)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <MovieClip width="100%" height="100%"/>
             </Box>

@@ -7,12 +7,13 @@ import Card from "../../components/card";
 import SamplePic from "../../assets/sample.jpg";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr3 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="생각을 수색하라!"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,3)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>
                     <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있습니다.</div>

@@ -6,12 +6,13 @@ import Title from "../../components/title";
 import Summary from "../../components/summary";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr7 = () => {
 
     return (
         <>
-            <Title title="Part2 가혹한 기준의 덫" subTitle="요점 정리"/>
+            <Title title={getPartTitle(2)} subTitle={getPageTitle(2,7)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Summary>
                     <Line>나에게 덫을 놓는 가혹한 기준.</Line>

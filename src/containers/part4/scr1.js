@@ -5,6 +5,7 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const list = { 
     visible : { 
@@ -36,7 +37,7 @@ const Scr1 = () => {
 
     return (
         <>
-            <Title title="Part4 들어가기 전에..." subTitle="지난 파트 돌아보기"/>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,1)}/>
             <br/> <br/>
             <Box as={motion.div} animate={{x : 100}} drag="x" dragConstraints={{left : -100, right : 100}}/>
             <UL as={motion.ul} initial="hidden" animate="visible" variants={list}>

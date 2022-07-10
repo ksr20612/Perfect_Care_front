@@ -6,12 +6,13 @@ import Title from "../../components/title";
 import CheckBlue from "../../assets/check_blue.png";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
 const Scr1 = () => {
 
     return (
         <>
-            <Title title="Part3 완벽 관리하기" subTitle="지난 파트 돌아보기"/>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,1)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <div>나에게 이런 기준이 있었어요.</div>
                 <Data></Data>
