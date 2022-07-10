@@ -22,8 +22,8 @@ const Scr2 = () => {
 
     // scr마다 달아줘야함! 
     const [success, error] = usePageCallback({
-        onPrev : ()=>{console.log("과거로")},
-        onNext : ()=>{console.log("미래로")},
+        onAfterPrev : ()=>{console.log("과거로")},
+        onAfterNext : ()=>{console.log("미래로")},
     });
 
     return (

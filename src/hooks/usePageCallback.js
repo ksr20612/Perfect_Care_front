@@ -1,22 +1,25 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPrev, setCommon, setNext } from "../features/pageSlice";
+import { setPrev, setCommon, setNext, setBeforePrev, setBeforeNext } from "../features/pageSlice";
 
 const usePageCallback = ({
-    onPrev = f=>f,
-    onNext = f=>f,
+    onBeforePrev = f=>f,
+    onBeforeNext = f=>f,
+    onAfterPrev = f=>f,
+    onAfterNext = f=>f,
     onCommon,
 }) => {
 
-    const prevCb = useSelector(state=>state.page.prev);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         try {
-            dispatch(setPrev(()=>onPrev()));
-            dispatch(setNext(()=>onNext()));
+            dispatch(setBeforePrev(()=>onBeforePrev()));
+            dispatch(setBeforeNext(()=>onBeforeNext()));
+            dispatch(setPrev(()=>onAfterPrev()));
+            dispatch(setNext(()=>onAfterNext()));
             if(onCommon) dispatch(setCommon(()=>onCommon));
             setSuccess(true);
         } catch(err) {

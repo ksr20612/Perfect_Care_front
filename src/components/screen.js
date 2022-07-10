@@ -19,12 +19,26 @@ const Screen = ({children}) => {
     const pageLen = getPageLen(partIdx);
     const prevCb = useSelector(state=>state.page.prev) || (()=>{console.log("이전으로")});
     const nextCb = useSelector(state=>state.page.next) || (()=>{console.log("다음으로")});
+    const beforePrevCb = useSelector(state=>state.page.beforePrev) || (()=>false);
+    const beforeNextCb = useSelector(state=>state.page.beforeNext) || (()=>false);
     const commonCb = useSelector(state=>state.page.common) || (()=>{});
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handlePage = (v) => {
         if(isAlreadyClicked) return;
+
+        // #0
+        let callback; 
+        if(v < 0) {
+            callback = beforePrevCb();
+        }else {
+            callback = beforeNextCb();
+        }
+        if(callback) {
+            if(typeof callback === "function") callback();
+        } 
+
         if(currentPage+v === 0) {
             return toastInfo("이전 세션으로 이동합니다.", {
                 onOpen : () => {
