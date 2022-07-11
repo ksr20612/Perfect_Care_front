@@ -10,16 +10,22 @@ import AnswerBox from "../../components/answerBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
-import { setScr5 } from "../../features/parts/part3Slice";
+import { setScr5, removeScr5 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { readInfo, writeInfo } from "../../utils/part3Converter";
+import CardResult from "../../components/cardResult";
 
 const Scr5 = () => {
 
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const scr5 = useSelector(state=>state.part3.information.scr5);
+    const selected = readInfo(scr5);
     const dispatch = useDispatch();
-    const handleChange = (v) => {
-        dispatch(dispatch(setScr5(v)));
+    const handleSelected = (name, score) => {
+        dispatch(setScr5({[name] : score}));
+    }
+    const remove = (item)=>{
+        dispatch(removeScr5(item.split(" ")[0]));
     }
 
     return (
@@ -28,12 +34,21 @@ const Scr5 = () => {
             <Box>
                 <BlockBox title="상황" content={scr4} fadein={true}/>
                 <AnswerBox title="어떤 감정이 들었나요?" index="2/7">
+                    <Short>
+                        {
+                            selected.map(item => {
+                                return (
+                                    <CardResult content={item} handleClick={(content)=>remove(content)} />
+                                )
+                            })
+                        }
+                    </Short>
                     <Deck>
                     {
-                        CardList.map((card, i)=>{
+                        CardList.map((card)=>{
                             return (
                                 <div>
-                                    <Card name={card.name} definition={card.definition} image={card.image}/>
+                                    <Card name={card.name} definition={card.definition} image={card.image} isSelected={scr5.hasOwnProperty(card.name)} selectedScore={scr5[card.name]} handleSelected={(name, score)=>{handleSelected(name, score)}}/>
                                 </div>
                             )
                         })
@@ -55,12 +70,10 @@ const Box = styled.div`
 const Deck = styled.div`
     display : grid;
     grid-template-columns : repeat(auto-fill, minmax(20%, auto));
-    grid-template-rows : 1fr 1fr;
-    grid-auto-flow : column;
+    grid-auto-rows : 300px;
     width : 100%;
-    height : auto;
-    overflow-x : auto;
-    margin-top : 5vh;
+    height : 50vh;
+    overflow-y : auto;
 
     & > div {
         width : 100%;
@@ -70,23 +83,33 @@ const Deck = styled.div`
         padding : 1vmin;
     }
 `
-const Answer = styled.div`
-    margin : 0 auto;
-    font-size : 2.6rem;
-    width : 100%;
-    flex-direction : column;
-    align-items : unset !important;
+const Short = styled.div`
+    width : 100%; 
+    height : 5vh;
+    padding : 1vh;
+    margin-bottom : 3vh;
+    background-color : ${pallette.GREY};
+    display : flex;
+    align-items: center;
+`
+const Emotion = styled.span`
+    width : 100px;
+    font-size : 1.6rem;
+    border-radius : 10px; 
+    background-color : transparent;
+    border : 1px solid ${pallette.BLACK};
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    position : relative;
 
-    & > div {
-        margin : 2vh 0;
-    }
-    & .subQuestion {
-        width : 100%;
-
-        & > span {
-            float : right;
-        }
+    & + & {
+        margin-left : 10px;
     }
 `
+const Delete = styled.div`
+    position : absolute;
+`
+
 
 export default Scr5;

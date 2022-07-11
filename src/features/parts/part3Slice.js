@@ -5,7 +5,7 @@ export const Part3Slice = createSlice({
     initialState : {
         information : {
             scr4 : "", // 상황
-            scr5 : {}, // 감정
+            scr5 : {"1" : 10, "8" : 3, "10" : 5}, // 감정
             scr6 : "", // 생각
             scr7 : "", // 이미지
             scr8 : "", // 나는 어떤 사람
@@ -19,8 +19,15 @@ export const Part3Slice = createSlice({
             state.information.scr4 = action.payload;
         },
         setScr5 : (state, action) => {
-            if(state.information.scr5.keys.reduce((pre, _)=>pre+1,0)>3) return;
+            if(Object.keys(state.information.scr5).length >= 3) { return; }
             state.information.scr5 = {...state.information.scr5, ...action.payload};
+        },
+        removeScr5 : (state, action) => {
+            if(state.information.scr5.hasOwnProperty(action.payload)) {
+                const temp = {...state.information.scr5};
+                delete temp[action.payload];
+                state.information.scr5 = temp;
+            }
         },
         setScr6 : (state, action) => {
             state.information.scr6 = action.payload;
@@ -43,5 +50,5 @@ export const Part3Slice = createSlice({
     }
 });
 
-export const { setScr4, setScr5, setScr6, setScr7, setScr8, setScr9, setScr10, setScr16 } = Part3Slice.actions;
+export const { setScr4, setScr5, setScr6, setScr7, setScr8, setScr9, setScr10, setScr16, removeScr5 } = Part3Slice.actions;
 export default Part3Slice.reducer;
