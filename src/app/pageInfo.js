@@ -1,6 +1,6 @@
 const PageInfo = [
     {
-        "title" : "Part1 가혹한 기준의 덫",
+        "title" : "Part 01.가혹한 기준의 덫",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",
@@ -20,7 +20,7 @@ const PageInfo = [
         ]
     },
     {
-        "title" : "Part2 가혹한 기준의 덫",
+        "title" : "Part 02.가혹한 기준의 덫",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",
@@ -46,7 +46,7 @@ const PageInfo = [
         ]
     },
     {
-        "title" : "Part3 완벽 관리하기",
+        "title" : "Part 03.완벽 관리하기",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",
@@ -105,7 +105,7 @@ const PageInfo = [
         ]
     },
     {
-        "title" : "Part4 완벽 관리하기",
+        "title" : "Part 04.완벽 관리하기",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",
@@ -146,7 +146,7 @@ const PageInfo = [
         ]
     },
     {
-        "title" : "Part5 완벽 관리하기",
+        "title" : "Part 05.완벽 관리하기",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",

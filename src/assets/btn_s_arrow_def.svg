@@ -1,0 +1,9 @@
+<svg id="btn_s_arrow_def" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="rec_611" data-name="사각형 611" fill="#f4f2f0" stroke="#dddbd7" stroke-width="2">
+    <rect width="50" height="50" rx="25" stroke="none"/>
+    <rect x="1" y="1" width="48" height="48" rx="24" fill="none"/>
+  </g>
+  <g id="그룹_954" data-name="그룹 954" transform="translate(20 18)">
+    <path id="패스_36" data-name="패스 36" d="M6.975,9.05,0,2.077,2.078,0l4.9,4.9,4.9-4.9L13.95,2.077Z" transform="translate(9.05) rotate(90)" fill="#354e57"/>
+  </g>
+</svg>

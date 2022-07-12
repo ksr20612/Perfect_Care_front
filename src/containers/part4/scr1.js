@@ -6,29 +6,7 @@ import Title from "../../components/title";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-
-const list = { 
-    visible : { 
-        opacity : 1,
-        transition : {
-            when : "beforeChildren",
-            staggerChildren : 1,
-        }
-    }, 
-    hidden : { 
-        opacity : 0, 
-    },
-};
-const item = { 
-    visible : { 
-        opacity : 1, 
-        y : 0, 
-    }, 
-    hidden : { 
-        y : 30, 
-        opacity : 0, 
-    }
-};
+import DataBox from "../../components/dataBox";
 
 const Scr1 = () => {
 
@@ -38,31 +16,82 @@ const Scr1 = () => {
     return (
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,1)}/>
-            <br/> <br/>
-            <Box as={motion.div} animate={{x : 100}} drag="x" dragConstraints={{left : -100, right : 100}}/>
-            <UL as={motion.ul} initial="hidden" animate="visible" variants={list}>
-                <LI as={motion.li} />
-                <LI as={motion.li} />
-            </UL>
-            <Box as={motion.div} drag="x" style={{ x, opacity }} />
-            <Box as={motion.div} animate={{x : 100}} transition={{type : "spring", duration : 2, stiffness : 100 }}/>
+            <Box>
+                <DataBox title="내 자동사고">
+                    <div></div>
+                </DataBox>
+                <DataBox title="나의 인지오류는?">
+                    <div></div>
+                </DataBox>
+                <DataBox title="완벽주의자에게 나타나기 쉬운 인지오류">
+                    <ItemList>
+                        <Item>재앙화 사고</Item>
+                        <Item>당위진술</Item>
+                        <Item>흑백논리</Item>
+                        <Item>지나친 일반화</Item>
+                    </ItemList>
+                </DataBox>
+                <Direction>
+                    인지오류를 포기했다면, 이제는 실전! <br/>
+                    실수가 두렵지 않은 완벽주의자가 되는 법을 알려드립니다.
+                </Direction>
+            </Box>
+
         </>
     )
 }
-
 const Box = styled.div`
-    width : 100px;
-    height : 100px;
-    background-color : rgba(0, 0, 0, 0.5);
-`
-const UL = styled.ul`
-    width : 300px;
-    height : 500px;
-    background-color : rgba(0, 0, 0, 0.7);
-`
-const LI = styled.li`
+    font-family : "Noto_Medium";
+    position : relative;
     width : 100%;
-    background-color : yellow;
+    height : auto;
+    margin-top : 5vh;
+`
+const ItemList = styled.div`
+    font-size : 2.8rem;
+    letter-spacing : -0.28px;
+    display : flex;
+    justify-content : space-around;
+`
+const Item = styled.div`
+    font-size : 2.8rem;
+    font-family : "Light";
+    letter-spacing : -0.28px;
+    position : relative;
+    transform-style : preserve-3d;
+
+    &:nth-child(2n-1) {
+        &:before {
+            position : absolute;
+            content : "";
+            width : 50px;
+            height : 50px;
+            background-color : ${pallette.ASH};
+            transform : translateZ(-1px);
+            border-radius : 50%;
+            bottom : 5px;
+            left : -20px;
+        }
+    }
+    &:nth-child(2n) {
+        &:before {
+            position : absolute;
+            content : "";
+            width : 50px;
+            height : 50px;
+            background-color : ${pallette.BROWN};
+            transform : translateZ(-1px);
+            border-radius : 50%;
+            bottom : 5px;
+            left : -20px;
+        }
+    }
+`
+const Direction = styled.div`
+    text-align : center;
+    font-family : "SemiBold";
+    font-size : 3.2rem;
+    margin-top : 5vh;
 `
 
 export default Scr1;

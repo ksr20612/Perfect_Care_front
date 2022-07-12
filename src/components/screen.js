@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import pallette from "../styles/pallette.css";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as ArrowIcon } from "../assets/arrow_icon.svg";
+import { ReactComponent as ArrowIcon } from "../assets/btn_s_arrow_def.svg";
 import { darken } from "polished";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,32 +92,36 @@ const Box = styled.div`
     background-color : #fff;
     display : flex;
     margin-top : 6vh;
-    padding : 2vh 2vw;
+    padding-top : min(5vh, 62px);
+    padding-left : min(15vw, 110px);
+    padding-right : min(15vw, 110px);
+    background-color : #f9f8f7;
+    position : relative;
 `
 
 const Arrow = styled(ArrowIcon)`
-    width : 8vmin;
-    height : 8vmin;
+    width : 50px;
+    height : 50px;
     position : absolute;
     top : 50%;
     right : 0;
-    transform : translate(50%, -50%) scale(1.5);
-    margin-right : 5vw;
+    transform : translate(-50%, -50%) rotate(180deg);
+    cursor : pointer;
+
     & > path {
         fill : ${pallette.YELLOW};
     }
 
     &.reversed {
         left : 0;
-        margin-left : 5vw;
-        transform : translate(-50%, -50%) rotate(180deg) scale(1.5);
+        transform : translate(50%, -50%);
     }
     & > path {
         transition : all 0.2s ease-in;
     }
 
-    :hover {
-        & > path {
+    &:hover {
+        & path {
             fill : ${darken(0.1, pallette.YELLOW)};
         }
     }
