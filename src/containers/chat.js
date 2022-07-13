@@ -7,8 +7,9 @@ import TextArea from "../components/textArea";
 import sampleImg from "../assets/sample.jpg";
 import SingleTalk from "../components/singleTalk";
 import { toastError } from "../utils/toast";
+import { ReactComponent as Submit } from "../assets/ic_send.svg";
 
-const Katalk = () => {
+const Chat = () => {
 
     const [phase, setPhase] = useState(1); // 1 : 입력1, 2 이상 : 입력2~
     const [curText, setCurText] = useState("");
@@ -29,16 +30,7 @@ const Katalk = () => {
     }, [messages]);
 
     return (
-        <Box animate={{ y : [250, 0] }}>
-            <Header>
-                <div className="img"></div>
-                <div className="name">Y양</div>
-                <Control>
-                    <span>🗕</span>
-                    <span>🗖</span>
-                    <span>🗙</span>
-                </Control>
-            </Header>
+        <Box>
             <Screen>
                 <SingleTalk isMe={false} transitionDelay={1} texts={["나는 이때의 실수를 잊을 수가 없어ㅠㅠ", "너는 어떤 실수가 가장 기억에 남아?"]}/>
                 {
@@ -57,40 +49,15 @@ const Katalk = () => {
                 }
             </Screen>
             <Input>
-                <TextArea width="80%" color={pallette.WHITE} value={curText} handleChange={(v)=>{setCurText(v)}} customStyle={{"border-radius" : 0, "border" : "none"}} canBeFocused={false}></TextArea>
-                <Button onClick={()=>{handleClick()}}>전송</Button>
+                
+                <Button onClick={()=>{handleClick()}}></Button>
             </Input>
         </Box>
     )
 }
-const Box = styled(motion.div)`
-    border : 1px solid #555;
-    width : 50%;
-    height : 80%;
-    margin : 5vh auto;
-`
-const Header = styled.div`
+const Box = styled.div`
     width : 100%;
-    height : 10%;
-    padding : 3%;
-    background-color : white;
-    position : relative;
-    display : flex;
-    align-items : center;
-    
-    & > .img {
-        width : 50px;
-        height : 50px;
-        background : url(${sampleImg});
-        background-position : center center;
-        background-size : contain;
-        border-radius : 40%;
-    }
-
-    & > .name {
-        margin-left : 2%;
-        font-size : 2.0rem;
-    }
+    height : 100%;
 `
 const Control = styled.div`
     font-size : 2.0rem;
@@ -109,8 +76,6 @@ const Control = styled.div`
 const Screen = styled.div`
     width : 100%;
     height : 70%;
-    background-color : ${pallette.BLUISH};
-    padding : 3%;
     display : flex;
     flex-direction : column;
     justify-content : flex-end;
@@ -135,22 +100,13 @@ const Input = styled.div`
     background-color : white;
     display : flex;
 `
-const Button = styled.div`
-    width : 20%;
-    height : 30%;
-    background-color : ${lighten(0.2, pallette.YELLOW)};
-    display : flex;
-    justify-content : center;
-    align-items : center;
-    font-size : 1.6rem;
-    border : 1px solid ${lighten(0.1, pallette.YELLOW)};
-    margin-top : 4%;
-    margin-right : 4%;
+const Button = styled(Submit)`
     cursor : pointer;
-
     &:hover {
-        background-color : ${lighten(0.1, pallette.YELLOW)};
+        & circle {
+            fill : ${darken(0.1, "#a67744")};
+        }
     }
 `
 
-export default Katalk;
+export default Chat;

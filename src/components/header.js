@@ -147,7 +147,7 @@ const PageTitle = styled.div`
     cursor : pointer;
 
     &.cur {
-        background-color : ${pallette.YELLOW};
+        background-color : ${pallette.NEWGREEN};
     }
 `
 

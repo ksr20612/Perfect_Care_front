@@ -7,20 +7,26 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 
+import { Paper } from "../../styles/components/paper";
+import Chat from "../chat";
+
 const Scr11 = () => {
 
     return (
         <>
-            정리
+            <Box>
+                {/* <Chat/> */}
+            </Box>
         </>
     )
 }
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    width : 95%;
-    margin : 0 auto;
+const Box = styled(Paper)`
     margin-top : 4vh;
+    height : 70vh;
     position : relative;
+    display : flex;
+    align-items : center;
+    justify-content : center;
 `
 
 
