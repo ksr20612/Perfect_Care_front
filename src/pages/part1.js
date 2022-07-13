@@ -24,6 +24,7 @@ const Part1 = () => {
                 <Scr5 />
             }
             </Screen>
+            <ProgressBar/>
         </>
     )
 }

@@ -8,6 +8,7 @@ import Part3 from "./pages/part3";
 import Part4 from "./pages/part4";
 import Part5 from "./pages/part5";
 import Header from "./components/header";
+import End from "./pages/end";
 
 const routeList = [
   { name : "메인", path : "/", Component : Main },
@@ -16,6 +17,7 @@ const routeList = [
   { name : "파트3", path : "/3", Component : Part3 },
   { name : "파트4", path : "/4", Component : Part4 },
   { name : "파트5", path : "/5", Component : Part5 },
+  { name : "종료", path : "/end", Component : End },
 ]
 
 function App() {

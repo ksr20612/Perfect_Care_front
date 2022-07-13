@@ -21,6 +21,7 @@ import Medium from "./font/Pretendard-Medium.woff";
 import Regular from "./font/Pretendard-Regular.woff";
 import SemiBold from "./font/Pretendard-SemiBold.woff";
 import Thin from "./font/Pretendard-Thin.woff";
+import ArialBold from "./font/Arial-bold.ttf";
 
 const Global = createGlobalStyle`
     // reset
@@ -48,11 +49,11 @@ const Global = createGlobalStyle`
         box-sizing : border-box;
     }
     ::-moz-selection {
-        background : ${pallette.YELLOW};
+        background : ${pallette.NEWGREEN};
         color : ${pallette.WHITE};
     }
     ::selection {
-        background : ${pallette.YELLOW};
+        background : ${pallette.NEWGREEN};
         color : ${pallette.WHITE};
     }
 
@@ -188,6 +189,13 @@ const Global = createGlobalStyle`
         font-weight: 300;
         src: local('Pretendard-Thin'),
         url(${Thin}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Arial_Bold';
+        font-weight: 300;
+        src: local('Arial_bold'),
+        url(${ArialBold}) format('truetype');
     }
 
 `

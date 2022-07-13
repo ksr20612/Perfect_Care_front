@@ -4,21 +4,26 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPageLen } from "../app/pageInfo";
 import pallette from "../styles/pallette.css";
+import { lighten, darken } from "polished";
+import { usePage } from "../hooks/usePage";
 
 const ProgressBar = () => {
 
     const curPage = useSelector(state => state.state.pageIdx);
     const pageLen = getPageLen(useLocation().pathname.substr(1,1));
+    const [currentPage, partIdx, handlePage] = usePage();
 
     return (
         <Box>
+            <Arrow onClick={()=>{handlePage(-1)}}>🡸</Arrow>
             {
                 [...Array(pageLen)].map((_, i)=>{
                     return (
-                        <Circle className={curPage===i+1? "current" : null} key={`circle_${i}`} />
+                        <Item className={curPage===i+1? "current" : null} key={`item_${i}`}>{i+1}</Item>
                     )
                 }) 
             }
+            <Arrow onClick={()=>{handlePage(+1)}}>🡺</Arrow>
         </Box>
     );
 }
@@ -32,6 +37,14 @@ const Box = styled.div`
     display : flex;
     align-items : center;
     justify-content : center;
+
+    & > div {
+        margin-right : 39px;
+
+        &:last-of-type {
+            margin-right : 0;
+        }
+    }
 `
 const Circle = styled.div`
     width : 1vmax;
@@ -47,6 +60,30 @@ const Circle = styled.div`
         width : 2.5vmax;
         height : 2.5vmax;
     }
+`
+const Item = styled.div`
+    font-size : 1.2rem;
+    color : ${pallette.NEWGREEN};
+    font-family : "Bold";
+    transition : all 0.3s ease-in-out;
+    height : 15px;
+    width : 15px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    border-radius : 50%;
+
+    &.current {
+        color : ${darken(0.3, pallette.NEWGREEN)};
+        background-color : ${lighten(0.2, pallette.NEWGREEN)};
+    }
+`
+const Arrow = styled.div`
+    font-size : 1.2rem;
+    color : ${darken(0.3, pallette.NEWGREEN)};
+    font-family : "Arial_Bold";
+    font-weight : bolder;
+    cursor : pointer;
 `
 
 export default ProgressBar;
