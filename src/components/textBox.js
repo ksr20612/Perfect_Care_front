@@ -8,13 +8,21 @@ const TextBox = ({
     value = "",
     width = "auto",
     handleChange = f => f,
+    customStyle = {},
+    hasBackground = true,
 }) => {
 
     return (
-        <div className="textBox" style={{ width : width }}>
-            <TextField fullWidth id="filled-basic" label={label} variant="filled" value={value} onChange={(e)=>handleChange(e.currentTarget.value)}/>
-        </div>
+        <Box className="textBox" style={{ width : width, ...customStyle }}>
+            <TextField fullWidth id={hasBackground? "filled-basic" : "standard-basic"} label={label} variant={hasBackground? "filled" : "standard"} value={value} onChange={(e)=>handleChange(e.currentTarget.value)} InputProps={{ style: { fontSize: "2.4rem" } }} InputLabelProps={{ style: { fontSize: "1.6rem" } }}/>
+        </Box>
     )
 }
+
+const Box = styled.div`
+    & + & {
+        margin-top : 3%;
+    }
+`
 
 export default TextBox;

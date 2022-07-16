@@ -9,6 +9,8 @@ import Part4 from "./pages/part4";
 import Part5 from "./pages/part5";
 import Header from "./components/header";
 import End from "./pages/end";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
 const routeList = [
   { name : "메인", path : "/", Component : Main },
@@ -18,6 +20,8 @@ const routeList = [
   { name : "파트4", path : "/4", Component : Part4 },
   { name : "파트5", path : "/5", Component : Part5 },
   { name : "종료", path : "/end", Component : End },
+  { name : "로그인", path : "/signin", Component : Login },
+  { name : "회원가입", path : "/signup", Component : Signup },
 ]
 
 function App() {

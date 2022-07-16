@@ -20,7 +20,7 @@ root.render(
         <App />
       </ApolloProvider>
     </Provider>
-    <ToastContainer style={{fontSize : "1.6rem"}}/>
+    <ToastContainer style={{fontSize : "1.6rem", width : "50vh"}}/>
   </Router>
 
   // </React.StrictMode>

@@ -7,6 +7,7 @@ import MovieClip from "../../components/movieClip";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { Paper } from "../../styles/components/paper";
 
 const Scr3 = () => {
 
@@ -20,19 +21,17 @@ const Scr3 = () => {
     )
 }
 
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    padding : 0 1vw;
-    padding-top : 2vh;
+const Box = styled(Paper)`
+    padding : 5vh;
+    margin-top : 10vh;
     display : flex;
     align-items : center;
     justify-content : center;
 
     & > div {
-        margin-top : 5vh;
         font-size : 2.6rem;
         width : 80%;
-        height : 60vh;
+        height : 40vh;
     }
 `
 
