@@ -13,7 +13,6 @@ const Scr5 = () => {
     return (
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,5)}/>
-
         </>
     )
 }

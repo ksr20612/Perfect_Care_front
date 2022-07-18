@@ -146,7 +146,7 @@ const PageInfo = [
         ]
     },
     {
-        "title" : "Part 05.완벽 관리하기",
+        "title" : "Part 05.완벽을 버릴때 완벽에 가까워진다",
         "pages" : [
             {
                 "title" : "지난 파트 돌아보기",
