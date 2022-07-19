@@ -5,12 +5,12 @@ import { darken, lighten } from "polished";
 
 const DataBox = ({
     title="내 자동사고",
-    size = { width : "100%", height : "100%" },
+    customStyle = {},
     children
 }) => {
 
     return (
-        <Box>
+        <Box style={customStyle}>
             <Title>{title}</Title>
             {children}
         </Box>
