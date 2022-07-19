@@ -7,39 +7,30 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
-import { FiDownload as DownLoadIcon } from "react-icons/fi";
-import { saveAs } from "file-saver";
 
-const Scr7 = () => {
+const Scr1 = () => {
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,7)}/>
+            <Title title={getPartTitle(2)} subTitle={getPageTitle(2,3)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Subtitle>
-                    <div>완벽 관찰 일지</div>
-                    <a href="#" onClick={()=>{saveAs("../../robots.txt", "완벽관찰일지_YD.txt")}}>
-                        <DownLoadIcon/>
-                        기록지 다운로드
-                    </a>
-                </Subtitle>
+                본 프로그램은 <br/>
+                사용자가 언제 어디서든 <br/>
+                인지행동치료를 경험하여 <br/>
+                완벽을 조절하도록 만들어진 프로그램이며, <br/>
+                완벽주의를 <strong>"없애기"</strong>위한 프로그램이 <strong>아닙니다</strong>.
             </Box>
         </>
     )
 }
+
 const Box = styled(Paper)`
     padding : 5vh;
-    margin-top : 5vh;
+    margin-top : 10vh;
     display : flex;
     align-items : center;
     justify-content : center;
-    flex-direction : column;
-    font-size : 2.4rem;
-`
-const Subtitle = styled.div`
-    width : 100%;
-    display : flex;
-    justify-content : space-between;
+    font-size : 3.2rem;
 `
 
-export default Scr7;
+export default Scr1;

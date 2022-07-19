@@ -14,11 +14,12 @@ const Scr6 = () => {
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,6)}/>
             <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%"}}>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
+                <div>#</div>
+                <div>#</div>
+                <div>#</div>
                 <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
             </DataBox>
+            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.5}>지금의 나는 어떻게 변화했나요?</Ask>
         </>
     )
 }
@@ -27,6 +28,15 @@ const Exp = styled.div`
     margin-top : 10px;
     letter-spacing : -0.28px;
     text-align : right;
+`
+const Ask = styled.div`
+    font-size : 3.2rem;
+    width : 100%;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    height : 40%;
+    font-family : "Bold";
 `
 
 export default Scr6;

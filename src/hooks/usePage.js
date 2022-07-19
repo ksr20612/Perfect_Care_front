@@ -12,7 +12,7 @@ import { toastInfo } from "../utils/toast";
 import { getPageLen } from "../app/pageInfo";
 import { toast } from "react-toastify";
 
-export const usePage = () => {
+export const usePage = (enabled) => {
 
     const isAlreadyClicked = useSelector(state=>state.page.isClicked);
     const currentPage = useSelector(state=>state.state.pageIdx);

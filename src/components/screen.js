@@ -13,15 +13,18 @@ import { getPageLen } from "../app/pageInfo";
 import { toast } from "react-toastify";
 import { usePage } from "../hooks/usePage";
 
-const Screen = ({children}) => {
+const Screen = ({
+    canBeMoved = true,
+    children
+}) => {
 
-    const [currentPage, partIdx, handlePage] = usePage();
+    const [currentPage, partIdx, handlePage] = usePage(canBeMoved);
 
     return (
         <Box>
-            <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
+            {canBeMoved && <Arrow className="reversed" onClick={()=>handlePage(-1)}/>}
             {children}
-            <Arrow onClick={()=>handlePage(1)}/>
+            {canBeMoved && <Arrow onClick={()=>handlePage(1)}/>}
         </Box>
     )
 }

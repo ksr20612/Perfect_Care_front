@@ -4,10 +4,13 @@ import pallette from "../styles/pallette.css";
 import { BiMenu as MenuIcon } from "react-icons/bi";
 import { BsPerson as LoginIcon, BsPersonX as LogoutIcon } from "react-icons/bs";
 import { ImBubbles4 as SpeechBubble } from "react-icons/im";
+import { FaMapMarkedAlt as MapIcon } from "react-icons/fa";
+import { AiOutlineCloseSquare as CloseIcon } from "react-icons/ai";
 import PageInfo from "../app/pageInfo";
 import { setPageIdx } from "../features/stateSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Header = () => {
 
@@ -32,7 +35,7 @@ const Header = () => {
     return (
         <Head>
             <IconWrapper onClick={()=>{setIsMenuOn(!isMenuOn);}}>
-                <MenuIcon size="2.4rem"/>
+                {isMenuOn? <CloseIcon size="2.4rem"/> : <MenuIcon size="2.4rem"/> }
                 <span>메뉴</span>
             </IconWrapper>
             <div className="logo">Perfect Care(로고)</div>
@@ -41,9 +44,13 @@ const Header = () => {
                     <span>커뮤니티</span>
                     <SpeechBubble size="2.4rem"/>
                 </IconWrapper>
-                <IconWrapper>
+                <IconWrapper onClick={()=>{navigate("/signin")}}>
                     <span>로그인</span>
                     <LoginIcon size="2.4rem"/>
+                </IconWrapper>
+                <IconWrapper>
+                    <span></span>
+                    <MapIcon size="2.4rem"/>
                 </IconWrapper>
             </div>
             {/* vertical_menu */}

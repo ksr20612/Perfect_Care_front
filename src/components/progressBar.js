@@ -6,6 +6,7 @@ import { getPageLen } from "../app/pageInfo";
 import pallette from "../styles/pallette.css";
 import { lighten, darken } from "polished";
 import { usePage } from "../hooks/usePage";
+import { GrFormNextLink as ArrowNextIcon, GrFormPreviousLink as ArrowPrevIcon } from "react-icons/gr";
 
 const ProgressBar = () => {
 
@@ -15,7 +16,7 @@ const ProgressBar = () => {
 
     return (
         <Box>
-            <Arrow onClick={()=>{handlePage(-1)}}>🡸</Arrow>
+            <Arrow onClick={()=>{handlePage(-1)}}><ArrowPrevIcon/></Arrow>
             {
                 [...Array(pageLen)].map((_, i)=>{
                     return (
@@ -23,7 +24,7 @@ const ProgressBar = () => {
                     )
                 }) 
             }
-            <Arrow onClick={()=>{handlePage(+1)}}>🡺</Arrow>
+            <Arrow onClick={()=>{handlePage(+1)}}><ArrowNextIcon/></Arrow>
         </Box>
     );
 }
@@ -84,6 +85,9 @@ const Arrow = styled.div`
     font-family : "Arial_Bold";
     font-weight : bolder;
     cursor : pointer;
+    display : flex;
+    align-items : center;
+    justify-content : center;
 `
 
 export default ProgressBar;
