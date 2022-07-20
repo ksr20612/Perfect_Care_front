@@ -10,6 +10,9 @@ const Scr3 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,3)}/>
+            <Box>
+                
+            </Box>
         </>
     )
 }

@@ -14,11 +14,7 @@ const Scr1 = () => {
         <>
             <Title title={getPartTitle(2)} subTitle={getPageTitle(2,3)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                본 프로그램은 <br/>
-                사용자가 언제 어디서든 <br/>
-                인지행동치료를 경험하여 <br/>
-                완벽을 조절하도록 만들어진 프로그램이며, <br/>
-                완벽주의를 <strong>"없애기"</strong>위한 프로그램이 <strong>아닙니다</strong>.
+                
             </Box>
         </>
     )
