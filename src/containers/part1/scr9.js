@@ -5,6 +5,9 @@ import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import Summary from "../../components/summary";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { Paper } from "../../styles/components/paper";
+import { motion } from "framer-motion";
+import fadein from "../../styles/framer-motion/fadein";
 
 const Scr9 = () => {
 
