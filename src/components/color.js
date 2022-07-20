@@ -19,7 +19,7 @@ const Color = ({
 
     return (
         <>
-            <Box onClick={handleClick} color={item.color}>
+            <Box onClick={()=>handleClick(item.name)} color={item.color}>
                 {item.name}
                 {isSelected && (
                     <motion.div
@@ -31,7 +31,6 @@ const Color = ({
                     />
                 )}
             </Box>
-            {isSelected && <Bubble layoutId="bubble">{item.content}</Bubble>}
         </>
     )
 }

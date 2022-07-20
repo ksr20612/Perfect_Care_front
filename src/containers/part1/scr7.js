@@ -42,6 +42,14 @@ const list = [
         color : "orange"
     }
 ]
+const getContent = (name) => {
+    for(const color of list) {
+        if(color.name === name) {
+            return color.content;
+        }
+    }
+    return null;
+}
 
 const Scr7 = () => {
 
@@ -50,23 +58,27 @@ const Scr7 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,7)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Subtitle as={motion.div}>우리의 다양한 감정들, <strong>순기능</strong>은 없을까요?</Subtitle>
-                <Wrapper as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={3}>
+            <Box>
+                <Subtitle as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0}>우리의 다양한 감정들, <strong>순기능</strong>은 없을까요?</Subtitle>
+                <Wrapper as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
                     <AnimateSharedLayout>
                         {
                             list.map((item, i)=>(
-                                <Color key={item.name} item={item} isSelected={selected === item.name} handleClick={()=>{setSelected(item.name)}}/>
+                                <Color key={item.name} item={item} isSelected={selected === item.name} handleClick={(name)=>{setSelected(name);}}/>
                             ))
                         }
                     </AnimateSharedLayout>
                 </Wrapper>
             </Box>
+            <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
+                {
+                    getContent(selected)
+                }
+            </Card>
         </>
     )
 }
-const Box = styled(Paper)`
-    padding : 5vh;
+const Box = styled.div`
     margin-top : 5vh;
     font-size : 2.0rem;
     line-height : 150%;
@@ -74,12 +86,10 @@ const Box = styled(Paper)`
     display : flex;
     flex-direction : column;
     align-items : center;
-    justify-content : space-between;
     text-align : center;
-    height : 70%;
 `
 const Subtitle = styled.div`
-    font-size : 2.4rem;
+    font-size : 3.2rem;
     justify-self : flex-start;
 
     & > strong {
@@ -87,13 +97,24 @@ const Subtitle = styled.div`
     }
 `
 const Wrapper = styled.div`
+    margin-top : 5%;
     width : 100%;
-    height : 80%;
+    height : 50%;
     display : grid;
     grid-template-columns : repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    row-gap : 20%;
     justify-items: center;
+    align-items : center;
+`
+const Card = styled(Paper)`
+    margin-top : 5%;
+    font-size : 3.2rem;
+    height : 20%;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    text-align : center;
+    word-break : keep-all;
 `
 
 export default Scr7;
