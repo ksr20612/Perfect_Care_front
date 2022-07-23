@@ -38,7 +38,7 @@ const CommentBox = ({
             </BoxComment>
             <InputComment>
                 <span>{userName}</span>
-                <TextArea value={value} handleChange={(v)=>{handleChange(v)}} color={pallette.WHITE} canBeFocused={false} placeholder="댓글을 남겨주세요."/>
+                <TextArea value={value} handleChange={(v)=>{handleChange(v)}} color={pallette.WHITE} canBeFocused={false} placeholder="댓글을 남겨주세요." width="calc( 100% - 4vmax )"/>
                 <Button onClick={(e)=>{handleClick(e)}}>작성</Button>
             </InputComment>
         </Box>

@@ -26,7 +26,7 @@ const Scr1 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Regular";
     padding : 0 1vw;
     padding-top : 2vh;
     position : relative;
@@ -62,10 +62,10 @@ const Data = styled.span`
     &.ans2 {
         position : absolute;
         display : block;
-        width : 60vw;
+        width : 100%;
         max-width : 840px;
-        height : 12vh;
-        margin-left : calc(8vmax + 2vmax);
+        height : 20%;
+        margin-left : 5%; 
     }
 `
 

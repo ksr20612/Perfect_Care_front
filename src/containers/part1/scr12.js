@@ -13,12 +13,12 @@ const Scr7 = () => {
 
     return (
         <>
-            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,7)}/>
+            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,12)}/>
             <Box>
                 <Summary>
-                    <Line>나에게 덫을 놓는 가혹한 기준.</Line>
-                    <Line>내가 하는 일들이 버겁게 느껴진다면 기준을 점검해보자.</Line>
-                    <Line>구체적인 기준을 설정한다면 내가 할 수 있는 일이 더 많아질 것입니다.</Line>
+                    <Line>나의 완벽주의를 인정하기!</Line>
+                    <Line>완벽주의는 "제거"하는 것이 아닌 "케어"하는 것.</Line>
+                    <Line>인정하는 것이 한걸음! 솔직한 나의 감정을 인정했다면, 이제부터 본격적인 "완벽케어"를 배워보자.</Line>
                 </Summary>
             </Box>
         </>

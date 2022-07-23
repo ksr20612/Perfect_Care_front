@@ -8,38 +8,53 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import BackImg from "../../assets/sample.jpg"
 
 const Scr11 = () => {
 
     return (
-        <>
-            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,7)}/>
-            <Box>
-                <Summary>
-                    <Line>나에게 덫을 놓는 가혹한 기준.</Line>
-                    <Line>내가 하는 일들이 버겁게 느껴진다면 기준을 점검해보자.</Line>
-                    <Line>구체적인 기준을 설정한다면 내가 할 수 있는 일이 더 많아질 것입니다.</Line>
-                </Summary>
-            </Box>
-        </>
+        <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Img></Img>
+            <Message>
+                <strong>
+                    "조금 더 열심히 해야해." <br/>
+                    "실수하면 안돼." <br/>
+                    "지난번엔 왜 그렇게 했지?" <br/>
+                </strong> <br/> <br/>
+                완벽주의 기질은 대부분 두려움과 불안함에 뿌리를 두고 있다고 합니다. <br/>
+                나의 불안한 모습과 마주하세요. <br/>
+                나를 괴롭히는 완벽과 마주하세요. <br/>
+                그리고 완벽을 조절할 수 있다고 말해주세요. <br/>
+            </Message>
+        </Box>
     )
 }
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    width : 95%;
-    margin : 0 auto;
+const Box = styled(Paper)`
     margin-top : 4vh;
+    height : 70vh;
     position : relative;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
 `
-const Line = styled.div`
-    width : 100%;
-    margin : 0 auto;
-    padding : 2vmin;
-    font-size : 4.0rem;
-    padding-left : 4vmin;
+const Img = styled.div`
+    background-image : url(${BackImg});
+    width : 80%;
+    height : 50%;
+    background-size : contain;
+    background-position : center center;
+    background-repeat : no-repeat;
+    margin : 5% auto 5%;
+`
+const Message = styled.div`
+    text-align : center;
+    font-size : 2.0rem;
+    word-break : keep-all;
 
-    &:first-of-type {
-        margin-top : 5vh;
+    & > strong {
+        font-size : 2.4rem;
+        font-style : italic;
     }
 `
 

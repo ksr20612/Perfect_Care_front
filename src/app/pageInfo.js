@@ -1,5 +1,31 @@
 const PageInfo = [
     {
+        "title" : "Part 00.완벽 마주하기",
+        "pages" : [
+            {
+                "title" : "들어가며",
+            },
+            {
+                "title" : "나의 완벽주의",
+            },
+            {
+                "title" : "나를 괴롭히는 완벽주의",
+            },
+            {
+                "title" : "심리검사",
+            },
+            {
+                "title" : "검사 결과",
+            },
+            {
+                "title" : "감정의 기능(1)",
+            },
+            {
+                "title" : "감정의 기능(2)",
+            },
+        ]
+    },
+    {
         "title" : "Part 01.완벽 마주하기",
         "pages" : [
             {
@@ -198,17 +224,17 @@ const PageInfo = [
 ];
 Object.freeze(PageInfo);
 const getPageLen = (partIdx) => {
-    const idx = partIdx*1 - 1;
+    const idx = partIdx*1;
     if(typeof idx !== "number") return false;
     return PageInfo[idx].pages.length || false;
 }
 const getPartTitle = (partIdx) => {
-    const idx = partIdx*1 - 1;
+    const idx = partIdx*1;
     if(typeof idx !== "number") return false;
     return PageInfo[idx].title || false;
 }
 const getPageTitle = (partIdx, pageIdx) => {
-    const idxPart = partIdx*1 - 1;
+    const idxPart = partIdx*1;
     const idxPage = pageIdx*1 - 1;
     if(typeof idxPart !== "number" && typeof idxPage !== "number") return false;
     return PageInfo[idxPart].pages[idxPage].title || false;

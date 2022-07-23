@@ -12,7 +12,7 @@ const Scr1 = () => {
 
     return (
         <>
-            <Title title={getPartTitle(2)} subTitle={getPageTitle(2,3)}/>
+            <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 
             </Box>
