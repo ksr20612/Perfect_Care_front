@@ -6,6 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import topImg from "../assets/bg_cir_02.png";
 import bottomImg from "../assets/bg_cir.png";
 import Doctor from "../assets/doctor_01.png";
+import { ReactComponent as CircleBlack } from "../assets/circle_black.svg";
+import { ReactComponent as CircleBlue } from "../assets/circle_blue.svg";
+import { ReactComponent as CirclePurple } from "../assets/circle_purple.svg";
+import { ReactComponent as CircleRed } from "../assets/circle_red.svg";
 
 const Main = () => {
 
@@ -16,7 +20,11 @@ const Main = () => {
             <Box>
                 <TopImg/>
                 <BottomImg/>
-                <BigCircle></BigCircle>
+                <BigCircle/>
+                <Black></Black>
+                <Blue></Blue>
+                <Purple></Purple>
+                <Red></Red>
                 <Content>
                     <Title>Perfect <span>@</span> Care</Title>
                     <Subtitle>
@@ -149,7 +157,6 @@ const BottomImg = styled.div`
     background-size : cover;
     z-index : 1;
 `
-
 const BigCircle = styled.div`
     position : absolute;
     width : 30vh;
@@ -163,6 +170,46 @@ const BigCircle = styled.div`
     z-index : 99;
     top : 178px;
     left : 590px;
+`
+const Black = styled.div`
+    width : 11px;
+    height : 11px;
+    border-radius : 50%;
+    position : absolute;
+    bottom : 10%;
+    right : 10%;
+    z-index : 98;
+    background-color : #354e57;
+`
+const Blue = styled.div`
+    width : 30px;
+    height : 30px;
+    border-radius : 50%;
+    position : absolute;
+    bottom : 30%;
+    left : 10%;
+    z-index : 98;
+    background-color : #b1e7e7;
+`
+const Purple = styled.div`
+    width : 22px;
+    height : 22px;
+    border-radius : 50%;
+    position : absolute;
+    bottom : 30%;
+    right : 15%;
+    z-index : 98;
+    background-color : #d7ccdd;
+`
+const Red = styled.div`
+    width : 15px;
+    height : 15px;
+    border-radius : 50%;
+    position : absolute;
+    bottom : 50%;
+    left : 28%;
+    z-index : 98;
+    background-color : #ee8975;
 `
 
 export default Main;
