@@ -8,7 +8,7 @@ import Part2 from "./pages/part2";
 import Part3 from "./pages/part3";
 import Part4 from "./pages/part4";
 import Part5 from "./pages/part5";
-import Header from "./components/header";
+
 import End from "./pages/end";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
@@ -30,7 +30,6 @@ function App() {
 
   return (
     <>
-      <Header/>
       <Routes>
         {routeList.map(({ path, Component }) => (
           <Route key={path} path={path} element={<Component/>}/>

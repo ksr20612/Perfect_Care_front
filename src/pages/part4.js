@@ -15,6 +15,7 @@ import Scr11 from "../containers/part4/scr11";
 import Scr12 from "../containers/part4/scr12";
 import Screen from "../components/screen";
 import ProgressBar from "../components/progressBar";
+import Header from "../components/header";
 
 const Part4 = () => {
 
@@ -22,6 +23,7 @@ const Part4 = () => {
 
     return (
         <>
+            <Header/>
             <Screen>
             {
                 curPage === 1? <Scr1 /> :

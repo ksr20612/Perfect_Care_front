@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import pallette from "../styles/pallette.css";
 import { useSelector, useDispatch } from "react-redux";
+
 import Scr1 from "../containers/part0/scr1";
 import Scr2 from "../containers/part0/scr2";
 import Scr3 from "../containers/part0/scr3";
@@ -10,13 +11,15 @@ import Scr6 from "../containers/part0/scr6";
 import Scr7 from "../containers/part0/scr7";
 import Screen from "../components/screen";
 import ProgressBar from "../components/progressBar";
+import Header from "../components/header";
 
-const Part1 = () => {
+const Part0 = () => {
 
     const curPage = useSelector(state => state.state.pageIdx);
 
     return (
         <>
+            <Header />
             <Screen>
             {
                 curPage === 1? <Scr1 /> :
@@ -33,4 +36,4 @@ const Part1 = () => {
     )
 }
 
-export default Part1;
+export default Part0;

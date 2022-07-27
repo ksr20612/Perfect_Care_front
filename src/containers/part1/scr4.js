@@ -42,6 +42,7 @@ const Scr4 = () => {
                         />
                     </svg>
                 </Progress>
+                <Name>{testName} 척도 검사</Name>
                 <Info>
                     <div>검사 시간은 10분 내외입니다.</div>
                     <div>솔직하게 답해주세요.</div>
@@ -67,6 +68,13 @@ const Box = styled(Paper)`
     overflow-y : scroll;
     position : relative;
 `
+const Name = styled.div`
+    font-size : 4.8rem;
+    margin-bottom : 5%;
+    font-weight : bolder;
+    text-decoration : underline;
+    text-underline-offset : 5px;
+`
 const Info = styled.div`
     display : flex;
     justify-content : center;
@@ -77,7 +85,7 @@ const Info = styled.div`
         border-radius : 10px;
         box-shadow : 3px 3px 10px #00000029;
         width : 30%;
-        height : 200px;
+        height : 100px;
         padding : 1%;
         display : flex;
         align-items : center;
