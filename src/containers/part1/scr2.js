@@ -38,7 +38,7 @@ const Scr2 = () => {
         }
     }
     const renderList = (emotionList) => {
-
+        // return motion.div with different spring delay
     }
 
     return (
