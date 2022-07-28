@@ -13,13 +13,43 @@ import Pattern1 from "../../assets/diagram.png";
 import Pattern2 from "../../assets/greengram.png";
 import Dots from "../../assets/dots.png";
 
+const emotionList = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+]
+
 const Scr2 = () => {
 
     const [emotions, setEmotions] = useState([]);
+    const handleClick = (v) => {
+        if(emotions.includes(v)){
+            setEmotions(emotions.filter((item)=>item!==v));
+        }else {
+            setEmotions([...emotions, v]);
+        }
+    }
+    const renderList = (emotionList) => {
+
+    }
 
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,2)}/>
+            <List>
+                <Inst>나를 잘 표현하는 단어를 골라주세요</Inst>
+                <Contents>
+                    {renderList(emotionList)}
+                </Contents>
+            </List>
             <Box>
                 <Head>
                     <Brain emotions={emotions}></Brain>
@@ -34,7 +64,26 @@ const Scr2 = () => {
         </>
     )
 }
-
+const List = styled.div`
+    margin-top : 5%;
+    width : 100%;
+    height : 75%;
+    background-color : #aaa;
+    padding : 2%;
+    display : flex;
+    flex-direction : column;
+`
+const Inst = styled.div`
+    font-family : "Bold";
+    font-size : 4.0rem;
+    margin-bottom : 2%;
+`
+const Contents = styled.div`
+    width : 100%;
+    flex : 1;
+    border : 1px solid black;
+    position : relative;
+`
 const Box = styled(Paper)`
     position : absolute;
     width : 691px;
@@ -42,6 +91,8 @@ const Box = styled(Paper)`
     display : flex;
     justify-content : center;
     align-items : center;
+    bottom : 0;
+    right : min(15vw, 110px);
 `
 const Head = styled.div`
     width : 100%;
