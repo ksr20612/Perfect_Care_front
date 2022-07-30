@@ -13,7 +13,12 @@ import { ReactComponent as CircleRed } from "../assets/circle_red.svg";
 
 const Main = () => {
 
-    const curPage = useSelector(state => state.state.pageIdx);
+    const curPage = useSelector(state => state.page.pageIdx);
+    const token = useSelector(state=>state.state.token);
+
+    useEffect(()=>{
+        console.log(token);
+    })
 
     return (
         <Wrapper>

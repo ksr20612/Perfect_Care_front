@@ -6,25 +6,34 @@ import { ReactComponent as ArrowIcon } from "../assets/btn_s_arrow_def.svg";
 import { darken, lighten } from "polished";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setPageIdx } from "../features/stateSlice";
-import { setIsClicked } from "../features/pageSlice";
+import { setIsClicked, setPageIdx } from "../features/pageSlice";
 import { toastInfo } from "../utils/toast";
 import { getPageLen } from "../app/pageInfo";
 import { toast } from "react-toastify";
+import { Arrow } from "../styles/components/arrow";
 
-export const usePage = (enabled) => {
+export const usePage = ({
+    onBeforePrev = f => f,
+    onBeforeNext = f => f,
+    onAfterPrev = f => f,
+    onAfterNext = f => f,
+}) => {
 
     const isAlreadyClicked = useSelector(state=>state.page.isClicked);
-    const currentPage = useSelector(state=>state.state.pageIdx);
+    const currentPage = useSelector(state=>state.page.pageIdx);
     const partIdx = useLocation().pathname.substr(1,1) * 1;
     const pageLen = getPageLen(partIdx);
-    const prevCb = useSelector(state=>state.page.prev) || (()=>{console.log("이전으로")});
-    const nextCb = useSelector(state=>state.page.next) || (()=>{console.log("다음으로")});
-    const beforePrevCb = useSelector(state=>state.page.beforePrev) || (()=>false);
-    const beforeNextCb = useSelector(state=>state.page.beforeNext) || (()=>false);
-    const commonCb = useSelector(state=>state.page.common) || (()=>{});
+    // const prevCb = useSelector(state=>state.page.prev) || (()=>{console.log("이전으로")});
+    // const nextCb = useSelector(state=>state.page.next) || (()=>{console.log("다음으로")});
+    // const beforePrevCb = useSelector(state=>state.page.beforePrev) || (()=>false);
+    // const beforeNextCb = useSelector(state=>state.page.beforeNext) || (()=>false);
+    // const commonCb = useSelector(state=>state.page.common) || (()=>{});
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        console.log({currentPage});
+    })
 
     const handlePage = (v) => {
 
@@ -33,13 +42,13 @@ export const usePage = (enabled) => {
         // #0
         let callback; 
         if(v < 0) {
-            callback = beforePrevCb();
+            if(onBeforePrev) onBeforePrev();
         }else {
-            callback = beforeNextCb();
+            if(onBeforeNext) onBeforeNext();
         }
-        if(callback) {
-            if(typeof callback === "function") callback();
-        } 
+        // if(callback) {
+        //     if(typeof callback === "function") callback();
+        // } 
 
         if(currentPage+v === 0) {
             if(partIdx + v <= 0) return;
@@ -79,18 +88,27 @@ export const usePage = (enabled) => {
             });
         }
 
-        // #1 데이터 저장(콜백 호출)
-        if(v < 0) {
-            prevCb();
-        }else {
-            nextCb();
-        }
-        commonCb();
-
-        // #2 페이지 전환
+        // 페이지 전환
         dispatch(setPageIdx(currentPage+v));
+
+        // 데이터 저장(콜백 호출)
+        if(v < 0) {
+            if(onAfterPrev) onAfterPrev();
+        }else {
+            if(onAfterPrev) onAfterNext();
+        }
+
     };
 
-    return [currentPage, partIdx, handlePage];
+    const renderArrow = useCallback(() => {
+        return (
+            <>
+                <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
+                <Arrow onClick={()=>handlePage(1)}/>
+            </>
+        )
+    }, []);
+
+    return [currentPage, partIdx, ()=>handlePage(), ()=>renderArrow()];
 
 }

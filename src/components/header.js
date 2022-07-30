@@ -7,7 +7,7 @@ import { ImBubbles4 as SpeechBubble } from "react-icons/im";
 import { FaMapMarkedAlt as MapIcon } from "react-icons/fa";
 import { AiOutlineCloseSquare as CloseIcon } from "react-icons/ai";
 import PageInfo from "../app/pageInfo";
-import { setPageIdx } from "../features/stateSlice";
+import { setPageIdx } from "../features/pageSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,7 +18,7 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const partIdx = useLocation().pathname.substr(1,1)*1 - 1;
-    const pageIdx = useSelector(state=>state.state.pageIdx)*1 - 1;
+    const pageIdx = useSelector(state=>state.page.pageIdx)*1 - 1;
     const handleLocation = (partIdx, pageIdx) => {
         const part = partIdx + 1;
         const page = pageIdx + 1;

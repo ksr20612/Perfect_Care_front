@@ -12,6 +12,8 @@ import Brain from "../../components/brain";
 import Pattern1 from "../../assets/diagram.png";
 import Pattern2 from "../../assets/greengram.png";
 import Dots from "../../assets/dots.png";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const emotionList = [
     "1",
@@ -29,6 +31,7 @@ const emotionList = [
 
 const Scr2 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const [emotions, setEmotions] = useState([]);
     const handleClick = (v) => {
         if(emotions.includes(v)){
@@ -61,6 +64,7 @@ const Scr2 = () => {
                 <Circle1/>
                 <Circle2/>
             </Box>
+            {renderArrow()}
         </>
     )
 }

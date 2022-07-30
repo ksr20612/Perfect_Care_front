@@ -6,8 +6,11 @@ import { lighten } from "polished";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr2 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -23,6 +26,7 @@ const Scr2 = () => {
                 자신이 가게에 금전적 손해를 입혔다는 사실과 터무니없는 실수를 했다는 <br/>
                 사실에 자책을 하며 30분째 이 생각에서 벗어나지 못하고 있습니다.
             </Box>
+            {renderArrow()}
         </>
     )
 }

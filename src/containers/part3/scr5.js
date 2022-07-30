@@ -14,9 +14,11 @@ import { setScr5, removeScr5 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { readInfo, writeInfo } from "../../utils/part3Converter";
 import CardResult from "../../components/cardResult";
+import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const scr5 = useSelector(state=>state.part3.information.scr5);
     const selected = readInfo(scr5);
@@ -56,6 +58,7 @@ const Scr5 = () => {
                     </Deck>
                 </AnswerBox>
             </Box>
+            {renderArrow()}
         </>
     )
 }

@@ -9,6 +9,8 @@ import { Paper } from "../../styles/components/paper";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import Color from "../../components/color";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const list = [
     {
@@ -53,6 +55,7 @@ const getContent = (name) => {
 
 const Scr7 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const [selected, setSelected] = useState(list[0].name);
 
     return (
@@ -75,6 +78,7 @@ const Scr7 = () => {
                     getContent(selected)
                 }
             </Card>
+            {renderArrow()}
         </>
     )
 }

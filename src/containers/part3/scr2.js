@@ -9,13 +9,17 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import BoardImg from "../../assets/board.png";
+import { usePage } from "../../hooks/usePage";
 
 const Scr2 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,2)}/>
             <Board></Board>
+            {renderArrow()}
         </>
     )
 }

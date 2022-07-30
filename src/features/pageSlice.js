@@ -5,33 +5,18 @@ export const PageSlice = createSlice({
     name : "page",
     initialState : {
         isClicked : false,
-        beforePrev : null,
-        beforeNext : null,
-        prev : null,
-        next : null,
-        common : ()=>console.log("페이지 전환"),
+        pageIdx : 1,
     },
     reducers : {
         setIsClicked : (state, action) => {
             state.isClicked = action.payload;
         },
-        setBeforePrev : (state, action) => {
-            state.beforePrev = action.payload;
-        },
-        setBeforeNext : (state, action) => {
-            state.beforeNext = action.payload;
-        },
-        setPrev : (state, action) => {
-            state.prev = action.payload;
-        },
-        setNext : (state, action) => {
-            state.next = action.payload;
-        },
-        setCommon : (state, action) => {
-            state.common = action.payload;
+        setPageIdx : (state, {payload}) => {
+            state.pageIdx = payload*1;
         }
     }
 });
 
-export const { setIsClicked, setPrev, setNext, setCommon, setBeforePrev, setBeforeNext } = PageSlice.actions;
+
+export const { setIsClicked, setPageIdx } = PageSlice.actions;
 export default PageSlice.reducer;

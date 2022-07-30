@@ -10,10 +10,12 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr4 = () => {
 
     const checks = useSelector(state=>state.part2.scr2);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     const [status, setStatus] = useState(1);
     const [clicked, setClicked] = useState(null);
@@ -57,6 +59,7 @@ const Scr4 = () => {
                     </div>
                 </Container>
             </Box>
+            {renderArrow()}
         </>
     )
 }

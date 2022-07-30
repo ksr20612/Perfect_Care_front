@@ -8,15 +8,19 @@ import GuruBox from "../guruBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr14 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,14)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 문제 / 정답 2
             </Box>
+            {renderArrow()}
         </>
     )
 }

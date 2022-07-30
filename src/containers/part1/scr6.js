@@ -7,8 +7,12 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr6 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -26,6 +30,7 @@ const Scr6 = () => {
                 결국 끊임없이 좌절과 자괴감만 맛본다.” <br/>
                 <div>-[완벽주의자를 위한 행복수업] 중-</div>
             </Box>
+            {renderArrow()}
         </>
     )
 }

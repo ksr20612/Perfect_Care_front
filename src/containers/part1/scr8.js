@@ -8,8 +8,12 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr8 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -25,6 +29,7 @@ const Scr8 = () => {
                     이러한 <strong>감정적 완벽주의</strong>를 우리는 가장 경계해야 합니다.
                 </div>
             </Box>
+            {renderArrow()}
         </>
     )
 }

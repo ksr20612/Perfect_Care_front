@@ -8,6 +8,7 @@ import Comments from "../../components/commentBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
 
@@ -19,6 +20,7 @@ const Scr5 = () => {
         console.log(input);
         setInput("");
     }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -37,6 +39,7 @@ const Scr5 = () => {
                     </Comments>
                 </Container>
             </Box>
+            {renderArrow()}
         </>
     )
 }

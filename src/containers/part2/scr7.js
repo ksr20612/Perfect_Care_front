@@ -7,8 +7,11 @@ import Summary from "../../components/summary";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr7 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -20,6 +23,7 @@ const Scr7 = () => {
                     <Line>구체적인 기준을 설정한다면 내가 할 수 있는 일이 더 많아질 것입니다.</Line>
                 </Summary>
             </Box>
+            {renderArrow()}
         </>
     )
 }

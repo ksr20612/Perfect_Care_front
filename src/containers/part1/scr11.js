@@ -8,25 +8,32 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import BackImg from "../../assets/sample.jpg"
+import BackImg from "../../assets/sample.jpg";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr11 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+
     return (
-        <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-            <Img></Img>
-            <Message>
-                <strong>
-                    "조금 더 열심히 해야해." <br/>
-                    "실수하면 안돼." <br/>
-                    "지난번엔 왜 그렇게 했지?" <br/>
-                </strong> <br/> <br/>
-                완벽주의 기질은 대부분 두려움과 불안함에 뿌리를 두고 있다고 합니다. <br/>
-                나의 불안한 모습과 마주하세요. <br/>
-                나를 괴롭히는 완벽과 마주하세요. <br/>
-                그리고 완벽을 조절할 수 있다고 말해주세요. <br/>
-            </Message>
-        </Box>
+        <>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                <Img></Img>
+                <Message>
+                    <strong>
+                        "조금 더 열심히 해야해." <br/>
+                        "실수하면 안돼." <br/>
+                        "지난번엔 왜 그렇게 했지?" <br/>
+                    </strong> <br/> <br/>
+                    완벽주의 기질은 대부분 두려움과 불안함에 뿌리를 두고 있다고 합니다. <br/>
+                    나의 불안한 모습과 마주하세요. <br/>
+                    나를 괴롭히는 완벽과 마주하세요. <br/>
+                    그리고 완벽을 조절할 수 있다고 말해주세요. <br/>
+                </Message>
+            </Box>
+            {renderArrow()}
+        </>
     )
 }
 const Box = styled(Paper)`

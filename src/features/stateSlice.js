@@ -3,20 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const StateSlice = createSlice({
     name : "state",
     initialState : {
-        id : null,
-        partIdx : 0, // url로 관리
-        pageIdx : 1,
+        id : "",
+        token : "",
         loginState : false,
     },
     reducers : {
         setId : (state, {payload}) => {
             state.id = payload+"";
         },
-        setPartIdx : (state, action) => {
-            state.partIdx = action.payload*1;
-        },
-        setPageIdx : (state, action) => {
-            state.pageIdx = action.payload*1;
+        setToken : (state, {payload}) => {
+            state.token = payload;
         },
         setLoginState : (state, action) => {
             state.loginState = action.payload;
@@ -24,5 +20,5 @@ export const StateSlice = createSlice({
     }
 });
 
-export const { setId, setPartIdx, setPageIdx, setLoginState } = StateSlice.actions;
+export const { setId, setToken, setLoginState } = StateSlice.actions;
 export default StateSlice.reducer;

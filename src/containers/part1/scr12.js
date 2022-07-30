@@ -8,8 +8,12 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
-const Scr7 = () => {
+const Scr12 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +25,7 @@ const Scr7 = () => {
                     <Line>인정하는 것이 한걸음! 솔직한 나의 감정을 인정했다면, 이제부터 본격적인 "완벽케어"를 배워보자.</Line>
                 </Summary>
             </Box>
+            {renderArrow()}
         </>
     )
 }
@@ -43,4 +48,4 @@ const Line = styled.div`
     }
 `
 
-export default Scr7;
+export default Scr12;

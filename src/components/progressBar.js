@@ -10,21 +10,24 @@ import { GrFormNextLink as ArrowNextIcon, GrFormPreviousLink as ArrowPrevIcon } 
 
 const ProgressBar = () => {
 
-    const curPage = useSelector(state => state.state.pageIdx);
     const pageLen = getPageLen(useLocation().pathname.substr(1,1));
-    const [currentPage, partIdx, handlePage] = usePage();
+    const [currentPage, partIdx, handlePage, ] = usePage({});
+
+    useEffect(()=>{
+        console.log(currentPage);
+    })
 
     return (
         <Box>
-            <Arrow onClick={()=>{handlePage(-1)}}><ArrowPrevIcon/></Arrow>
+            <Arrow><ArrowPrevIcon/></Arrow>
             {
                 [...Array(pageLen)].map((_, i)=>{
                     return (
-                        <Item className={curPage===i+1? "current" : null} key={`item_${i}`}>{i+1}</Item>
+                        <Item className={currentPage===i+1? "current" : null} key={`item_${i}`}>{i+1}</Item>
                     )
                 }) 
             }
-            <Arrow onClick={()=>{handlePage(+1)}}><ArrowNextIcon/></Arrow>
+            <Arrow><ArrowNextIcon/></Arrow>
         </Box>
     );
 }

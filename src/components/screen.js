@@ -18,13 +18,9 @@ const Screen = ({
     children
 }) => {
 
-    const [currentPage, partIdx, handlePage] = usePage(canBeMoved);
-
     return (
         <Box>
-            {canBeMoved && <Arrow className="reversed" onClick={()=>handlePage(-1)}/>}
             {children}
-            {canBeMoved && <Arrow onClick={()=>handlePage(1)}/>}
         </Box>
     )
 }

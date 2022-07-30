@@ -7,13 +7,17 @@ import Katalk from "../katalk";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr3 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,3)}/>
             <Katalk />
+            {renderArrow()}
         </>
     )
 }

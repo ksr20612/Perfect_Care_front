@@ -1,23 +1,14 @@
 import API from "./API";
 
-export const GET = async (path, reqData = {}, callback={
-    onBefore : f => f,
-    onSuccess : f => f,
-    onFail : f => f,
-})=>{
+export const GET = async (path, reqData = {}, callback = f => f,
+)=>{
     if(callback.onBefore) callback.onBefore();
-    API("auth").get(path, reqData)
-        .then((result)=>callback.onSucess? callback.onSuccess(result) : null)
-        .catch(callback.onFail? callback.onFail() : null);
+    const result = await API("auth").get(path, reqData);
+    return callback(result);
 }
 
-export const POST = async (path, reqData = {}, callback={
-    onBefore : f => f,
-    onSuccess : f => f,
-    onFail : f => f,
-})=>{
-    if(callback.onBefore) callback.onBefore();
-    API("auth").post(path, reqData)
-        .then((result)=>callback.onSucess? callback.onSuccess(result) : null)
-        .catch(callback.onFail? callback.onFail() : null);
+export const POST = async (path, reqData = {}, callback = f => f,
+)=>{
+    const result = await API("auth").post(path, reqData);
+    return callback(result);
 }

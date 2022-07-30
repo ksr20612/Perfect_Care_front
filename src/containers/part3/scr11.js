@@ -9,8 +9,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import NoteImg from "../../assets/ic_memo_y_02.png";
+import { usePage } from "../../hooks/usePage";
 
 const Scr11 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -29,6 +32,7 @@ const Scr11 = () => {
                     </Bubbles>
                 </div>
             </Box>
+            {renderArrow()}
         </>
     )
 }

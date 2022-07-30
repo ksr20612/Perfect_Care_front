@@ -7,8 +7,11 @@ import Summary from "../../components/summary";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr18 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -19,6 +22,7 @@ const Scr18 = () => {
                     <Line>완벽주의를 강화시키는 주범, <br/> 인지오류를 밝혀내자.</Line>
                 </Summary>
             </Box>
+            {renderArrow()}
         </>
     )
 }

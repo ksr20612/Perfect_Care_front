@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { Paper } from "../../styles/components/paper";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr7 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -20,6 +23,7 @@ const Scr7 = () => {
                     <div></div>
                 </Content>
             </Box>
+            {renderArrow()}
         </>
     )
 }

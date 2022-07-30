@@ -11,9 +11,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
 import { setScr4 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr4 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const dispatch = useDispatch();
     const handleChange = (v) => {
@@ -35,6 +37,7 @@ const Scr4 = () => {
                 </Answer>
                 {/* <GuruBox /> */}
             </Box>
+            {renderArrow()}
         </>
     )
 }

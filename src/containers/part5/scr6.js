@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import DataBox from "../../components/dataBox";
+import { usePage } from "../../hooks/usePage";
 
 const Scr6 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -20,6 +23,7 @@ const Scr6 = () => {
                 <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
             </DataBox>
             <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.5}>지금의 나는 어떻게 변화했나요?</Ask>
+            {renderArrow()}
         </>
     )
 }

@@ -8,8 +8,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import DataBox from "../../components/dataBox";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -23,6 +26,7 @@ const Scr1 = () => {
                 </DataBox>
                 <Message>나의 가혹한 기준을 변경했다면, <br/> 이제 근본적인 원인을 바꾸러 가볼까요?</Message>
             </Box>
+            {renderArrow()}
         </>
     )
 }

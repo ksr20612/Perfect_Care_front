@@ -10,8 +10,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import NoteImg from "../../assets/ic_memo_y_02.png";
 import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr3 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -32,6 +35,7 @@ const Scr3 = () => {
                     <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4.5}>6. 최악의 경우</Block>
                 </motion.div>
             </Box>
+            {renderArrow()}
         </>
     )
 }

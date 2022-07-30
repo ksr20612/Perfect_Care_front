@@ -7,8 +7,11 @@ import CheckBlue from "../../assets/check_blue.png";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +24,7 @@ const Scr1 = () => {
                 </div>
                 <Data className="ans2"></Data>
             </Box>
+            {renderArrow()}
         </>
     )
 }

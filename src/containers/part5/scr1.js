@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import DataBox from "../../components/dataBox";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -27,6 +30,7 @@ const Scr1 = () => {
                     어느새 변해있는 나의 모습을 마주할 수 있습니다.
                 </Direction>
             </Box>
+            {renderArrow()}
         </>
     )
 }

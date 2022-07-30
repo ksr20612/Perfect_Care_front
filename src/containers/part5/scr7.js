@@ -9,8 +9,11 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { FiDownload as DownLoadIcon } from "react-icons/fi";
 import { saveAs } from "file-saver";
+import { usePage } from "../../hooks/usePage";
 
 const Scr7 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -24,6 +27,7 @@ const Scr7 = () => {
                     </a>
                 </Subtitle>
             </Box>
+            {renderArrow()}
         </>
     )
 }
