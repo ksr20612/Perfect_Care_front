@@ -9,6 +9,7 @@ import GuruBox from "../../containers/guruBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { Paper } from "../../styles/components/paper";
 
 const Scr2 = () => {
 
@@ -22,19 +23,18 @@ const Scr2 = () => {
     )
 }
 
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    padding : 0 1vw;
-    padding-top : 2vh;
+const Box = styled(Paper)`
+    padding : 5%;
+    margin-top : 5%;
     display : flex;
+    height : 70%;
     align-items : center;
     justify-content : center;
 
     & > div {
-        margin-top : 5vh;
         font-size : 2.6rem;
         width : 80%;
-        height : 60vh;
+        height : 100%;
     }
 `
 

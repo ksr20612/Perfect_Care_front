@@ -19,7 +19,7 @@ const DataBox = ({
 const Box = styled.div`
     width : 100%;
     max-width : 960px;
-    height : 20vh;
+    height : 25%;
     max-height : 150px;
     background-color : ${pallette.WHITE};
     padding : min(20px, 2vmin);
@@ -28,9 +28,10 @@ const Box = styled.div`
     display : flex;
     flex-direction : column;
     justify-content : space-between;
+    overflow : auto;
 
     & + & {
-        margin-top : 3vh;
+        margin-top : 2%;
     }
 `
 const Title = styled.div`

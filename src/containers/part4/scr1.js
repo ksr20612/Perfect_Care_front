@@ -43,8 +43,8 @@ const Box = styled.div`
     font-family : "Noto_Medium";
     position : relative;
     width : 100%;
-    height : auto;
-    margin-top : 5vh;
+    height : 70%;
+    margin-top : 5%;
 `
 const ItemList = styled.div`
     font-size : 2.8rem;

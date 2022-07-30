@@ -31,7 +31,6 @@ const Scr1 = () => {
     )
 }
 const Box = styled.div`
-    font-family : "Noto_Medium";
     position : relative;
     width : 100%;
     height : auto;

@@ -1,4 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import ReduxThunk from "redux-thunk";
 import stateReducer from "../features/stateSlice";
 import modalReducer from "../features/modalSlice";
 import pageReducer from "../features/pageSlice";
@@ -19,7 +21,11 @@ const store = configureStore({
         part4 : part4Reducer,
         part5 : part5Reducer,
     },
-    middleware : (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck : false}),
+    middleware : (getDefaultMiddleware) => [
+        ...getDefaultMiddleware({serializableCheck : false}),
+        logger,
+        ReduxThunk,
+    ]
 });
 
 export default store;

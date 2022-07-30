@@ -22,16 +22,17 @@ const Scr3 = () => {
 }
 
 const Box = styled(Paper)`
-    padding : 5vh;
-    margin-top : 10vh;
+    padding : 5%;
+    margin-top : 5%;
     display : flex;
+    height : 70%;
     align-items : center;
     justify-content : center;
 
     & > div {
         font-size : 2.6rem;
         width : 80%;
-        height : 40vh;
+        height : 100%;
     }
 `
 
