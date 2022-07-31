@@ -37,8 +37,16 @@ const Scr2 = () => {
             setEmotions([...emotions, v]);
         }
     }
-    const renderList = (emotionList) => {
+    const renderList = (list) => {
         // return motion.div with different spring delay
+        return (
+            <>
+                {list.map((v,i)=>{
+                    return <div key={"emo_"+i}>{v}</div>
+                })}
+            </>
+        )
+        
     }
 
     return (
@@ -68,8 +76,6 @@ const List = styled.div`
     margin-top : 5%;
     width : 100%;
     height : 75%;
-    background-color : #aaa;
-    padding : 2%;
     display : flex;
     flex-direction : column;
 `
@@ -83,6 +89,22 @@ const Contents = styled.div`
     flex : 1;
     border : 1px solid black;
     position : relative;
+    display : flex;
+    padding : 1%;
+
+    & > div {
+        width : 10%;
+        height : 10%;
+        padding : 1%;
+        margin : 1%;
+        border : 1px solid black;
+        border-radius : 20%;
+        display : flex;
+        align-items : center;
+        justify-content : center;
+        text-align : center;
+    }
+
 `
 const Box = styled(Paper)`
     position : absolute;
@@ -92,6 +114,7 @@ const Box = styled(Paper)`
     justify-content : center;
     align-items : center;
     bottom : 0;
+    /* bottom : -440px; */
     right : min(15vw, 110px);
 `
 const Head = styled.div`
