@@ -8,17 +8,23 @@ import SamplePic from "../../assets/sample.jpg";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import NoteImg from "../../assets/ic_memo_y_02.png";
+import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr3 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,3)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <div>
+                <Note>
                     <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있습니다.</div>
+                    <br/>
                     <div>형사가 되어 자동사고라는 용의자를 잡아봅시다.</div>
-                </div>
+                </Note>
                 <motion.div initial="hidden" animate="visible" variants={fadein} custom={1.5}>
                     <div>이런 걸 작성할 거예요!</div>
                     <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2}>1. 상황</Block>
@@ -29,13 +35,14 @@ const Scr3 = () => {
                     <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4.5}>6. 최악의 경우</Block>
                 </motion.div>
             </Box>
+            {renderArrow()}
         </>
     )
 }
-const Box = styled.div`
-    font-family : "Noto_Medium";
-    padding : 0 1vw;
-    padding-top : 2vh;
+const Box = styled(Paper)`
+
+    margin-top : 5%;
+    height : 70%;
     position : relative;
     display : flex;
 
@@ -52,18 +59,24 @@ const Box = styled.div`
         }
         &:last-of-type {
             width : 50%;
+            justify-content : space-between;
         }
     }
-
+`
+const Note = styled.div`
+    width : 100%;
+    aspect-ratio : 1 / 1;
+    background-color : #eee;
+    display : flex;
+    align-items : center;
+    justify-content : center;
 `
 const Block = styled.div`
-    transform : translateY(5vh);
     scroll-snap-align: center;
     background-color : ${lighten(0.5, pallette.BLUE)};
     width : 80%;
     height : auto;
-    margin : 1vmin;
-    padding : 1vmin;
+    padding : 2%;
     border-radius : 1vmin;
     font-size : 1.6rem;
     font-family : "Noto_Black";

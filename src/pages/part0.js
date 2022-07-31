@@ -15,7 +15,7 @@ import Header from "../components/header";
 
 const Part0 = () => {
 
-    const curPage = useSelector(state => state.state.pageIdx);
+    const curPage = useSelector(state => state.page.pageIdx);
 
     return (
         <>

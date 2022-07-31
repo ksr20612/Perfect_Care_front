@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr8 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -23,6 +26,7 @@ const Scr8 = () => {
                     <div>일상생활에서 번아웃이 오거나, 자책하며 힘들어했을</div>
                 </Content>
             </Box>
+            {renderArrow()}
         </>
     )
 }

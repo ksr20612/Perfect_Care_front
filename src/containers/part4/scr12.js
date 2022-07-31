@@ -7,8 +7,11 @@ import Summary from "../../components/summary";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr12 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +24,7 @@ const Scr12 = () => {
                     <Line>실수에 대한 인식을 바꾼다면 더 많은 일을 <br/> 시도할 수 있어요.</Line>
                 </Summary>
             </Box>
+            {renderArrow()}
         </>
     )
 }

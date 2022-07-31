@@ -12,12 +12,13 @@ import { toastError, toastSuccess } from "../utils/toast";
 import RadioBox from "../components/radioBox";
 import Checkboxes from "../components/checkboxes";
 import { POST } from "../services/userService";
+import { setId } from "../features/stateSlice";
 
 const Signup = () => {
 
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({ container : cardRef });
-    const [ id, setId ] = useState();
+    const [ id, setUserId ] = useState();
     const [ password, setPassword ] = useState();
     const [ nick, setNick ] = useState();
     const [ gender, setGender ] = useState();
@@ -25,11 +26,12 @@ const Signup = () => {
     const [ fromWhere, setFromWhere ] = useState();
     const [ loading, setLoading ] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleChange = (type, value) => {
         switch(type) {
             case "id" :
-                return setId(value);
+                return setUserId(value);
             case "password" :
                 return setPassword(value);
             case "nick" :
@@ -41,21 +43,26 @@ const Signup = () => {
         if(id && password && nick) {
             setLoading(true);
             console.log({id, password, nick, gender, age, fromWhere});
-            POST("/user/join", {id, password, nick, gender, age, fromWhere}, {
-                onSuccess : (result)=>{
-                    if(!result) {
-                        toastError("회원가입에 실패하였습니다.");
+            POST("/user/join", {id, password, nick, gender, age, fromWhere}, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {
+                            onClose : () => {
+                                setLoading(false);
+                            }
+                        });
                     }else {
-                        navigate("/login");
-                        toastSuccess("회원가입에 성공하였습니다!");
+                        toastSuccess("회원가입에 성공하였습니다.", {
+                            onClose : () => {
+                                navigate("/signin");
+                            }
+                        });
                     }
-                },
-                onFail : ()=>{
-                    toastError("회원가입에 실패하였습니다.");
                 }
-            })
+            )
         }else {
             toastError("필수 항목을 입력해주세요.");
+            setLoading(false);
         }
     }
 
@@ -76,14 +83,14 @@ const Signup = () => {
                     </svg>
                 </Progress>
                 <Title>회원가입</Title>
-                <TextBox label="아이디 *" customStyle={{width:"50vh"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
-                <TextBox label="비밀번호 *" customStyle={{width:"50vh"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
-                <TextBox label="닉네임 *" customStyle={{width:"50vh"}} value={nick} handleChange={(value)=>{handleChange("nick", value)}} hasBackground={false}/>
+                <TextBox label="아이디 *" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
+                <TextBox label="비밀번호 *" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
+                <TextBox label="닉네임 *" customStyle={{width:"100%"}} value={nick} handleChange={(value)=>{handleChange("nick", value)}} hasBackground={false}/>
                 <Checkboxes title="성별" items={["남자", "여자"]} checked={gender} handleChange={(v)=>setGender(v===gender? "" : v)} />
                 <Checkboxes title="나이" items={["1", "2", "3"]} checked={age} handleChange={(v)=>setAge(v===age? "" : v)} />
                 <Checkboxes title="유입경로" items={["1", "2", "3", "4"]} checked={fromWhere} handleChange={(v)=>setFromWhere(v===fromWhere? "" : v)} />
                 <br/>
-                <Button customStyle={{ width : "50vh", }} handleClick={()=>{handleClick()}} loading={loading}/>
+                <Button customStyle={{ width : "100%" }} handleClick={()=>{handleClick()}} loading={loading}/>
             </Card>
         </Box>
     )

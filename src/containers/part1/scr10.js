@@ -12,9 +12,12 @@ import Image from "../../assets/sample.jpg";
 import TextArea from "../../components/textArea";
 import { setBefore, setAfter } from "../../features/parts/part1Slice";
 import { useSelector, useDispatch } from "react-redux";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr10 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const before = useSelector(state=>state.part1.goal.before);
     const after = useSelector(state=>state.part1.goal.after);
     const dispatch = useDispatch();
@@ -35,6 +38,7 @@ const Scr10 = () => {
                     </Card>
                 </Content>
             </Box>
+            {renderArrow()}
         </>
     )
 }

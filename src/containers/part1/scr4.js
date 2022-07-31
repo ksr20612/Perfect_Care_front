@@ -11,9 +11,12 @@ import Question from "../../components/question";
 import { useSelector, useDispatch } from "react-redux";
 import questionList from "../../app/questionList";
 import { setScores } from "../../features/parts/part1Slice";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr4 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const testName = useSelector(state=>state.part1.test.name);
     const scores = useSelector(state=>state.part1.test.scores);
     const dispatch = useDispatch();
@@ -53,6 +56,7 @@ const Scr4 = () => {
                     })
                 }
             </Box>
+            {renderArrow()}
         </>
     )
 }

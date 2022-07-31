@@ -9,6 +9,7 @@ import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
+import { usePage } from "../../hooks/usePage";
 
 const Scr3 = () => {
 

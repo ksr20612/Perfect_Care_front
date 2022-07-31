@@ -8,8 +8,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr4 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -17,20 +20,22 @@ const Scr4 = () => {
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <MovieClip width="100%" height="100%"/>
             </Box>
+            {renderArrow()}
         </>
     )
 }
 const Box = styled(Paper)`
-    padding : 5vh;
-    margin-top : 10vh;
+    padding : 5%;
+    margin-top : 5%;
     display : flex;
+    height : 70%;
     align-items : center;
     justify-content : center;
 
     & > div {
         font-size : 2.6rem;
         width : 80%;
-        height : 40vh;
+        height : 100%;
     }
 `
 

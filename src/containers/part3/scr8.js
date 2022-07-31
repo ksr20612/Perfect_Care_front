@@ -11,9 +11,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
 import { setScr8 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr8 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const scr5 = useSelector(state=>state.part3.information.scr5);
     const scr6 = useSelector(state=>state.part3.information.scr6);
@@ -36,6 +38,7 @@ const Scr8 = () => {
                     <TextArea height="100%" value={scr8} handleChange={(v)=>{handleChange(v)}}/>
                 </AnswerBox>
             </Box>
+            {renderArrow()}
         </>
     )
 }

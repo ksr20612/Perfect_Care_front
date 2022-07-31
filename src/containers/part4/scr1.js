@@ -7,9 +7,11 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import DataBox from "../../components/dataBox";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const x = useMotionValue(0);
     const opacity = useTransform(x, [-100, 0, 100], [0.2, 1, 0.2]);
 
@@ -36,6 +38,7 @@ const Scr1 = () => {
                     실수가 두렵지 않은 완벽주의자가 되는 법을 알려드립니다.
                 </Direction>
             </Box>
+            {renderArrow()}
         </>
     )
 }
@@ -43,8 +46,8 @@ const Box = styled.div`
     font-family : "Noto_Medium";
     position : relative;
     width : 100%;
-    height : auto;
-    margin-top : 5vh;
+    height : 70%;
+    margin-top : 5%;
 `
 const ItemList = styled.div`
     font-size : 2.8rem;

@@ -5,26 +5,21 @@ import Checkboxes from "../../components/checkboxes";
 import Standards from "../../assets/jsons/standards";
 import pallette from "../../styles/pallette.css";
 import { lighten } from "polished";
-import usePageCallback from "../../hooks/usePageCallback";
 import { useSelector, useDispatch } from "react-redux";
 import { setStandard } from "../../features/parts/part2Slice";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr2 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const checks = useSelector(state=>state.part2.scr2);
     const dispatch = useDispatch();
     const handleChange = (type, value) => {
         dispatch(setStandard({ [type] : value }));
     }
-
-    // scr마다 달아줘야함! 
-    const [success, error] = usePageCallback({
-        onAfterPrev : ()=>{console.log("과거로")},
-        onAfterNext : ()=>{console.log("미래로")},
-    });
 
     return (
         <>
@@ -58,6 +53,7 @@ const Scr2 = () => {
                     </tr>
                 </table>
             </Box>
+            {renderArrow()}
         </>
     )
 }

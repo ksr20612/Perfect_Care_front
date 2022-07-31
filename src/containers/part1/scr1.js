@@ -7,8 +7,16 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+
+    useEffect(()=>{
+        console.log(currentPage);
+    })
 
     return (
         <>
@@ -20,9 +28,11 @@ const Scr1 = () => {
                 <div>완벽을 조절하도록 만들어진 프로그램이며,</div>
                 <div>완벽주의를 <strong>"없애기"</strong>위한 프로그램이 <strong>아닙니다</strong>.</div>
             </Box>
+            {renderArrow()}
         </>
     )
 }
+
 const Box = styled(Paper)`
     padding : 5vh;
     margin-top : 10vh;

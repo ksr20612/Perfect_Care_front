@@ -7,6 +7,8 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const list = [
     {
@@ -37,6 +39,7 @@ const list = [
 
 const Scr3 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const [clicked, setClicked] = useState(list[0].value);
     const handleClick = (value) => {
         setClicked(value);
@@ -53,6 +56,7 @@ const Scr3 = () => {
                     ))
                 }
             </Wrapper>
+            {renderArrow()}
         </>
     )
 }

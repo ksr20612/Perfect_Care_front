@@ -8,8 +8,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import { Paper } from "../../styles/components/paper";
 import TextArea from "../../components/textArea";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr9 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +24,7 @@ const Scr9 = () => {
                 <Question>Q. 만약 다음번에 동일한 실수를 하게 된다면 어떻게 대처할 수 있을까?</Question>
                 <TextArea customStyle={{padding : "20px"}}/>
             </Box>
+            {renderArrow()}
         </>
     )
 }

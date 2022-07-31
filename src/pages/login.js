@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import fadein from "../styles/framer-motion/fadein";
 import { toastError, toastSuccess } from "../utils/toast";
 import { POST } from "../services/userService";
-import { setId, setLoginState } from "../features/stateSlice";
+import { setId, setLoginState, setToken } from "../features/stateSlice";
 
 const Login = () => {
 
@@ -21,7 +21,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const handleChange = (type, value) => {
         if(type === "id") {
-            setId(value);
+            dispatch(setId(value));
         }else {
             setPassword(value);
         }
@@ -30,26 +30,28 @@ const Login = () => {
         if(id && password) {
             setLoading(true);
             console.log({id, password});
-            POST("/user/login", {id, password}, {
-                onSuccess : ({ id, password, userToken })=>{
-                    /*
-                        { id, password, userToken }
-                    */
-                    if(id && password && userToken) {
-                        sessionStorage.setItem("userToken", userToken);
-                        navigate("/");
-                        toastSuccess("로그인에 성공하였습니다!");
-                        dispatch(setLoginState(true));
+            POST("/user/login", {id, password}, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {
+                            onClose : () => {
+                                setLoading(false);
+                            }
+                        });
                     }else {
-                        toastError("아이디와 비밀번호를 확인해주세요!");
-                        dispatch(setId(""));
-                        setPassword("");
+                        const token = result.data.token;
+                        console.log(token);
+                        dispatch(setToken(token));
+                        dispatch(setLoginState(true));
+                        toastSuccess("로그인에 성공하였습니다.", {
+                            onClose : () => {
+                                // navigate("/");
+                                console.log("마지막 종료 시점 가져와야돼");
+                            }
+                        });
                     }
-                },
-                onFail : ()=>{
-                    toastError("로그인에 실패하였습니다.");
                 }
-            })
+            )
         }else {
             toastError("아이디와 비밀번호를 입력해주세요!");
         }
@@ -59,12 +61,12 @@ const Login = () => {
         <Box>  
             <Card as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Title>로그인</Title>
-                <TextBox label="아이디" customStyle={{width:"50vh"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
-                <TextBox label="비밀번호" customStyle={{width:"50vh"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
-                <Button customStyle={{ width : "50vh", }} handleClick={()=>{handleClick()}} loading={loading}/>
+                <TextBox label="아이디" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
+                <TextBox label="비밀번호" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
+                <Button customStyle={{ width : "100%", }} handleClick={()=>{handleClick()}} loading={loading}/>
                 <Text href="/signup">회원가입</Text>
                 <Text href="/search">아이디 비밀번호 찾기</Text>
-                <div style={{width : "50vh", height : "1px", backgroundColor : "#ccc"}} />
+                <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} />
                 <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin>
             </Card>
         </Box>
@@ -100,7 +102,7 @@ const Title = styled.div`
     margin-bottom : 3%;
 `
 const Text = styled.a`
-    width : 50vh;
+    width : 100%;
     font-family : "Light";
     font-size : 1.6rem;
     text-align : end;
@@ -113,11 +115,12 @@ const Text = styled.a`
     }
 `
 const KaKaoLogin = styled.div`
-    width : 50vh;
+    width : 100%;
     padding : 1.5%;
     margin-top : 3%;
     border-radius : 5px;
-    font-size : 2.4rem;
+    font-size : 1.6rem;
+    height : 10%;
     background-color : ${pallette.YELLOW};
     font-family : "Regular";
     display : flex;

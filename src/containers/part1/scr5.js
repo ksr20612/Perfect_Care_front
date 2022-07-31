@@ -7,12 +7,18 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { Arrow } from "../../styles/components/arrow";
+import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,5)}/>
+
+            {renderArrow()}
         </>
     )
 }

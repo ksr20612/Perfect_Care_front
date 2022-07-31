@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr1 = () => {
 

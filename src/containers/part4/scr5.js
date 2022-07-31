@@ -8,8 +8,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import googlePic from "../../assets/google.png";
+import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +24,7 @@ const Scr5 = () => {
                     <div>In his new book Work Rules!, Google’s Head of People Operations Laszlo Bock states “it’s also important to reward failure” so as to encourage risk-taking. Bock gives the example of Google Wave, an online platform launched in 2010 and closed a year later. “They took a massive, calculated risk. And failed. So we rewarded them.”</div>
                 </Content>
             </Box>
+            {renderArrow()}
         </>
     )
 }

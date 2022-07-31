@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -81,6 +84,7 @@ const Scr5 = () => {
                     </tbody>
                 </table>
             </Box>
+            {renderArrow()}
         </>
     )
 }

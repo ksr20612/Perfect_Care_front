@@ -8,8 +8,11 @@ import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import TextArea from "../../components/textArea";
+import { usePage } from "../../hooks/usePage";
 
 const Scr8 = () => {
+
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
@@ -21,6 +24,7 @@ const Scr8 = () => {
                 <Question>Q. 그 당시 나의 대처</Question>
                 <TextArea customStyle={{padding : "20px"}}/>
             </Box>
+            {renderArrow()}
         </>
     )
 }

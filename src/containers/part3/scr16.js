@@ -11,9 +11,11 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector } from "react-redux";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { usePage } from "../../hooks/usePage";
 
 const Scr16 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const scr10 = useSelector(state=>state.part3.information.scr10);
     const scr16 = useSelector(state=>state.part3.information.scr16);
     const [active, setActive] = useState(new Array(4));
@@ -36,6 +38,7 @@ const Scr16 = () => {
                     </Options>
                 </AnswerBox>
             </Box>
+            {renderArrow()}
         </>
     )
 }
