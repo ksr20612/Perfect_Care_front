@@ -19,11 +19,12 @@ const Scr11 = () => {
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,11)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                <Subtitle>
+                        사실 이말들이 범인! 왜곡된 생각인 <span>인지오류</span>들입니다. <br/>
+                        어떤 특징이 있는지 살펴볼까요?
+                </Subtitle>
                 <div>
-                    <Note>용의자인 자동사고를 찾았다면 이 사고가 정말로 완벽주의를 강하게 만든 범인인지 살펴보아요!</Note>
-                </div>
-                <div>
-                    <Subtitle>평소에 자주하는 말이나 생각과 <br/> 비슷한 것을 골라 <span>클릭</span>해보세요.</Subtitle>
+                    <Note></Note>
                     <Bubbles>
                         <Bubble title="재앙화 사고" content={`이번 시험도 망치다니, \n 내 대학 입시는 망했어.`}></Bubble>
                         <Bubble title="흑백논리" content={`1등이 아니면 의미없지.`}></Bubble>
@@ -39,38 +40,41 @@ const Scr11 = () => {
 
 const Box = styled.div`
     display : flex;
+    flex-direction : column;
     align-items : center;
     width : 100%;
     height : 70%;
     margin-top : 5%;
 
     & > div:first-child {
-        width : 30%;
-        height : 100%;
+        width : 100%;
+        height : auto;
 
-        & > div:last-child {
+        /* & > div:last-child {
             display : flex;
             width : 100%;
             justify-content : center;
             
             & > div:first-child { margin-right : 1vw; }
-        }
+        } */
     }
     & > div:last-child {
-        width : 70%;
-        height : 100%;
+        display : flex;
+        width : 100%;
+        flex : 1;
+        align-items : center;
+        justify-content : center;
+        margin-top : 3%;
     }
 `
 const Subtitle = styled.div`
-    font-size : 2.4rem;
-    font-family : "Noto_Medium";
+    font-size : 3.0rem;
     width : 100%;
     text-align : center;
-    margin : 4vh 0;
 
     & > span {
-        text-decoration : underline;
-        text-underline-offset : 5px;
+        font-size : 4.0rem;
+        font-weight : bolder;
     }
 `
 const Note = styled.div`
@@ -91,10 +95,10 @@ const Bubbles = styled.div`
     grid-template-rows : 1fr 1fr;
     grid-template-columns : 1fr 1fr;
     width : 100%;
-    height : 80%;
+    height : 100%;
     font-size : 2.4rem;
 
-    & > div {
+    /* & > div {
         margin : 5%;
         padding : 5%;
         word-break : keep-all;
@@ -104,7 +108,7 @@ const Bubbles = styled.div`
         text-align : center;
         background-color : ${pallette.GREY};
         border-radius : 10%;
-    }
+    } */
 `
 
 export default Scr11;

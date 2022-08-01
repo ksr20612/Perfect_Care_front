@@ -44,17 +44,13 @@ const Bubble = ({
 const Box = styled.div`
     display : flex;
     flex-direction : column;
-    align-items : center;
-    justify-content : center;
-    margin : 1vmin;
-    padding : 1.5vmin;
+    margin : 3%;
+    padding : 5%;
     word-break : keep-all;
-    display : flex;
-    align-items : center;
-    justify-content : center;
     text-align : center;
-    background-color : ${pallette.GREY};
-    border-radius : 10%;
+    background-color : ${pallette.WHITE};
+    border-radius : 20px;
+    box-shadow : #C4C8D066 0px 10px 20px;
 
     &.clicked > div:first-child {
         opacity : 1;
@@ -67,8 +63,11 @@ const Box = styled.div`
 
 `
 const Title = styled.div`
+    width : 100%;
     opacity : 0;
     transition : all .3s ease-in;
+    text-align : left;
+    border-bottom : 2px solid ${pallette.BLUISH};
 `
 const Speech = styled.div`
     font-size : 2.4rem;

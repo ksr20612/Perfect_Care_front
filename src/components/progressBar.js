@@ -13,10 +13,6 @@ const ProgressBar = () => {
     const pageLen = getPageLen(useLocation().pathname.substr(1,1));
     const [currentPage, partIdx, handlePage, ] = usePage({});
 
-    useEffect(()=>{
-        console.log(currentPage);
-    })
-
     return (
         <Box>
             <Arrow><ArrowPrevIcon/></Arrow>
