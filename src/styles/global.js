@@ -58,83 +58,6 @@ const Global = createGlobalStyle`
     }
 
     // font
-    ${'' /* @font-face {
-        font-family: 'Sans_Bold';
-        font-weight: 700;
-        src: local('Spoqa Han Sans Neo Bold'),
-        url(${Bold}) format('truetype');
-    }
-    
-    @font-face {
-        font-family: 'Sans_Medium';
-        font-weight: 300;
-        src: local('Spoqa Han Sans Neo Medium'),
-        url(${Medium}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Sans_Regular';
-        font-weight: 400;
-        src: local('Spoqa Han Sans Neo Regular'),
-        url(${Regular}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Sans_Light';
-        font-weight: 300;
-        src: local('Spoqa Han Sans Neo Light'),
-        url(${Light}) format('truetype');
-    } */}
-
-    @font-face {
-        font-family: 'Anton';
-        font-weight: 300;
-        src: local('Anton-Regular'),
-        url(${Anton}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Black';
-        font-weight: 300;
-        src: local('NotoSansKR-Black'),
-        url(${Noto_Black}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Bold';
-        font-weight: 300;
-        src: local('NotoSansKR-Bold'),
-        url(${Noto_Bold}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Medium';
-        font-weight: 300;
-        src: local('NotoSansKR-Medium'),
-        url(${Noto_Medium}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Regular';
-        font-weight: 300;
-        src: local('NotoSansKR-Regular'),
-        url(${Noto_Regular}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Light';
-        font-weight: 300;
-        src: local('NotoSansKR-Light'),
-        url(${Noto_Light}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Thin';
-        font-weight: 300;
-        src: local('NotoSansKR-Thin'),
-        url(${Noto_Thin}) format('truetype');
-    }
-
     // Pretendards
     @font-face {
         font-family: 'Black';
@@ -190,6 +113,56 @@ const Global = createGlobalStyle`
         src: local('Pretendard-Thin'),
         url(${Thin}) format('truetype');
     }
+
+
+    ${'' /* @font-face {
+        font-family: 'Anton';
+        font-weight: 300;
+        src: local('Anton-Regular'),
+        url(${Anton}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Black';
+        font-weight: 300;
+        src: local('NotoSansKR-Black'),
+        url(${Noto_Black}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Bold';
+        font-weight: 300;
+        src: local('NotoSansKR-Bold'),
+        url(${Noto_Bold}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Medium';
+        font-weight: 300;
+        src: local('NotoSansKR-Medium'),
+        url(${Noto_Medium}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Regular';
+        font-weight: 300;
+        src: local('NotoSansKR-Regular'),
+        url(${Noto_Regular}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Light';
+        font-weight: 300;
+        src: local('NotoSansKR-Light'),
+        url(${Noto_Light}) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Noto_Thin';
+        font-weight: 300;
+        src: local('NotoSansKR-Thin'),
+        url(${Noto_Thin}) format('truetype');
+    } */}
 
     @font-face {
         font-family: 'Arial_Bold';

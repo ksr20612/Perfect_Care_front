@@ -11,10 +11,12 @@ import { setPageIdx } from "../features/pageSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import ProgressMap from "../components/progressMap";
 
 const Header = () => {
 
     const [isMenuOn, setIsMenuOn] = useState(false);
+    const [isMapOn, setIsMapOn] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const partIdx = useLocation().pathname.substr(1,1)*1 - 1;
@@ -48,7 +50,7 @@ const Header = () => {
                     <span>로그인</span>
                     <LoginIcon size="2.4rem"/>
                 </IconWrapper>
-                <IconWrapper>
+                <IconWrapper onClick={()=>{setIsMapOn(!isMapOn)}}>
                     <span></span>
                     <MapIcon size="2.4rem"/>
                 </IconWrapper>
@@ -72,6 +74,7 @@ const Header = () => {
                     })
                 }
             </ScreenList>
+            {isMapOn && <ProgressMap></ProgressMap>}
         </Head>
     )
 }

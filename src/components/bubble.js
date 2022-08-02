@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { lighten, darken } from "polished"
+import { lighten, darken } from "polished";
+import { LayoutGroup, motion, AnimateSharedLayout } from "framer-motion";
 import pallette from "../styles/pallette.css";
 import Modal from "./modal";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsModalOn, toggleModalOn } from "../features/modalSlice";
+import fadein from "../styles/framer-motion/fadein";
 
 const Bubble = ({
     title = `재앙화 사고`,
     content = `이번 시험도 망치다니, \n 내 대학 입시는 망했어.`,
+    icon,
     children
 }) => {
 
@@ -30,10 +33,18 @@ const Bubble = ({
         setStatus(0);
     }
 
+    useEffect(()=>{
+        console.log(status);
+    })
+
     return (
-        <Box className={status===1? "clicked" : null} onClick={(e)=>{handleClick()}}>
-            <Title>{title}</Title>
-            <Speech>{content}</Speech>
+
+        <Box as={motion.div} layout onClick={(e)=>{handleClick()}}>
+            {status===1? <Title as={motion.div} layout initial="hidden" animate="visible" variable={fadein} custom={1}>{title}</Title> : null}
+            <Speech as={motion.div} layout >
+                <Icon src={icon}></Icon>
+                {content}
+            </Speech>
             <Modal size={{width : "50vw", height : "50vh"}} isOn={status===2} close={{on: true, handleClose: (e)=>{close(e)}}}>
                 {children}
             </Modal>
@@ -51,30 +62,45 @@ const Box = styled.div`
     background-color : ${pallette.WHITE};
     border-radius : 20px;
     box-shadow : #C4C8D066 0px 10px 20px;
+    width : 90%;
+    height : 90%;
 
-    &.clicked > div:first-child {
+    /* &.clicked > div:first-child {
         opacity : 1;
     }
 
     &.clicked > div:nth-child(2) {
         font-size : 1.6rem;
         transform : translateY(0);
-    }
+    } */
 
 `
 const Title = styled.div`
     width : 100%;
-    opacity : 0;
-    transition : all .3s ease-in;
+    height : auto;
     text-align : left;
     border-bottom : 2px solid ${pallette.BLUISH};
 `
 const Speech = styled.div`
     font-size : 2.4rem;
     font-family : "Noto_medium";
-    transform : translateY(-2vh);
-    transition : all .3s ease-in;
     white-space : pre-line;
+    width : 100%;
+    flex : 1;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : space-around;
+    font-size : 1.5rem;
+    color : #919191;
+`
+const Icon = styled.div`
+    width : 40%;
+    height : 40%;
+    background : url(${props=>props.src});
+    background-size : contain;
+    background-position : center center;
+    background-repeat : no-repeat;
 `
 
 export default Bubble;

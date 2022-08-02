@@ -10,6 +10,10 @@ import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import NoteImg from "../../assets/ic_memo_y_02.png";
 import { usePage } from "../../hooks/usePage";
+import Icon1 from "../../assets/ic_brin_blu.png"; 
+import Icon2 from "../../assets/ic_puzzle.png";
+import Icon3 from "../../assets/ic_bal.png";
+import Icon4 from "../../assets/vision-svgrepo-com.png";
 
 const Scr11 = () => {
 
@@ -26,10 +30,10 @@ const Scr11 = () => {
                 <div>
                     <Note></Note>
                     <Bubbles>
-                        <Bubble title="재앙화 사고" content={`이번 시험도 망치다니, \n 내 대학 입시는 망했어.`}></Bubble>
-                        <Bubble title="흑백논리" content={`1등이 아니면 의미없지.`}></Bubble>
-                        <Bubble title="당위 진술" content={`아무리 바빠도 \n 운동은 매일 해야해.`}></Bubble>
-                        <Bubble title="지나친 일반화" content={`지난번 발표때 실수했으니까 \n 오늘도 분명 실수할거야.`}></Bubble>
+                        <Bubble title="재앙화 사고" icon={Icon1} content={`이번 시험도 망치다니, \n 내 대학 입시는 망했어.`}></Bubble>
+                        <Bubble title="흑백논리" icon={Icon2} content={`1등이 아니면 의미없지.`}></Bubble>
+                        <Bubble title="당위 진술" icon={Icon3} content={`아무리 바빠도 \n 운동은 매일 해야해.`}></Bubble>
+                        <Bubble title="지나친 일반화" icon={Icon4} content={`지난번 발표때 실수했으니까 \n 오늘도 분명 실수할거야.`}></Bubble>
                     </Bubbles>
                 </div>
             </Box>

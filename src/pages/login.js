@@ -11,6 +11,7 @@ import fadein from "../styles/framer-motion/fadein";
 import { toastError, toastSuccess } from "../utils/toast";
 import { POST } from "../services/userService";
 import { setId, setLoginState, setToken } from "../features/stateSlice";
+import Header from "../components/header";
 
 const Login = () => {
 
@@ -58,18 +59,21 @@ const Login = () => {
     }
 
     return (
-        <Box>  
-            <Card as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Title>로그인</Title>
-                <TextBox label="아이디" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
-                <TextBox label="비밀번호" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
-                <Button customStyle={{ width : "100%", }} handleClick={()=>{handleClick()}} loading={loading}/>
-                <Text href="/signup">회원가입</Text>
-                <Text href="/search">아이디 비밀번호 찾기</Text>
-                <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} />
-                <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin>
-            </Card>
-        </Box>
+        <>
+            <Header/>
+            <Box>  
+                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                    <Title>로그인</Title>
+                    <TextBox label="아이디" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
+                    <TextBox label="비밀번호" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
+                    <Button customStyle={{ width : "100%", }} handleClick={()=>{handleClick()}} loading={loading}/>
+                    <Text href="/signup">회원가입</Text>
+                    <Text href="/search">아이디 비밀번호 찾기</Text>
+                    <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} />
+                    <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin>
+                </Card>
+            </Box>
+        </>
     )
 }
 const Box = styled.div`
