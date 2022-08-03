@@ -13,6 +13,7 @@ import RadioBox from "../components/radioBox";
 import Checkboxes from "../components/checkboxes";
 import { POST } from "../services/userService";
 import { setId } from "../features/stateSlice";
+import Header from "../components/header";
 
 const Signup = () => {
 
@@ -67,32 +68,35 @@ const Signup = () => {
     }
 
     return (
-        <Box>
-            <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} ref={cardRef}>
-                <Progress>
-                    <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="30" pathLength="1" className="bg" />
-                        <motion.circle
-                            cx="50"
-                            cy="50"
-                            r="30"
-                            pathLength="1"
-                            className="indicator"
-                            style={{ pathLength: scrollYProgress }}
-                        />
-                    </svg>
-                </Progress>
-                <Title>회원가입</Title>
-                <TextBox label="아이디 *" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
-                <TextBox label="비밀번호 *" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
-                <TextBox label="닉네임 *" customStyle={{width:"100%"}} value={nick} handleChange={(value)=>{handleChange("nick", value)}} hasBackground={false}/>
-                <Checkboxes title="성별" items={["남자", "여자"]} checked={gender} handleChange={(v)=>setGender(v===gender? "" : v)} />
-                <Checkboxes title="나이" items={["1", "2", "3"]} checked={age} handleChange={(v)=>setAge(v===age? "" : v)} />
-                <Checkboxes title="유입경로" items={["1", "2", "3", "4"]} checked={fromWhere} handleChange={(v)=>setFromWhere(v===fromWhere? "" : v)} />
-                <br/>
-                <Button customStyle={{ width : "100%" }} handleClick={()=>{handleClick()}} loading={loading}/>
-            </Card>
-        </Box>
+        <>
+            <Header/>
+            <Box>
+                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} ref={cardRef}>
+                    <Progress>
+                        <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" pathLength="1" className="bg" />
+                            <motion.circle
+                                cx="50"
+                                cy="50"
+                                r="30"
+                                pathLength="1"
+                                className="indicator"
+                                style={{ pathLength: scrollYProgress }}
+                            />
+                        </svg>
+                    </Progress>
+                    <Title>회원가입</Title>
+                    <TextBox label="아이디 *" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
+                    <TextBox label="비밀번호 *" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
+                    <TextBox label="닉네임 *" customStyle={{width:"100%"}} value={nick} handleChange={(value)=>{handleChange("nick", value)}} hasBackground={false}/>
+                    <Checkboxes title="성별" items={["남자", "여자"]} checked={gender} handleChange={(v)=>setGender(v===gender? "" : v)} />
+                    <Checkboxes title="나이" items={["1", "2", "3"]} checked={age} handleChange={(v)=>setAge(v===age? "" : v)} />
+                    <Checkboxes title="유입경로" items={["1", "2", "3", "4"]} checked={fromWhere} handleChange={(v)=>setFromWhere(v===fromWhere? "" : v)} />
+                    <br/>
+                    <Button customStyle={{ width : "100%" }} handleClick={()=>{handleClick()}} loading={loading}/>
+                </Card>
+            </Box>
+        </>
     )
 }
 const Box = styled.div`

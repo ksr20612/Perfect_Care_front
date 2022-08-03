@@ -25,11 +25,10 @@ const Header = () => {
         const part = partIdx + 1;
         const page = pageIdx + 1;
         if(part > 0 && page > 0){
-            if(window.confirm("선택한 섹션으로 이동하시겠습니까?\n현재 화면에서 입력한 정보는 저장됩니다.")) {
+            if(window.confirm("선택한 섹션으로 이동하시겠습니까? \n 현재 화면에서 입력한 정보는 저장되지 않습니다.")) {
                 setIsMenuOn(false);
                 navigate(`/${part}`);
                 dispatch(setPageIdx(page));
-                // 저장 로직 추가
             }
         }
     }
@@ -50,7 +49,7 @@ const Header = () => {
                     <span>로그인</span>
                     <LoginIcon size="2.4rem"/>
                 </IconWrapper>
-                <IconWrapper onClick={()=>{setIsMapOn(!isMapOn)}}>
+                <IconWrapper onClick={()=>{setIsMapOn(!isMapOn)}} style={isMapOn? {color : "#f5b117"} : {}}>
                     <span></span>
                     <MapIcon size="2.4rem"/>
                 </IconWrapper>
@@ -74,7 +73,9 @@ const Header = () => {
                     })
                 }
             </ScreenList>
-            {isMapOn && <ProgressMap></ProgressMap>}
+            <AnimatePresence>
+                {isMapOn && <ProgressMap></ProgressMap>}
+            </AnimatePresence>
         </Head>
     )
 }
@@ -106,6 +107,7 @@ const IconWrapper = styled.div`
     align-items : center;
     padding : 0.5vmin 0;
     cursor : pointer;
+    z-index : 2;
 
     & > * + * {
         margin-left : 0.5vmin;
