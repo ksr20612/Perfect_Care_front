@@ -13,12 +13,14 @@ import { usePage } from "../../hooks/usePage";
 
 const Scr2 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,9)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 
             </Box>
+            {renderArrow()}
         </>
     )
 }

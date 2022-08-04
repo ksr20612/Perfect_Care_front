@@ -19,6 +19,8 @@ import { ReactComponent as Bubble7 } from '../../assets/ic_bub_def-6.svg';
 import { ReactComponent as Bubble8 } from '../../assets/ic_bub_def-7.svg';
 import { ReactComponent as Bubble9 } from '../../assets/ic_bub_def-8.svg';
 import { ReactComponent as Bubble10 } from '../../assets/ic_bub_def-9.svg';
+import { useSelector, useDispatch } from "react-redux";
+import { setMyself } from "../../features/parts/part5Slice";
 
 const list = [
     { content : "섬세하다", image : Bubble1, style : { top : "67%", left : "17%" }},
@@ -36,14 +38,16 @@ const list = [
 
 const Scr2 = () => {
 
+    const dispatch = useDispatch();
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
-    const [checked, setChecked] = useState([]);
+    // const [checked, setChecked] = useState([]);
+    const checked = useSelector(state=>state.part5.myself);
     const handleCheck = (v) => {
         console.log(v);
         if(checked.includes(v)) {
-            setChecked([...checked.filter((item,i)=>item!==v)]);
+            dispatch(setMyself([...checked.filter((item,i)=>item!==v)]));
         }else {
-            setChecked([...checked, v]);
+            dispatch(setMyself([...checked, v]));
         }
     }
 
@@ -56,7 +60,7 @@ const Scr2 = () => {
                 <Girl></Girl>
                 {
                     list.map((bubble, i)=>{
-                        return <SpeechBubble checked={checked.includes(i)} delay={(i+1)*0.2} content={bubble.content} style={bubble.style} onCheck={()=>handleCheck(i)}><bubble.image /></SpeechBubble>
+                        return <SpeechBubble checked={checked.includes(bubble.content)} delay={(i+1)*0.2} content={bubble.content} style={bubble.style} onCheck={()=>handleCheck(bubble.content)}><bubble.image /></SpeechBubble>
                     })
                 }
             </Options>
