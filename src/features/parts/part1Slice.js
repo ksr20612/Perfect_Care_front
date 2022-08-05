@@ -4,6 +4,7 @@ import { getLength } from "../../app/questionList";
 export const Part1Slice = createSlice({
     name : "part1",
     initialState : {
+        myself : [],
         test : {
             name : "우울",
             scores : [],
@@ -14,6 +15,9 @@ export const Part1Slice = createSlice({
         }
     },
     reducers : {
+        setMyself : (state, { payload }) => {
+            state.myself = [...state.payself, payload];
+        },
         setTestName : (state, { payload }) => {
             state.test.name = payload;
         },
@@ -29,5 +33,5 @@ export const Part1Slice = createSlice({
     }
 });
 
-export const { setTestName, setScores, setBefore, setAfter, } = Part1Slice.actions;
+export const { setMyself, setTestName, setScores, setBefore, setAfter, } = Part1Slice.actions;
 export default Part1Slice.reducer;

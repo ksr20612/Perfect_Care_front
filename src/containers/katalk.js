@@ -7,18 +7,23 @@ import TextArea from "../components/textArea";
 import sampleImg from "../assets/sample.jpg";
 import SingleTalk from "../components/singleTalk";
 import { toastError } from "../utils/toast";
+import { useSelector, useDispatch } from "react-redux";
+import { setMessage } from "../features/parts/part4Slice";
 
 const Katalk = () => {
 
+    const dispatch = useDispatch();
     const [phase, setPhase] = useState(1); // 1 : 입력1, 2 이상 : 입력2~
     const [curText, setCurText] = useState("");
-    const [messages, setMessages] = useState([]);
+    const messages = useSelector(state=>state.part4.message);
+    // const [messages, setMessages] = useState([]);
 
     const handleClick = () => {
         if(curText) {
             setPhase(phase+1);
             setCurText("");
-            setMessages([...messages, curText]);
+            // setMessages([...messages, curText]);
+            dispatch(setMessage(curText));
         }else {
             toastError("Y양에게 답장을 해주세요!");
         }

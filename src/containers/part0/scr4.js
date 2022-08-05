@@ -13,6 +13,7 @@ import { usePage } from "../../hooks/usePage";
 
 const Scr4 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     return (
         <>
             <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
@@ -38,6 +39,7 @@ const Scr4 = () => {
                     </div>
                 </Content>
             </Box>
+            {renderArrow()}
         </>
     )
 }

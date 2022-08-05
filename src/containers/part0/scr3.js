@@ -13,6 +13,7 @@ import { usePage } from "../../hooks/usePage";
 
 const Scr3 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     return (
         <>
             <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
@@ -20,6 +21,7 @@ const Scr3 = () => {
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.5}>
                 <MovieClip width="100%" height="100%"/>
             </Box>
+            {renderArrow()}
         </>
     )
 }

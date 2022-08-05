@@ -9,20 +9,28 @@ import { Paper } from "../../styles/components/paper";
 import TextArea from "../../components/textArea";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import { useSelector, useDispatch } from "react-redux";
+import { setFutureReaction } from "../../features/parts/part4Slice";
+import { validateSchema } from "graphql";
 
 const Scr9 = () => {
 
+    const dispatch = useDispatch();
+    const circumstance = useSelector(state=>state.part4.illustration.circumstance);
+    const thought = useSelector(state=>state.part4.illustration.thought);
+    const reaction = useSelector(state=>state.part4.illustration.reaction);
+    const futureReaction = useSelector(state=>state.part4.illustration.futureReaction);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,9)}/>
             <Box>
-                <Card></Card>
-                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.3}></Card>
-                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.4}></Card>
+                <Card>{circumstance}</Card>
+                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.3}>{thought}</Card>
+                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.4}>{reaction}</Card>
                 <Question>Q. 만약 다음번에 동일한 실수를 하게 된다면 어떻게 대처할 수 있을까?</Question>
-                <TextArea customStyle={{padding : "20px"}}/>
+                <TextArea value={futureReaction} handleChange={(v)=>dispatch(setFutureReaction(v))} customStyle={{padding : "20px"}}/>
             </Box>
             {renderArrow()}
         </>

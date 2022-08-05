@@ -9,9 +9,12 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import { useSelector, useDispatch } from "react-redux";
+import { setComment } from "../../features/parts/part2Slice";
 
 const Scr5 = () => {
 
+    const dispatch = useDispatch();
     const [input, setInput] = useState();
     const handleChange = (v) => {
         setInput(v);
@@ -19,8 +22,10 @@ const Scr5 = () => {
     const handleClick = (e) => {
         console.log(input);
         setInput("");
+        dispatch(setComment({name : "??", content : input, likes : 0}));
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const comment = useSelector(state=>state.part2.comment);
 
     return (
         <>
@@ -34,7 +39,7 @@ const Scr5 = () => {
                 </div>
                 <Container>
                     <MovieClip width="100%" height="100%"/>
-                    <Comments value={input} handleChange={(v)=>{handleChange(v)}} handleClick={(e)=>{handleClick(e)}}>
+                    <Comments value={input} comments={comment} handleChange={(v)=>{handleChange(v)}} handleClick={(e)=>{handleClick(e)}}>
 
                     </Comments>
                 </Container>

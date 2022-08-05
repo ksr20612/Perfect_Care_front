@@ -3,6 +3,7 @@ import styled from "styled-components";
 import pallette from "../styles/pallette.css";
 import { darken, lighten } from "polished";
 import TextArea from "../components/textArea";
+import { motion } from "framer-motion";
 
 const CommentBox = ({
     width = "40%",

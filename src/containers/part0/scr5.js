@@ -13,12 +13,14 @@ import { usePage } from "../../hooks/usePage";
 
 const Scr5 = () => {
 
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     return (
         <>
             <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 The basics of CBT
             </Box>
+            {renderArrow()}
         </>
     )
 }
