@@ -11,7 +11,7 @@ import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
 import { usePage } from "../../hooks/usePage";
 
-const Scr2 = () => {
+const Scr6 = () => {
 
     return (
         <>
@@ -39,4 +39,4 @@ const Ask = styled.div`
     font-size : 3.6rem;
 `
 
-export default Scr2;
+export default Scr6;

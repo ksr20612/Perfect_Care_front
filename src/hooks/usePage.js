@@ -23,32 +23,21 @@ export const usePage = ({
     const currentPage = useSelector(state=>state.page.pageIdx);
     const partIdx = useLocation().pathname.substr(1,1) * 1;
     const pageLen = getPageLen(partIdx);
-    // const prevCb = useSelector(state=>state.page.prev) || (()=>{console.log("이전으로")});
-    // const nextCb = useSelector(state=>state.page.next) || (()=>{console.log("다음으로")});
-    // const beforePrevCb = useSelector(state=>state.page.beforePrev) || (()=>false);
-    // const beforeNextCb = useSelector(state=>state.page.beforeNext) || (()=>false);
-    // const commonCb = useSelector(state=>state.page.common) || (()=>{});
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    useEffect(()=>{
-        console.log({currentPage});
-    })
 
     const handlePage = (v) => {
 
         if(isAlreadyClicked) return;
 
         // #0
-        let callback; 
+        let result = true;
         if(v < 0) {
-            if(onBeforePrev) onBeforePrev();
+            if(onBeforePrev) result = onBeforePrev();
         }else {
-            if(onBeforeNext) onBeforeNext();
+            if(onBeforeNext) result = onBeforeNext();
         }
-        // if(callback) {
-        //     if(typeof callback === "function") callback();
-        // } 
+        if(result === false) return;
 
         if(currentPage+v === 0) {
             if(partIdx + v <= 0) return;
@@ -100,14 +89,14 @@ export const usePage = ({
 
     };
 
-    const renderArrow = useCallback(() => {
+    const renderArrow = () => {
         return (
             <>
                 <Arrow className="reversed" onClick={()=>handlePage(-1)}/>
                 <Arrow onClick={()=>handlePage(1)}/>
             </>
         )
-    }, []);
+    };
 
     return [currentPage, partIdx, ()=>handlePage(), ()=>renderArrow()];
 

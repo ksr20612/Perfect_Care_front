@@ -14,13 +14,42 @@ import { setBefore, setAfter } from "../../features/parts/part1Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const Scr10 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
     const before = useSelector(state=>state.part1.goal.before);
     const after = useSelector(state=>state.part1.goal.after);
     const dispatch = useDispatch();
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            POST("/part1/scr10", { userIdx, before, after, }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        },
+    });
+    useFetchREST(`/part1/scr10/${userIdx}`, 
+        (result)=>{
+            console.log(result);
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setBefore(result.data.goal.changeable));
+                dispatch(setAfter(result.data.goal.sustainable));
+            }
+        }
+    )
+
 
     return (
         <>

@@ -3,13 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const StateSlice = createSlice({
     name : "state",
     initialState : {
-        id : "",
+        userIdx : "1",
+        id : "ksr20612",
+        nick : "ethan",
         token : "",
         loginState : false,
     },
     reducers : {
+        setIdx : (state, {payload}) => {
+            state.userIdx = payload+"";
+        },
         setId : (state, {payload}) => {
             state.id = payload+"";
+        },
+        setNick : (state, {payload}) => {
+            state.nick = payload+"";
         },
         setToken : (state, {payload}) => {
             state.token = payload;
@@ -20,5 +28,5 @@ export const StateSlice = createSlice({
     }
 });
 
-export const { setId, setToken, setLoginState } = StateSlice.actions;
+export const { setIdx, setId, setNick, setToken, setLoginState } = StateSlice.actions;
 export default StateSlice.reducer;

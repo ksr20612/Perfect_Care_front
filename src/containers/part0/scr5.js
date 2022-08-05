@@ -11,7 +11,7 @@ import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
 import { usePage } from "../../hooks/usePage";
 
-const Scr2 = () => {
+const Scr5 = () => {
 
     return (
         <>
@@ -36,4 +36,4 @@ const Box = styled(Paper)`
     }
 `
 
-export default Scr2;
+export default Scr5;

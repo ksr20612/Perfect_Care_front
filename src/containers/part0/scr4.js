@@ -11,7 +11,7 @@ import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
 import { usePage } from "../../hooks/usePage";
 
-const Scr2 = () => {
+const Scr4 = () => {
 
     return (
         <>
@@ -91,4 +91,4 @@ const Content = styled.div`
     }
 `
 
-export default Scr2;
+export default Scr4;
