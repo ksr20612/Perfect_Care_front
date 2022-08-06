@@ -12,15 +12,42 @@ import { useSelector, useDispatch } from "react-redux";
 import { setScr4 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const Scr4 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const dispatch = useDispatch();
     const handleChange = (v) => {
-        dispatch(dispatch(setScr4(v)));
+        dispatch(setScr4(v));
     }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            POST("/part3/scr4", { userIdx, circumstance : scr4 }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        }
+    });
+    useFetchREST(`/part3/illustration/${userIdx}`, 
+        (result)=>{
+            console.log(result);
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setScr4(result.data.illustration.scr4));
+            }
+        }
+    )
 
     return (
         <>
@@ -35,7 +62,6 @@ const Scr4 = () => {
                     <div className="subQuestion">✶ 상황 : 누가 / 언제 / 어디서 / 무엇을 <span>1/7</span></div>
                     <TextArea color={pallette.GREY} width="100%" height="20vh" value={scr4} handleChange={(v)=>{handleChange(v)}}/>
                 </Answer>
-                {/* <GuruBox /> */}
             </Box>
             {renderArrow()}
         </>

@@ -25,3 +25,15 @@ export const readInfo = (obj) => {
 export const writeInfo = (emotion, score) => {
     return {[emotion] : score};
 }
+
+export const toString = (obj) => {
+
+    const result = [];
+    for(const key in obj) {
+        result.push(`${key} ${obj[key]}점`);
+    }
+    const string = result.join(", ");
+
+    return string;
+
+}

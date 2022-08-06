@@ -10,19 +10,18 @@ import { toastError } from "../utils/toast";
 import { useSelector, useDispatch } from "react-redux";
 import { setMessage } from "../features/parts/part4Slice";
 
-const Katalk = () => {
+const Katalk = ({
+    messages
+}) => {
 
     const dispatch = useDispatch();
     const [phase, setPhase] = useState(1); // 1 : 입력1, 2 이상 : 입력2~
     const [curText, setCurText] = useState("");
-    const messages = useSelector(state=>state.part4.message);
-    // const [messages, setMessages] = useState([]);
 
     const handleClick = () => {
         if(curText) {
             setPhase(phase+1);
             setCurText("");
-            // setMessages([...messages, curText]);
             dispatch(setMessage(curText));
         }else {
             toastError("Y양에게 답장을 해주세요!");
@@ -44,7 +43,7 @@ const Katalk = () => {
                     <span>🗙</span>
                 </Control>
             </Header>
-            <Screen>
+            <Screen as={motion.div} layout>
                 <SingleTalk isMe={false} transitionDelay={1} texts={["나는 이때의 실수를 잊을 수가 없어ㅠㅠ", "너는 어떤 실수가 가장 기억에 남아?"]}/>
                 {
                     messages.map((message, i)=>{

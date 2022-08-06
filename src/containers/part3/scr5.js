@@ -10,15 +10,18 @@ import AnswerBox from "../../components/answerBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { useSelector, useDispatch } from "react-redux";
-import { setScr5, removeScr5 } from "../../features/parts/part3Slice";
+import { setScr4, setScr5, removeScr5 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { readInfo, writeInfo } from "../../utils/part3Converter";
 import CardResult from "../../components/cardResult";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const Scr5 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
     const scr4 = useSelector(state=>state.part3.information.scr4);
     const scr5 = useSelector(state=>state.part3.information.scr5);
     const selected = readInfo(scr5);
@@ -29,6 +32,31 @@ const Scr5 = () => {
     const remove = (item)=>{
         dispatch(removeScr5(item.split(" ")[0]));
     }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            POST("/part3/scr5", { userIdx, emotion : scr5 }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        }
+    });
+    useFetchREST(`/part3/illustration/${userIdx}`, 
+        (result)=>{
+            console.log(result);
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setScr4(result.data.illustration.scr4));
+                dispatch(setScr5(result.data.illustration.scr5));
+            }
+        }
+    )
 
     return (
         <>

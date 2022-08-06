@@ -11,15 +11,42 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const Scr2 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
     const checks = useSelector(state=>state.part2.scr2);
     const dispatch = useDispatch();
     const handleChange = (type, value) => {
         dispatch(setStandard({ [type] : value }));
     }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            POST("/part2/scr2", { userIdx, standards : checks }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        }
+    });
+    useFetchREST(`/part2/scr2/${userIdx}`, 
+        (result)=>{
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                console.log(result.data.standards);
+                dispatch(setStandard(result.data.standards));
+            }
+        }
+    )
 
     return (
         <>

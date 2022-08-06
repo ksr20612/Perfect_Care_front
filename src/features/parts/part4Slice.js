@@ -4,7 +4,7 @@ export const Part4Slice = createSlice({
     name : "part4",
     initialState : {
         message : [],
-        illustration : {
+        mistake : {
             circumstance : "",
             thought : "",
             reaction : "",
@@ -14,19 +14,22 @@ export const Part4Slice = createSlice({
     reducers : {
         setMessage : (state, { payload }) => {
             state.message = [...state.message, payload];
-            if(!state.illustration.circumstance) state.illustration.circumstance = payload;
+            if(!state.mistake.circumstance) state.mistake.circumstance = payload;
+        },
+        setCircumstance : (state, { payload }) => {
+            state.mistake.circumstance = payload;
         },
         setThought : (state, { payload }) => {
-            state.illustration.thought = payload;
+            state.mistake.thought = payload;
         },
         setReaction : (state, { payload }) => {
-            state.illustration.reaction = payload;
+            state.mistake.reaction = payload;
         },
         setFutureReaction : (state, { payload }) => {
-            state.illustration.futureReaction = payload;
+            state.mistake.futureReaction = payload;
         }
     }
 });
 
-export const { setMessage, setThought, setReaction, setFutureReaction } = Part4Slice.actions;
+export const { setMessage, setCircumstance, setThought, setReaction, setFutureReaction } = Part4Slice.actions;
 export default Part4Slice.reducer;

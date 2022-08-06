@@ -104,6 +104,7 @@ const Talk = styled.div`
     &.me {
         background-color : ${lighten(0.2, pallette.YELLOW)};
         float : right;
+        width : auto !important;
     }
 `
 

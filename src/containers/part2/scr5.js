@@ -11,21 +11,54 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
 import { useSelector, useDispatch } from "react-redux";
 import { setComment } from "../../features/parts/part2Slice";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const Scr5 = () => {
 
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const nick = useSelector(state=>state.state.nick);
+    const comment = useSelector(state=>state.part2.comment);
     const dispatch = useDispatch();
     const [input, setInput] = useState();
+    const [isClicked, setIsClicked] = useState(false);
     const handleChange = (v) => {
         setInput(v);
     }
     const handleClick = (e) => {
-        console.log(input);
         setInput("");
-        dispatch(setComment({name : "??", content : input, likes : 0}));
+        dispatch(setComment({name : nick, content : input, likes : 0}));
+        if(input) setIsClicked(true);
     }
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
-    const comment = useSelector(state=>state.part2.comment);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            console.log(isClicked);
+            if(!isClicked) return false;
+            POST("/part2/scr5", { userIdx, comment : comment[0] }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        }
+    });
+    useFetchREST(`/part2/scr5/${userIdx}`, 
+        (result)=>{
+            console.log(result); 
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setComment(result.data.comments));
+                // nick, content, like만 가져올것
+            }
+        }
+    )
+
 
     return (
         <>
