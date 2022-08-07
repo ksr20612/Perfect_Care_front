@@ -11,10 +11,6 @@ const SpeechBubble = ({
     delay = 0,
 }) => {
 
-    useEffect(()=>{
-        console.log(checked);
-    });
-
     return (
         <Bubble style={style} className={checked? "checked" : null} onClick={()=>onCheck()}>
             {children}

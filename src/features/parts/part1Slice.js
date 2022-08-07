@@ -16,7 +16,7 @@ export const Part1Slice = createSlice({
     },
     reducers : {
         setMyself : (state, { payload }) => {
-            state.myself = [...state.payself, payload];
+            state.myself = payload;
         },
         setTestName : (state, { payload }) => {
             state.test.name = payload;
