@@ -8,7 +8,7 @@ import Bubble from "../../components/bubble";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-import NoteImg from "../../assets/ic_memo_y_02.png";
+import NoteImg from "../../assets/ic_memo_filled.png";
 import { usePage } from "../../hooks/usePage";
 import Icon1 from "../../assets/ic_brin_blu.png"; 
 import Icon2 from "../../assets/ic_puzzle.png";
@@ -93,6 +93,8 @@ const Note = styled.div`
     background-size : contain;
     background-position : center center;
     background-repeat : no-repeat;
+    width : 30%;
+    height : 100%;
 `
 const Bubbles = styled.div`
     display : grid;

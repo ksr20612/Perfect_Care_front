@@ -7,7 +7,7 @@ export const StateSlice = createSlice({
         id : "ksr20612",
         nick : "ethan",
         token : "",
-        loginState : false,
+        loginState : true,
     },
     reducers : {
         setIdx : (state, {payload}) => {

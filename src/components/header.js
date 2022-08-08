@@ -32,28 +32,49 @@ const Header = () => {
             }
         }
     }
+    const isLoggedIn = useSelector(state=>state.state.loginState);
+    const nick = useSelector(state=>state.state.nick);
+
+    useEffect(()=>{
+        console.log({isLoggedIn, nick});
+    })
 
     return (
-        <Head>
-            <IconWrapper onClick={()=>{setIsMenuOn(!isMenuOn);}}>
-                {isMenuOn? <CloseIcon size="2.4rem"/> : <MenuIcon size="2.4rem"/> }
-                <span>메뉴</span>
-            </IconWrapper>
-            <div className="logo">Perfect Care(로고)</div>
-            <div className="right">
-                <IconWrapper>
-                    <span>커뮤니티</span>
-                    <SpeechBubble size="2.4rem"/>
+        <Head layout>
+            <AnimatePresence>
+                <IconWrapper onClick={()=>{setIsMenuOn(!isMenuOn); setIsMapOn(false)}}>
+                    {isMenuOn? <CloseIcon size="2.4rem"/> : <MenuIcon size="2.4rem"/> }
+                    <span>메뉴</span>
                 </IconWrapper>
-                <IconWrapper onClick={()=>{navigate("/signin")}}>
-                    <span>로그인</span>
-                    <LoginIcon size="2.4rem"/>
-                </IconWrapper>
-                <IconWrapper onClick={()=>{setIsMapOn(!isMapOn)}} style={isMapOn? {color : "#f5b117"} : {}}>
-                    <span></span>
-                    <MapIcon size="2.4rem"/>
-                </IconWrapper>
-            </div>
+                <div className="logo">Perfect Care(로고)</div>
+                <div className="right">
+                    <IconWrapper>
+                        <span>커뮤니티</span>
+                        <SpeechBubble size="2.4rem"/>
+                    </IconWrapper>
+                    {isLoggedIn? 
+                        <>
+                            <IconWrapper exit={{opacity : 0}}>
+                                <span>{nick}</span>
+                                <LoginIcon size="2.4rem"/>
+                            </IconWrapper>
+                            <IconWrapper onClick={()=>{window.confirm("로그아웃하시겠습니까?")}}>
+                                <span>로그아웃</span>
+                                <LogoutIcon size="2.4rem"/>
+                            </IconWrapper>
+                        </>
+                        :
+                        <IconWrapper onClick={()=>{navigate("/signin")}}>
+                            <span>로그인</span>
+                            <LoginIcon size="2.4rem"/>
+                        </IconWrapper>
+                    }
+                    <IconWrapper onClick={()=>{setIsMapOn(!isMapOn); setIsMenuOn(false)}} style={isMapOn? {color : "#f5b117"} : {}}>
+                        <span></span>
+                        <MapIcon size="2.4rem"/>
+                    </IconWrapper>
+                </div>
+            </AnimatePresence>
             {/* vertical_menu */}
             <ScreenList className={isMenuOn? "on" : null}>
                 {
@@ -102,7 +123,7 @@ const Head = styled.div`
         left : calc((100% - 10vw) / 2);
     }
 `
-const IconWrapper = styled.div`
+const IconWrapper = styled(motion.div)`
     display : flex;
     align-items : center;
     padding : 0.5vmin 0;

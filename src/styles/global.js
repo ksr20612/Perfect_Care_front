@@ -1,17 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import pallette from "./pallette.css";
 import { lighten } from "polished";
-// import Bold from "./font/SpoqaHanSansNeo-Bold.ttf";
-// import Medium from "./font/SpoqaHanSansNeo-Medium.ttf";
-// import Regular from "./font/SpoqaHanSansNeo-Regular.ttf";
-// import Light from "./font/SpoqaHanSansNeo-Light.ttf";
-import Anton from "./font/Anton-Regular.ttf";
-import Noto_Black from "./font/NotoSansKR-Black.otf";
-import Noto_Bold from "./font/NotoSansKR-Bold.otf";
-import Noto_Light from "./font/NotoSansKR-Light.otf";
-import Noto_Medium from "./font/NotoSansKR-Medium.otf";
-import Noto_Regular from "./font/NotoSansKR-Regular.otf";
-import Noto_Thin from "./font/NotoSansKR-Thin.otf";
 import Black from "./font/Pretendard-Black.woff";
 import Bold from "./font/Pretendard-Bold.woff";
 import ExtraBold from "./font/Pretendard-ExtraBold.woff";
@@ -22,6 +11,7 @@ import Regular from "./font/Pretendard-Regular.woff";
 import SemiBold from "./font/Pretendard-SemiBold.woff";
 import Thin from "./font/Pretendard-Thin.woff";
 import ArialBold from "./font/Arial-bold.ttf";
+import Hand from "./font/Hand-writing.ttf";
 
 const Global = createGlobalStyle`
     // reset
@@ -113,7 +103,11 @@ const Global = createGlobalStyle`
         src: local('Pretendard-Thin'),
         url(${Thin}) format('truetype');
     }
-
+    @font-face {
+        font-family : 'Hand';
+        font-weight : 300;
+        src: url(${Hand}) format('truetype');
+    }
 
     ${'' /* @font-face {
         font-family: 'Anton';

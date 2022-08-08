@@ -26,6 +26,7 @@ const Scr10 = () => {
     const dispatch = useDispatch();
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(before || after) return false;
             POST("/part1/scr10", { userIdx, before, after, }, 
                 (result) => {
                     if(result.data.message) {

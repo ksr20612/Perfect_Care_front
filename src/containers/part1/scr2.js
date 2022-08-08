@@ -28,6 +28,9 @@ import { ReactComponent as Bubble9 } from '../../assets/ic_bub_def-8.svg';
 import { ReactComponent as Bubble10 } from '../../assets/ic_bub_def-9.svg';
 import { useSelector, useDispatch } from "react-redux";
 import { setMyself } from "../../features/parts/part1Slice";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
 const list = [
     { content : "섬세하다", image : Bubble1, style : { top : "67%", left : "17%" }},
@@ -45,7 +48,7 @@ const list = [
 const Scr2 = () => {
 
     const dispatch = useDispatch();
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
     const myself = useSelector(state=>state.part1.myself);
     const handleCheck = (v) => {
         if(myself.length > 7) return;
@@ -55,6 +58,33 @@ const Scr2 = () => {
             dispatch(setMyself([...myself, v]));
         }
     }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            if(myself.length === 0) {
+                toastError("문장을 한 개 이상 선택해주세요");
+                return false;
+            };
+            POST("/part1/scr2", { userIdx, descriptions : myself }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        },
+    });
+    useFetchREST(`/part1/scr2/${userIdx}`, 
+        (result)=>{
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setMyself(result.data.myself));
+            }
+        }
+    )
 
     return (
         <>

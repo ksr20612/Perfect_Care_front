@@ -43,7 +43,7 @@ const Bubble = ({
             {status===1? <Title as={motion.div} layout initial="hidden" animate="visible" variable={fadein} custom={1}>{title}</Title> : null}
             <Speech as={motion.div} layout >
                 <Icon src={icon}></Icon>
-                {content}
+                "{content}"
             </Speech>
             <Modal size={{width : "50vw", height : "50vh"}} isOn={status===2} close={{on: true, handleClose: (e)=>{close(e)}}}>
                 {children}
@@ -83,7 +83,7 @@ const Title = styled.div`
 `
 const Speech = styled.div`
     font-size : 2.4rem;
-    font-family : "Noto_medium";
+    font-family : "Hand";
     white-space : pre-line;
     width : 100%;
     flex : 1;
