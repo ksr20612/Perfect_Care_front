@@ -1,0 +1,10 @@
+<svg id="btn_cur_lo" xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
+  <g id="map-maps-and-location-svgrepo-com" transform="translate(-24.72 -58.538)">
+    <path id="패스_4202" data-name="패스 4202" d="M101.32,100.757a1.17,1.17,0,0,0-.895-.242l-12.782,1.8-17.7-2.853-14.339,2.685a1.066,1.066,0,0,0-.9,1.026v25.141a1.022,1.022,0,0,0,.409.809,1.174,1.174,0,0,0,.927.217l13.9-2.6,17.7,2.853,13.113-1.842a1.07,1.07,0,0,0,.952-1.034V101.55A1.02,1.02,0,0,0,101.32,100.757Z" transform="translate(-23.988 -18.868)" fill="#eda637"/>
+    <path id="패스_4203" data-name="패스 4203" d="M220.655,129.585l-17.7-2.853V99.457l17.7,2.853Z" transform="translate(-157 -18.868)" fill="#f7dc4d"/>
+    <ellipse id="타원_479" data-name="타원 479" cx="8.419" cy="3.66" rx="8.419" ry="3.66" transform="translate(46.094 94.609)" fill="#5289c9"/>
+    <path id="패스_4206" data-name="패스 4206" d="M23.809,156.162a11.9,11.9,0,1,0-23.809,0c0,4.667,6.964,14.826,10.24,19.346a2.061,2.061,0,0,0,3.335,0C16.852,171.006,23.809,160.888,23.809,156.162Z" transform="translate(42.433 -79.719)" fill="#de3b35"/>
+    <circle id="타원_478" data-name="타원 478" cx="5.039" cy="5.039" r="5.039" transform="translate(49.18 71.403)" fill="#3c3c3c"/>
+  </g>
+  <rect id="사각형_1210" data-name="사각형 1210" width="58" height="58" fill="none"/>
+</svg>

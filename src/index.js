@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./app/store";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import Modal from "./components/modal/Modal";
 
 import { ApolloProvider } from "@apollo/client";
 import client from "./app/aplClient";
@@ -22,6 +23,7 @@ root.render(
       <ApolloProvider client={client}>
         <PersistGate loading={null} persistor={persistor}>
           <App/>
+          <Modal/>
         </PersistGate>
       </ApolloProvider>
     </Provider>

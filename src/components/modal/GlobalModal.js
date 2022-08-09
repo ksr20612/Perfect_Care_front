@@ -1,16 +1,13 @@
-import React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Download from "./Download";
 
 export const MODAL_TYPES = {
-    AlertModal: "Alert",
-    TimeoutModal: "Timeout",
-    ToastModal : "ToastModal",
+    Download: "Download",
 };
 
 const MODAL_COMPONENTS = {
-    [MODAL_TYPES.AlertModal]: null,
-    [MODAL_TYPES.TimeoutModal]: null,
-    [MODAL_TYPES.ToastModal]: null,
+    [MODAL_TYPES.Download]: Download,
 };
 
 const GlobalModal = () => {
@@ -24,6 +21,11 @@ const GlobalModal = () => {
 
         return <ModalComponent {...props} />;
     };
+    useEffect(()=>{
+        console.log({show, type, props});
+    })
+
+
     return <>{renderComponent()}</>;
 };
 

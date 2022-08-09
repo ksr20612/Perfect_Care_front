@@ -112,7 +112,7 @@ const Head = styled.div`
     position: fixed;
     background-color: ${pallette.BLUE};
     backdrop-filter: saturate(150%) blur(10px);
-    z-index: 9999;
+    z-index: 1000;
     color : white;
     padding : 0 5vw;
     & > .right {

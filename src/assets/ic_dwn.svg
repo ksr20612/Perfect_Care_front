@@ -1,0 +1,18 @@
+<svg id="ic_dwn" xmlns="http://www.w3.org/2000/svg" width="70" height="60" viewBox="0 0 70 60">
+  <g id="files-folder-svgrepo-com">
+    <path id="패스_4208" data-name="패스 4208" d="M0,144.516v32.746a3.162,3.162,0,0,0,3.161,3.275h54.8a3.162,3.162,0,0,0,3.161-3.275V144.516a3.162,3.162,0,0,0-3.161-3.275H3.161A3.229,3.229,0,0,0,0,144.516" transform="translate(0 -130.536)" fill="#fbc176"/>
+    <path id="패스_4209" data-name="패스 4209" d="M79.04,63.67a4.256,4.256,0,0,0-4.2-4.282H58.017l-5.256-6.423H29.636a3.192,3.192,0,0,0-3.153,3.211V63.67Z" transform="translate(-23.272 -52.965)" fill="#c39a6e"/>
+    <g id="그룹_2427" data-name="그룹 2427" transform="translate(5.352 16.341)">
+      <path id="패스_4210" data-name="패스 4210" d="M58.054,187.519H45.209a1.071,1.071,0,0,1,0-2.141H58.054a1.071,1.071,0,1,1,0,2.141" transform="translate(-44.138 -185.378)" fill="#fff"/>
+      <path id="패스_4211" data-name="패스 4211" d="M58.054,222.83H45.209a1.071,1.071,0,0,1,0-2.141H58.054a1.071,1.071,0,0,1,0,2.141" transform="translate(-44.138 -216.407)" fill="#fff"/>
+    </g>
+  </g>
+  <g id="그룹_2431" data-name="그룹 2431" transform="translate(40 30)">
+    <circle id="타원_480" data-name="타원 480" cx="15" cy="15" r="15" fill="#5289c9"/>
+    <g id="down-arrow-svgrepo-com" transform="translate(8 7)">
+      <g id="그룹_2430" data-name="그룹 2430">
+        <path id="패스_4212" data-name="패스 4212" d="M7.961,16.164a.565.565,0,0,0,.85.05c.6-.6,6.125-6.307,6.125-6.307s.765-.761-.249-.761h-2.63V.363S12.069,0,11.6,0H5.136c-.657,0-.543.434-.543.434V9.328H1.745c-.834,0-.066.726-.066.726Z" transform="translate(-1.357 0)" fill="#f7f5e6"/>
+      </g>
+    </g>
+  </g>
+</svg>
