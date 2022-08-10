@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import pallette from "../styles/pallette.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import MapIcon from "../assets/btn_cur_lo.svg";
 import PathIcon from "../assets/ic_path.svg";
 import PathShadowIcon from "../assets/ic_path_sha.svg";
@@ -11,11 +11,22 @@ import FinFlagIcon from "../assets/ic_fin.svg";
 import Part from "./Part";
 import { usePage } from "../hooks/usePage";
 import useModal from "../hooks/useModal";
+import { saveAs } from "file-saver";
+import Download from "./modal/Download";
 
 const ProgressMap = () => {
 
     const [day, setDay] = useState(2);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const [isPopupOn, setIsPopupOn] = useState(false);
+    const handleDownload = () => {
+        const filesaver = saveAs("../../robots.txt", "퍼펙트 빙고.txt");
+        console.log(filesaver);
+    }
+    const handleClose = () => {
+        console.log("닫아");
+        setIsPopupOn(false);
+    }
 
     return (
         <Box as={motion.div} initial={{opacity : 0, y : -20, scale : 0.8}} animate={{opacity : 1, y : 0, scale : 0.8}} exit={{opacity : 0, y : -20, scale : 0.8}}>
@@ -39,10 +50,13 @@ const ProgressMap = () => {
             <Days>
                 {
                     [...Array(15)].map((v, i)=>{
-                        return i<day? <Done><span>Day</span><span>{((i+1)+"").padStart(2, "0")}</span></Done> : <Blank />
+                        return i<day? <Done onClick={()=>setIsPopupOn(true)}><span>Day</span><span>{((i+1)+"").padStart(2, "0")}</span></Done> : <Blank />
                     })
                 }
             </Days>
+            <AnimatePresence>
+                {isPopupOn && <Download handleDownload={handleDownload} handleClose={handleClose}/>}
+            </AnimatePresence>
         </Box>
     )
 }

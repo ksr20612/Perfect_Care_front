@@ -41,7 +41,6 @@ const Header = () => {
 
     return (
         <Head layout>
-            <AnimatePresence>
                 <IconWrapper onClick={()=>{setIsMenuOn(!isMenuOn); setIsMapOn(false)}}>
                     {isMenuOn? <CloseIcon size="2.4rem"/> : <MenuIcon size="2.4rem"/> }
                     <span>메뉴</span>
@@ -74,7 +73,6 @@ const Header = () => {
                         <MapIcon size="2.4rem"/>
                     </IconWrapper>
                 </div>
-            </AnimatePresence>
             {/* vertical_menu */}
             <ScreenList className={isMenuOn? "on" : null}>
                 {
@@ -94,7 +92,7 @@ const Header = () => {
                     })
                 }
             </ScreenList>
-            <AnimatePresence>
+            <AnimatePresence initial={false} key="map">
                 {isMapOn && <ProgressMap></ProgressMap>}
             </AnimatePresence>
         </Head>
