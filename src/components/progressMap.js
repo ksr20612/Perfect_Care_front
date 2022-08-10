@@ -21,7 +21,7 @@ const ProgressMap = () => {
     const [isPopupOn, setIsPopupOn] = useState(false);
     const handleDownload = () => {
         const filesaver = saveAs("../../robots.txt", "퍼펙트 빙고.txt");
-        console.log(filesaver);
+        
     }
     const handleClose = () => {
         console.log("닫아");
