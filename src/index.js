@@ -23,7 +23,6 @@ root.render(
       <ApolloProvider client={client}>
         <PersistGate loading={null} persistor={persistor}>
           <App/>
-          <Modal/>
         </PersistGate>
       </ApolloProvider>
     </Provider>

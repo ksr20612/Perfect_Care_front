@@ -16,23 +16,9 @@ const ProgressMap = () => {
 
     const [day, setDay] = useState(2);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
-    const [showModal, closeModal] = useModal();
-    const handleModal = () => {
-        console.log("clicked");
-        showModal({
-            modalType : "Download",
-            modalProps : {
-                day : "DAY-01",
-                content : "퍼펙트 빙고",
-                handleDownload : () => {
-                    alert(`${this.content}를 다운로드 합니다.`);
-                }
-            }
-        })
-    }
 
     return (
-        <Box as={motion.div} initial={{opacity : 0, y : -20}} animate={{opacity : 1, y : 0}} exit={{opacity : 0, y : -20}}>
+        <Box as={motion.div} initial={{opacity : 0, y : -20, scale : 0.8}} animate={{opacity : 1, y : 0, scale : 0.8}} exit={{opacity : 0, y : -20, scale : 0.8}}>
             <Bulge></Bulge>
             <Map></Map> 
             <Path></Path>
@@ -53,7 +39,7 @@ const ProgressMap = () => {
             <Days>
                 {
                     [...Array(15)].map((v, i)=>{
-                        return i<day? <Done onClick={()=>{console.log("day"); handleModal()}}><span>Day</span><span>{((i+1)+"").padStart(2, "0")}</span></Done> : <Blank />
+                        return i<day? <Done><span>Day</span><span>{((i+1)+"").padStart(2, "0")}</span></Done> : <Blank />
                     })
                 }
             </Days>
@@ -79,11 +65,11 @@ const Box = styled.div`
     height : 800px;
     background-color : #F9F8F7;
     position : fixed;
-    top : 8vh;
-    right : 2vw;
+    top : 7.5vh;
+    right : 2.75vw;
     border-radius : 1%;
     box-shadow : 10px 10px 20px #aaa;
-    z-index : 10;
+    transform-origin : top right;
 `
 const Map = styled.div`
     width : 58px;

@@ -236,6 +236,9 @@ const BigCircle = styled.div`
         min-width : 88px;
         min-height : 88px;
         background-image: url(${Logo}); 
+        background-repeat :no-repeat;
+        background-position : center;
+        background-size : contain;
         z-index : 2;
         top : calc(-12% + min(18px, 1vh));
         right : calc(5.5% + min(18px, 1vh));
