@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="47.167" viewBox="0 0 42 47.167">
+  <defs>
+    <filter id="패스_4200" x="0" y="0" width="42" height="47.167" filterUnits="userSpaceOnUse">
+      <feOffset dy="6" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="btn_prt_blu_com" transform="translate(9 3)">
+    <g id="ic_sh" transform="translate(4 27)">
+      <ellipse id="shadow" data-name="ic_sh" cx="8.5" cy="3" rx="8.5" ry="3" fill="grey"/>
+    </g>
+    <g id="ic_prt_1-1">
+      <g transform="matrix(1, 0, 0, 1, -9, -3)">
+        <path id="point" data-name="패스 4200" d="M12,0A12,12,0,0,1,24,12c0,6.627-12,17.167-12,17.167S0,18.627,0,12A12,12,0,0,1,12,0Z" transform="translate(9 3)" fill="#4976aa"/>
+      </g>
+      <path id="check" data-name="패스 4201" d="M8.83,0A8.83,8.83,0,1,1,0,8.83,8.83,8.83,0,0,1,8.83,0Z" transform="translate(3 3.17)" fill="#67aaf8"/>
+    </g>
+    <g id="check-svgrepo-com" transform="translate(6.5 -46.639)">
+      <path id="white" data-name="패스 4207" d="M10.677,57.067l-5.8,5.8a1.1,1.1,0,0,1-1.557,0l-3-3a1.1,1.1,0,0,1,1.557-1.557L4.1,60.534,9.12,55.51a1.1,1.1,0,0,1,1.557,1.557Z" transform="translate(0 0)" fill="#FFF"/>
+    </g>
+  </g>
+</svg>
