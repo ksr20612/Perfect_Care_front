@@ -8,11 +8,12 @@ import PathShadowIcon from "../assets/ic_path_sha.svg";
 import TraceIcon from "../assets/path.svg";
 import CalenderIcon from "../assets/btn_cal.svg";
 import FinFlagIcon from "../assets/ic_fin.svg";
-import Part from "./Part";
+import Part from "./part";
 import { usePage } from "../hooks/usePage";
 import useModal from "../hooks/useModal";
 import { saveAs } from "file-saver";
 import Download from "./modal/Download";
+import Stop from "./stop";
 
 const ProgressMap = () => {
 
@@ -20,11 +21,9 @@ const ProgressMap = () => {
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     const [isPopupOn, setIsPopupOn] = useState(false);
     const handleDownload = () => {
-        const filesaver = saveAs("../../robots.txt", "퍼펙트 빙고.txt");
-        
+        saveAs("../../robots.txt", "퍼펙트 빙고.txt");        
     }
     const handleClose = () => {
-        console.log("닫아");
         setIsPopupOn(false);
     }
 
@@ -37,7 +36,13 @@ const ProgressMap = () => {
             <Trace/>
             <FinFlag/>
             <Part title="Part 01" color="#547665" position={{top : "570px", left : "57px"}} isDone={true}>
-                <div></div>
+                <Stop position={{top : "532px", left : "120px"}} isChecked={true}/>
+                <Stop position={{top : "500px", left : "147px"}}/>
+                <Stop position={{top : "460px", left : "165px"}}/>
+                <Stop position={{top : "420px", left : "180px"}}/>
+                <Stop position={{top : "380px", left : "195px"}}/>
+                <Stop position={{top : "350px", left : "220px"}}/>
+                <Stop position={{top : "340px", left : "260px"}}/>
             </Part>
             <Part title="Part 02" color="#EE8975" position={{top : "354px", left : "298px"}} isDone={true}>
 

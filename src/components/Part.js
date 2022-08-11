@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import FlagIcon from "../assets/ic_flg.svg";
 import LockIcon from "../assets/ic_lock.svg";
@@ -8,13 +8,28 @@ const Part = ({
     color = "#547665",
     position = { top : "0px", left : "0px" },
     isDone = false,
+    children
 }) => {
 
     return (
-        <Wrapper style={position}>
-            {isDone? <Flag/> : <Lock/>}
-            <Btn color={color}>{title}</Btn>
-        </Wrapper>
+        <>
+            <Wrapper style={position}>
+                {isDone? <Flag/> : <Lock/>}
+                <Btn color={color}>{title}</Btn>
+            </Wrapper>
+            <div>
+                {
+                    children?
+                        [].concat(children).map((child, i)=>{
+                            return React.cloneElement(child, {
+                                index : `${title.slice(-1)}-${i+1}`,
+                                color : color,
+                            })
+                        })
+                    : null
+                }
+            </div>
+        </>
     )
 
 }
