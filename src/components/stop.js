@@ -17,7 +17,6 @@ const Stop = ({
     return (
         <StopSign color={color} className={isChecked? "checked" : null} style={position}>
             {isChecked || <Index>{index}</Index>}
-            수정!!!!
             <StopImg/>
         </StopSign>
     )
@@ -33,16 +32,16 @@ const StopSign = styled.div`
     letter-spacing : -0.14px;
     line-height : 11px;
     z-index : 4;
-    transform : scale(1.25);
+    transform : scale(1.05);
 
     & #point {
         fill : ${props=>props.color};
     }
     & #shadow {
-        fill : ${props=>lighten(0.2,props.color)};
+        fill : ${props=>lighten(0.15,props.color)};
     }
     & #check {
-        fill : ${props=>lighten(0.3,props.color)};
+        fill : ${props=>lighten(0.2,props.color)};
     }
 
     &:not(.checked) #check {
@@ -52,8 +51,10 @@ const StopSign = styled.div`
 `
 const Index = styled.div`
     position : absolute;
-    top : 10px;
-    left : 14px;
+    width : 100%;
+    display : flex;
+    justify-content : center;
+    top : 9px;
 `
 
 export default Stop;
