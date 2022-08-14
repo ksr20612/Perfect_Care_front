@@ -50,9 +50,9 @@ const ProgressMap = () => {
                 <Stop position={{top : "532px", left : "120px"}} isChecked={true}/>
                 <Stop position={{top : "500px", left : "147px"}}/>
                 <Stop position={{top : "457px", left : "165px"}}/>
-                <Stop position={{top : "415px", left : "180px"}}/>
-                <Stop position={{top : "376px", left : "197px"}}/>
-                <Stop position={{top : "347px", left : "222px"}}/>
+                <Stop position={{top : "414px", left : "180px"}}/>
+                <Stop position={{top : "376px", left : "198px"}}/>
+                <Stop position={{top : "350px", left : "224px"}}/>
                 <Stop position={{top : "340px", left : "260px"}}/>
             </Part>
             <Part title="Part 02" color="#EE8975" position={{top : "354px", left : "298px"}} isDone={true}>
@@ -61,8 +61,8 @@ const ProgressMap = () => {
                 <Stop position={{top : "296px", left : "423px"}}/>
                 <Stop position={{top : "260px", left : "443px"}}/>
                 <Stop position={{top : "218px", left : "455px"}}/>
-                <Stop position={{top : "175px", left : "465px"}}/>
-                <Stop position={{top : "135px", left : "479px"}}/>
+                <Stop position={{top : "177px", left : "466px"}}/>
+                <Stop position={{top : "140px", left : "482px"}}/>
             </Part>
             <Part title="Part 03" color="#5289C9" position={{top : "123px", left : "515px"}} isDone={false}>
                 <Stop position={{top : "93px", left : "570px"}}/>
