@@ -18,6 +18,8 @@ import DotLayer from "../assets/dot_layer.svg";
 import PurpleCir from "../assets/purple_cir.svg";
 import BlueCir from "../assets/blue_cir.svg";
 import BlnkC from "../assets/blnk_c.svg";
+import Clicker from "../assets/clicker-svgrepo-com.svg";
+import DoneIcon from "../assets/btn_dcu.svg";
 
 const ProgressMap = () => {
 
@@ -96,10 +98,11 @@ const ProgressMap = () => {
                 <Stop position={{top : "233px", left : "1038px"}}/>
                 <Stop position={{top : "223px", left : "1072px"}}/>
             </Part>
+            <Inst>아래 파일을 클릭하시면 기록지를 다운로드 할 수 있어요.</Inst>
             <Days>
                 {
                     [...Array(15)].map((v, i)=>{
-                        return i<day? <Done onClick={()=>setIsPopupOn(true)}><span>Day</span><span>{((i+1)+"").padStart(2, "0")}</span></Done> : <Blank />
+                        return i<day? <Done onClick={()=>setIsPopupOn(true)}><div>Day</div><div>{((i+1)+"").padStart(2, "0")}</div></Done> : <Blank />
                     })
                 }
             </Days>
@@ -125,7 +128,7 @@ const Bulge = styled.div`
 const Box = styled.div`
     position : relative;
     width : 1180px;
-    height : 800px;
+    height : 825px;
     background-color : #F9F8F7;
     position : fixed;
     top : 7.5vh;
@@ -179,6 +182,27 @@ const FinFlag = styled.div`
     top : 190px;
     right : 14px;
 `
+const Inst = styled.div`
+    font-size : 1.3rem;
+    letter-spacing : -0.2px;
+    color : #8B8A89;
+    font-family : "Medium";
+    height : 24px;
+    display : flex;
+    align-items : center;
+    position : absolute;
+    bottom : 120px;
+    left : 70px;
+
+    &:before {
+        content : "";
+        width : 21.3px;
+        height : 24px;
+        display: inline-block;
+        background-image : url(${Clicker});
+        margin-right : 3px;
+    }
+`
 const Days = styled.div`
     width : 100%;
     height : 60px;
@@ -190,31 +214,34 @@ const Days = styled.div`
 `
 const Blank = styled.div`
     border : 1px solid #707070;
-    width : 60px;
-    height : 60px;
+    width : 58px;
+    height : 76px;
     border-radius : 8px;
     background-color : white; 
 `
 const Done = styled.div`
-    width : 60px;
-    height : 60px;
-    background-image : url(${CalenderIcon});
-    color : #547665;
+    width : 58px;
+    height : 76px;
+    background-image : url(${DoneIcon});
+    color : #F9F8F7;
     text-transform : uppercase;
-    font-size : 1.0rem;
-    font-family : "Bold";
-    display : flex;
-    align-items : center;
-    flex-direction : column;
+    font-size : 1.3rem;
     letter-spacing : -0.23px;
     line-height : 13px;
     z-index : 10;
+    padding-left : 5px;
 
-    & > span:first-child {
-        margin-top : 27px;
+    & > div:first-child {
+        display : block;
+        font-family : "Medium";
+        margin-bottom : 3px;
+        margin-top : 34px;
+        
     }
-    & > span:last-child {
+    & > div:last-child {
         font-size : 1.5rem;
+        display : block;
+        font-family : "ExtraBold";
     }
 `
 const PurpleC = styled.div`
