@@ -11,12 +11,13 @@ const Modal = ({
     size = {width : "100%", height : "auto"},
     isOn = false,
     close = {on : true, handleClose : f => f},
+    customStyle = {},
     children,
 }) => {
 
     return (
         <>
-            <Box className={isOn? "on" : null} size={size}>
+            <Box className={isOn? "on" : null} size={size} style={customStyle}>
                 {
                     close.on? <Exit className="close" onClick={(e)=>{close.handleClose(e)}}></Exit> : null
                 }

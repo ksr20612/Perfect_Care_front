@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import QuizBox from "../../components/quizBox";
 
 const Scr15 = () => {
 
@@ -18,7 +19,7 @@ const Scr15 = () => {
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                문제 / 정답 3
+                <QuizBox>문제2</QuizBox>
             </Box>
             {renderArrow()}
         </>
