@@ -109,55 +109,6 @@ const Global = createGlobalStyle`
         src: url(${Hand}) format('truetype');
     }
 
-    ${'' /* @font-face {
-        font-family: 'Anton';
-        font-weight: 300;
-        src: local('Anton-Regular'),
-        url(${Anton}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Black';
-        font-weight: 300;
-        src: local('NotoSansKR-Black'),
-        url(${Noto_Black}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Bold';
-        font-weight: 300;
-        src: local('NotoSansKR-Bold'),
-        url(${Noto_Bold}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Medium';
-        font-weight: 300;
-        src: local('NotoSansKR-Medium'),
-        url(${Noto_Medium}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Regular';
-        font-weight: 300;
-        src: local('NotoSansKR-Regular'),
-        url(${Noto_Regular}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Light';
-        font-weight: 300;
-        src: local('NotoSansKR-Light'),
-        url(${Noto_Light}) format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Noto_Thin';
-        font-weight: 300;
-        src: local('NotoSansKR-Thin'),
-        url(${Noto_Thin}) format('truetype');
-    } */}
-
     @font-face {
         font-family: 'Arial_Bold';
         font-weight: 300;
