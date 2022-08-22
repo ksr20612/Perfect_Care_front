@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Main from "./pages/main";
 import Part0 from "./pages/part0";
@@ -28,14 +29,13 @@ const routeList = [
 
 function App() {
 
+  const location = useLocation();
   return (
-    <>
-      <Routes>
-        {routeList.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component/>}/>
-        ))}
-      </Routes>
-    </>
+    <Routes location={location}>
+      {routeList.map(({ path, Component }) => (
+        <Route key={path} path={path} element={<Component/>}/>
+      ))}
+    </Routes>
   );
 }
 

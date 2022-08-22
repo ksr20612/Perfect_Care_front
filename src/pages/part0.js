@@ -31,7 +31,7 @@ const Part0 = () => {
                 <Scr7 />
             }
             </Screen>
-            <ProgressBar/>
+            {/* <ProgressBar/> */}
         </>
     )
 }

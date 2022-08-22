@@ -29,10 +29,11 @@ const ProgressBar = () => {
 }
 
 const Box = styled.div`
-    position : fixed;
-    bottom : 0;
+    position : absolute;
+    left : calc((min(80vw, 1180px) - 100vw) / 2);
+    bottom : 1vh;
     width : 100vw;
-    height : 8vh;
+    height : 6vh;
     background-color : transparent;
     display : flex;
     align-items : center;

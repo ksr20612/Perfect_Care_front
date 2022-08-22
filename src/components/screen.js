@@ -12,6 +12,7 @@ import { toastInfo } from "../utils/toast";
 import { getPageLen } from "../app/pageInfo";
 import { toast } from "react-toastify";
 import { usePage } from "../hooks/usePage";
+import ProgressBar from "./progressBar";
 
 const Screen = ({
     canBeMoved = true,
@@ -21,6 +22,7 @@ const Screen = ({
     return (
         <Box>
             {children}
+            <ProgressBar />
         </Box>
     )
 }
@@ -31,9 +33,11 @@ const Box = styled.div`
     width : 80vw;
     max-width : 1180px;
     height : calc(100vh - 6vh);
+    max-height : 900px;
     background-color : #fff;
     display : flex;
     margin-top : 6vh;
+    transform : translateY(calc((94vh - 100%) / 2));
     padding-top : min(5vh, 62px);
     padding-left : min(15vw, 110px);
     padding-right : min(15vw, 110px);
