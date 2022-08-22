@@ -53,6 +53,7 @@ const Content = styled.div`
         background-size : contain;
         background-position : center center;
         background-image : url(${googlePic});
+        background-repeat : no-repeat;
     }
 
     & > div:last-of-type {

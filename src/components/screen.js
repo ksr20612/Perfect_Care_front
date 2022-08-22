@@ -15,7 +15,6 @@ import { usePage } from "../hooks/usePage";
 import ProgressBar from "./progressBar";
 
 const Screen = ({
-    canBeMoved = true,
     children
 }) => {
 
@@ -43,34 +42,6 @@ const Box = styled.div`
     padding-right : min(15vw, 110px);
     background-color : #f9f8f7;
     position : relative;
-`
-
-const Arrow = styled(ArrowIcon)`
-    width : 50px;
-    height : 50px;
-    position : absolute;
-    top : 50%;
-    right : 0;
-    transform : translate(-50%, -50%) rotate(180deg);
-    cursor : pointer;
-
-    & > path {
-        fill : ${pallette.YELLOW};
-    }
-
-    &.reversed {
-        left : 0;
-        transform : translate(50%, -50%);
-    }
-    & > path {
-        transition : all 0.2s ease-in;
-    }
-
-    &:hover {
-        & path {
-            fill : ${lighten(0.2, pallette.GREEN)};
-        }
-    }
 `
 
 export default Screen;

@@ -44,6 +44,7 @@ const Box = styled.button`
     font-size : 2.4rem;
     border : none;
     border-radius : 10px;
+    padding : 2%;
 
     &:active {
         background-color : ${darken(0.1, pallette.GREY)};

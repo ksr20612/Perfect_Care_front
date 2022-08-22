@@ -4,7 +4,10 @@ import pallette from "../styles/pallette.css";
 import { darken } from "polished";
 import Answer from "./answer"; 
 
-const QuizBox = ({children}) => {
+const QuizBox = ({
+    style = {},
+    children
+}) => {
 
     const [isOn, setIsOn] = useState(null);
     const handleClose = () => {
@@ -12,7 +15,7 @@ const QuizBox = ({children}) => {
     }
 
     return (
-        <Wrapper>
+        <Wrapper style={style}>
             <Box>
                 {children}
             </Box>
@@ -36,7 +39,7 @@ const Box = styled.div`
     width : 100%;
     max-width : 960px;
     height : auto;
-    min-height : 60vh;
+    min-height : 100%;
     padding : min(20px, 2vmin);
     box-shadow : 3px 3px 10px #B1B0AF26;
     border-radius : 10px;

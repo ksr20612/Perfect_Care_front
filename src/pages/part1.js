@@ -40,7 +40,6 @@ const Part1 = () => {
                 <Scr12 />
             }
             </Screen>
-            <ProgressBar/>
         </>
     )
 }

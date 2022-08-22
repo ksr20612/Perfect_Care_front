@@ -52,7 +52,6 @@ const Part2 = () => {
                 <Scr18 />
             }
             </Screen>
-            <ProgressBar/>
         </>
     )
 }

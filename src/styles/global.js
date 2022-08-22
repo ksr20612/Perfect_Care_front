@@ -17,7 +17,7 @@ const Global = createGlobalStyle`
     // reset
     html {
         overflow-x : hidden;
-        font-size : 10px;
+        font-size : min(1vh, 10px);
         font-family : "Regular", sans-serif;
     }
     body {
