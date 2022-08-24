@@ -36,7 +36,7 @@ const Box = styled.div`
     background-color : #fff;
     display : flex;
     margin-top : 6vh;
-    transform : translateY(calc((94vh - 100%) / 2));
+    /* transform : translateY(calc((94vh - 100%) / 2)); */
     padding-top : min(5vh, 62px);
     padding-left : min(15vw, 110px);
     padding-right : min(15vw, 110px);

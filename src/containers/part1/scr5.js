@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import Spinner from "../../components/spinner";
 
 const Scr5 = () => {
 
@@ -17,10 +18,16 @@ const Scr5 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,5)}/>
-
+            <Spinner/>
             {renderArrow()}
         </>
     )
 }
+const Box = styled.div`
+    margin-top : 5%;
+    width : 100%;
+    height : 75%;
+    border : 1px solid black;
+`
 
 export default Scr5;

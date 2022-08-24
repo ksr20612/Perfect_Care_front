@@ -17,10 +17,13 @@ const Scr7 = () => {
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,7)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Name>타 기업 사례3</Name>
+                <Name>PIXAR의 실패 갤러리</Name>
                 <Content>
                     <div></div>
-                    <div></div>
+                    <div>
+                        세계적인 애니메이션 스튜디오인 픽사에서는 캐릭터 디자인, 컨셉아트 등 영화로 만들어지지 않았거나 실패했던 작품들을 전시합니다. <br/><br/>
+                        비록 사용되지 않았지만 실패조차 하나의 예술 작품으로서의 가치를 인정하는 것이죠. 
+                    </div>
                 </Content>
             </Box>
             {renderArrow()}
@@ -33,7 +36,7 @@ const Box = styled(Paper)`
     text-align : center;
 `
 const Name = styled.div`
-    font-size : 4.0rem;
+    font-size : 3.6rem;
     font-family : "Medium";
     margin-bottom : 3vh;
     width : 100%;
@@ -50,6 +53,7 @@ const Content = styled.div`
         height : 316px;
         background-size : contain;
         background-position : center center;
+        background-repeat : no-repeat;
     }
 
     & > div:last-of-type {
@@ -57,6 +61,7 @@ const Content = styled.div`
         height : auto;
         text-align : left;
         padding-top : 5vh;
+        word-break : keep-all;
     }
 `
 

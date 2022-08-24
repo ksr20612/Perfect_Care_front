@@ -43,6 +43,7 @@ const Box = styled(Paper)`
     justify-content : center;
     height : 60%;
     word-break : keep-all;
+    text-align : center;
 
     & strong {
         color : ${pallette.RED};

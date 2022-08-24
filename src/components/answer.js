@@ -12,10 +12,6 @@ const Answer = ({
     handleClick = f=>f,
 }) => {
 
-    useEffect(()=>{
-        console.log({isOn});
-    })
-
     return (
         <>
             <Box onClick={handleClick}>{content}</Box>

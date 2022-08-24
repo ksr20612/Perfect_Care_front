@@ -98,6 +98,6 @@ export const usePage = ({
         )
     };
 
-    return [currentPage, partIdx, ()=>handlePage(), ()=>renderArrow()];
+    return [currentPage, partIdx, (v)=>handlePage(v), ()=>renderArrow()];
 
 }

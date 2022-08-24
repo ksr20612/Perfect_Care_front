@@ -19,7 +19,14 @@ const Scr15 = () => {
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <QuizBox>문제2</QuizBox>
+                <QuizBox style={{height : "60vh"}} answer={2}>
+                    <Question bullet={"03."}>
+                        <div>미국으로 유학을 갔던 창훈씨는 유학생활 중, 문화차이와 홀로서기의 어려움을 느꼈습니다.</div>
+                        <div>더이상 잘할 수 없을 것 같은 우울감과 불안으로 인해 창훈씨는 결국 한국으로 귀국하였습니다.</div>
+                        <div>귀국한 창훈씨는 부모님에 대한 미안함과 학과 생활을 다 마치지 못해 유학 생활을 망쳤다는 생각에 아무 것도 시작하지 못하고 있습니다.</div>
+                        <div>창훈씨가 가지고 있는 생각의 오류는 무엇인가요?</div>
+                    </Question>
+                </QuizBox>
             </Box>
             {renderArrow()}
         </>
@@ -27,7 +34,7 @@ const Scr15 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
     padding-top : 2vh;
     position : relative;
@@ -43,12 +50,15 @@ const Box = styled.div`
     }
 `
 const Question = styled.div`
-    margin : 5vh auto;
-    background-color : ${lighten(0.4, pallette.YELLOW)};
-    width : 85%;
-    padding : 2.5vmax;
-    display : flex;
-    justify-content : center;
+    position : relative;
+    margin-left : 3ch;
+    font-size : 2.0rem;
+
+    &:before {
+        content : "${props=>props.bullet}";
+        position : absolute;
+        left : -3ch;
+    }
 `
 const Answer = styled.div`
     margin : 0 auto;

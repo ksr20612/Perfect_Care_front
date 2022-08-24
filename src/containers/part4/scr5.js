@@ -35,7 +35,7 @@ const Box = styled(Paper)`
     text-align : center;
 `
 const Name = styled.div`
-    font-size : 4.0rem;
+    font-size : 3.6rem;
     font-family : "Medium";
     margin-bottom : 3vh;
     width : 100%;

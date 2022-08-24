@@ -45,6 +45,7 @@ const Box = styled(Paper)`
     word-break : keep-all;
 
     & > div {
+        text-align : center;
         & + div {
             margin-top : 5%;
         }

@@ -17,10 +17,13 @@ const Scr6 = () => {
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,6)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Name>타 기업 사례2</Name>
+                <Name>P&G의 "용감한 실패" 어워드</Name>
                 <Content>
                     <div></div>
-                    <div></div>
+                    <div>
+                        도전과 실험정신을 장려하고 실패에 대한 두려움을 없애기 위해 P&G는 매년 ‘용감한 실패 어워드’를 열어 위험을 감수한 가장 "똑똑한" 팀이나 개인을 시상합니다. <br/><br/>
+                        이 실패 어워드에는 '실수는 해도 괜찮아. 숨기지만 말자.'라는 의미가 담겨있다고 해요.   
+                    </div>
                 </Content>
             </Box>
             {renderArrow()}
@@ -33,7 +36,7 @@ const Box = styled(Paper)`
     text-align : center;
 `
 const Name = styled.div`
-    font-size : 4.0rem;
+    font-size : 3.6rem;
     font-family : "Medium";
     margin-bottom : 3vh;
     width : 100%;
@@ -50,6 +53,7 @@ const Content = styled.div`
         height : 316px;
         background-size : contain;
         background-position : center center;
+        background-repeat : no-repeat;
     }
 
     & > div:last-of-type {
@@ -57,6 +61,7 @@ const Content = styled.div`
         height : auto;
         text-align : left;
         padding-top : 5vh;
+        word-break : keep-all;
     }
 `
 

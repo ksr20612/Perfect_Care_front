@@ -55,6 +55,7 @@ const Scr4 = () => {
                         return <Question content={question} handleChange={(score)=>handleClick(i, score)} value={scores[i]}/>
                     })
                 }
+                <Button onClick={()=>handlePage(1)}>제출하기</Button>
             </Box>
             {renderArrow()}
         </>
@@ -88,7 +89,8 @@ const Info = styled.div`
     & > div {
         border-radius : 10px;
         box-shadow : 3px 3px 10px #00000029;
-        width : 30%;
+        width : auto;
+        min-width : 40%;
         height : 100px;
         padding : 1%;
         display : flex;
@@ -125,6 +127,23 @@ const Progress = styled.div`
     & #progress .indicator {
         stroke: ${pallette.YELLOW};
         opacity : 0.6;
+    }
+`
+const Button = styled.button`
+    margin-top : 50px;
+    font-size : 3.0rem;
+    width : 150px;
+    height : 100px;
+    padding : 2%;
+    background-color : ${pallette.BLUISH};
+    border-radius : 10px;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    border : none;
+
+    &:active {
+        background-color : ${darken(0.1, pallette.BLUISH)};
     }
 `
 

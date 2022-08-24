@@ -83,7 +83,7 @@ const Header = () => {
                                 {
                                     part.pages.map((page, j)=>{
                                         return (
-                                            <PageTitle className={i===partIdx && j===pageIdx? "cur" : null} onClick={()=>{handleLocation(i, j);}}>{page.title}</PageTitle>
+                                            <PageTitle className={i===partIdx+1 && j===pageIdx? "cur" : null} onClick={()=>{handleLocation(i-1, j);}}>{page.title}</PageTitle>
                                         )
                                     })
                                 }
