@@ -33,6 +33,7 @@ const Bubble = styled.div`
     cursor : pointer;
     text-align : center;
     padding : 0 10%;
+    word-break : keep-all;
 
     & > svg {
         position : absolute;

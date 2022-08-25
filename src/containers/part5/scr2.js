@@ -23,17 +23,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMyself } from "../../features/parts/part5Slice";
 
 const list = [
-    { content : "섬세하다", image : Bubble1, style : { top : "67%", left : "17%" }},
-    { content : "거만하다", image : Bubble2, style : { top : "40%", left : "0%" }},
-    { content : "눈치가 빠르다", image : Bubble3, style : { top : "45%", left : "23%" }},
-    { content : "자주 화가난다", image : Bubble4, style : { top : "20%", left : "17%" }},
-    { content : "실수를 하면 부끄럽다", image : Bubble5, style : { top : "30%" }},
-    { content : "타인에게 엄격하다", image : Bubble6, style : { top : "6%" }},
-    { content : "쉽게 상처받는다", image : Bubble7, style : { top : "45%", right : "23%" }},
-    { content : "자주 자책한다", image : Bubble8, style : { top : "20%", right : "17%" }},
-    { content : "최악의 시나리오를 자주 상상한다", image : Bubble9, style : { top : "67%", right : "17%" }},
-    { content : "우울할 때가 많다", image : Bubble10, style : { top : "40%", right : "0%" }},
-]
+    { content : "실수를 통해 배운다고 생각한다", image : Bubble1, style : { top : "77%", left : "17%" }},
+    { content : "대부분 나를 탓한다", image : Bubble2, style : { top : "50%", left : "3%" }},
+    { content : "성실한 편이다", image : Bubble3, style : { top : "55%", left : "23%" }},
+    { content : "꼼꼼하게 일을 한다", image : Bubble4, style : { top : "30%", left : "20%" }},
+    { content : "내 기준이 높다고 생각한다", image : Bubble5, style : { top : "40%" }},
+    { content : "눈치가 빠르다", image : Bubble6, style : { top : "16%" }},
+    { content : "타인과 비교하곤 한다", image : Bubble7, style : { top : "55%", right : "23%" }},
+    { content : "때때로 불안하다", image : Bubble8, style : { top : "30%", right : "20%" }},
+    { content : "자주 화가 난다", image : Bubble9, style : { top : "77%", right : "17%" }},
+    { content : "강박적인 편이다", image : Bubble10, style : { top : "50%", right : "3%" }},
+    { content : "결과보다 과정이 중요", image : Bubble6, style : { top : "74%", left : "-5%" }},
+    { content : "강박적인 편이다", image : Bubble4, style : { top : "53%", left : "-17%", }},
+    { content : "타인의 평가에 민감하다", image : Bubble1, style : { top : "25%", left : "-2%" }},
+    { content : "실수를 하면 부끄럽다", image : Bubble2, style : { top : "5%", left : "18%" }},
+    { content : "계획적이다", image : Bubble3, style : { top : "-6%", left : "" }},
+    { content : "능력을 인정받고 싶어한다", image : Bubble10, style : { top : "5%", right : "18%" }},
+    { content : "타인에게 엄격하다", image : Bubble9, style : { top : "25%", right : "-2%" }},
+    { content : "게으른 것 같다", image : Bubble8, style : { top : "53%", right : "-17%" }},
+    { content : "모든 경우의 수를 다 생각한다", image : Bubble7, style : { top : "74%", right : "-5%" }},
+];
 
 
 const Scr2 = () => {
@@ -70,30 +79,34 @@ const Scr2 = () => {
 }
 
 const Question = styled.div`
-    margin-top : 5%;
-    font-size : 3.2rem;
+    margin-top : 2%;
+    font-size : 2.8rem;
     color : #3C3C3C;
     font-family : "SemiBold";
     text-align : center;
 `
 const Inst = styled.div`
-    font-size : 2.8rem;
+    font-size : 2.4rem;
     color : #3c3c3c;
     font-family : "Regular";
     text-align : center;
+    margin-bottom : 2%;
 `
 const Options = styled.div`
     position : relative;
-    width : 100%;
-    height : 70%;
-    margin-top : 3%;
+    width : 80%;
+    height : 60vh;
+    margin : 2% auto;
     display : flex;
     justify-content : center;
 `
 const Girl = styled.div`
-    width : 30%;
+    width : 20%;
     height : 50%;
     background : url(${GirlImg});
+    background-position : bottom;
+    background-repeat : no-repeat;
+    background-size : contain;
     position : absolute;
     bottom : 0;
 `

@@ -108,7 +108,7 @@ const Scr2 = () => {
                     })
                 }
             </Options>
-            {/* <Box>
+            <Box>
                 <Head>
                     <Brain emotions={myself}></Brain>
                 </Head>
@@ -118,7 +118,7 @@ const Scr2 = () => {
                 <DotGroup/>
                 <Circle1/>
                 <Circle2/>
-            </Box> */}
+            </Box>
             {renderArrow()}
         </>
     )
