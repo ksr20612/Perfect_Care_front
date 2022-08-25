@@ -104,8 +104,17 @@ const getChecked = (key) => {
         if(range[item]) return item;
     }
 }
+const getTo = (type, standard) => {
+    const list = Standards[type];
+    for(const {from, to} of list) {
+        if(from === standard) return {
+            advice : to[0],
+            changed : to[1],
+        }
+    }
+}
 
 Object.freeze(Standards);
 
 export default Standards;
-export { getChecked };
+export { getChecked, getTo };

@@ -19,9 +19,10 @@ const SpeechBubble = ({
     )
 }
 const Bubble = styled.div`
-    width : 10%;
+    width : 5%;
+    height : 20%;
     position : absolute;
-    font-size : 2.0rem;
+    font-size : 1.8rem;
     font-family : "SemiBold";
     color : #292724;
     background-size : contain;

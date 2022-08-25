@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="222" height="138" viewBox="0 0 222 138">
+<svg style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="222" height="138" viewBox="0 0 222 138">
   <defs>
-    <filter id="ic_bub_def" x="0" y="0" width="222" height="138" filterUnits="userSpaceOnUse">
+    <filter id="ic_bub_def" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="5" result="blur"/>
       <feFlood flood-opacity="0.161"/>

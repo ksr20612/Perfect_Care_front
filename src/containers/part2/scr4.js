@@ -3,7 +3,7 @@ import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
-import { getChecked } from "../../assets/jsons/standards";
+import { getTo } from "../../assets/jsons/standards";
 import { BsPerson as PersonIcon } from "react-icons/bs";
 import Feedback from "../../components/feedback";
 import { useSelector } from "react-redux";
@@ -40,20 +40,20 @@ const Scr4 = () => {
                         <div>나의 기준은...</div>
                         <Bubble>
                             <Feedback index={1} isOn={status || (clicked===1)} standard={checks.std1.from} handleClick={()=>{handleClick(1)}}>
-                                <div>남들보다 잘한다는 것은 추상적인 목표야.</div>
-                                <div><strong>{"이전에 내가 세웠던 기록보다 잘하고 싶다"}</strong>는 목표로 바꾸는 것은 어떨까?</div>
+                                <div>{checks.std1.to[0]}</div> <br/>
+                                <div><strong>{checks.std1.to[1]}</strong>는 목표로 바꾸는 것은 어떨까요?</div>
                             </Feedback>
                             <Feedback index={2} isOn={status || (clicked===2)} standard={checks.std2.from} handleClick={()=>{handleClick(2)}}>
-                                <div>제언</div>
-                                <div>조언</div>
+                                <div>{checks.std2.to[0]}</div> <br/>
+                                <div><strong>{checks.std2.to[1]}</strong>는 목표로 바꾸는 것은 어떨까요?</div>
                             </Feedback>
                             <Feedback index={3} isOn={status || (clicked===3)} standard={checks.std3.from} handleClick={()=>{handleClick(3)}}>
-                                <div>제언</div>
-                                <div>조언</div>
+                                <div>{checks.std3.to[0]}</div> <br/>
+                                <div><strong>{checks.std3.to[1]}</strong>는 목표로 바꾸는 것은 어떨까요?</div>
                             </Feedback>
                             <Feedback index={4} isOn={status || (clicked===4)} standard={checks.std4.from} handleClick={()=>{handleClick(4)}}>
-                                <div>제언</div>
-                                <div>조언</div>
+                                <div>{checks.std4.to[0]}</div> <br/>
+                                <div><strong>{checks.std4.to[1]}</strong>는 목표로 바꾸는 것은 어떨까요?</div>
                             </Feedback>
                         </Bubble>
                     </div>
