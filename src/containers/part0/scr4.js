@@ -10,6 +10,10 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
 import { usePage } from "../../hooks/usePage";
+import effective from "../../assets/effective.svg";
+import professional from "../../assets/professional.svg";
+import reasonable from "../../assets/reasonable.svg";
+import easy from "../../assets/easy.svg";
 
 const Scr4 = () => {
 
@@ -22,19 +26,19 @@ const Scr4 = () => {
                 <Subtitle>어디서나, 손쉽고 간편하게</Subtitle>
                 <Content>
                     <div>
-                        <div>icon1</div>
+                        <Icon icon={professional}></Icon>
                         <div>1전문적입니다</div>
                     </div>
                     <div>
-                        <div>icon2</div>
+                        <Icon icon={reasonable}></Icon>
                         <div>2합리적입니다</div>
                     </div>
                     <div>
-                        <div>icon3</div>
+                        <Icon icon={easy}></Icon>
                         <div>3편리합니다</div>
                     </div>
                     <div>
-                        <div>icon4</div>
+                        <Icon icon={effective}></Icon>
                         <div>4효과적입니다</div>
                     </div>
                 </Content>
@@ -77,20 +81,23 @@ const Content = styled.div`
         justify-content : center;
         font-size : 2.0rem;
 
-        & > div:first-child {
-            width : 100%;
-            height : 100%;
-            padding-bottom : 3%;
-            display : flex;
-            align-items : center;
-            justify-content : center;
-        }
-
         & > div:last-child {
             &:first-letter { font-size : 150%; }
         }
 
     }
+`
+const Icon = styled.div`
+    width : 60%;
+    height : 60%;
+    margin-bottom : 3%;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    background-image : url(${props=>props.icon});
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position : center;
 `
 
 export default Scr4;

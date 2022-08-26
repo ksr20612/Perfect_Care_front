@@ -108,7 +108,7 @@ const Scr2 = () => {
                     })
                 }
             </Options>
-            <Box>
+            <Box as={motion.div}>
                 <Head>
                     <Brain emotions={myself}></Brain>
                 </Head>
@@ -123,6 +123,15 @@ const Scr2 = () => {
         </>
     )
 }
+const movingUp = {
+    initial : {
+        y : 0
+    },
+    up : {
+        y : -524,
+    }
+}
+
 const Question = styled.div`
     margin-top : 2%;
     font-size : 2.8rem;
@@ -163,7 +172,7 @@ const Box = styled(Paper)`
     justify-content : center;
     align-items : center;
     bottom : 0;
-    /* bottom : -440px; */
+    bottom : -440px;
     right : min(15vw, 110px);
 `
 const Head = styled.div`

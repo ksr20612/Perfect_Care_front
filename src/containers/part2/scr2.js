@@ -120,6 +120,7 @@ const Box = styled(Paper)`
         background-color : ${lighten(0.3, pallette.YELLOW)};
         font-size : 2.0rem;
         text-align : center;
+        word-break : keep-all;
     }
 
     & tr > td:last-child {

@@ -72,9 +72,7 @@ const Scr5 = () => {
                 </div>
                 <Container>
                     <MovieClip width="100%" height="100%"/>
-                    <Comments value={input} comments={comment} handleChange={(v)=>{handleChange(v)}} handleClick={(e)=>{handleClick(e)}}>
-
-                    </Comments>
+                    <Comments value={input} comments={comment} handleChange={(v)=>{handleChange(v)}} handleClick={(e)=>{handleClick(e)}}></Comments>
                 </Container>
             </Box>
             {renderArrow()}
@@ -83,7 +81,7 @@ const Scr5 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
     padding-top : 2vh;
 

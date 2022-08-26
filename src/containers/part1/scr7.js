@@ -16,32 +16,32 @@ const list = [
     {
         name : "불안",
         content : "미래에 일어날 수 있는 위험에 대비할 수 있습니다.",
-        color : "red"
+        color : "#a7caf3"
     },
     {
         name : "공포",
         content : "위험을 감지하고 즉각적으로 대응할 수 있습니다.",
-        color : "blue"
+        color : "#f6bcc5"
     },
     {
         name : "분노",
         content : "사회의 불공평, 차별과 부당함에 저항하고, 위협적인 상황에서 스스로 방어할 수 있습니다.",
-        color : "yellow"
+        color : "#ebd1b5"
     },
     {
         name : "수치심",
         content : "사회적으로 수용되지 않는 행동을 줄여 사회적 일원으로 살아갈 수 있습니다.",
-        color : "green"
+        color : "#72b5ce"
     },
     {
         name : "외로움",
         content : "타인과 소통할 수 있으며, 사회적인 단절로부터 대비할 수 있습니다.",
-        color : "purple",
+        color : "#a6d9c8",
     },
     {
         name : "부러움",
         content : "발전하려는 동기를 제공할 수 있습니다.",
-        color : "orange"
+        color : "#f3eec9"
     }
 ]
 const getContent = (name) => {

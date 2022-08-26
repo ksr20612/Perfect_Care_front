@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import DataBox from "../../components/dataBox";
 
 const Scr1 = () => {
 
@@ -16,13 +17,17 @@ const Scr1 = () => {
     return (
         <>
             <Title title={getPartTitle(2)} subTitle={getPageTitle(2,1)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <div>나의 완벽주의는 이런 모습이었어요.</div>
-                <div>나는 <Data></Data> 을 느낀다고 응답했어요.</div>
-                <div>
-                    내가 바꾸고 싶은 완벽주의의 모습은
-                </div>
-                <Data className="ans2"></Data>
+            <Box>
+                <DataBox title="나의 완벽주의는 이런 모습이었어요." customStyle={{"height" : "30%"}}>
+                    <div></div>
+                </DataBox>
+                <DataBox title="나는 이런 감정을 느끼고 있었어요." customStyle={{"height" : "30%"}}>
+                    <div></div>
+                </DataBox>
+                <DataBox title="내가 바꾸고 싶은 완벽주의의 모습은 이런 모습이었어요." customStyle={{"height" : "30%"}}>
+                    <div></div>
+                </DataBox>
+                <Message>이러한 내 모습 이면에는 <br/> 어떤 기준이 자리잡고 있는지 확인해볼까요?</Message>
             </Box>
             {renderArrow()}
         </>
@@ -30,47 +35,23 @@ const Scr1 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Regular";
-    padding : 0 1vw;
-    padding-top : 2vh;
+
     position : relative;
+    width : 100%;
+    height : 80%;
+    margin-top : 5%;
+    display : flex;
+    flex-direction : column;
 
-    & > div {
-        font-size : 2.6rem;
-        display : flex;
-        align-items : center;
-        display : relative;
-        margin-top : 4vh;
-
-        &:before {
-            content : "";
-            display : absolute;
-            width : 12vmin;
-            height : 12vmin;
-            background-image : url(${CheckBlue});
-            background-size : contain;
-            background-repeat: no-repeat;
-            background-position: center center;
-            margin-right : 1vw;
-        }
-    }
 `
-const Data = styled.span`
-    width : 8vw;
-    height : 8vh;
-    display : inline-block;
-    background-color : ${pallette.BLUISH};
-    border-radius : 1.5vmin;
-    margin : 0 1ch;
-
-    &.ans2 {
-        position : absolute;
-        display : block;
-        width : 100%;
-        max-width : 840px;
-        height : 20%;
-        margin-left : 5%; 
-    }
+const Message = styled.div`
+    font-size : 3.2rem;
+    width : 100%;
+    flex : 1;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    text-align : center;
 `
 
 export default Scr1;

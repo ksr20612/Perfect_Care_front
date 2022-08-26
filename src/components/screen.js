@@ -13,10 +13,13 @@ import { getPageLen } from "../app/pageInfo";
 import { toast } from "react-toastify";
 import { usePage } from "../hooks/usePage";
 import ProgressBar from "./progressBar";
+import useToken from "../hooks/useToken";
 
 const Screen = ({
     children
 }) => {
+
+    // const [isTokenValid] = useToken();
 
     return (
         <Box>

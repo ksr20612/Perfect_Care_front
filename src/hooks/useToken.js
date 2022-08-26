@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toastError } from "../utils/toast";
 import { POST } from "../services/userService";
+import { useSelector } from "react-redux";
 
 const useToken = (callback={
     onError : f => f,
@@ -10,10 +11,10 @@ const useToken = (callback={
 
     const [isTokenValid, setIsTokenValid] = useState(false);
     const navigate = useNavigate();
+    const userToken = useSelector(state=>state.state.token);
 
     useEffect(()=>{
-        const userToken = { userToken : sessionStorage.getItem("userToken")};
-        const result = POST("/token", userToken,{
+        const result = POST("/token", {userToken}, {
             onFail : ()=>{
                 navigate("/");
                 toastError("세션이 만료되었습니다. 다시 로그인해주세요.");

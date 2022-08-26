@@ -11,6 +11,7 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import NoteImg from "../../assets/ic_memo_y_02.png";
 import { Paper } from "../../styles/components/paper";
 import { usePage } from "../../hooks/usePage";
+import DetectiveIcon from "../../assets/detective.svg";
 
 const Scr3 = () => {
 
@@ -21,6 +22,7 @@ const Scr3 = () => {
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,3)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Note>
+                    <Detective/>
                     <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있습니다.</div>
                     <br/>
                     <div>형사가 되어 자동사고라는 용의자를 잡아봅시다.</div>
@@ -82,6 +84,16 @@ const Block = styled.div`
     font-family : "Noto_Black";
     color : #333;
     box-shadow : 0px 3px 6px #00000029;
+`
+const Detective = styled.div`
+    width : 40%;
+    aspect-ratio : 1;
+    background-image : url(${DetectiveIcon});
+    background-size : contain;
+    background-position : center;
+    background-repeat : no-repeat;
+    margin-bottom : 5%;
+    opacity : 0.8;
 `
 
 export default Scr3;

@@ -4,6 +4,7 @@ import pallette from "../styles/pallette.css";
 import { darken, lighten } from "polished";
 import TextArea from "../components/textArea";
 import { motion } from "framer-motion";
+import pinIcon from "../assets/pin-pngrepo-com.png";
 
 const CommentBox = ({
     width = "40%",
@@ -93,11 +94,17 @@ const Comment = styled.div`
     }
     &:first-of-type > span:after {
         position : absolute;
-        content : "🖈";
+        content : "";
         color : rgba(0, 0, 0, 0.5);
         font-size : 2.4rem;
-        transform : scaleX(-1);
-        left : 4vw;
+        left : 4.2vw;
+        width : 12px;
+        height : 12px;
+        opacity : 0.6;
+        background : url(${pinIcon});
+        background-position : center;
+        background-size : contain;
+        background-repeat : no-repeat;
     }
 
     & > div {
