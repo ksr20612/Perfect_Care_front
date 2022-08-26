@@ -70,7 +70,7 @@ const Scr9 = () => {
                 <BlockBox title="생각" content={scr6}/>
                 <BlockBox title="이미지" content={scr7}/>
                 <BlockBox title="나는 어떤 사람?" content={scr8} fadein={true}/>
-                <AnswerBox title="최악의 경우 어떤 일이 일어날 것이라고 생각했나요?" index="6/7">
+                <AnswerBox title="최악의 경우 어떤 일이 일어날 것이라고 생각했나요?" index="6/7" styles={{height : "100%"}}>
                     <TextArea height="100%" value={scr9} handleChange={(v)=>{handleChange(v)}} />
                 </AnswerBox>
             </Box>
@@ -80,10 +80,11 @@ const Scr9 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
+    height : 40%;
 `
 
 export default Scr9;

@@ -16,7 +16,7 @@ const Scr6 = () => {
     return (
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,6)}/>
-            <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%"}}>
+            <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%", marginTop : "5%"}}>
                 <div>#</div>
                 <div>#</div>
                 <div>#</div>

@@ -92,9 +92,9 @@ const Scr5 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
 `
 

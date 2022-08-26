@@ -68,15 +68,15 @@ const Scr10 = () => {
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,10)}/>
             <Box>
                 <div>
-                    <BlockBox title="상황" content={scr4}/>
-                    <BlockBox title="기분" content={emotionString}/>
-                    <BlockBox title="생각" content={scr6}/>
-                    <BlockBox title="이미지" content={scr7}/>
-                    <BlockBox title="나는 어떤 사람?" content={scr8}/>
-                    <BlockBox title="최악의 경우?" content={scr9} fadein={true}/>
+                    <BlockBox title="상황" content={scr4} style={{height : "20%"}}/>
+                    <BlockBox title="기분" content={emotionString} style={{height : "20%"}}/>
+                    <BlockBox title="생각" content={scr6} style={{height : "20%"}}/>
+                    <BlockBox title="이미지" content={scr7} style={{height : "20%"}}/>
+                    <BlockBox title="나는 어떤 사람?" content={scr8} style={{height : "20%"}}/>
+                    <BlockBox title="최악의 경우?" content={scr9} fadein={true} style={{height : "20%"}}/>
                 </div>
                 <div>
-                    <AnswerBox title="나의 자동사고는?" index="7/7">
+                    <AnswerBox title="나의 자동사고는?" index="7/7" styles={{height : "100%"}}>
                         <TextArea height="100%" value={scr10} handleChange={(v)=>{handleChange(v)}}/>
                     </AnswerBox>
                 </div>
@@ -87,9 +87,9 @@ const Scr10 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
     display : flex;
     
@@ -99,6 +99,7 @@ const Box = styled.div`
     & > div:last-child {
         width : 50%;
         padding-left : 3vmin;
+        height : 100%;
     }
 `
 

@@ -17,7 +17,7 @@ const Scr1 = () => {
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,1)}/>
             <Box>
-                <DataBox title="나의 실수 피드백">
+                <DataBox title="나의 실수 피드백" customStyle={{height : "100%", maxHeight : "300px"}}>
                     <div></div>
                 </DataBox>
                 <Direction>
@@ -37,8 +37,8 @@ const Scr1 = () => {
 const Box = styled.div`
     position : relative;
     width : 100%;
-    height : auto;
-    margin-top : 5vh;
+    height : 70%;
+    margin-top : 5%;
 `
 const Direction = styled.div`
     text-align : center;

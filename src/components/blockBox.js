@@ -13,6 +13,7 @@ const BlockBox = ({
     title = "상황",
     content = "",
     fadein = false,
+    style = {},
 }) => {
 
     const [on, setOn] = useState(false);
@@ -26,7 +27,7 @@ const BlockBox = ({
     }, []);
 
     return (
-        <Box className={on? "on" : null} style={fadein? fadeStyles : null}>
+        <Box className={on? "on" : null} style={fadein? {...fadeStyles, ...style} : style}>
             <div>{title} :</div>
             <div>{content}</div>
         </Box>

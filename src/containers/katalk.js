@@ -37,11 +37,11 @@ const Katalk = ({
             <Header>
                 <div className="img"></div>
                 <div className="name">Y양</div>
-                <Control>
+                {/* <Control>
                     <span>🗕</span>
                     <span>🗖</span>
                     <span>🗙</span>
-                </Control>
+                </Control> */}
             </Header>
             <Screen as={motion.div} layout>
                 <SingleTalk isMe={false} transitionDelay={1} texts={["나는 이때의 실수를 잊을 수가 없어ㅠㅠ", "너는 어떤 실수가 가장 기억에 남아?"]}/>
@@ -50,11 +50,11 @@ const Katalk = ({
                         return (
                             i===0? (
                                 <>
-                                    <SingleTalk isMe={true} transitionDelay={0} texts={[message]}/>
-                                    <SingleTalk isMe={false} transitionDelay={1} texts={["완전 당황스러웠겠다...!", "그때 기분은 어땠어??"]} />
+                                    <SingleTalk as={motion.div} layoutId={"message_"+i} isMe={true} transitionDelay={0} texts={[message]}/>
+                                    <SingleTalk as={motion.div} layoutId={"message_"+i} isMe={false} transitionDelay={1} texts={["완전 당황스러웠겠다...!", "그때 기분은 어땠어??"]} />
                                 </>
                             ) : (
-                                <SingleTalk className={i} isMe={true} transitionDelay={0} texts={[message]}/>
+                                <SingleTalk layoutId={"message_"+i} className={i} isMe={true} transitionDelay={0} texts={[message]}/>
                             )
                         )
                     })

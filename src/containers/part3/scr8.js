@@ -67,7 +67,7 @@ const Scr8 = () => {
                 <BlockBox title="기분" content={emotionString}/>
                 <BlockBox title="생각" content={scr6}/>
                 <BlockBox title="이미지" content={scr7} fadein={true}/>
-                <AnswerBox title="내가 어떤 사람이라는 생각이 들었나요?" index="5/7">
+                <AnswerBox title="내가 어떤 사람이라는 생각이 들었나요?" index="5/7" styles={{height : "100%"}}>
                     <TextArea height="100%" value={scr8} handleChange={(v)=>{handleChange(v)}}/>
                 </AnswerBox>
             </Box>
@@ -77,10 +77,11 @@ const Scr8 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
+    height : 50%;
 `
 
 export default Scr8;

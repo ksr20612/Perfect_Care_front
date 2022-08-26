@@ -62,7 +62,7 @@ const Scr6 = () => {
             <Box>
                 <BlockBox title="상황" content={scr4} />
                 <BlockBox title="기분" content={emotionString} fadein={true}/>
-                <AnswerBox title="어떤 생각이 떠올랐나요?" index="3/7">
+                <AnswerBox title="어떤 생각이 떠올랐나요?" index="3/7" styles={{height : "100%"}}>
                     <TextArea height="100%" value={scr6} handleChange={(v)=>{handleChange(v)}}/>
                 </AnswerBox>
             </Box>
@@ -72,9 +72,10 @@ const Scr6 = () => {
 }
 
 const Box = styled.div`
-    font-family : "Noto_Medium";
+    font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
+    height : 60%;
     position : relative;
 `
 

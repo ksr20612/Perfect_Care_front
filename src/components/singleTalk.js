@@ -18,7 +18,7 @@ const SingleTalk = ({
     },[]);
 
     return (
-        <Box img={image} className={isMe? "me" : null} animate={{ y : [10, 0], opacity : [0, 1],}} transition={{delay : transitionDelay}}>
+        <Box as={motion.div} img={image} className={isMe? "me" : null} animate={{ y : [10, 0], opacity : [0, 1],}} transition={{delay : transitionDelay}}>
             {isMe? null : <div className="image"/>}
             <div>
                 {isMe? null : <Name>{name}</Name>}
@@ -52,7 +52,7 @@ const Box = styled(motion.div)`
     }
     & > div:last-of-type {
         margin-left : 2%;
-        width : 100%;
+        width : auto;
         font-size : 1.6rem;
 
         & > div:not(:first-of-type) {
@@ -97,9 +97,8 @@ const Name = styled.span`
 const Talk = styled.div`
     background-color : ${pallette.WHITE};
     border-radius : 3px;
-    padding : 2%;
+    padding : 3%;
     position : relative;
-    width : 60%;
 
     &.me {
         background-color : ${lighten(0.2, pallette.YELLOW)};

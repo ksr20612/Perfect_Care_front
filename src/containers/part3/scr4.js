@@ -71,7 +71,7 @@ const Scr4 = () => {
 const Box = styled.div`
     font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
 
     & > div {

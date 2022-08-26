@@ -1,41 +1,108 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import BackImg from "../../assets/sample.jpg";
+import Title from "../../components/title";
+import pallette from "../../styles/pallette.css";
+import { lighten, darken } from "polished";
+import TextArea from "../../components/textArea";
+import GuruBox from "../guruBox";
+import BlockBox from "../../components/blockBox";
+import AnswerBox from "../../components/answerBox";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
+import { useSelector, useDispatch } from "react-redux";
+import { setScr10, setScr16 } from "../../features/parts/part3Slice";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
-const Scr17 = () => {
+const Scr16 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const dispatch = useDispatch();
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const scr10 = useSelector(state=>state.part3.information.scr10);
+    const scr16 = useSelector(state=>state.part3.information.scr16);
+    const [active, setActive] = useState(new Array(4));
+    const handleClick = (target, text) => {
+        const newArr = [...active].map((__,i)=>i===target? true : false);
+        setActive([...active].map((__,i)=>i===target? true : false));
+        dispatch(setScr16(text));
+    }
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            POST("/part3/scr16", { userIdx, autoThought : scr16 }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        }
+    });
+    useFetchREST(`/part3/illustration/${userIdx}`, 
+        (result)=>{
+            console.log(result);
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setScr10(result.data.illustration.scr10));
+                dispatch(setScr16(result.data.illustration.scr16));
+            }
+        }
+    )
 
     return (
         <>
-            <Img></Img>
-            <Message>지금까지 <strong>부정적인 자동사고</strong>가 나를 괴롭히도록 내버려 두었다면, <br/> 이제는 내가 나를 지키는 경찰이 되어 <strong>인지오류를 체포</strong>해보는 것은 어떨까요?</Message>
+            <Title title={getPartTitle(3)} subTitle={getPageTitle(3,16)}/>
+            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                <BlockBox title="나의 자동사고" content={scr10} fadein={true} style={{height : "50%"}}/>
+                <AnswerBox title="내 자동사고의 오류는?">
+                    <Options>
+                        <Option color="" className={active[0]? "on" : null} onClick={(e)=>{handleClick(0, e.currentTarget.innerText)}}>재앙화 사고</Option>
+                        <Option color="" className={active[1]? "on" : null} onClick={(e)=>{handleClick(1, e.currentTarget.innerText)}}>흑백논리</Option>
+                        <Option color="" className={active[2]? "on" : null} onClick={(e)=>{handleClick(2, e.currentTarget.innerText)}}>당위진술</Option>
+                        <Option color="" className={active[3]? "on" : null} onClick={(e)=>{handleClick(3, e.currentTarget.innerText)}}>지나친 일반화</Option>
+                    </Options>
+                </AnswerBox>
+            </Box>
             {renderArrow()}
         </>
     )
 }
 
-const Img = styled.div`
-    background-image : url(${BackImg});
-    width : 80%;
-    height : 60vh;
-    background-size : contain;
-    background-position : center center;
-    background-repeat : no-repeat;
-    margin : 4vh auto 4vh;
+const Box = styled.div`
+    font-family : "Medium";
+    padding : 0 1vw;
+    padding-top : 5%;
+    position : relative;
 `
-const Message = styled.div`
-    text-align : center;
-    font-size : 3.2rem;
-    word-break : keep-all;
+const Options = styled.div`
+    display : grid;
+    grid-template-columns : 1fr 1fr;
+    width : 100%;
+    height : 30vh;
+`
+const Option = styled.div`
+    background-color : ${props => props.color || lighten(0.1, pallette.BLUISH)};
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    padding : 1vmin;
+    margin : 1vmin;
+    cursor : pointer;
+    transition : all .3s ease-out;
+    border-radius : 10px;
 
-    & > strong {
-        font-size : 3.4rem;
+    &.on {
+        background-color : ${props => darken(0.1, props.color || pallette.BLUISH)};
+    }
+    &:hover {
+        background-color : ${props => darken(0.1, props.color || pallette.BLUISH)};
     }
 `
 
-export default Scr17;
+export default Scr16;
