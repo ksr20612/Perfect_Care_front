@@ -7,6 +7,7 @@ import Answer from "./answer";
 const QuizBox = ({
     style = {},
     answer = 1,
+    exp = "",
     children
 }) => {
 
@@ -21,10 +22,10 @@ const QuizBox = ({
                 {children}
             </Box>
             <Answers>
-                <Answer content="재앙화 사고" isOn={isOn===1} isAnswer={answer===1} handleClick={()=>{setIsOn(1)}} handleClose={handleClose}></Answer>
-                <Answer content="흑백논리" isOn={isOn===2} isAnswer={answer===2} handleClick={()=>setIsOn(2)} handleClose={handleClose}></Answer>
-                <Answer content="당위 진술" isOn={isOn===3} isAnswer={answer===3} handleClick={()=>setIsOn(3)} handleClose={handleClose}></Answer>
-                <Answer content="지나친 일반화" isOn={isOn===4} isAnswer={answer===4} handleClick={()=>setIsOn(4)} handleClose={handleClose}></Answer>
+                <Answer content="재앙화 사고" isOn={isOn===1} isAnswer={answer===1} exp={exp} handleClick={()=>{setIsOn(1)}} handleClose={handleClose}></Answer>
+                <Answer content="흑백논리" isOn={isOn===2} isAnswer={answer===2} exp={exp} handleClick={()=>setIsOn(2)} handleClose={handleClose}></Answer>
+                <Answer content="당위 진술" isOn={isOn===3} isAnswer={answer===3} exp={exp} handleClick={()=>setIsOn(3)} handleClose={handleClose}></Answer>
+                <Answer content="지나친 일반화" isOn={isOn===4} isAnswer={answer===4} exp={exp} handleClick={()=>setIsOn(4)} handleClose={handleClose}></Answer>
             </Answers>
         </Wrapper>
     )

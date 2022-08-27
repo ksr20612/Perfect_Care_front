@@ -4,13 +4,13 @@ import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
 import { getTo } from "../../assets/jsons/standards";
-import { BsPerson as PersonIcon } from "react-icons/bs";
 import Feedback from "../../components/feedback";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import PersonIcon from "../../assets/person-pouting-svgrepo-com.svg";
 
 const Scr4 = () => {
 
@@ -35,9 +35,8 @@ const Scr4 = () => {
                     나의 기준을 점검하고, 성장시키는 기준으로 바꾸어볼까요?
                 </div>
                 <Container>
-                    <Person size="8vw"/>
+                    <Person/>
                     <div>
-                        <div>나의 기준은...</div>
                         <Bubble>
                             <Feedback index={1} isOn={status || (clicked===1)} standard={checks.std1.from} handleClick={()=>{handleClick(1)}}>
                                 <div>{checks.std1.to[0]}</div> <br/>
@@ -67,7 +66,9 @@ const Scr4 = () => {
 const Box = styled.div`
     font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
+    display : flex;
+    flex-direction : column;
 
     & > div {
         font-size : 2.6rem;
@@ -76,14 +77,19 @@ const Box = styled.div`
 const Container = styled.div`
     margin-top : 5vh;
     display : flex;
+    flex : 1;
 
-    & > div { 
-        margin-top : 1vh;
-        width : 100% 
+    & > div:last-child {
+        margin-left : 3%;
     }
 `
-const Person = styled(PersonIcon)`
-
+const Person = styled.div`
+    width : 25%;
+    height : 25%;
+    background : url(${PersonIcon});
+    background-position : center;
+    background-size : contain;
+    background-repeat : no-repeat;
 `
 const Bubble = styled.div`
     background-color : ${pallette.GREY};
@@ -91,7 +97,7 @@ const Bubble = styled.div`
     margin-top : 3vh;
     height : 50vh;
     border-radius : 5vmin;
-    padding : 1.5%;
+    padding : 2%;
     overflow-y : hidden;
 `
 

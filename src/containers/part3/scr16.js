@@ -19,12 +19,11 @@ const Scr15 = () => {
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <QuizBox style={{height : "60vh"}} answer={2}>
+                <QuizBox style={{height : "60vh"}} answer={4} exp={"우리는 종종 '첫인상을 망치면 난 무리에 끼지 못할거야.', '이번 소개팅도 성공하지 못하면 난 죽을때까지 혼자 살지도 몰라.', '돈이 없으면 길거리에 나앉게 될거야.'과 같은 부정적인 결론을 내놓기도 합니다. 이처럼 현재 상황과 다른 가능성을 고려하지 않고 비합리적인 결말을 먼저 상상하는 것은 재앙화 (혹은 파국화)라고 합니다. "}>
                     <Question bullet={"04."}>
-                        <div>미국으로 유학을 갔던 창훈씨는 유학생활 중, 문화차이와 홀로서기의 어려움을 느꼈습니다.</div>
-                        <div>더이상 잘할 수 없을 것 같은 우울감과 불안으로 인해 창훈씨는 결국 한국으로 귀국하였습니다.</div>
-                        <div>귀국한 창훈씨는 부모님에 대한 미안함과 학과 생활을 다 마치지 못해 유학 생활을 망쳤다는 생각에 아무 것도 시작하지 못하고 있습니다.</div>
-                        <div>창훈씨가 가지고 있는 생각의 오류는 무엇인가요?</div>
+                        <div>기업의 CEO인 상규씨는 20대때부터 사업을 해오며 여러 사업체를 키워, 5년 전부터는 안정적인 생활을 해오고 있습니다.</div>
+                        <div>하지만 생활이 안정적일수록 오히려 갑작스레 사업에 문제가 생겨 이 생활이 무너지진 않을까 노심초사하며 최악의 상황을 상상하는 등 불안이 더욱 커져만 가고 있습니다.</div>
+                        <div>상규씨가 가지고 있는 생각의 오류는 무엇인가요?</div>
                     </Question>
                 </QuizBox>
             </Box>
@@ -36,8 +35,7 @@ const Scr15 = () => {
 const Box = styled.div`
     font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
-    position : relative;
+    padding-top : 5%;
 
     & > div {
         font-size : 2.6rem;
@@ -52,7 +50,9 @@ const Box = styled.div`
 const Question = styled.div`
     position : relative;
     margin-left : 3ch;
-    font-size : 2.0rem;
+    font-size : 2.5rem;
+    line-height : 150%;
+    word-break : keep-all;
 
     &:before {
         content : "${props=>props.bullet}";

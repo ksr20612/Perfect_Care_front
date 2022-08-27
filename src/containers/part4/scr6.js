@@ -8,6 +8,8 @@ import fadein from "../../styles/framer-motion/fadein";
 import { Paper } from "../../styles/components/paper";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
+import SuperCell from "../../assets/Supercell-logo.svg";
+import Champagne from "../../assets/champagne-svgrepo-com.svg";
 
 const Scr6 = () => {
 
@@ -16,53 +18,57 @@ const Scr6 = () => {
     return (
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,6)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <Name>P&G의 "용감한 실패" 어워드</Name>
-                <Content>
-                    <div></div>
-                    <div>
-                        도전과 실험정신을 장려하고 실패에 대한 두려움을 없애기 위해 P&G는 매년 ‘용감한 실패 어워드’를 열어 위험을 감수한 가장 "똑똑한" 팀이나 개인을 시상합니다. <br/><br/>
-                        이 실패 어워드에는 '실수는 해도 괜찮아. 숨기지만 말자.'라는 의미가 담겨있다고 해요.   
-                    </div>
-                </Content>
-            </Box>
+            <Content>
+                <Name></Name>
+                <Pic></Pic>
+                <Subtitle>슈퍼셀, 실패에는 샴페인을</Subtitle>
+                <div>
+                    슈퍼셀은 맥주로 성공을 축하하고 샴페인으로 실패를 축하합니다. 프로젝트가 끝나면 축하를 하며 이는 실패가 받아들여질 수 있음을 강조하는 의미라고 해요.
+                </div>
+            </Content>
             {renderArrow()}
         </>
     )
 }
-const Box = styled(Paper)`
-    margin-top : 8vh;
-    padding-left : min(95px, 5vw);
-    text-align : center;
-`
 const Name = styled.div`
     font-size : 3.6rem;
     font-family : "Medium";
-    margin-bottom : 3vh;
     width : 100%;
+    height : 20%;
+    background-image : url(${SuperCell});
+    background-size : contain;
+    background-position : center;
+    background-repeat : no-repeat;
+`
+const Pic = styled.div`
+    width : 100%;
+    flex : 1;
+    background-image : url(${Champagne});
+    background-size : contain;
+    background-position : center;
+    background-repeat : no-repeat;
 `
 const Content = styled.div`
     font-size : 2.0rem;
     font-family : "Regular";
     color : ${pallette.NEWBLACK};
+    line-height : 150%;
     display : flex;
-    justify-content : space-between;
+    flex-direction : column;
+    margin : 0 auto;
+    width : 50%;
+    height : 80%;
+    text-align : justify;
+    text-indent : 1ch;
 
-    & > div:first-of-type {
-        width : 303px;
-        height : 316px;
-        background-size : contain;
-        background-position : center center;
-        background-repeat : no-repeat;
+    & > div + div {
+        margin-top : 5%;
     }
-
-    & > div:last-of-type {
-        width : 381px;
-        height : auto;
-        text-align : left;
-        padding-top : 5vh;
-        word-break : keep-all;
-    }
+`
+const Subtitle = styled.div`
+    font-size : 1.4em;
+    font-family : "Bold";
+    text-align : center;
 `
 
 export default Scr6;

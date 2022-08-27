@@ -19,7 +19,7 @@ const Scr15 = () => {
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <QuizBox style={{height : "60vh"}} answer={2}>
+                <QuizBox style={{height : "60vh"}} answer={2} exp={"완벽주의자의 특징 중 하나인 ‘전부아니면 전무의 사고’로도 불리는 흑백논리의 오류는 완벽주의자의 기준에 맞지 않으면 그 과정도 전부 실패로 간주해버리는 인지오류입니다. 유학생활의 어려움으로 인해 도중에 포기하긴 했지만, 분명히 그 기간 속에서 배운 점도 있을 것입니다. 하지만 창훈씨는 ‘학과생활을 다 마쳐야만’ 유학에 ‘성공’한 것이기 때문에 스스로를 실패한 사람으로 보고 있습니다."}>
                     <Question bullet={"03."}>
                         <div>미국으로 유학을 갔던 창훈씨는 유학생활 중, 문화차이와 홀로서기의 어려움을 느꼈습니다.</div>
                         <div>더이상 잘할 수 없을 것 같은 우울감과 불안으로 인해 창훈씨는 결국 한국으로 귀국하였습니다.</div>
@@ -36,7 +36,7 @@ const Scr15 = () => {
 const Box = styled.div`
     font-family : "Medium";
     padding : 0 1vw;
-    padding-top : 2vh;
+    padding-top : 5%;
     position : relative;
 
     & > div {
@@ -52,7 +52,9 @@ const Box = styled.div`
 const Question = styled.div`
     position : relative;
     margin-left : 3ch;
-    font-size : 2.0rem;
+    font-size : 2.5rem;
+    line-height : 150%;
+    word-break : keep-all;
 
     &:before {
         content : "${props=>props.bullet}";

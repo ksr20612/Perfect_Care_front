@@ -9,6 +9,7 @@ import fadein from "../styles/framer-motion/fadein";
 
 const Modal = ({
     size = {width : "100%", height : "auto"},
+    displayFlex = false,
     isOn = false,
     close = {on : true, handleClose : f => f},
     customStyle = {},
@@ -17,7 +18,7 @@ const Modal = ({
 
     return (
         <>
-            <Box className={isOn? "on" : null} size={size} style={customStyle}>
+            <Box className={isOn? "on" : null} size={size} style={customStyle} displayFlex={displayFlex}>
                 {
                     close.on? <Exit className="close" onClick={(e)=>{close.handleClose(e)}}></Exit> : null
                 }
@@ -51,28 +52,33 @@ const Box = styled.div`
     background-color : ${pallette.WHITE};
     display : none;
     z-index : 9999;
+    padding : 3%;
 
     &.on {
-        display : unset;
+        display : ${props=>props.displayFlex? "flex" : "unset"};
     }
 `
 const Exit = styled.div`
-    width : 30px;
-    height : 30px;
+    width : 20px;
+    height : 20px;
     background-color : ${pallette.RED};
     border-radius : 50%;
-    position : relative;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    float : right;
+    position : absolute;
+    right : 10px;
+    top : 10px;
 
     &:hover::after {
         content : "x";
         position : absolute;
-        top : -10px;
         color : ${pallette.WHITE};
-        font-size : 30px;
+        font-size : 5px;
+        opacity : 0.6;
+        width : 100%;
+        height : 100%;
+        display : flex;
+        align-items : center;
+        justify-content : center;
+        top : -1px;
     }
 `
 
