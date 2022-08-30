@@ -63,25 +63,25 @@ const Scr2 = () => {
                     <tr>
                         <td>학업 / 능력</td>
                         <td>
-                            <Checkboxes checked={checks.std1.from} items={Standards["학업/능력"].map((v)=>v.from)} handleChange={(v)=>handleChange("std1", v)}/>
+                            <Checkboxes checked={checks.std1.from || checks.std1} items={Standards["학업/능력"]} handleChange={(v)=>handleChange("std1", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>외모 / 건강</td>
                         <td>
-                            <Checkboxes checked={checks.std2.from} items={Standards["외모/건강"].map((v)=>v.from)} handleChange={(v)=>handleChange("std2", v)}/>
+                            <Checkboxes checked={checks.std2.from || checks.std2} items={Standards["외모/건강"]} handleChange={(v)=>handleChange("std2", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>대인관계</td>
                         <td>
-                            <Checkboxes checked={checks.std3.from} items={Standards["대인관계"].map((v)=>v.from)} handleChange={(v)=>handleChange("std3", v)}/>
+                            <Checkboxes checked={checks.std3.from || checks.std3} items={Standards["대인관계"]} handleChange={(v)=>handleChange("std3", v)}/>
                         </td>
                     </tr>
                     <tr>
                         <td>성공 / 행복</td>
                         <td>
-                            <Checkboxes checked={checks.std4.from} items={Standards["성공/행복"].map((v)=>v.from)} handleChange={(v)=>handleChange("std4", v)}/>
+                            <Checkboxes checked={checks.std4.from || checks.std4} items={Standards["성공/행복"]} handleChange={(v)=>handleChange("std4", v)}/>
                         </td>
                     </tr>
                 </table>

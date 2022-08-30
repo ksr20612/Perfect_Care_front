@@ -41,17 +41,17 @@ const list = [
     { content : "눈치가 빠르다", image : Bubble6, style : { top : "16%" }},
     { content : "타인과 비교하곤 한다", image : Bubble7, style : { top : "55%", right : "23%" }},
     { content : "때때로 불안하다", image : Bubble8, style : { top : "30%", right : "20%" }},
-    { content : "자주 화가 난다", image : Bubble9, style : { top : "77%", right : "17%" }},
-    { content : "강박적인 편이다", image : Bubble10, style : { top : "50%", right : "3%" }},
+    { content : "정리정돈을 잘한다", image : Bubble9, style : { top : "77%", right : "17%" }},
+    { content : "자주 화가 난다", image : Bubble10, style : { top : "50%", right : "3%" }},
     { content : "결과보다 과정이 중요", image : Bubble6, style : { top : "74%", left : "-5%" }},
-    { content : "강박적인 편이다", image : Bubble4, style : { top : "53%", left : "-17%", }},
-    { content : "타인의 평가에 민감하다", image : Bubble1, style : { top : "25%", left : "-2%" }},
-    { content : "실수를 하면 부끄럽다", image : Bubble2, style : { top : "5%", left : "18%" }},
-    { content : "계획적이다", image : Bubble3, style : { top : "-6%", left : "" }},
-    { content : "능력을 인정받고 싶어한다", image : Bubble10, style : { top : "5%", right : "18%" }},
-    { content : "타인에게 엄격하다", image : Bubble9, style : { top : "25%", right : "-2%" }},
-    { content : "게으른 것 같다", image : Bubble8, style : { top : "53%", right : "-17%" }},
-    { content : "모든 경우의 수를 다 생각한다", image : Bubble7, style : { top : "74%", right : "-5%" }},
+    { content : "타인의 평가에 민감하다", image : Bubble4, style : { top : "53%", left : "-17%", }},
+    { content : "실수를 하면 부끄럽다", image : Bubble1, style : { top : "25%", left : "-2%" }},
+    { content : "계획적이다", image : Bubble2, style : { top : "5%", left : "18%" }},
+    { content : "능력을 인정받고 싶어한다", image : Bubble3, style : { top : "-6%", left : "" }},
+    { content : "타인에게 엄격하다", image : Bubble10, style : { top : "5%", right : "18%" }},
+    { content : "게으른 것 같다", image : Bubble9, style : { top : "25%", right : "-2%" }},
+    { content : "모든 경우의 수를 다 생각한다", image : Bubble8, style : { top : "53%", right : "-17%" }},
+    { content : "강박적인 편이다", image : Bubble7, style : { top : "74%", right : "-5%" }},
 ];
 
 const Scr2 = () => {
@@ -108,7 +108,7 @@ const Scr2 = () => {
                     })
                 }
             </Options>
-            <Box as={motion.div}>
+            {/* <Box as={motion.div}>
                 <Head>
                     <Brain emotions={myself}></Brain>
                 </Head>
@@ -118,7 +118,7 @@ const Scr2 = () => {
                 <DotGroup/>
                 <Circle1/>
                 <Circle2/>
-            </Box>
+            </Box> */}
             {renderArrow()}
         </>
     )

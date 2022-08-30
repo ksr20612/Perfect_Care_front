@@ -22,9 +22,9 @@ const Checkboxes = ({
                         return (
                             <FormControlLabel
                                 control={
-                                    <Checkbox checked={item === checked} onChange={(e)=>handleChange(e.target.value)} value={item} color="default" />
+                                    <Checkbox checked={(item?.from || item) === checked} onChange={()=>handleChange(item)} value={item?.from || item} color="default" />
                                 }
-                                label={<span style={{ fontSize: '1.4rem' }}>{item}</span>}
+                                label={<span style={{ fontSize: '1.4rem' }}>{item?.from || item}</span>}
                             />
                         )
                     })
