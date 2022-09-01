@@ -5,7 +5,7 @@ export const Part3Slice = createSlice({
     initialState : {
         information : {
             scr4 : "", // 상황
-            scr5 : {"1" : 10, "8" : 3, "10" : 5}, // 감정
+            scr5 : {}, // 감정
             scr6 : "", // 생각
             scr7 : "", // 이미지
             scr8 : "", // 나는 어떤 사람

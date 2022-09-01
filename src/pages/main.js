@@ -208,25 +208,25 @@ const BottomImg = styled.div`
     width : 100%;
     height : 100%;
     background-repeat : no-repeat;
-    background-size : cover;
+    background-size : contain;
     background-position : bottom 0 right -6vw;
     z-index : 1;
 `
 const BigCircle = styled.div`
     position : absolute;
-    width : 30vh;
-    height : 30vh;
-    min-width : 342px;
-    min-height : 342px;
+    width : 35%;
+    aspect-ratio : 1;
+    max-width : 342px;
+    max-height : 342px;
     box-shadow : #A6774494 10px 10px 30px;
     border-radius : 50%;
     background : url(${Doctor}) #f3d096;
-    background-size : 29vh 29vh;
+    background-size : 90%;
     background-repeat : no-repeat;
     background-position : bottom 0 left 38%;
     z-index : 99;
-    top : 178px;
-    left : 590px;
+    top : 15%;
+    right : 15%;
 
     &:before {
         content : ""; 
@@ -236,23 +236,7 @@ const BigCircle = styled.div`
         min-width : 88px;
         min-height : 88px;
         background-image: url(${Logo}); 
-        background-repeat :no-repeat;
-        background-position : center;
-        background-size : contain;
-        z-index : 2;
-        top : calc(-12% + min(18px, 1vh));
-        right : calc(5.5% + min(18px, 1vh));
-    }
-
-    &:after {
-        content : ""; 
-        position : absolute;
-        width : 10vh;
-        height : 10vh;
-        min-width : 106px;
-        min-height : 106px;
-        background: rgb(247,245,230);
-        background-image: linear-gradient(
+        background-image : url(${Logo}), linear-gradient(
             150deg,
             hsl(53deg 52% 94%) 0%,
             hsl(53deg 63% 92%) 1%,
@@ -278,12 +262,13 @@ const BigCircle = styled.div`
             hsl(16deg 100% 50%) 94%,
             hsl(4deg 100% 50%) 100%
         );
-        background-position : center;
         background-repeat : no-repeat;
+        background-position : center 1px;
         background-size : contain;
+        z-index : 2;
+        top : calc(-12% + min(18px, 1vh));
+        right : calc(5.5% + min(18px, 1vh));
         border-radius : 50%;
-        right : 6%;
-        top : -12%;
     }
 `
 const Black = styled.div`

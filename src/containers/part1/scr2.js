@@ -16,6 +16,8 @@ import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 import GirlImg from "../../assets/img_girl.png";
 import SpeechBubble from "../../components/speechBubble";
+import BrainIcon from "../../assets/brain-svgrepo-com.svg";
+import CloserIcon from "../../assets/close-svgrepo-com.svg";
 import { ReactComponent as Bubble1 } from "../../assets/ic_bub_def.svg";
 import { ReactComponent as Bubble2 } from '../../assets/ic_bub_def-1.svg';
 import { ReactComponent as Bubble3 } from '../../assets/ic_bub_def-2.svg';
@@ -94,6 +96,7 @@ const Scr2 = () => {
             }
         }
     )
+    const [isBoxOn, setIsBoxOn] = useState(false);   
 
     return (
         <>
@@ -101,6 +104,7 @@ const Scr2 = () => {
             <Question>Q. '나'는 어떤 사람일까?</Question>
             <Inst>다음 중 나에게 해당한다고 생각되는 문장을 선택해주세요.</Inst>
             <Options>
+                <BrainButton onClick={()=>setIsBoxOn(true)}>그림으로 볼게요</BrainButton>
                 <Girl></Girl>
                 {
                     list.map((bubble, i)=>{
@@ -108,28 +112,24 @@ const Scr2 = () => {
                     })
                 }
             </Options>
-            <Box as={motion.div}>
-                <Head>
-                    <Brain emotions={myself}></Brain>
-                </Head>
-                <Shadow/>
-                <PatternPurple/>
-                <PatternGreen/>
-                <DotGroup/>
-                <Circle1/>
-                <Circle2/>
-            </Box>
+            {
+                isBoxOn &&
+                    <Box as={motion.div}>
+                        <Closer onClick={()=>setIsBoxOn(false)}></Closer>
+                        <Head>
+                            <Brain emotions={myself}></Brain>
+                        </Head>
+                        <Shadow/>
+                        <PatternPurple/>
+                        <PatternGreen/>
+                        <DotGroup/>
+                        <Circle1/>
+                        <Circle2/>
+                    </Box>
+            }
             {renderArrow()}
         </>
     )
-}
-const movingUp = {
-    initial : {
-        y : 0
-    },
-    up : {
-        y : -524,
-    }
 }
 
 const Question = styled.div`
@@ -164,6 +164,34 @@ const Girl = styled.div`
     position : absolute;
     bottom : 0;
 `
+const BrainButton = styled.button`
+    position : absolute;
+    top : 0;
+    left : -17%;
+    outline : none;
+    border : none;
+    font-family : "Regular";
+    font-size : 1.5em;
+    padding : 2%;
+    border-radius : 1em;
+    box-shadow : #00000029 3px 3px 10px;
+    display : flex;
+    align-items : center;
+    cursor : pointer;
+
+    &:before {
+        content : "";
+        width : 50%;
+        aspect-ratio: 1;
+        background : url(${BrainIcon});
+        display : inline-block;
+        margin-right : 3px;
+    }
+
+    &:active {
+        box-shadow : none;
+    }
+`
 const Box = styled(Paper)`
     position : absolute;
     width : 691px;
@@ -171,9 +199,29 @@ const Box = styled(Paper)`
     display : flex;
     justify-content : center;
     align-items : center;
-    bottom : 0;
-    bottom : -440px;
-    right : min(15vw, 110px);
+    left : 50%;
+    bottom : 50%;
+    transform : translate(-50%, 50%);
+`
+const Closer = styled.button`
+    background : url(${CloserIcon});
+    width : 30px;
+    height : 30px;
+    background-repeat : no-repeat;
+    background-size : contain;
+    background-position : center;
+    border : none;
+    position : absolute;
+    top : 15px;
+    right : 15px;
+    cursor : pointer;
+
+    &:hover {
+        opacity : 0.5;
+    }
+    &:active {
+        transform : translateY(1px);
+    }
 `
 const Head = styled.div`
     width : 100%;

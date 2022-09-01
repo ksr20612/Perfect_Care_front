@@ -41,13 +41,12 @@ const Login = () => {
                         });
                     }else {
                         const token = result.data.token;
-                        console.log(token);
                         dispatch(setToken(token));
                         dispatch(setLoginState(true));
                         toastSuccess("로그인에 성공하였습니다.", {
                             onClose : () => {
-                                // navigate("/");
-                                console.log("마지막 종료 시점 가져와야돼");
+                                navigate("/");
+                                // console.log("마지막 종료 시점 가져와야돼");
                             }
                         });
                     }

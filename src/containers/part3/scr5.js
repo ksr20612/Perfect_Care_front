@@ -57,6 +57,9 @@ const Scr5 = () => {
             }
         }
     )
+    useEffect(()=>{
+        console.log(selected);
+    })
 
     return (
         <>
