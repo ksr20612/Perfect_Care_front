@@ -34,10 +34,11 @@ const Header = () => {
     }
     const isLoggedIn = useSelector(state=>state.state.loginState);
     const nick = useSelector(state=>state.state.nick);
-
-    useEffect(()=>{
-        console.log({isLoggedIn, nick});
-    })
+    const handleLogout = () => {
+        if(window.confirm("로그아웃하시겠습니까?")){
+            navigate("/");
+        }
+    }
 
     return (
         <Head layout>
@@ -57,7 +58,7 @@ const Header = () => {
                                 <span>{nick}</span>
                                 <LoginIcon size="2.4rem"/>
                             </IconWrapper>
-                            <IconWrapper onClick={()=>{window.confirm("로그아웃하시겠습니까?")}}>
+                            <IconWrapper onClick={()=>handleLogout()}>
                                 <span>로그아웃</span>
                                 <LogoutIcon size="2.4rem"/>
                             </IconWrapper>

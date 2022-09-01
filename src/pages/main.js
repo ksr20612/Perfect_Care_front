@@ -9,11 +9,16 @@ import Doctor from "../assets/doctor_01.png";
 import Logo from "../assets/logo.png";
 import LogoImg from "../assets/ic_health Care.svg";
 import ChartImg from "../assets/ic_medi.png";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
 
     const curPage = useSelector(state => state.page.pageIdx);
     const token = useSelector(state=>state.state.token);
+    const navigate = useNavigate();
+    const handleStart = () => {
+        navigate("/0");
+    }
 
     return (
         <Wrapper>
@@ -42,7 +47,7 @@ const Main = () => {
                     </Subtitle>
                 </Content>
                 <ButtonWrapper>
-                    <Start>시작하기</Start>
+                    <Start onClick={()=>handleStart()}>시작하기</Start>
                 </ButtonWrapper>
             </Box>
         </Wrapper>
