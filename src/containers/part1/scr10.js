@@ -72,7 +72,7 @@ const Scr10 = () => {
         </>
     )
 }
-const Box = styled(Paper)`
+const Box = styled.div`
     padding : 5vh;
     margin-top : 5vh;
     display : flex;
@@ -82,7 +82,7 @@ const Box = styled(Paper)`
     height : 75%;
 `
 const Img = styled.img`
-    width : 60%;
+    width : 100%;
     height : 60%;
 `
 const Content = styled.div`

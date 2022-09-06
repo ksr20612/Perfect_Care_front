@@ -19,15 +19,14 @@ const Scr9 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,9)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                <MovieClip width="100%" height="100%"/>
+            <Box>
+                <MovieClip width="100%" height="100%" videoId="B2mPw4lX5mo" />
             </Box>
             {renderArrow()}
         </>
     )
 }
-const Box = styled(Paper)`
-    padding : 5%;
+const Box = styled.div`
     margin-top : 5%;
     display : flex;
     height : 70%;
@@ -36,7 +35,7 @@ const Box = styled(Paper)`
 
     & > div {
         font-size : 2.6rem;
-        width : 80%;
+        width : 100%;
         height : 100%;
     }
 `

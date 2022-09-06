@@ -8,7 +8,7 @@ const Spinner = ({
 
     return (
         <Box style={style}>
-            <Inst>결과 분석중</Inst>
+            <Inst>누구보다 완벽하게 <br/> 결과 분석중</Inst>
             <div class="spinner-box">
                 <div class="blue-orbit leo"></div>
                 <div class="green-orbit leo"></div>
@@ -25,10 +25,19 @@ const Inst = styled.div`
     text-transform : uppercase;
     font-family : "Medium"; 
     position : absolute;
+    text-align : center;
     top : 50%;
     left : 50%;
     transform : translate(-50%, -50%);
     z-index : 3;
+    animation : blink 1s infinite alternate;
+
+    @keyframes blink {
+        to {
+            opacity : 0;
+        }
+    }
+
 `
 const Box = styled.div`
 

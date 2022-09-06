@@ -20,21 +20,21 @@ const Scr3 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,3)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Note>
                     <Detective/>
                     <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있습니다.</div>
                     <br/>
                     <div>형사가 되어 자동사고라는 용의자를 잡아봅시다.</div>
                 </Note>
-                <motion.div initial="hidden" animate="visible" variants={fadein} custom={1.5}>
+                <motion.div initial="hidden" animate="visible" variants={fadein} custom={1}>
                     <div>이런 걸 작성할 거예요!</div>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2}>1. 상황</Block>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2.5}>2. 기분</Block>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={3}>3. 생각</Block>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={3.5}>4. 이미지</Block>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4}>5. 나는 어떤 사람?</Block>
-                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={4.5}>6. 최악의 경우</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.2}>1. 상황</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.4}>2. 기분</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.6}>3. 생각</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.8}>4. 이미지</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2.0}>5. 나는 어떤 사람?</Block>
+                    <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={2.2}>6. 최악의 경우</Block>
                 </motion.div>
             </Box>
             {renderArrow()}

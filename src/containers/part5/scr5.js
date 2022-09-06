@@ -16,7 +16,7 @@ const Scr5 = () => {
     return (
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,5)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <table>
                     <thead>
                         <tr>
@@ -88,7 +88,7 @@ const Scr5 = () => {
         </>
     )
 }
-const Box = styled(Paper)`
+const Box = styled.div`
     padding : 5vh;
     margin-top : 5vh;
     display : flex;

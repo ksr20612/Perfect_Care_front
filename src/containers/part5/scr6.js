@@ -22,7 +22,7 @@ const Scr6 = () => {
                 <div>#</div>
                 <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
             </DataBox>
-            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.5}>지금의 나는 어떻게 변화했나요?</Ask>
+            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>지금의 나는 어떻게 변화했나요?</Ask>
             {renderArrow()}
         </>
     )
@@ -34,7 +34,7 @@ const Exp = styled.div`
     text-align : right;
 `
 const Ask = styled.div`
-    font-size : 3.2rem;
+    font-size : 4.4rem;
     width : 100%;
     display : flex;
     justify-content : center;

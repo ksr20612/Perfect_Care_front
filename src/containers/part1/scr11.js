@@ -18,7 +18,7 @@ const Scr11 = () => {
 
     return (
         <>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Img></Img>
                 <Message>
                     <strong>
@@ -36,7 +36,7 @@ const Scr11 = () => {
         </>
     )
 }
-const Box = styled(Paper)`
+const Box = styled.div`
     margin-top : 4vh;
     height : 70vh;
     position : relative;

@@ -18,7 +18,7 @@ const Scr14 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,14)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <QuizBox style={{height : "60vh"}} answer={4} exp={"물론 한번의 기억이 크게 남아 다음번 치료가 두려운 것은 당연한 것이지만, 분명히 호전된 경험이 있음에도 불구하고 재발하였다는 사실로 인해 치료가 소용없다고 치부해버리는 것은 지나친 일반화의 오류입니다. 비록 공황이 재발하였지만 이전과 비교해볼 때 그 빈도가 조금 더 적어졌을 수도 있고, 이전과 다르게 대처할 수도 있기 때문입니다."}>
                     <Question bullet={"02."}>
                         <div>대학생인 조은씨는 학기 중 공황 증상이 발생하여 휴학하였습니다.</div>

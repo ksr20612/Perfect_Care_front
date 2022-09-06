@@ -16,7 +16,7 @@ const Scr8 = () => {
     return (
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,8)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Subtitle>완벽은 완전히 없애는 것이 아니라 "케어"하는 것.</Subtitle>
                 <Content>
                     <div>진료실엔 완벽주의자들이 많이 찾아옵니다.</div>

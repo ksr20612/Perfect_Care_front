@@ -16,7 +16,7 @@ const Scr12 = () => {
     return (
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,12)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Summary>
                     <Line>두려움은 실수를 만드는 재료!</Line>
                     <Line>꾸준한 실수 피드백으로 실수를 마주해보아요.</Line>

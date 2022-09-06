@@ -15,7 +15,7 @@ const Scr6 = () => {
 
     return (
         <>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Img src={Image} alt="이미지"/>
                 <Content>
                     <div>어떤 일을 맡으면 부담감부터 들고 숨이 막히지 않으셨나요?</div>

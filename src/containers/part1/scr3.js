@@ -12,7 +12,7 @@ import { usePage } from "../../hooks/usePage";
 
 const list = [
     {
-        name : `무대공포증\n사회불안`,
+        name : `사회불안\n(무대공포증)`,
         value : 1,
     },
     {
@@ -48,11 +48,11 @@ const Scr3 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,3)}/>
-            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0}>지금 내가 가장 <strong>강하게 느끼는 증상</strong>은 어떤 것인가요?</Ask>
+            <Ask>지금 내가 가장 <strong>강하게 느끼는 증상</strong>은 어떤 것인가요?</Ask>
             <Wrapper>
                 {
                     list.map((item, i)=>(
-                        <Box as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.5*(i+1)} className={clicked===item.value? "clicked" : null} onClick={()=>handleClick(item.value)}>{item.name}</Box>
+                        <Box as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.5} className={clicked===item.value? "clicked" : null} onClick={()=>handleClick(item.value)}>{item.name}</Box>
                     ))
                 }
             </Wrapper>
@@ -75,7 +75,7 @@ const Wrapper = styled.div`
     width : 100%;
     height : 60%;
     display : grid;
-    grid-template-columns : repeat(3, 1fr);
+    grid-template-columns : repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap : 5%;
 `

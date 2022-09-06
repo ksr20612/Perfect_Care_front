@@ -17,7 +17,7 @@ const Scr6 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,6)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 “완벽주의자는 현실을 거부하고 환상의 세계에서 산다. <br/>
                 그가 사는 세계에서는 실패나 고통스러운 감정은 없다. <br/>
                 그들의 성공 기준은 아무리 비현실적이라고 해도 충족시켜야 하는 것이다. <br/>
@@ -34,7 +34,7 @@ const Scr6 = () => {
         </>
     )
 }
-const Box = styled(Paper)`
+const Box = styled.div`
     padding : 5vh;
     margin-top : 10vh;
     font-size : 2.0rem;

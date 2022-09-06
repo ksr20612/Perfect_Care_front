@@ -18,7 +18,7 @@ const Scr8 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,8)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <div>
                     우리의 모든 감정은 생존과 적응을 위한 결과물입니다.
                 </div>
@@ -33,7 +33,7 @@ const Scr8 = () => {
         </>
     )
 }
-const Box = styled(Paper)`
+const Box = styled.div`
     padding : 5vh;
     margin-top : 10vh;
     font-size : 3.6rem;

@@ -16,7 +16,7 @@ const Scr18 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,18)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Summary>
                     <Line>언제나 내 생각이 합리적이지만은 않다!</Line>
                     <Line>완벽주의를 강화시키는 주범, <br/> 인지오류를 밝혀내자.</Line>

@@ -18,7 +18,7 @@ const Scr7 = () => {
     return (
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,7)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Subtitle>
                     <div>완벽 관찰 일지</div>
                     <a href="#" onClick={()=>{saveAs("../../robots.txt", "완벽관찰일지_YD.txt")}}>

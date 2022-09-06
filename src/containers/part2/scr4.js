@@ -27,7 +27,7 @@ const Scr4 = () => {
     return (
         <>
             <Title title={getPartTitle(2)} subTitle={getPageTitle(2,4)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <div>
                     높고 비현실적인 기준은 나를 실패자로 만들기도 합니다.
                 </div>

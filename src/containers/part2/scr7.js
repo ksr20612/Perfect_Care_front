@@ -16,7 +16,7 @@ const Scr7 = () => {
     return (
         <>
             <Title title={getPartTitle(2)} subTitle={getPageTitle(2,7)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Summary>
                     <Line>나에게 덫을 놓는 가혹한 기준.</Line>
                     <Line>내가 하는 일들이 버겁게 느껴진다면 기준을 점검해보자.</Line>

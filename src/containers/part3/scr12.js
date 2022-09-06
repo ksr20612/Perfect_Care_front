@@ -19,7 +19,7 @@ const Scr2 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,12)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <MovieClip width="100%" height="100%"/>
             </Box>
             {renderArrow()}
@@ -27,8 +27,7 @@ const Scr2 = () => {
     )
 }
 
-const Box = styled(Paper)`
-    padding : 5%;
+const Box = styled.div`
     margin-top : 5%;
     display : flex;
     height : 70%;
@@ -37,7 +36,7 @@ const Box = styled(Paper)`
 
     & > div {
         font-size : 2.6rem;
-        width : 80%;
+        width : 100%;
         height : 100%;
     }
 `

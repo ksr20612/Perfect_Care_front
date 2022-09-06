@@ -52,7 +52,7 @@ const Scr4 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,4)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
                 <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>
                 <Question as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>

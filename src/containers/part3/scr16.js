@@ -18,7 +18,7 @@ const Scr15 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,15)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <QuizBox style={{height : "60vh"}} answer={4} exp={"우리는 종종 '첫인상을 망치면 난 무리에 끼지 못할거야.', '이번 소개팅도 성공하지 못하면 난 죽을때까지 혼자 살지도 몰라.', '돈이 없으면 길거리에 나앉게 될거야.'과 같은 부정적인 결론을 내놓기도 합니다. 이처럼 현재 상황과 다른 가능성을 고려하지 않고 비합리적인 결말을 먼저 상상하는 것은 재앙화 (혹은 파국화)라고 합니다. "}>
                     <Question bullet={"04."}>
                         <div>기업의 CEO인 상규씨는 20대때부터 사업을 해오며 여러 사업체를 키워, 5년 전부터는 안정적인 생활을 해오고 있습니다.</div>

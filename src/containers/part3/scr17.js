@@ -58,7 +58,7 @@ const Scr16 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,16)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <BlockBox title="나의 자동사고" content={scr10} fadein={true} style={{height : "50%"}}/>
                 <AnswerBox title="내 자동사고의 오류는?">
                     <Options>

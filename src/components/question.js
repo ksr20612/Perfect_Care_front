@@ -6,6 +6,7 @@ import DiscreteSlider from "./discreteSlider";
 import { darken } from "polished";
 
 const Question = ({
+    index = 1,
     content = "문항",
     handleChange = f => f,
     value = null,
@@ -13,6 +14,7 @@ const Question = ({
 
     return (
         <Box>
+            <Num>Q{index}</Num>
             <Content>{content}</Content>
             <Answer>
                 <span>그렇지 않다</span>
@@ -40,10 +42,17 @@ const Box = styled.div`
     align-items : center;
     background-color : transparent;
     width : 100%;
+    height : 500px;
+    margin : 10px 0;
+`
+const Num = styled.div`
+    width : 100%;
+    height : 50px;
+    font-size : 3.6rem;
+    text-align : center;
 `
 const Content = styled.div`
     font-size : 3.6rem;
-    height : 150px;
     display : flex;
     align-items : flex-end;
     text-align : center;

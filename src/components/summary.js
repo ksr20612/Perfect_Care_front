@@ -23,7 +23,7 @@ const Summary = ({
 }
 const Box = styled.div`
     width : 100%;
-    height : 80vh;
+    height : 70vh;
     border : 3px solid ${pallette.BLUE};
     font-size : 2.4rem;
 `
@@ -33,6 +33,7 @@ const Title = styled.div`
     align-items : center;
     justify-content : space-between;
     padding : 1vmin;
+    height : 50px;
 
     & > div:last-of-type {
         font-size : 1.6rem;
@@ -43,7 +44,7 @@ const Content = styled.div`
     position : relative;
     padding : 1vmin;
     width : 100%;
-    height : 100%;
+    height : calc(100% - 50px);
 
     background-size: 30px, 30px, 30px 30px, 30px 30px;
     background-image: linear-gradient(90deg, ${lighten(0.7, pallette.BLUE)} 1px, transparent 1px), linear-gradient(90deg, ${lighten(0.7, pallette.BLUE)} 1px, transparent 1px), linear-gradient(${lighten(0.7, pallette.BLUE)} 1px, transparent 1px), linear-gradient(${lighten(0.7, pallette.BLUE)} 1px, transparent 1px);

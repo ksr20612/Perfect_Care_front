@@ -13,6 +13,8 @@ import questionList from "../../app/questionList";
 import { setScores } from "../../features/parts/part1Slice";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import { useScrollTo } from "../../hooks/useScrollTo";
+import ClipboardIcon from "../../assets/clipboard.svg";
 
 const Scr4 = () => {
 
@@ -24,9 +26,11 @@ const Scr4 = () => {
         const temp = [...scores];
         temp[index] = score;
         dispatch(setScores([...temp]));
+        next(index);
     }
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({ container : cardRef });
+    const [next] = useScrollTo({ container : cardRef });
 
     return (
         <>
@@ -50,12 +54,14 @@ const Scr4 = () => {
                     <div>검사 시간은 10분 내외입니다.</div>
                     <div>솔직하게 답해주세요.</div>
                 </Info>
-                {
-                    questionList[testName].map((question, i)=>{
-                        return <Question content={question} handleChange={(score)=>handleClick(i, score)} value={scores[i]}/>
-                    })
-                }
-                <Button onClick={()=>handlePage(1)}>제출하기</Button>
+                <Content className="content">
+                    {
+                        questionList[testName].map((question, i)=>{
+                            return <Question index={i+1} content={question} handleChange={(score)=>handleClick(i, score)} value={scores[i]}/>
+                        })
+                    }
+                </Content>
+                <Button className="submit" onClick={()=>handlePage(1)}>제출하기</Button>
             </Box>
             {renderArrow()}
         </>
@@ -129,6 +135,10 @@ const Progress = styled.div`
         opacity : 0.6;
     }
 `
+const Content = styled.div`
+    width : 100%;
+    flex : 1;
+`
 const Button = styled.button`
     margin-top : 50px;
     font-size : 3.0rem;
@@ -141,9 +151,26 @@ const Button = styled.button`
     align-items : center;
     justify-content : center;
     border : none;
+    box-shadow : #00000029 3px 3px 20px;
+    transition : filter 0.2s ease-in;
+    
+    &:hover {
+        filter : brightness(90%);
+    }
 
     &:active {
         background-color : ${darken(0.1, pallette.BLUISH)};
+        box-shadow : none;
+        transform : translateY(1px);
+    }
+
+    &:before {
+        content : "";
+        width : 1em;
+        height : 1em;
+        margin-right : 0.3em;
+        background : url(${ClipboardIcon});
+        display : inline-block;
     }
 `
 

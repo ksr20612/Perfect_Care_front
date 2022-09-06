@@ -22,7 +22,7 @@ const Scr11 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,11)}/>
-            <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+            <Box>
                 <Subtitle>
                         사실 이말들이 범인! 왜곡된 생각인 <span>인지오류</span>들입니다. <br/>
                         어떤 특징이 있는지 살펴볼까요?
