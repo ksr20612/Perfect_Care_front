@@ -6,44 +6,41 @@ import Title from "../../components/title";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-import { Paper } from "../../styles/components/paper";
-import { FiDownload as DownLoadIcon } from "react-icons/fi";
-import { saveAs } from "file-saver";
+import DataBox from "../../components/dataBox";
 import { usePage } from "../../hooks/usePage";
 
-const Scr7 = () => {
+const Scr6 = () => {
 
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,7)}/>
-            <Box>
-                <Subtitle>
-                    <div>완벽 관찰 일지</div>
-                    <a href="#" onClick={()=>{saveAs("../../robots.txt", "완벽관찰일지_YD.txt")}}>
-                        <DownLoadIcon/>
-                        기록지 다운로드
-                    </a>
-                </Subtitle>
-            </Box>
+            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,6)}/>
+            <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%", marginTop : "5%"}}>
+                <div>#</div>
+                <div>#</div>
+                <div>#</div>
+                <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
+            </DataBox>
+            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>지금의 나는 어떻게 변화했나요?</Ask>
             {renderArrow()}
         </>
     )
 }
-const Box = styled(Paper)`
-    padding : 5vh;
-    margin-top : 5vh;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    flex-direction : column;
-    font-size : 2.4rem;
+const Exp = styled.div`
+    font-size : 2.8rem;
+    margin-top : 10px;
+    letter-spacing : -0.28px;
+    text-align : right;
 `
-const Subtitle = styled.div`
+const Ask = styled.div`
+    font-size : 4.4rem;
     width : 100%;
     display : flex;
-    justify-content : space-between;
+    justify-content : center;
+    align-items : center;
+    height : 40%;
+    font-family : "Bold";
 `
 
-export default Scr7;
+export default Scr6;

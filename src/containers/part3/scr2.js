@@ -18,6 +18,7 @@ const Scr2 = () => {
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,2)}/>
+            <Subtitle>완벽주의의 주범, 자동사고를 찾아봅시다.</Subtitle>
             <Board></Board>
             {renderArrow()}
         </>
@@ -27,10 +28,17 @@ const Scr2 = () => {
 const Board = styled.div`
     background : url(${BoardImg});
     width : 100%;
-    height : 100%;
+    height : 70%;
     background-position : center center;
     background-repeat : no-repeat;
     background-size : contain;
+    margin-top : 3%;
+`
+const Subtitle = styled.div`
+    text-align : center;
+    font-size : 3.6rem;
+    margin-top : 3%;
+    font-weight : 800;
 `
 
 export default Scr2;

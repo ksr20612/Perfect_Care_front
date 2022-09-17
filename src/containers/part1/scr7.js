@@ -3,122 +3,58 @@ import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
-import Summary from "../../components/summary";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
-import { motion, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import Color from "../../components/color";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 
-const list = [
-    {
-        name : "불안",
-        content : "미래에 일어날 수 있는 위험에 대비할 수 있습니다.",
-        color : "#a7caf3"
-    },
-    {
-        name : "공포",
-        content : "위험을 감지하고 즉각적으로 대응할 수 있습니다.",
-        color : "#f6bcc5"
-    },
-    {
-        name : "분노",
-        content : "사회의 불공평, 차별과 부당함에 저항하고, 위협적인 상황에서 스스로 방어할 수 있습니다.",
-        color : "#ebd1b5"
-    },
-    {
-        name : "수치심",
-        content : "사회적으로 수용되지 않는 행동을 줄여 사회적 일원으로 살아갈 수 있습니다.",
-        color : "#72b5ce"
-    },
-    {
-        name : "외로움",
-        content : "타인과 소통할 수 있으며, 사회적인 단절로부터 대비할 수 있습니다.",
-        color : "#a6d9c8",
-    },
-    {
-        name : "부러움",
-        content : "발전하려는 동기를 제공할 수 있습니다.",
-        color : "#f3eec9"
-    }
-]
-const getContent = (name) => {
-    for(const color of list) {
-        if(color.name === name) {
-            return color.content;
-        }
-    }
-    return null;
-}
-
-const Scr7 = () => {
+const Scr6 = () => {
 
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
-    const [selected, setSelected] = useState(list[0].name);
 
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,7)}/>
             <Box>
-                <Subtitle as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0}>우리의 다양한 감정들, <strong>순기능</strong>은 없을까요?</Subtitle>
-                <Wrapper as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
-                    <AnimateSharedLayout>
-                        {
-                            list.map((item, i)=>(
-                                <Color key={item.name} item={item} isSelected={selected === item.name} handleClick={(name)=>{setSelected(name);}}/>
-                            ))
-                        }
-                    </AnimateSharedLayout>
-                </Wrapper>
+                “완벽주의자는 현실을 거부하고 환상의 세계에서 산다. <br/>
+                그가 사는 세계에서는 실패나 고통스러운 감정은 없다. <br/>
+                그들의 성공 기준은 아무리 비현실적이라고 해도 충족시켜야 하는 것이다. <br/>
+                그 결과, 매우 값비싼 감정적 대가를 치른다. <br/>
+                실패를 거부하므로 언제 실패할지 모른다는 불안감에 시달린다. <br/>
+                고통스러운 감정을 거부하고 억누를수록 오히려 더 큰 고통을 겪는다. <br/>
+                현실 세계의 한계와 제약을 거부하므로 <br/>
+                비현실적이고 달성 불가능한 성공 기준을 정한다. <br/>
+                당연히 그 기준에 이를 수 없다. <br/>
+                결국 끊임없이 좌절과 자괴감만 맛본다.” <br/>
+                <div>-[완벽주의자를 위한 행복수업] 중-</div>
             </Box>
-            <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
-                {
-                    getContent(selected)
-                }
-            </Card>
             {renderArrow()}
         </>
     )
 }
 const Box = styled.div`
-    margin-top : 5vh;
+    padding : 5vh;
+    margin-top : 10vh;
     font-size : 2.0rem;
     line-height : 150%;
 
     display : flex;
     flex-direction : column;
     align-items : center;
-    text-align : center;
-`
-const Subtitle = styled.div`
-    font-size : 3.2rem;
-    justify-self : flex-start;
-
-    & > strong {
-        color : ${pallette.RED};
-    }
-`
-const Wrapper = styled.div`
-    margin-top : 5%;
-    width : 100%;
-    height : 50%;
-    display : grid;
-    grid-template-columns : repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-items: center;
-    align-items : center;
-`
-const Card = styled(Paper)`
-    margin-top : 5%;
-    font-size : 3.2rem;
-    height : 20%;
-    display : flex;
-    align-items : center;
     justify-content : center;
     text-align : center;
-    word-break : keep-all;
+    height : 60%;
+
+    & strong {
+        color : ${pallette.RED};
+    }
+
+    & > div:last-child {
+        margin-top : 3%;
+        font-style : italic;
+    }
 `
 
-export default Scr7;
+export default Scr6;

@@ -70,6 +70,7 @@ const Box = styled.div`
     z-index : 2;
 `
 const Content = styled.div`
+    position : relative;
     margin-top : 7%;
     margin-left : 10%;
     z-index : 99;
@@ -86,7 +87,6 @@ const Title = styled.div`
     text-shadow : 0px 3px 6px #00000029;
     display : flex;
     align-items : center;
-
     & > img {
         padding : 1%;
     }
@@ -137,7 +137,6 @@ const List = styled.div`
     & > div + div {
         margin-top : 1%;
     }
-
     & > div:nth-child(2n-1) {
         color : #8FB9AB;
     }
@@ -153,7 +152,7 @@ const Li = styled.div`
         
         &:first-child {
             width : 10%;
-            min-width : 130px;
+            min-width : 90px;
         }
         &:last-child {
             color : #292724;

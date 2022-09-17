@@ -44,7 +44,7 @@ const Direction = styled.div`
     text-align : center;
     font-family : "SemiBold";
     font-size : 3.2rem;
-    margin-top : 5vh;
+    margin-top : 3vh;
 `
 
 export default Scr1;

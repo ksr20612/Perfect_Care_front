@@ -55,11 +55,11 @@ const Scr4 = () => {
             <Box>
                 <div>내가 당황스러워했던 사건 뒤에는 나의 자동사고가 숨어있다.</div>
                 <div>형사가 되어 자동사고라는 용의자를 잡아보자!</div>
-                <Question as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
+                <Question>
                     최근에 경험했던 당황스러웠거나, 불안했던 상황을 생각하며 적어보세요.
                 </Question>
-                <Answer as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>
-                    <div className="subQuestion">✶ 상황 : 누가 / 언제 / 어디서 / 무엇을 <span>1/7</span></div>
+                <Answer>
+                    <div className="subQuestion">✶ 상황 : 누가 / 언제 / 어디서 / 무엇을 (육하원칙에 따라서 적어주세요)<span>1/7</span></div>
                     <TextArea color={pallette.GREY} width="100%" height="20vh" value={scr4} handleChange={(v)=>{handleChange(v)}}/>
                 </Answer>
             </Box>

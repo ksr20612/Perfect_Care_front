@@ -7,24 +7,25 @@ import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
+import { FiDownload as DownLoadIcon } from "react-icons/fi";
+import { saveAs } from "file-saver";
 import { usePage } from "../../hooks/usePage";
 
-const Scr8 = () => {
+const Scr7 = () => {
 
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,8)}/>
+            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,7)}/>
             <Box>
-                <Subtitle>완벽은 완전히 없애는 것이 아니라 "케어"하는 것.</Subtitle>
-                <Content>
-                    <div>진료실엔 완벽주의자들이 많이 찾아옵니다.</div>
-                    <div>대부분 우울, 불안, 공황 등의 증상을 호소하며 찾아오지만,</div>
-                    <div>진짜 문제인 완벽주의를 간과하는 경우가 많습니다.</div>
-                    <div>그동안 완벽주의적인 성향으로 인해</div>
-                    <div>일상생활에서 번아웃이 오거나, 자책하며 힘들어했을</div>
-                </Content>
+                <Subtitle>
+                    <div>완벽 관찰 일지</div>
+                    <a href="#" onClick={()=>{saveAs("../../robots.txt", "완벽관찰일지_YD.txt")}}>
+                        <DownLoadIcon/>
+                        기록지 다운로드
+                    </a>
+                </Subtitle>
             </Box>
             {renderArrow()}
         </>
@@ -40,16 +41,9 @@ const Box = styled(Paper)`
     font-size : 2.4rem;
 `
 const Subtitle = styled.div`
-    font-size : 3.6rem;
-    font-weight : bold;
-    margin-bottom : 10%;
-`
-const Content = styled.div`
+    width : 100%;
     display : flex;
-    flex-direction : column;
-    justify-content : center;
-    align-items : center;
-    line-height : 200%;
+    justify-content : space-between;
 `
 
-export default Scr8;
+export default Scr7;

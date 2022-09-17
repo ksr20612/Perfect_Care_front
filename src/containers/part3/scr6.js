@@ -61,8 +61,8 @@ const Scr6 = () => {
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,6)}/>
             <Box>
                 <BlockBox title="상황" content={scr4} />
-                <BlockBox title="기분" content={emotionString} fadein={true}/>
-                <AnswerBox title="어떤 생각이 떠올랐나요?" index="3/7" styles={{height : "100%"}}>
+                <BlockBox title="감정" content={emotionString} fadein={true}/>
+                <AnswerBox title="어떤 생각이 떠올랐나요? (떠오르는대로 적어보세요)" index="3/7" styles={{height : "100%"}}>
                     <TextArea height="100%" value={scr6} handleChange={(v)=>{handleChange(v)}}/>
                 </AnswerBox>
             </Box>

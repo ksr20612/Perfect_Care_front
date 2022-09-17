@@ -17,6 +17,7 @@ const Scr11 = () => {
 
     return (
         <>
+            <Title title={getPartTitle(4)} subTitle={getPageTitle(4,11)}/>
             <Box>
                 <Img></Img>
                 <Message>
@@ -39,7 +40,6 @@ const Scr11 = () => {
     )
 }
 const Box = styled.div`
-    margin-top : 4vh;
     height : 70vh;
     position : relative;
     display : flex;

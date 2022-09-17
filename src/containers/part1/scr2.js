@@ -104,11 +104,11 @@ const Scr2 = () => {
             <Question>Q. '나'는 어떤 사람일까?</Question>
             <Inst>다음 중 나에게 해당한다고 생각되는 문장을 선택해주세요.</Inst>
             <Options>
-                <BrainButton onClick={()=>setIsBoxOn(true)}>그림으로 볼게요</BrainButton>
+                {/* <BrainButton onClick={()=>setIsBoxOn(true)}>그림으로 볼게요</BrainButton> */}
                 <Girl></Girl>
                 {
                     list.map((bubble, i)=>{
-                        return <SpeechBubble checked={myself.includes(bubble.content)} delay={(i+1)*0.2} content={bubble.content} style={bubble.style} onCheck={()=>handleCheck(bubble.content)}><bubble.image /></SpeechBubble>
+                        return <SpeechBubble checked={myself.includes(bubble.content)} delay={Math.random()} content={bubble.content} style={bubble.style} onCheck={()=>handleCheck(bubble.content)}><bubble.image /></SpeechBubble>
                     })
                 }
             </Options>
@@ -178,7 +178,6 @@ const BrainButton = styled.button`
     display : flex;
     align-items : center;
     cursor : pointer;
-
     &:before {
         content : "";
         width : 50%;
@@ -187,7 +186,6 @@ const BrainButton = styled.button`
         display : inline-block;
         margin-right : 3px;
     }
-
     &:active {
         box-shadow : none;
     }

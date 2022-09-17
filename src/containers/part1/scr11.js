@@ -8,61 +8,103 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import BackImg from "../../assets/sample.jpg";
+import Image from "../../assets/sample.jpg";
+import TextArea from "../../components/textArea";
+import { setBefore, setAfter } from "../../features/parts/part1Slice";
+import { useSelector, useDispatch } from "react-redux";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import useFetchREST from "../../hooks/useFetchREST";
 
-const Scr11 = () => {
+const Scr10 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const before = useSelector(state=>state.part1.goal.before);
+    const after = useSelector(state=>state.part1.goal.after);
+    const dispatch = useDispatch();
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            if(before || after) return false;
+            POST("/part1/scr10", { userIdx, before, after, }, 
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
+        },
+    });
+    useFetchREST(`/part1/scr10/${userIdx}`, 
+        (result)=>{
+            console.log(result);
+            if(result.data.message) {
+                return toastError(result.data.message, {});
+            }else {
+                dispatch(setBefore(result.data.goal.changeable));
+                dispatch(setAfter(result.data.goal.sustainable));
+            }
+        }
+    )
+
 
     return (
         <>
+            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,11)}/>
             <Box>
-                <Img></Img>
-                <Message>
-                    <strong>
-                        "조금 더 열심히 해야해." <br/>
-                        "실수하면 안돼." <br/>
-                        "지난번엔 왜 그렇게 했지?" <br/>
-                    </strong> <br/> <br/>
-                    완벽주의 기질은 대부분 두려움과 불안함에 뿌리를 두고 있다고 합니다. <br/>
-                    나의 불안한 모습과 마주하세요. <br/>
-                    나를 괴롭히는 완벽과 마주하세요. <br/>
-                    그리고 완벽을 조절할 수 있다고 말해주세요. <br/>
-                </Message>
+                <Img src={Image} alt="이미지"/>
+                <Content>
+                    <Card>
+                        <div>바꾸고 싶은 내 완벽주의 모습</div>
+                        <TextArea value={before} handleChange={(v)=>{dispatch(setBefore(v))}}/>
+                    </Card>
+                    <Card>
+                        <div>그대로 두고 싶은 내 완벽주의 모습</div>
+                        <TextArea value={after} handleChange={(v)=>{dispatch(setAfter(v))}}/>
+                    </Card>
+                </Content>
             </Box>
             {renderArrow()}
         </>
     )
 }
 const Box = styled.div`
-    margin-top : 4vh;
-    height : 70vh;
-    position : relative;
+    padding : 5vh;
+    margin-top : 5vh;
     display : flex;
-    flex-direction : column;
     align-items : center;
     justify-content : center;
+    flex-direction : column;
+    height : 75%;
 `
-const Img = styled.div`
-    background-image : url(${BackImg});
-    width : 80%;
-    height : 50%;
-    background-size : contain;
-    background-position : center center;
-    background-repeat : no-repeat;
-    margin : 5% auto 5%;
+const Img = styled.img`
+    width : 100%;
+    height : 60%;
 `
-const Message = styled.div`
-    text-align : center;
-    font-size : 2.0rem;
-    word-break : keep-all;
+const Content = styled.div`
+    display : flex;
+    justify-content : space-around;
+    align-items : center;
+    width : 100%;
+    margin-top : 5%;
+    font-size : 2.4rem;
+`
+const Card = styled.div`
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    flex-direction : column;
+    width : 40%;
 
-    & > strong {
-        font-size : 2.4rem;
-        font-style : italic;
+    & > div { 
+        margin-bottom : 5%; 
+        text-align : center;
+        word-break : keep-all;
     }
 `
 
-export default Scr11;
+export default Scr10;

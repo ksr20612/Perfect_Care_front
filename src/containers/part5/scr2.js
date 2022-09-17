@@ -67,7 +67,6 @@ const Scr2 = () => {
             dispatch(setMyself([...checked, v]));
         }
     }
-    const [isBoxOn, setIsBoxOn] = useState(false);  
 
     return (
         <>
@@ -75,7 +74,6 @@ const Scr2 = () => {
             <Question>Q. '나'는 어떤 사람일까?</Question>
             <Inst>다음 중 나에게 해당한다고 생각되는 문장을 선택해주세요.</Inst>
             <Options>
-                <BrainButton onClick={()=>setIsBoxOn(true)}>그림으로 볼게요</BrainButton>
                 <Girl></Girl>
                 {
                     list.map((bubble, i)=>{
@@ -83,21 +81,6 @@ const Scr2 = () => {
                     })
                 }
             </Options>
-            {
-                isBoxOn &&
-                    <Box as={motion.div}>
-                        <Closer onClick={()=>setIsBoxOn(false)}></Closer>
-                        <Head>
-                            <Brain emotions={checked}></Brain>
-                        </Head>
-                        <Shadow/>
-                        <PatternPurple/>
-                        <PatternGreen/>
-                        <DotGroup/>
-                        <Circle1/>
-                        <Circle2/>
-                    </Box>
-            }
             {renderArrow()}
         </>
     )

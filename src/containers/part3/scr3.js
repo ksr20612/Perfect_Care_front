@@ -27,7 +27,7 @@ const Scr3 = () => {
                     <br/>
                     <div>형사가 되어 자동사고라는 용의자를 잡아봅시다.</div>
                 </Note>
-                <motion.div initial="hidden" animate="visible" variants={fadein} custom={1}>
+                <motion.div initial="hidden" animate="visible" variants={fadein} custom={1} style={{width : "45%"}}>
                     <div>이런 걸 작성할 거예요!</div>
                     <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.2}>1. 상황</Block>
                     <Block as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.4}>2. 기분</Block>
@@ -47,6 +47,7 @@ const Box = styled(Paper)`
     height : 70%;
     position : relative;
     display : flex;
+    justify-content : space-between;
 
     & > div {
         font-size : 2.6rem;
@@ -66,8 +67,7 @@ const Box = styled(Paper)`
     }
 `
 const Note = styled.div`
-    width : 100%;
-    aspect-ratio : 1 / 1;
+    width : 45%;
     background-color : #eee;
     display : flex;
     align-items : center;
@@ -76,12 +76,13 @@ const Note = styled.div`
 const Block = styled.div`
     scroll-snap-align: center;
     background-color : ${lighten(0.5, pallette.BLUE)};
-    width : 80%;
+    width : 100%;
     height : auto;
     padding : 2%;
     border-radius : 1vmin;
-    font-size : 1.6rem;
+    font-size : 2.0rem;
     font-family : "Noto_Black";
+    font-weight : 700;
     color : #333;
     box-shadow : 0px 3px 6px #00000029;
 `

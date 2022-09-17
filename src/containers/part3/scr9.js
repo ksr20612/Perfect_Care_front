@@ -66,8 +66,8 @@ const Scr9 = () => {
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,9)}/>
             <Box>
                 <BlockBox title="상황" content={scr4}/>
-                <BlockBox title="기분" content={emotionString}/>
-                <BlockBox title="생각" content={scr6}/>
+                <BlockBox title="감정" content={emotionString}/>
+                <BlockBox title="떠오른 생각들" content={scr6}/>
                 <BlockBox title="이미지" content={scr7}/>
                 <BlockBox title="나는 어떤 사람?" content={scr8} fadein={true}/>
                 <AnswerBox title="최악의 경우 어떤 일이 일어날 것이라고 생각했나요?" index="6/7" styles={{height : "100%"}}>

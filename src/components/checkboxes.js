@@ -24,7 +24,7 @@ const Checkboxes = ({
                                 control={
                                     <Checkbox checked={(item?.from || item) === checked} onChange={()=>handleChange(item)} value={item?.from || item} color="default" />
                                 }
-                                label={<span style={{ fontSize: '1.4rem' }}>{item?.from || item}</span>}
+                                label={<span>{item?.from || item}</span>}
                             />
                         )
                     })

@@ -38,7 +38,6 @@ const Bubble = ({
     })
 
     return (
-
         <Box as={motion.div} layout onClick={(e)=>{handleClick()}}>
             {status===1? <Title as={motion.div} layout initial="hidden" animate="visible" variable={fadein} custom={1}>{title}</Title> : null}
             <Speech as={motion.div} layout >
@@ -64,7 +63,6 @@ const Box = styled.div`
     box-shadow : #C4C8D066 0px 10px 20px;
     width : 90%;
     height : 90%;
-
     /* &.clicked > div:first-child {
         opacity : 1;
     }
@@ -73,16 +71,16 @@ const Box = styled.div`
         font-size : 1.6rem;
         transform : translateY(0);
     } */
-
 `
 const Title = styled.div`
     width : 100%;
     height : auto;
     text-align : left;
     border-bottom : 2px solid ${pallette.BLUISH};
+    margin-bottom : 5%;
 `
 const Speech = styled.div`
-    font-size : 2.4rem;
+    font-size : 2.8rem;
     font-family : "Hand";
     white-space : pre-line;
     width : 100%;
@@ -91,7 +89,6 @@ const Speech = styled.div`
     flex-direction : column;
     align-items : center;
     justify-content : space-around;
-    font-size : 1.5rem;
     color : #919191;
 `
 const Icon = styled.div`

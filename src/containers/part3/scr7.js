@@ -62,9 +62,9 @@ const Scr7 = () => {
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,7)}/>
             <Box>
                 <BlockBox title="상황" content={scr4}/>
-                <BlockBox title="기분" content={emotionString}/>
-                <BlockBox title="생각" content={scr6} fadein={true}/>
-                <AnswerBox title="그때 떠오른 이미지는 무엇인가요?" index="4/7" styles={{height : "100%"}}>
+                <BlockBox title="감정" content={emotionString}/>
+                <BlockBox title="떠오른 생각들" content={scr6} fadein={true}/>
+                <AnswerBox title="그때 자신이 어떤 이미지로 느껴졌나요?" index="4/7" styles={{height : "100%"}}>
                     <TextArea height="100%" value={scr7} handleChange={(v)=>{handleChange(v)}}/>
                 </AnswerBox>
             </Box>

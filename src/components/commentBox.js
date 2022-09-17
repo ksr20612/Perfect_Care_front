@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import pallette from "../styles/pallette.css";
 import { darken, lighten } from "polished";
 import TextArea from "../components/textArea";
 import { motion } from "framer-motion";
 import pinIcon from "../assets/pin-pngrepo-com.png";
+import upvoteIcon from "../assets/upvote.svg";
 
 const CommentBox = ({
     width = "40%",
@@ -20,18 +21,33 @@ const CommentBox = ({
     handleClick = f => f,
 }) => {
 
+    const [voteList, setVoteList] = useState(Array(comments.length));
+    const vote = (idx) => {
+        if(voteList[idx]) {
+            voteList[idx] = 0;
+        }else {
+            voteList[idx] = 1;
+        }
+        setVoteList([...voteList]);
+    }
+
     return (
         <Box width={width} height={height}>
             <BoxComment>
                 <Comment>
-                    <span>윤닥</span>
+                    <div>
+                        <span>윤닥</span>
+                    </div>
                     <div>아무도 상상할 수 없는 미래를 기대할 지는 영희씨의 선택이며, 시간이 조금만 지나고 보면 지금이 가장 빠른 시기인 것을 알 수 있을 것입니다. 지금 당장 한걸음이라도 떼어본다면 더 많은 실패와 성장을 할 수 있는 기회가 있을 것 같아요.</div>
                 </Comment>
                 {
                     comments.map((v,i)=>{
                         return (
                             <Comment>
-                                <span>{v.name}</span>
+                                <div>
+                                    <span>{v.name}</span>
+                                    <Upvote likes={v?.likes} voted={voteList[i]} onClick={()=>vote(i)}></Upvote>
+                                </div>
                                 <div>{v.content}</div>
                             </Comment>
                         )
@@ -58,18 +74,21 @@ const BoxComment = styled.div`
     width : 100%;
     height : 80%;
     overflow-y : auto;
-
     & > div:not(:last-child) {
         border-bottom : 1px solid ${darken(0.1, pallette.GREY)};
     }
-
 `
 const Comment = styled.div`
-
     position : relative;
     padding : 1vh 0;
+    line-height : 1.5;
 
-    & > span {
+    &:first-of-type > div {
+        display : flex;
+        justify-content : space-between;
+        position : relative;
+    }
+    & span {
         position : relative;
         display : flex;
         justify-content : center;
@@ -83,8 +102,7 @@ const Comment = styled.div`
         background-color : ${lighten(0.5, pallette.BLUE)};
         margin-right : 0.5vw;
     }
-
-    &:first-of-type > span:before {
+    &:first-of-type > div > span:before {
         position : absolute;
         content : "윤닥님이 고정함";
         color : rgba(0, 0, 0, 0.5);
@@ -92,7 +110,7 @@ const Comment = styled.div`
         left : 5.5vw;
         width : 7vw;
     }
-    &:first-of-type > span:after {
+    &:first-of-type > div > span:after {
         position : absolute;
         content : "";
         color : rgba(0, 0, 0, 0.5);
@@ -107,7 +125,7 @@ const Comment = styled.div`
         background-repeat : no-repeat;
     }
 
-    & > div {
+    & > div:last-child {
         font-size : 1.8rem;
         margin-top : 1vh;
         word-break : keep-all;
@@ -115,7 +133,38 @@ const Comment = styled.div`
         margin-right : 1vw;
     }
 `
-
+const Upvote = styled.span`
+    position : absolute;
+    float : right;
+    transform : translateY(calc(-4vw + 15px)) translateX(-17px);
+    background-color : transparent !important;
+    border-radius : unset !important;
+    background : url(${upvoteIcon});
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position : center;
+    opacity : 0.5;
+    width : 15px !important;
+    height : 15px !important;
+    cursor : pointer;
+    &:hover {
+        opacity : 1;
+    }
+    &:after{
+        content : "${props=>props.likes}";
+        color : black;
+        margin-left : 30px;
+        top : 50%;
+        position : absolute;
+        transform : translateY(-50%);
+    }
+    ${(props)=> props.voted && css`
+        opacity : 1;  
+        &:after {
+            content : "${props=>props.likes+1}";
+        }
+    `}
+`
 const InputComment = styled.div`
     width : 100%;
     border-top : 1px solid ${darken(0.1, pallette.GREY)};

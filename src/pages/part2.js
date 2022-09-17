@@ -8,6 +8,8 @@ import Scr4 from "../containers/part2/scr4";
 import Scr5 from "../containers/part2/scr5";
 import Scr6 from "../containers/part2/scr6";
 import Scr7 from "../containers/part2/scr7";
+import Scr8 from "../containers/part2/scr8";
+import Scr9 from "../containers/part2/scr9";
 import Screen from "../components/screen";
 import ProgressBar from "../components/progressBar";
 import Header from "../components/header";
@@ -27,7 +29,9 @@ const Part2 = () => {
                 curPage === 4? <Scr4 /> :
                 curPage === 5? <Scr5 /> :
                 curPage === 6? <Scr6 /> :
-                <Scr7 />
+                curPage === 7? <Scr7 /> :
+                curPage === 8? <Scr8 /> :
+                <Scr9 />
             }
             </Screen>
         </>

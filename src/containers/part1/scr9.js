@@ -8,11 +8,10 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import MovieClip from "../../components/movieClip";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 
-const Scr9 = () => {
+const Scr8 = () => {
 
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
 
@@ -20,24 +19,38 @@ const Scr9 = () => {
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,9)}/>
             <Box>
-                <MovieClip width="100%" height="100%" videoId="B2mPw4lX5mo" />
+                <div>
+                    부정적 감정도 때로는 필요합니다.
+                </div>
+                <div>
+                    부정적 감정을 완벽히 없애고자 하는 <strong>감정적 완벽주의</strong>를 경계해야 합니다.
+                </div>
             </Box>
             {renderArrow()}
         </>
     )
 }
 const Box = styled.div`
-    margin-top : 5%;
+    padding : 5vh;
+    margin-top : 10vh;
+    font-size : 3.6rem;
     display : flex;
-    height : 70%;
+    flex-direction : column;
     align-items : center;
     justify-content : center;
+    height : 60%;
+    word-break : keep-all;
 
     & > div {
-        font-size : 2.6rem;
-        width : 100%;
-        height : 100%;
+        text-align : center;
+        & + div {
+            margin-top : 5%;
+        }
+    }
+
+    & strong {
+        color : ${pallette.RED};
     }
 `
 
-export default Scr9;
+export default Scr8;

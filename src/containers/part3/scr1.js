@@ -28,7 +28,6 @@ const Scr1 = () => {
         }
     )
 
-
     return (
         <>
             <Title title={getPartTitle(3)} subTitle={getPageTitle(3,1)}/>

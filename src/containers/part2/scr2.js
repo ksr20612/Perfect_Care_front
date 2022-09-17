@@ -49,11 +49,6 @@ const Scr2 = () => {
         }
     )
 
-    useEffect(()=>{
-        console.log(checks);
-        console.log(Standards["학업/능력"].map(v=>v.from));
-    })
-
     return (
         <>
             <Title title={getPartTitle(2)} subTitle={getPageTitle(2,2)}/>
@@ -118,7 +113,7 @@ const Box = styled(Paper)`
 
     & tr > td:first-child {
         background-color : ${lighten(0.3, pallette.YELLOW)};
-        font-size : 2.0rem;
+        font-size : 2.4rem;
         text-align : center;
         word-break : keep-all;
     }
@@ -126,7 +121,7 @@ const Box = styled(Paper)`
     & tr > td:last-child {
 
         & span { 
-            font-size : 1.6rem;
+            font-size : 2rem;
             font-family : "Noto_Regular";
             padding : 2px; 
         }
