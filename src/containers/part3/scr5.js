@@ -3,7 +3,7 @@ import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
-import Card from "../../components/card";
+import Card from "../../components/card/card";
 import BlockBox from "../../components/blockBox";
 import CardList from "../../assets/jsons/cardList";
 import AnswerBox from "../../components/answerBox";
@@ -27,6 +27,7 @@ const Scr5 = () => {
     const selected = readInfo(scr5);
     const dispatch = useDispatch();
     const handleSelected = (name, score) => {
+        console.log({name, score});
         dispatch(setScr5({[name] : score}));
     }
     const remove = (item)=>{
@@ -57,9 +58,6 @@ const Scr5 = () => {
             }
         }
     )
-    useEffect(()=>{
-        console.log(selected);
-    })
 
     return (
         <>
@@ -78,10 +76,10 @@ const Scr5 = () => {
                     </Short>
                     <Deck>
                     {
-                        CardList.map((card)=>{
+                        CardList.map((card, i)=>{
                             return (
                                 <div>
-                                    <Card name={card.name} definition={card.definition} image={card.image} isSelected={scr5.hasOwnProperty(card.name)} selectedScore={scr5[card.name]} handleSelected={(name, score)=>{handleSelected(name, score)}}/>
+                                    <Card name={card.name} idx={i} definition={card.definition} image={card.image} selected={{isSelected : scr5.hasOwnProperty(card.name), score : scr5[card.name]}} handleSelected={(name, score)=>{handleSelected(name, score)}}/>
                                 </div>
                             )
                         })
@@ -103,18 +101,20 @@ const Box = styled.div`
 
 const Deck = styled.div`
     display : grid;
-    grid-template-columns : repeat(auto-fill, minmax(20%, auto));
-    grid-auto-rows : 300px;
+    grid-template-columns : repeat(auto-fill, minmax(50%, auto));
+    grid-auto-rows : 200px;
     width : 100%;
     height : 50vh;
     overflow-y : auto;
+    overflow-x : hidden;
 
     & > div {
         width : 100%;
         height : 100%;
         display : flex;
         justify-content : center;
-        padding : 1vmin;
+        padding : 2%;
+        margin-bottom : 2%;
     }
 `
 const Short = styled.div`
