@@ -15,7 +15,7 @@ const DiscreteSlider = ({
         <ThemeProvider theme={theme} className="slider">
             <Slider
                 aria-label="Temperature"
-                defaultValue={5}
+                defaultValue={0}
                 value={value}
                 getAriaValueText={v=>v}
                 valueLabelDisplay="auto"

@@ -16,13 +16,15 @@ const Card = ({
 }) => {
 
     // 0 : none, 1 : flipped
+    console.log(selected);
     const [isFlipped, setFlipped] = useState(0);
-    const [score, setScore] = useState(selected?.score);
+    const [score, setScore] = useState(selected?.score || 0);
     const handleClick = (target) => {
         console.log(target);
         setFlipped(!isFlipped);
     }
     const handleChange = (e) => {
+        console.log(e.target.value);
         setScore(e.target.value*1);
     }
 
