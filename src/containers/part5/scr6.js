@@ -9,6 +9,9 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { usePage } from "../../hooks/usePage";
 import Score from "../../containers/ScoreBox.js";
+import Lottie from "react-lottie";
+import * as running from "../../assets/lottie/run.json";
+import * as running2 from "../../assets/lottie/run2.json";
 
 const Scr5 = () => {
 
@@ -24,7 +27,13 @@ const Scr5 = () => {
         const order = Math.random();
         if(num>=quizList.length) {
             return (
-                <>끝!</>
+                <QuizResult>  
+                    <LottieWrapper score={good} as={motion.div} layout>
+                        <Lottie options={getOption(running2)} />
+                    </LottieWrapper>
+                    내 안의 건강한 완벽주의자는 이만큼 달려왔어요. <br/>
+                    건강한 완벽주의자의 모습과 {Math.floor(good/quizList.length*100)}% 일치합니다.
+                </QuizResult>
             )
         }
         return (
@@ -56,7 +65,7 @@ const Scr5 = () => {
                 <Subtitle>지금 내 모습은 어떤가요?</Subtitle>
                 <Instruction>지금 내 모습과 더 잘 어울리는 문구 혹은 단어를 클릭해주세요.</Instruction>
                 <Quiz>{renderQuiz()}</Quiz>
-                <Score good={good} bad={bad}></Score>
+                <Score good={good} bad={bad} isDone={num>=quizList.length}></Score>
             </Box>
             {renderArrow()}
         </>
@@ -127,6 +136,7 @@ const Box = styled.div`
     flex-direction : column;
     align-items : center;
     height : 80%;
+    max-height : 80%;
 
     & > table {
         border : 2px solid ${pallette.GREY};
@@ -208,5 +218,27 @@ const Answer = styled.div`
         opacity : 0.4;
     } */
 `
+const QuizResult = styled.div`
+    line-height : 1.5;
+    text-align : center;
+    display : flex;
+    align-items : center;
+    flex-direction : column;
+    transform : translateY(-15%);
+`
+const LottieWrapper = styled.div`
+    width : 15%;
+    min-width : 80px;
+    aspect-ratio : 1;
+`
+const getOption = (data) => ({
+    loop : true,
+    autoplay : true,
+    animationData: data,
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+    },
+    isStopped : false,
+});
 
 export default Scr5;
