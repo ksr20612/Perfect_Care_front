@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import lightbulb from "../assets/lightbulb.svg";
+import { motion } from "framer-motion";
+import fadein from "../styles/framer-motion/fadein";
 
 const Tip = ({
     styleOverrides = {},
-    content = ""
+    content = "",
 }) => {
 
     return (
-        <Box style={styleOverrides}>
+        <Box style={styleOverrides} as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1.5}>
             <div></div>
             <div>{content}</div>
         </Box>

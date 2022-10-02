@@ -2,65 +2,65 @@
     font-family: 'Black';
     font-weight: 300;
     src: local('Pretendard-Black'),
-    url(${Black}) format('truetype');
+    url("./font/Pretendard-Black.woff") format('truetype');
 }
 @font-face {
     font-family: 'Bold';
     font-weight: 300;
     src: local('Pretendard-Bold'),
-    url(${Bold}) format('truetype');
+    url("./font/Pretendard-Bold.woff") format('truetype');
 }
 @font-face {
     font-family: 'ExtraBold';
     font-weight: 300;
     src: local('Pretendard-ExtraBold'),
-    url(${ExtraBold}) format('truetype');
+    url("./font/Pretendard-ExtraBold.woff") format('truetype');
 }
 @font-face {
     font-family: 'ExtraLight';
     font-weight: 300;
     src: local('Pretendard-ExtraLight'),
-    url(${ExtraLight}) format('truetype');
+    url("./font/Pretendard-ExtraLight.woff") format('truetype');
 }
 @font-face {
     font-family: 'Light';
     font-weight: 300;
     src: local('Pretendard-Light'),
-    url(${Light}) format('truetype');
+    url("./font/Pretendard-Light.woff") format('truetype');
 }
 @font-face {
     font-family: 'Medium';
     font-weight: 300;
     src: local('Pretendard-Medium'),
-    url(${Medium}) format('truetype');
+    url("./font/Pretendard-Medium.woff") format('truetype');
 }
 @font-face {
     font-family: 'Regular';
     font-weight: 300;
     src: local('Pretendard-Regular'),
-    url(${Regular}) format('truetype');
+    url("./font/Pretendard-Regular.woff") format('truetype');
 }
 @font-face {
     font-family: 'SemiBold';
     font-weight: 300;
     src: local('Pretendard-SemiBold'),
-    url(${SemiBold}) format('truetype');
+    url("./font/Pretendard-SemiBold.woff") format('truetype');
 }
 @font-face {
     font-family: 'Thin';
     font-weight: 300;
     src: local('Pretendard-Thin'),
-    url(${Thin}) format('truetype');
+    url("./font/Pretendard-Thin.woff") format('truetype');
 }
 @font-face {
     font-family : 'Hand';
     font-weight : 300;
-    src: url(${Hand}) format('truetype');
+    src: url("./font/Hand-writing.ttf") format('truetype');
 }
 
 @font-face {
     font-family: 'Arial_Bold';
     font-weight: 300;
     src: local('Arial_bold'),
-    url(${ArialBold}) format('truetype');
+    url("./font/Arial-bold.ttf") format('truetype');
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
-import Image from "../../assets/sample.jpg";
+import Image from "../../assets/img2_8.jpg";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
@@ -38,7 +38,7 @@ const Box = styled.div`
     height : calc(80%);
 `
 const Img = styled.img`
-    width : 40%;
+    width : 50%;
     height : 100%;
 `
 const Content = styled.div`

@@ -9,7 +9,7 @@ import DiscreteSlider from "../discreteSlider";
 const Card = ({
     name = "화남",
     definition = "부당한 상황에서 화가 치밀어 오르는 감정",
-    icon = sampleIcon,
+    icon,
     idx,
     selected = { isSelected : false, score : 0 },
     handleSelected = f=>f,
@@ -31,7 +31,7 @@ const Card = ({
     return (
         <Box isSelected={selected?.isSelected} isFlipped={isFlipped} onClick={(e)=>handleClick(e.target)}>
             <Front>
-                <Title icon={icon}>
+                <Title>
                     <Name icon={icon}>{name}</Name>
                 </Title>
                 {

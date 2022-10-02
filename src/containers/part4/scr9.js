@@ -15,6 +15,7 @@ import { setCircumstance, setThought, setReaction, setFutureReaction } from "../
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
+import SingleTalk from "../../components/singleTalk";
 
 const Scr9 = () => {
 
@@ -56,9 +57,12 @@ const Scr9 = () => {
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,9)}/>
             <Box>
-                <Card>{circumstance}</Card>
-                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.3}>{thought}</Card>
-                <Card as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={0.4}>{reaction}</Card>
+                <Wrapper>
+                    <SingleTalk isMe={false} transitionDelay={0} texts={["너는 어떤 실수가 가장 기억에 남아?"]}/>
+                    <SingleTalk as={motion.div} layoutId={"message_me"} isMe={true} transitionDelay={0} texts={[circumstance]}/>
+                    <SingleTalk as={motion.div} layoutId={"message_thought"} isMe={true} transitionDelay={0.3} texts={[thought]}/>
+                    <SingleTalk as={motion.div} layoutId={"message_reaction"} isMe={true} transitionDelay={0.6} texts={[reaction]}/>
+                </Wrapper>
                 <Question>Q. 만약 다음번에 동일한 실수를 하게 된다면 어떻게 대처할 수 있을까?</Question>
                 <TextArea value={futureReaction} handleChange={(v)=>dispatch(setFutureReaction(v))} customStyle={{padding : "20px"}}/>
             </Box>
@@ -69,18 +73,14 @@ const Scr9 = () => {
 const Box = styled.div`
     margin-top : 8vh;
 `
-const Card = styled(Paper)`
-    background-color : #F4F2F0;
+const Wrapper = styled.div`
     width : 100%;
-    height : 20vh;
-    font-size : 2.4rem;
-    font-family : "Regular";
-    padding : 3% !important;
-
-    &:not(:first-of-type) {
-        height : 10vh;
-        margin-top : 2vh;
-    }
+    max-height : 80%;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+    overflow-y : auto;
 `
 const Question = styled.div`
     color : ${pallette.NEWBLACK};

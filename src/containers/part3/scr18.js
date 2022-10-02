@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import BackImg from "../../assets/sample.jpg";
+import BackImg from "../../assets/img3_18.jpg";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";

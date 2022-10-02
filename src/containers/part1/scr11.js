@@ -8,7 +8,7 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import Image from "../../assets/sample.jpg";
+import Image from "../../assets/img1_11.jpg";
 import TextArea from "../../components/textArea";
 import { setBefore, setAfter } from "../../features/parts/part1Slice";
 import { useSelector, useDispatch } from "react-redux";
@@ -83,7 +83,7 @@ const Box = styled.div`
 `
 const Img = styled.img`
     width : 100%;
-    height : 60%;
+    height : 80%;
 `
 const Content = styled.div`
     display : flex;

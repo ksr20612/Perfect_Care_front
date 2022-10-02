@@ -8,7 +8,7 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import BackImg from "../../assets/sample.jpg";
+import BackImg from "../../assets/img1_12.jpg";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 

@@ -79,7 +79,7 @@ const Scr5 = () => {
                         CardList.map((card, i)=>{
                             return (
                                 <div>
-                                    <Card name={card.name} idx={i} definition={card.definition} image={card.image} selected={{isSelected : scr5.hasOwnProperty(card.name), score : scr5[card.name] || 0}} handleSelected={(name, score)=>{handleSelected(name, score)}}/>
+                                    <Card name={card.name} idx={i} definition={card.definition} icon={card.icon} selected={{isSelected : scr5.hasOwnProperty(card.name), score : scr5[card.name] || 0}} handleSelected={(name, score)=>{handleSelected(name, score)}}/>
                                 </div>
                             )
                         })

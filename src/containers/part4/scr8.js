@@ -14,6 +14,7 @@ import { setCircumstance, setReaction, setThought } from "../../features/parts/p
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
+import SingleTalk from "../../components/singleTalk";
 
 const Scr8 = () => {
 
@@ -53,11 +54,15 @@ const Scr8 = () => {
         <>
             <Title title={getPartTitle(4)} subTitle={getPageTitle(4,8)}/>
             <Box>
-                <Card>{circumstance}</Card>
-                <Question>Q. 그때 들었던 생각은?</Question>
-                <TextArea value={thought} handleChange={(v)=>dispatch(setThought(v))} customStyle={{padding : "20px"}}/>
-                <Question>Q. 그 당시 나의 대처</Question>
-                <TextArea value={reaction} handleChange={(v)=>dispatch(setReaction(v))} customStyle={{padding : "20px"}}/>
+                {/* <Card>{circumstance}</Card> */}
+                <Wrapper>
+                    <SingleTalk isMe={false} transitionDelay={0} texts={["너는 어떤 실수가 가장 기억에 남아?"]}/>
+                    <SingleTalk as={motion.div} layoutId={"message_me"} isMe={true} transitionDelay={0} texts={[circumstance]}/>
+                </Wrapper>
+                <Question>Q. 그 당시 나는 어떤 생각이 들었나요?</Question>
+                <TextArea value={thought} placeholder="예 : 스스로가 너무 한심하다는 생각이 들었다." handleChange={(v)=>dispatch(setThought(v))} customStyle={{padding : "20px"}}/>
+                <Question>Q. 그 당시 나는 어떻게 대처하였나요?</Question>
+                <TextArea value={reaction} placeholder="예 : 당황하여 아무 대처도 하지 못했다." handleChange={(v)=>dispatch(setReaction(v))} customStyle={{padding : "20px"}}/>
             </Box>
             {renderArrow()}
         </>
@@ -66,13 +71,14 @@ const Scr8 = () => {
 const Box = styled.div`
     margin-top : 8vh;
 `
-const Card = styled(Paper)`
-    background-color : #F4F2F0;
+const Wrapper = styled.div`
     width : 100%;
-    height : 20vh;
-    font-size : 2.4rem;
-    font-family : "Regular";
-    padding : 3% !important;
+    max-height : 40%;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+    overflow-y : auto;
 `
 const Question = styled.div`
     color : ${pallette.NEWBLACK};

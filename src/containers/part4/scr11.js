@@ -6,7 +6,7 @@ import Title from "../../components/title";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-import BackImg from "../../assets/sample.jpg"
+import BackImg from "../../assets/img4_11.jpg"
 import { Paper } from "../../styles/components/paper";
 import Chat from "../chat";
 import { usePage } from "../../hooks/usePage";
