@@ -12,10 +12,15 @@ import NoteImg from "../../assets/ic_memo_y_02.png";
 import { Paper } from "../../styles/components/paper";
 import { usePage } from "../../hooks/usePage";
 import DetectiveIcon from "../../assets/detective.svg";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr3 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

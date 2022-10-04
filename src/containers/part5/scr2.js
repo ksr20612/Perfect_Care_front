@@ -29,6 +29,7 @@ import { ReactComponent as Bubble9 } from '../../assets/ic_bub_def-8.svg';
 import { ReactComponent as Bubble10 } from '../../assets/ic_bub_def-9.svg';
 import { useSelector, useDispatch } from "react-redux";
 import { setMyself } from "../../features/parts/part5Slice";
+import { setHistory } from "services/setHistory";
 
 const list = [
     { content : "실수를 통해 배운다고 생각한다", image : Bubble1, style : { top : "77%", left : "17%" }},
@@ -56,7 +57,10 @@ const list = [
 const Scr2 = () => {
 
     const dispatch = useDispatch();
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     // const [checked, setChecked] = useState([]);
     const checked = useSelector(state=>state.part5.myself);
     const handleCheck = (v) => {

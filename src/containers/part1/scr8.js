@@ -11,6 +11,8 @@ import fadein from "../../styles/framer-motion/fadein";
 import Color from "../../components/color";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const list = [
     {
@@ -55,7 +57,10 @@ const getContent = (name) => {
 
 const Scr7 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     const [selected, setSelected] = useState(list[0].name);
 
     return (

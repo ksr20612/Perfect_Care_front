@@ -11,10 +11,15 @@ import googlePic from "../../assets/google.png";
 import { usePage } from "../../hooks/usePage";
 import SpotifyIcon from "../../assets/spotify-1-logo-svgrepo-com.svg";
 import WallIcon from "../../assets/drilling-wall-svgrepo-com.svg";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr5 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

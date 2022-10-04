@@ -10,10 +10,15 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
 import SuperCell from "../../assets/Supercell-logo.svg";
 import Champagne from "../../assets/champagne-svgrepo-com.svg";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr6 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

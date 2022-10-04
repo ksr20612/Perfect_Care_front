@@ -11,11 +11,15 @@ import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
 import PersonIcon from "../../assets/person-pouting-svgrepo-com.svg";
+import { setHistory } from "services/setHistory";
 
 const Scr4 = () => {
 
+    const userIdx = useSelector(state=>state.state.userIdx);
     const checks = useSelector(state=>state.part2.scr2);
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     const [status, setStatus] = useState(1);
     const [clicked, setClicked] = useState(null);

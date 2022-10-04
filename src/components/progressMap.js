@@ -20,11 +20,15 @@ import BlueCir from "../assets/blue_cir.svg";
 import BlnkC from "../assets/blnk_c.svg";
 import Clicker from "../assets/clicker-svgrepo-com.svg";
 import DoneIcon from "../assets/btn_dcu.svg";
+import { convertPage } from "../app/pageInfo";
 
 const ProgressMap = () => {
 
     const [day, setDay] = useState(2);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    console.log(currentPage, partIdx);
+    const [part, page] = convertPage(partIdx, currentPage);
+    console.log({part, page});
     const [isPopupOn, setIsPopupOn] = useState(false);
     const handleDownload = () => {
         saveAs("../../robots.txt", "퍼펙트 빙고.txt");        
@@ -48,55 +52,55 @@ const ProgressMap = () => {
             <BlankCsmall/>
             <Purple style={{transform : "scale(0.4) rotate(180deg)", top : "246px", left : "113px"}}/>
             <Purple style={{transform : "rotate(120deg)", top : "524px", left : "258px"}}/>
-            <Part title="Part 01" color="#547665" position={{top : "570px", left : "57px"}} isDone={true}>
-                <Stop position={{top : "532px", left : "120px"}} isChecked={true}/>
-                <Stop position={{top : "500px", left : "147px"}}/>
-                <Stop position={{top : "457px", left : "165px"}}/>
-                <Stop position={{top : "414px", left : "180px"}}/>
-                <Stop position={{top : "376px", left : "198px"}}/>
-                <Stop position={{top : "350px", left : "224px"}}/>
-                <Stop position={{top : "340px", left : "260px"}}/>
+            <Part title="Part 01" color="#547665" position={{top : "570px", left : "57px"}} isDone={part>=1}>
+                <Stop position={{top : "532px", left : "120px"}} isChecked={part>1 || (part===1 && page>=1)} />
+                <Stop position={{top : "500px", left : "147px"}} isChecked={part>1 || (part===1 && page>=2)} />
+                <Stop position={{top : "457px", left : "165px"}} isChecked={part>1 || (part===1 && page>=3)} />
+                <Stop position={{top : "414px", left : "180px"}} isChecked={part>1 || (part===1 && page>=4)} />
+                <Stop position={{top : "376px", left : "198px"}} isChecked={part>1 || (part===1 && page>=5)} />
+                <Stop position={{top : "350px", left : "224px"}} isChecked={part>1 || (part===1 && page>=6)} />
+                <Stop position={{top : "340px", left : "260px"}} isChecked={part>1 || (part===1 && page>=7)} />
             </Part>
-            <Part title="Part 02" color="#EE8975" position={{top : "354px", left : "298px"}} isDone={true}>
-                <Stop position={{top : "335px", left : "363px"}}/>
-                <Stop position={{top : "320px", left : "395px"}}/>
-                <Stop position={{top : "296px", left : "423px"}}/>
-                <Stop position={{top : "260px", left : "443px"}}/>
-                <Stop position={{top : "218px", left : "455px"}}/>
-                <Stop position={{top : "177px", left : "466px"}}/>
-                <Stop position={{top : "140px", left : "482px"}}/>
+            <Part title="Part 02" color="#EE8975" position={{top : "354px", left : "298px"}} isDone={part>=2}>
+                <Stop position={{top : "335px", left : "363px"}} isChecked={part>2 || (part===2 && page>=1)} />
+                <Stop position={{top : "320px", left : "395px"}} isChecked={part>2 || (part===2 && page>=2)} />
+                <Stop position={{top : "296px", left : "423px"}} isChecked={part>2 || (part===2 && page>=3)} />
+                <Stop position={{top : "260px", left : "443px"}} isChecked={part>2 || (part===2 && page>=4)} />
+                <Stop position={{top : "218px", left : "455px"}} isChecked={part>2 || (part===2 && page>=5)} />
+                <Stop position={{top : "177px", left : "466px"}} isChecked={part>2 || (part===2 && page>=6)} />
+                <Stop position={{top : "140px", left : "482px"}} isChecked={part>2 || (part===2 && page>=7)} />
             </Part>
-            <Part title="Part 03" color="#5289C9" position={{top : "123px", left : "515px"}} isDone={false}>
-                <Stop position={{top : "93px", left : "570px"}}/>
-                <Stop position={{top : "90px", left : "602px"}}/>
-                <Stop position={{top : "95px", left : "634px"}}/>
-                <Stop position={{top : "106px", left : "664px"}}/>
-                <Stop position={{top : "130px", left : "687px"}}/>
-                <Stop position={{top : "163px", left : "702px"}}/>
-                <Stop position={{top : "195px", left : "712px"}}/>
-                <Stop position={{top : "224px", left : "716px"}}/>
+            <Part title="Part 03" color="#5289C9" position={{top : "123px", left : "515px"}} isDone={part>=3}>
+                <Stop position={{top : "93px", left : "570px"}} isChecked={part>3 || (part===3 && page>=1)} />
+                <Stop position={{top : "90px", left : "602px"}} isChecked={part>3 || (part===3 && page>=2)} />
+                <Stop position={{top : "95px", left : "634px"}} isChecked={part>3 || (part===3 && page>=3)} />
+                <Stop position={{top : "106px", left : "664px"}} isChecked={part>3 || (part===3 && page>=4)} />
+                <Stop position={{top : "130px", left : "687px"}} isChecked={part>3 || (part===3 && page>=5)} />
+                <Stop position={{top : "163px", left : "702px"}} isChecked={part>3 || (part===3 && page>=6)} />
+                <Stop position={{top : "195px", left : "712px"}} isChecked={part>3 || (part===3 && page>=7)} />
+                <Stop position={{top : "224px", left : "716px"}} isChecked={part>3 || (part===3 && page>=8)} />
             </Part>
-            <Part title="Part 04" color="#F5BA57" position={{top : "310px", left : "701px"}} isDone={false}>
-                <Stop position={{top : "345px", left : "713px"}}/>
-                <Stop position={{top : "380px", left : "717px"}}/>
-                <Stop position={{top : "413px", left : "725px"}}/>
-                <Stop position={{top : "443px", left : "737px"}}/>
-                <Stop position={{top : "465px", left : "755px"}}/>
-                <Stop position={{top : "483px", left : "780px"}}/>
-                <Stop position={{top : "495px", left : "806px"}}/>
-                <Stop position={{top : "498px", left : "836px"}}/>
-                <Stop position={{top : "497px", left : "865px"}}/>
+            <Part title="Part 04" color="#F5BA57" position={{top : "310px", left : "701px"}} isDone={part>=4}>
+                <Stop position={{top : "345px", left : "713px"}} isChecked={part>4 || (part===4 && page>=1)} />
+                <Stop position={{top : "380px", left : "717px"}} isChecked={part>4 || (part===4 && page>=2)} />
+                <Stop position={{top : "413px", left : "725px"}} isChecked={part>4 || (part===4 && page>=3)} />
+                <Stop position={{top : "443px", left : "737px"}} isChecked={part>4 || (part===4 && page>=4)} />
+                <Stop position={{top : "465px", left : "755px"}} isChecked={part>4 || (part===4 && page>=5)} />
+                <Stop position={{top : "483px", left : "780px"}} isChecked={part>4 || (part===4 && page>=6)} />
+                <Stop position={{top : "495px", left : "806px"}} isChecked={part>4 || (part===4 && page>=7)} />
+                <Stop position={{top : "498px", left : "836px"}} isChecked={part>4 || (part===4 && page>=8)} />
+                <Stop position={{top : "497px", left : "865px"}} isChecked={part>4 || (part===4 && page>=9)} />
             </Part>
-            <Part title="Part 05" color="#C6B9B6" position={{top : "497px", left : "901px"}} isDone={false}>
-                <Stop position={{top : "456px", left : "945px"}}/>
-                <Stop position={{top : "424px", left : "958px"}}/>
-                <Stop position={{top : "390px", left : "967px"}}/>
-                <Stop position={{top : "355px", left : "971px"}}/>
-                <Stop position={{top : "320px", left : "980px"}}/>
-                <Stop position={{top : "285px", left : "990px"}}/>
-                <Stop position={{top : "255px", left : "1010px"}}/>
-                <Stop position={{top : "233px", left : "1038px"}}/>
-                <Stop position={{top : "223px", left : "1072px"}}/>
+            <Part title="Part 05" color="#C6B9B6" position={{top : "497px", left : "901px"}} isDone={part>=5}>
+                <Stop position={{top : "456px", left : "945px"}} isChecked={part>5 || (part===5 && page>=1)} />
+                <Stop position={{top : "424px", left : "958px"}} isChecked={part>5 || (part===5 && page>=2)} />
+                <Stop position={{top : "390px", left : "967px"}} isChecked={part>5 || (part===5 && page>=3)} />
+                <Stop position={{top : "355px", left : "971px"}} isChecked={part>5 || (part===5 && page>=4)} />
+                <Stop position={{top : "320px", left : "980px"}} isChecked={part>5 || (part===5 && page>=5)} />
+                <Stop position={{top : "285px", left : "990px"}} isChecked={part>5 || (part===5 && page>=6)} />
+                <Stop position={{top : "255px", left : "1010px"}} isChecked={part>5 || (part===5 && page>=7)} />
+                <Stop position={{top : "233px", left : "1038px"}} isChecked={part>5 || (part===5 && page>=8)} />
+                <Stop position={{top : "223px", left : "1072px"}} isChecked={part>5 || (part===5 && page>=9)} />
             </Part>
             <Inst>아래 파일을 클릭하시면 기록지를 다운로드 할 수 있어요.</Inst>
             <Days>

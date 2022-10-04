@@ -10,10 +10,6 @@ const Stop = ({
     isChecked = false,
 }) => {
 
-    useEffect(()=>{
-        console.log({index, color});
-    }, []);
-
     return (
         <StopSign color={color} className={isChecked? "checked" : null} style={position}>
             {isChecked || <Index>{index}</Index>}

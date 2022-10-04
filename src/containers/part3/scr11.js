@@ -14,10 +14,15 @@ import Icon1 from "../../assets/ic_brin_blu.png";
 import Icon2 from "../../assets/ic_puzzle.png";
 import Icon3 from "../../assets/ic_bal.png";
 import Icon4 from "../../assets/vision-svgrepo-com.png";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr11 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

@@ -17,6 +17,10 @@ import Scr13 from "../containers/part1/scr13";
 import Screen from "../components/screen";
 import Header from "../components/header";
 
+import { usePage } from "../hooks/usePage";
+import { POST } from "../services/dataService";
+import { toastError } from "../utils/toast";
+
 const Part1 = () => {
 
     const curPage = useSelector(state => state.page.pageIdx);

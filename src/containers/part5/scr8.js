@@ -11,10 +11,15 @@ import { FiDownload as DownLoadIcon } from "react-icons/fi";
 import { saveAs } from "file-saver";
 import { usePage } from "../../hooks/usePage";
 import DiaryIcon from "../../assets/diary.svg";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr7 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

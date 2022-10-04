@@ -18,6 +18,7 @@ import { usePage } from "../../hooks/usePage";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
+import { setHistory } from "services/setHistory";
 
 const Scr5 = () => {
 
@@ -45,7 +46,8 @@ const Scr5 = () => {
                     }
                 }
             )
-        }
+        },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part3/illustration/${userIdx}`, 
         (result)=>{

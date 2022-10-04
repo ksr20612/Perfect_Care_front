@@ -32,7 +32,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMyself } from "../../features/parts/part1Slice";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
-import useFetchREST from "../../hooks/useFetchREST";
+import { setHistory } from "services/setHistory";
 
 const Scr3 = () => {
 
@@ -47,7 +47,9 @@ const Scr3 = () => {
             dispatch(setMyself([...myself, v]));
         }
     }
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

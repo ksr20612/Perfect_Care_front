@@ -12,11 +12,14 @@ import { usePage } from "../../hooks/usePage";
 import useFetchREST from "../../hooks/useFetchREST";
 import { useSelector, useDispatch } from "react-redux";
 import { toastError } from "../../utils/toast";
+import { setHistory } from "services/setHistory";
 
 const Scr1 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     useFetchREST(`/part1/scr10/${userIdx}`, 
         (result)=>{
             console.log(result);

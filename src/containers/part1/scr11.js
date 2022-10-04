@@ -17,6 +17,7 @@ import { usePage } from "../../hooks/usePage";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
+import { setHistory } from "services/setHistory";
 
 const Scr10 = () => {
 
@@ -38,6 +39,7 @@ const Scr10 = () => {
                 }
             )
         },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part1/scr10/${userIdx}`, 
         (result)=>{

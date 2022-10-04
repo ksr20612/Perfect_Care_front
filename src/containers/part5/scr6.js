@@ -12,10 +12,15 @@ import Score from "../../containers/ScoreBox.js";
 import Lottie from "react-lottie";
 import * as running from "../../assets/lottie/run.json";
 import * as running2 from "../../assets/lottie/run2.json";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr5 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     const [num, setNum] = useState(0);
     const [good, setGood] = useState(0);
     const [bad, setBad] = useState(0);

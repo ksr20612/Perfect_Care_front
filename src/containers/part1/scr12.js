@@ -11,10 +11,15 @@ import fadein from "../../styles/framer-motion/fadein";
 import BackImg from "../../assets/img1_12.jpg";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr11 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

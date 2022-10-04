@@ -11,6 +11,7 @@ import { usePage } from "../../hooks/usePage";
 import { useSelector } from "react-redux";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
+import { setHistory } from "services/setHistory";
 
 const Scr3 = () => {
 
@@ -30,7 +31,8 @@ const Scr3 = () => {
                     }
                 }
             )
-        }
+        },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
 
     return (

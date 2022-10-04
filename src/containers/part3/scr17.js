@@ -20,6 +20,7 @@ import Icon1 from "../../assets/ic_brin_blu.png";
 import Icon2 from "../../assets/ic_puzzle.png";
 import Icon3 from "../../assets/ic_bal.png";
 import Icon4 from "../../assets/vision-svgrepo-com.png";
+import { setHistory } from "services/setHistory";
 
 const Scr16 = () => {
 
@@ -45,7 +46,8 @@ const Scr16 = () => {
                     }
                 }
             )
-        }
+        },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part3/illustration/${userIdx}`, 
         (result)=>{

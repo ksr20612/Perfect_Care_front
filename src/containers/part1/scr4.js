@@ -16,6 +16,10 @@ import burnout from "../../assets/burnout.svg";
 import anxiety from "../../assets/anxiety.svg";
 import panic from "../../assets/panic.svg";
 import none from "../../assets/none.svg";
+import { useSelector } from "react-redux";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import { setHistory } from "services/setHistory";
 
 const list = [
     {
@@ -57,7 +61,10 @@ const list = [
 
 const Scr3 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     const [clicked, setClicked] = useState(list[0].value);
     const handleClick = (value) => {
         setClicked(value);

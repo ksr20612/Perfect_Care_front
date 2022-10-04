@@ -16,6 +16,7 @@ import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
 import SingleTalk from "../../components/singleTalk";
+import { setHistory } from "services/setHistory";
 
 const Scr9 = () => {
 
@@ -37,7 +38,8 @@ const Scr9 = () => {
                     }
                 }
             )
-        }
+        },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part4/mistake/${userIdx}`, 
         (result)=>{

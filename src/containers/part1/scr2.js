@@ -33,6 +33,7 @@ import { setMyself } from "../../features/parts/part1Slice";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
+import { setHistory } from "services/setHistory";
 
 const list = [
     { content : "실수를 통해 배운다고 생각한다", image : Bubble1, style : { top : "77%", left : "17%" }},
@@ -86,6 +87,7 @@ const Scr2 = () => {
                 }
             )
         },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part1/scr2/${userIdx}`, 
         (result)=>{

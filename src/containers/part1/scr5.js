@@ -15,10 +15,16 @@ import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 import { useScrollTo } from "../../hooks/useScrollTo";
 import ClipboardIcon from "../../assets/clipboard.svg";
+import { POST } from "../../services/dataService";
+import { toastError } from "../../utils/toast";
+import { setHistory } from "services/setHistory";
 
 const Scr4 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
     const testName = useSelector(state=>state.part1.test.name);
     const scores = useSelector(state=>state.part1.test.scores);
     const dispatch = useDispatch();

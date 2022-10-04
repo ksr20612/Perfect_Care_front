@@ -10,10 +10,15 @@ import fadein from "../../styles/framer-motion/fadein";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 import Spinner from "../../components/spinner";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr5 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

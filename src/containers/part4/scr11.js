@@ -10,10 +10,15 @@ import BackImg from "../../assets/img4_11.jpg"
 import { Paper } from "../../styles/components/paper";
 import Chat from "../chat";
 import { usePage } from "../../hooks/usePage";
+import { setHistory } from "services/setHistory";
+import { useSelector } from "react-redux";
 
 const Scr11 = () => {
 
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const userIdx = useSelector(state=>state.state.userIdx);
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+    });
 
     return (
         <>

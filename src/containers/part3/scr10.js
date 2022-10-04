@@ -17,6 +17,7 @@ import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
 import { toString } from "../../utils/part3Converter";
 import Tip from "../../components/tip";
+import { setHistory } from "services/setHistory";
 
 const Scr10 = () => {
 
@@ -45,7 +46,8 @@ const Scr10 = () => {
                     }
                 }
             )
-        }
+        },
+        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     useFetchREST(`/part3/illustration/${userIdx}`, 
         (result)=>{

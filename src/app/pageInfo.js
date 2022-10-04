@@ -256,5 +256,63 @@ const getPageTitle = (partIdx, pageIdx) => {
 }
 const numParts = PageInfo.length;
 
+// progressmap에서 체크하기 위한 idx
+const convertPage = (partIdx, pageIdx) => {
+    switch(partIdx*1) {
+        case 1 : 
+            if(pageIdx>=1 && pageIdx<=3) pageIdx = 1;
+            else if(pageIdx>=4) pageIdx = 2;
+            else if(pageIdx>=5 && pageIdx<=6) pageIdx = 3;
+            else if(pageIdx>=7 && pageIdx<=9) pageIdx = 4;
+            else if(pageIdx===10) pageIdx = 5;
+            else if(pageIdx===11) pageIdx = 6;
+            else pageIdx = 7;
+            return [1, pageIdx];
+        case 2 :
+            if(pageIdx===1) pageIdx = 1;
+            else if(pageIdx===2) pageIdx = 2;
+            else if(pageIdx===3) pageIdx = 3;
+            else if(pageIdx===4) pageIdx = 4;
+            else if(pageIdx>=5 && pageIdx <=7) pageIdx = 5;
+            else if(pageIdx===8) pageIdx = 6;
+            else pageIdx = 7;
+            return [2, pageIdx];
+        case 3 :
+            if(pageIdx===1) pageIdx = 1;
+            else if(pageIdx===2) pageIdx = 2;
+            else if(pageIdx>=3 && pageIdx<=10) pageIdx = 3;
+            else if(pageIdx===11) pageIdx = 4;
+            else if(pageIdx===12) pageIdx = 5;
+            else if(pageIdx>=13 && pageIdx<=16) pageIdx = 6;
+            else if(pageIdx===17) pageIdx = 7;
+            else pageIdx = 8;
+            return [3, pageIdx];
+        case 4 :
+            if(pageIdx===1) pageIdx = 1;
+            else if(pageIdx===2) pageIdx = 2;
+            else if(pageIdx===3) pageIdx = 3;
+            else if(pageIdx===4) pageIdx = 4;
+            else if(pageIdx>=5 && pageIdx<=7) pageIdx = 5;
+            else if(pageIdx===8) pageIdx = 6;
+            else if(pageIdx===9) pageIdx = 7;
+            else if(pageIdx===10) pageIdx = 8;
+            else pageIdx = 9;
+            return [4, pageIdx];
+        case 5 :
+            if(pageIdx===1) pageIdx = 1;
+            else if(pageIdx===2) pageIdx = 2;
+            else if(pageIdx===3) pageIdx = 3;
+            else if(pageIdx===4) pageIdx = 4;
+            else if(pageIdx===5) pageIdx = 5;
+            else if(pageIdx===6) pageIdx = 6;
+            else if(pageIdx===7) pageIdx = 7;
+            else if(pageIdx===8) pageIdx = 8;
+            else pageIdx = 9;
+            return [5, pageIdx];
+        default :
+            return [0, 0];
+    }
+}
+
 export default PageInfo;
-export { getPageLen, numParts, getPartTitle, getPageTitle };
+export { getPageLen, numParts, getPartTitle, getPageTitle, convertPage };
