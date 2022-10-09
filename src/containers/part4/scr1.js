@@ -39,7 +39,7 @@ const Scr1 = () => {
                     </ItemList>
                 </DataBox>
                 <Direction>
-                    인지오류를 포기했다면, 이제는 실전! <br/>
+                    인지오류를 찾았다면, 이제는 실전! <br/>
                     실수가 두렵지 않은 완벽주의자가 되는 법을 알려드립니다.
                 </Direction>
             </Box>

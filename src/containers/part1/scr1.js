@@ -27,17 +27,13 @@ const Scr1 = () => {
         */
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
-
-    useEffect(()=>{
-        console.log(currentPage);
-    })
-
+    
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,1)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Warning />
-                <Subtitle>시작하기에 앞서</Subtitle>
+                {/* <Subtitle>시작하기에 앞서</Subtitle> */}
                 <div>본 프로그램은</div>
                 <div>사용자가 언제 어디서든 인지행동치료를 경험하여</div>
                 <div>완벽을 조절하도록 만들어진 프로그램이며,</div>
@@ -68,13 +64,13 @@ const Subtitle = styled.div`
     margin-bottom : 5%;
 `
 const Warning = styled.div`
-    width : 20%;
-    height : 20%;
+    width : 30%;
+    height : 30%;
     background : url(${warningIcon});
     background-size : contain;
     background-repeat : no-repeat;
     background-position : center;
-    margin-bottom : 2%;
+    margin-bottom : 5%;
 `
 
 export default Scr1;

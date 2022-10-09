@@ -27,19 +27,19 @@ const Scr4 = () => {
                 <Content>
                     <div>
                         <Icon icon={professional}></Icon>
-                        <div>1전문적입니다</div>
+                        <div>1.전문적입니다</div>
                     </div>
                     <div>
                         <Icon icon={reasonable}></Icon>
-                        <div>2합리적입니다</div>
+                        <div>2.합리적입니다</div>
                     </div>
                     <div>
                         <Icon icon={easy}></Icon>
-                        <div>3편리합니다</div>
+                        <div>3.편리합니다</div>
                     </div>
                     <div>
                         <Icon icon={effective}></Icon>
-                        <div>4효과적입니다</div>
+                        <div>4.효과적입니다</div>
                     </div>
                 </Content>
             </Box>
@@ -63,7 +63,6 @@ const Ask = styled.div`
 `
 const Subtitle = styled.div`
     font-size : 3.6rem;
-
     &:first-letter { font-size : 150% }
 `
 const Content = styled.div`

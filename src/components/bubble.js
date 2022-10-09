@@ -44,7 +44,7 @@ const Bubble = ({
                 <Icon src={icon}></Icon>
                 "{content}"
             </Speech>
-            <Modal size={{width : "50vw", height : "50vh"}} isOn={status===2} close={{on: true, handleClose: (e)=>{close(e)}}}>
+            <Modal size={{width : "40%", height : "40%"}} isOn={status===2} close={{on: true, handleClose: (e)=>{close(e)}}} displayFlex={true} customStyle={{flexDirection : "column", justifyContent : "center", alignItems : "center"}}>
                 {children}
             </Modal>
         </Box>

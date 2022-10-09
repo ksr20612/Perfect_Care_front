@@ -27,17 +27,17 @@ const list = [
     },
     {
         name : "분노",
-        content : "사회의 불공평, 차별과 부당함에 저항하고, 위협적인 상황에서 스스로 방어할 수 있습니다.",
+        content : "사회의 불공평, 차별과 부당함에 저항하고,\n위협적인 상황에서 스스로 방어할 수 있습니다.",
         color : "#ebd1b5"
     },
     {
         name : "수치심",
-        content : "사회적으로 수용되지 않는 행동을 줄여 사회적 일원으로 살아갈 수 있습니다.",
+        content : "사회적으로 수용되지 않는 행동을 줄여\n사회적 일원으로 살아갈 수 있습니다.",
         color : "#72b5ce"
     },
     {
         name : "외로움",
-        content : "타인과 소통할 수 있으며, 사회적인 단절로부터 대비할 수 있습니다.",
+        content : `타인과 소통할 수 있으며,\n사회적인 단절로부터 대비할 수 있습니다.`,
         color : "#a6d9c8",
     },
     {
@@ -125,6 +125,7 @@ const Card = styled(Paper)`
     justify-content : center;
     text-align : center;
     word-break : keep-all;
+    white-space : pre-line;
 `
 
 export default Scr7;

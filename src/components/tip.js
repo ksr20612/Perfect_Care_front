@@ -40,7 +40,7 @@ const Box = styled.div`
         margin-right : 10px;
     }
     & > div:last-child {
-        
+        word-break : keep-all;
     }
 
 `

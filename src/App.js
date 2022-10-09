@@ -9,6 +9,7 @@ import Part2 from "./pages/part2";
 import Part3 from "./pages/part3";
 import Part4 from "./pages/part4";
 import Part5 from "./pages/part5";
+import Map from "./pages/map";
 
 import End from "./pages/end";
 import Login from "./pages/login";
@@ -16,7 +17,8 @@ import Signup from "./pages/signup";
 
 const routeList = [
   { name : "메인", path : "/", Component : Main },
-  { name : "파트0", path : "/0", Component : Part0 },
+  { name : "진행", path : "/0", Component : Map },
+  { name : "파트0", path : "/erased", Component : Part0 },
   { name : "파트1", path : "/1", Component : Part1 },
   { name : "파트2", path : "/2", Component : Part2 },
   { name : "파트3", path : "/3", Component : Part3 },

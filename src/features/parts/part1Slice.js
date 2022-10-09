@@ -6,7 +6,7 @@ export const Part1Slice = createSlice({
     initialState : {
         myself : [],
         test : {
-            name : "우울",
+            name : 0,
             scores : [],
         },
         goal : {

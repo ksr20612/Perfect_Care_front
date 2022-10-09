@@ -38,7 +38,10 @@ const Scr1 = () => {
                         </DataBox>
                     </div>
                 </div>
-                <Message>이러한 내 모습 이면에는 <br/> 어떤 기준이 자리잡고 있는지 확인해볼까요?</Message>
+                <Message>
+                    이런 생각을 하게된 이유는 사실 나의 _______ 때문이에요. <br/>
+                    이번 장에서는 그 이유에 대해서 완벽하게 탐구해볼 거예요.
+                </Message>
             </Box>
 
             {renderArrow()}

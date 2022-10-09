@@ -27,8 +27,8 @@ const Scr11 = () => {
                 <Img></Img>
                 <Message>
                     <strong>
-                        "A person who never made a mistakes never tried anything new." <br/> 
-                        Albert Einstein
+                        "실수를 한번도 하지 않은 사람은 새로운 일을 한번도 시도하지 않은 사람이다." <br/> 
+                        알버트 아인슈타인
                     </strong> <br/> <br/>
                     사무 용품인 포스트잇이 사실은 실패작이었다는 사실, 알고 계셨나요? <br/>
                     3M사의 연구원이던 스펜서 실버는 한번 붙으면 <br/>

@@ -46,6 +46,7 @@ const Line = styled.div`
     padding : 2vmin;
     font-size : 4.0rem;
     padding-left : 4vmin;
+    word-break : keep-all;
 
     &:first-of-type {
         margin-top : 5vh;

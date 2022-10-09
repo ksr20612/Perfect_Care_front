@@ -28,7 +28,7 @@ const Scr8 = () => {
                     부정적 감정도 때로는 필요합니다.
                 </div>
                 <div>
-                    부정적 감정을 완벽히 없애고자 하는 <strong>감정적 완벽주의</strong>를 경계해야 합니다.
+                    부정적 감정을 완벽히 없애고자 하는 <br/><strong>감정적 완벽주의</strong>를 경계해야 합니다.
                 </div>
             </Box>
             {renderArrow()}

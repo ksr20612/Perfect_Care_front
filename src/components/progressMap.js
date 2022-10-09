@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import pallette from "../styles/pallette.css";
 import { AnimatePresence, motion } from "framer-motion";
 import MapIcon from "../assets/btn_cur_lo.svg";
@@ -22,9 +22,12 @@ import Clicker from "../assets/clicker-svgrepo-com.svg";
 import DoneIcon from "../assets/btn_dcu.svg";
 import { convertPage } from "../app/pageInfo";
 
-const ProgressMap = () => {
+const ProgressMap = ({
+    hasBulge = true,
+    isFullWidth = false,
+}) => {
 
-    const [day, setDay] = useState(2);
+    const [day, setDay] = useState(3);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     console.log(currentPage, partIdx);
     const [part, page] = convertPage(partIdx, currentPage);
@@ -38,8 +41,8 @@ const ProgressMap = () => {
     }
 
     return (
-        <Box as={motion.div} initial={{opacity : 0, y : -20, scale : 0.8}} animate={{opacity : 1, y : 0, scale : 0.8}} exit={{opacity : 0, y : -20, scale : 0.8}}>
-            <Bulge></Bulge>
+        <Box as={motion.div} initial={{opacity : 0, y : -20, scale : 0.8}} animate={{opacity : 1, y : 0, scale : 0.8}} exit={{opacity : 0, y : -20, scale : 0.8}} isFullWidth={isFullWidth}>
+            {hasBulge && <Bulge></Bulge>}
             <Map></Map> 
             <Path></Path>
             <PathShadow />
@@ -102,14 +105,39 @@ const ProgressMap = () => {
                 <Stop position={{top : "233px", left : "1038px"}} isChecked={part>5 || (part===5 && page>=8)} />
                 <Stop position={{top : "223px", left : "1072px"}} isChecked={part>5 || (part===5 && page>=9)} />
             </Part>
-            <Inst>아래 파일을 클릭하시면 기록지를 다운로드 할 수 있어요.</Inst>
-            <Days>
-                {
-                    [...Array(15)].map((v, i)=>{
-                        return i<day? <Done onClick={()=>setIsPopupOn(true)}><div>Day</div><div>{((i+1)+"").padStart(2, "0")}</div></Done> : <Blank />
-                    })
-                }
-            </Days>
+            {
+                isFullWidth? (
+                    <>
+                        <Desc day={day}>
+                            {
+                                day===1? (
+                                    <>
+                                        완벽주의, 퍼펙트케어와 함께 시작해보아요.
+                                    </>
+                                ) : (
+                                    <>
+                                        오늘은 달려온 지 {day}일째 되는 날입니다. <br/>
+                                        지금까지 이만큼 달려왔어요.
+                                    </>
+                                )
+                            }
+                        </Desc>
+                    </>
+                )
+                :(
+                    <>
+                        <Inst>아래 파일을 클릭하시면 기록지를 다운로드 할 수 있어요.</Inst>
+                        <Days>
+                            {
+                                [...Array(15)].map((v, i)=>{
+                                    return i<day? <Done onClick={()=>setIsPopupOn(true)}><div>Day</div><div>{((i+1)+"").padStart(2, "0")}</div></Done> : <Blank />
+                                })
+                            }
+                        </Days>
+                    </>
+                )
+            }
+
             <AnimatePresence>
                 {isPopupOn && <Download handleDownload={handleDownload} handleClose={handleClose}/>}
             </AnimatePresence>
@@ -140,6 +168,15 @@ const Box = styled.div`
     border-radius : 1%;
     box-shadow : 10px 10px 20px #aaa;
     transform-origin : top right;
+
+    ${({isFullWidth})=> isFullWidth && css`
+        top : 0 !important;
+        left : 0 !important;
+        right : unset;
+        width : 100vw !important;
+        height : 100vh !important;
+        transform : unset !important;
+    `}
 `
 const Map = styled.div`
     width : 58px;
@@ -328,6 +365,19 @@ const Purple = styled.div`
         border-radius : 50%;
         opacity : 0.5;
     }
+`
+const Desc = styled.div`
+    font-size : 4.2rem;
+    letter-spacing : -0.2px;
+    color : #8B8A89;
+    font-family : "Medium";
+    display : flex;
+    align-items : center;
+    position : absolute;
+    bottom : 10%;
+    left : 50%;
+    transform : translateX(-50%);
+    text-align : center;
 `
 
 export default ProgressMap;

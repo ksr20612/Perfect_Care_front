@@ -27,7 +27,7 @@ const Scr12 = () => {
                 <Summary>
                     <Line>나의 완벽주의를 인정하기!</Line>
                     <Line>완벽주의는 "제거"하는 것이 아닌 "케어"하는 것.</Line>
-                    <Line>인정하는 것이 한걸음! 솔직한 나의 감정을 인정했다면, 이제부터 본격적인 "완벽케어"를 배워보자.</Line>
+                    <Line>인정하는 것이 한걸음! <br/> 솔직한 나의 감정을 인정했다면, <br/> 이제부터 본격적인 "완벽케어"를 배워보자.</Line>
                 </Summary>
             </Box>
             {renderArrow()}
@@ -47,6 +47,7 @@ const Line = styled.div`
     padding : 2vmin;
     font-size : 4.0rem;
     padding-left : 4vmin;
+    word-break : keep-all;
 
     &:first-of-type {
         margin-top : 5vh;
