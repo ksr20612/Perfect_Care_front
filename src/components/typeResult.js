@@ -3,6 +3,34 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from "framer-motion";
 import typeList from "../assets/jsons/typeList";
 import DropDown from "./dropDown";
+import Chart from "components/chart";
+
+const data = [
+    {
+      id: "안정형",
+      label: "안정형",
+      value: 8,
+      color: "#008CCC"
+    },
+    {
+      id: "게으른",
+      label: "게으른",
+      value: 2,
+      color: "#F15A22"
+    },
+    {
+      id: "감독형",
+      label: "감독형",
+      value: 4,
+      color: "#05b1ff"
+    },
+    {
+      id: "자책형",
+      label: "자책형",
+      value: 6,
+      color: "#f47a28"
+    }
+  ];
 
 const TypeResult = ({
     type = "안정형",
@@ -14,7 +42,7 @@ const TypeResult = ({
         <Box>
             <Title>나는 <strong>{type}</strong> 완벽주의자!</Title>
             <Wrapper as={motion.div} layout>
-                <Chart>차트</Chart>
+                <Chart data={data}>차트</Chart>
                 <DropDown title={type + " 완벽주의는..."}>
                     <Hash key={"hash"} as={motion.div} variants={fade} initial="off" animate="on" exit="off">{"\"" + typeInfo?.keyword + "\""}</Hash>
                     {
@@ -64,16 +92,16 @@ const Title = styled.div`
     margin-bottom : 5%;
     & > strong { font-size : 2.8rem; font-family : "Bold" };
 `
-const Chart = styled.div`
-    width : 80%;
-    height : 200px;
-    min-height : 200px;
-    border : 1px dashed #aaa;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    margin-bottom : 20px;
-`
+// const Chart = styled.div`
+//     width : 80%;
+//     height : 200px;
+//     min-height : 200px;
+//     border : 1px dashed #aaa;
+//     display : flex;
+//     align-items : center;
+//     justify-content : center;
+//     margin-bottom : 20px;
+// `
 const Wrapper = styled.div`
     width : 100%;
     flex : auto;

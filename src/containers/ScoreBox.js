@@ -56,7 +56,7 @@ const Scene = styled.div`
     position : relative;
 `
 const LottieWrapper = styled.div`
-    width : 15%;
+    width : 10%;
     min-width : 80px;
     aspect-ratio : 1;
     margin-left : ${props=>`calc(100% / 11 * ${props.score})`};

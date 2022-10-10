@@ -7,6 +7,9 @@ export const Part5Slice = createSlice({
         test : {
             scores : [],
         },
+        type : {
+            scores : [],
+        }
     },
     reducers : {
         setMyself : (state, { payload }) => {
@@ -15,8 +18,11 @@ export const Part5Slice = createSlice({
         setScores : (state, { payload }) => {
             state.test.scores = payload;
         },
+        setTypeScores : (state, { payload }) => {
+            state.type.scores = payload;
+        }
     }
 });
 
-export const { setMyself, setScores, } = Part5Slice.actions;
+export const { setMyself, setScores, setTypeScores } = Part5Slice.actions;
 export default Part5Slice.reducer;

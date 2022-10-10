@@ -171,11 +171,13 @@ const Box = styled.div`
 
     ${({isFullWidth})=> isFullWidth && css`
         top : 0 !important;
-        left : 0 !important;
+        left : 50% !important;
         right : unset;
-        width : 100vw !important;
-        height : 100vh !important;
-        transform : unset !important;
+        /* width : 100vw !important; */
+        /* height : 100vh !important; */
+        transform : translate(-50%) !important;
+        transform-origin : unset !important;
+        box-shadow : none;
     `}
 `
 const Map = styled.div`

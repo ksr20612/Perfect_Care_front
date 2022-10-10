@@ -17,8 +17,8 @@ import Signup from "./pages/signup";
 
 const routeList = [
   { name : "메인", path : "/", Component : Main },
-  { name : "진행", path : "/0", Component : Map },
-  { name : "파트0", path : "/erased", Component : Part0 },
+  { name : "지도", path : "/map", Component : Map },
+  { name : "파트0", path : "/0", Component : Part0 },
   { name : "파트1", path : "/1", Component : Part1 },
   { name : "파트2", path : "/2", Component : Part2 },
   { name : "파트3", path : "/3", Component : Part3 },
