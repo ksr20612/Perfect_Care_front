@@ -25,11 +25,20 @@ const Scr4 = () => {
     });
     const [phase, setPhase] = useState(0);
     const scores = useSelector(state=>state.part5.type.scores);
+    const [result, setResult] = useState({});
     const dispatch = useDispatch();
     const handleClick = (index, score) => {
         const temp = [...scores];
         temp[index] = score;
         dispatch(setTypeScores([...temp]));
+        /*
+            result : {
+                "안정형" : 
+                "게으른" :
+                "자책형" :
+            }
+        */
+        
         if(typeQuestions.length > index) {
             return next(index);
         }

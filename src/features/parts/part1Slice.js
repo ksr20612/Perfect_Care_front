@@ -7,6 +7,7 @@ export const Part1Slice = createSlice({
         myself : [],
         test : {
             name : 0,
+            types : [],
             scores : [],
         },
         goal : {
@@ -24,6 +25,9 @@ export const Part1Slice = createSlice({
         setScores : (state, { payload }) => {
             state.test.scores = payload;
         },
+        setTypes : (state, { payload }) => {
+            state.test.types = payload;
+        }, 
         setBefore : (state, { payload }) => {
             state.goal.before = payload;
         },
@@ -33,5 +37,5 @@ export const Part1Slice = createSlice({
     }
 });
 
-export const { setMyself, setTestName, setScores, setBefore, setAfter, } = Part1Slice.actions;
+export const { setMyself, setTestName, setScores, setBefore, setAfter, setTypes } = Part1Slice.actions;
 export default Part1Slice.reducer;

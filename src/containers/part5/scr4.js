@@ -11,7 +11,7 @@ import { setHistory } from "services/setHistory";
 import { useSelector, useDispatch } from "react-redux";
 import ClipboardIcon from "../../assets/clipboard.svg";
 import { useScrollTo } from "hooks/useScrollTo";
-import { setScores } from "../../features/parts/part5Slice";
+import { setScores, setTypes } from "../../features/parts/part5Slice";
 import { Paper } from "../../styles/components/paper";
 import Question from "../../components/question";
 import questionList from "../../app/questionList";
@@ -22,13 +22,16 @@ const Scr3 = () => {
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
-    const testName = useSelector(state=>state.part5.test.name) || "우울";
     const scores = useSelector(state=>state.part5.test.scores);
+    const types = useSelector(state=>state.part5.test.types);
     const dispatch = useDispatch();
-    const handleClick = (index, score) => {
+    const handleClick = (index, score, type) => {
         const temp = [...scores];
         temp[index] = score;
+        const _type = [...types];
+        _type[index] = type;
         dispatch(setScores([...temp]));
+        dispatch(setTypes([..._type]));
         next(index);
     }
     const cardRef = useRef(null);
@@ -37,7 +40,7 @@ const Scr3 = () => {
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,3)}/>
+            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,5)}/>
             <Box ref={cardRef}>
                 <Progress>
                     <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
@@ -52,15 +55,15 @@ const Scr3 = () => {
                         />
                     </svg>
                 </Progress>
-                <Name>{testName} 척도 검사</Name>
+                <Name>나의 마음건강점수 다시 확인하기</Name>
                 <Info>
                     <div>검사 시간은 10분 내외입니다.</div>
                     <div>솔직하게 답해주세요.</div>
                 </Info>
                 <Content className="content">
                     {
-                        questionList[testName].map((question, i)=>{
-                            return <Question index={i+1} content={question} handleChange={(score)=>handleClick(i, score)} value={scores[i]}/>
+                        questionList.map((question, i)=>{
+                            return <Question index={i+1} content={question?.sent} handleChange={(score)=>handleClick(i, score, question?.type)} value={scores[i]}/>
                         })
                     }
                 </Content>

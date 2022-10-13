@@ -1,3 +1,11 @@
+export const Types = {
+    "우울" : "우울",
+    "사회불안" : "사회불안",
+    "공황\n(신체증상)" : "공황",
+    "번아웃" : "번아웃",
+    "강박" : "강박",
+    "불면" : "불면",
+}
 const questionList = {
     "우울" : [
         "나는 하루 중 거의 대부분 우울한 기분이 지속된다.",
@@ -72,8 +80,24 @@ const questionList = {
         "나는 하루 중 반복해서 드는 생각에 몰두하는 시간이 하루에 1시간 이상이다."
     ]
 }
+/*
+    typeQuestionList 와 같은 형태로 만들어줄것
+*/
+const transform = (questions) => {
+    let result = [];
+    for(const [symptom, list] of Object.entries(questions)) {
+        const items = list?.map((sentence,i)=>({
+            sent : sentence,
+            type : Types[symptom],
+        }));
+        result = [...result, ...items];
+    }
+    console.log(result);
+    return result;
+}
+
 Object.freeze(questionList);
 
 export const getLength = () => 10;
 
-export default questionList;
+export default transform(questionList);

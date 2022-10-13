@@ -5,7 +5,7 @@ import typeList from "../assets/jsons/typeList";
 import DropDown from "./dropDown";
 import Chart from "components/chart";
 
-const data = [
+const sampleData = [
     {
       id: "안정형",
       label: "안정형",
@@ -33,7 +33,9 @@ const data = [
   ];
 
 const TypeResult = ({
+    maxValue = 20,
     type = "안정형",
+    data = sampleData,
 }) => {
 
     const typeInfo = typeList[type];
@@ -42,7 +44,7 @@ const TypeResult = ({
         <Box>
             <Title>나는 <strong>{type}</strong> 완벽주의자!</Title>
             <Wrapper as={motion.div} layout>
-                <Chart data={data}>차트</Chart>
+                <Chart data={data} maxValue={maxValue}>차트</Chart>
                 <DropDown title={type + " 완벽주의는..."}>
                     <Hash key={"hash"} as={motion.div} variants={fade} initial="off" animate="on" exit="off">{"\"" + typeInfo?.keyword + "\""}</Hash>
                     {

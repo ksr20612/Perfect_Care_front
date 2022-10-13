@@ -11,14 +11,14 @@ import fadein from "../../styles/framer-motion/fadein";
 import MovieClip from "../../components/movieClip";
 import { usePage } from "../../hooks/usePage";
 
-const Scr5 = () => {
+const Scr7 = () => {
 
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
     return (
         <>
-            <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
+            <Title title={getPartTitle(1)} subTitle={getPageTitle(1,9)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
-                The basics of CBT
+                
             </Box>
             {renderArrow()}
         </>
@@ -37,5 +37,8 @@ const Box = styled(Paper)`
         height : 40vh;
     }
 `
+const Ask = styled.div`
+    font-size : 3.6rem;
+`
 
-export default Scr5;
+export default Scr7;

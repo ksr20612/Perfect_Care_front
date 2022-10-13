@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import topImg from "../assets/bg_cir_02.png";
 import bottomImg from "../assets/bg_cir.png";
 import Doctor from "../assets/doctor_01.png";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo.svg";
 import LogoImg from "../assets/ic_health Care.svg";
 import ChartImg from "../assets/ic_medi.png";
 import { useNavigate } from "react-router-dom";
@@ -232,6 +232,21 @@ const BigCircle = styled.div`
     top : 15%;
     right : 15%;
 
+    &:after {
+        content : ""; 
+        position : absolute;
+        width : 9vh;
+        height : 9vh;
+        min-width : 88px;
+        min-height : 88px;
+        z-index : 2;
+        top : calc(-12% + min(18px, 1vh));
+        right : calc(5.5% + min(18px, 1vh));
+        background : url(${Logo});
+        background-position : 55% 55%;
+        background-repeat : no-repeat;
+        background-size : 70%;
+    }
     &:before {
         content : ""; 
         position : absolute;
@@ -239,8 +254,8 @@ const BigCircle = styled.div`
         height : 9vh;
         min-width : 88px;
         min-height : 88px;
-        background-image: url(${Logo}); 
-        background-image : url(${Logo}), linear-gradient(
+        /* background-image: url(${Logo});  */
+        background-image : linear-gradient(
             150deg,
             hsl(53deg 52% 94%) 0%,
             hsl(53deg 63% 92%) 1%,

@@ -1,6 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar";
 
-const Chart = ({ data }) => {
+const Chart = ({ data, maxValue = 20, isVertical = true, ...props }) => {
 
     return (
         <ResponsiveBar
@@ -9,9 +9,10 @@ const Chart = ({ data }) => {
           margin={{ top : 30, bottom: 30, left : 30, right : 30 }}
           padding={0.4}
           //groupMode="grouped"
-          layout="vertical"
+          layout={isVertical? "vertical" : "horizontal"}
           colors={data.map(c => c.color)}
           colorBy="index"
+          maxValue={maxValue}
           defs={[
             {
               id: "dots",
@@ -82,6 +83,7 @@ const Chart = ({ data }) => {
               }
             }
           }}
+          {...props}
         />
     )
 }

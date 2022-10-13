@@ -10,7 +10,7 @@ import { Paper } from "../../styles/components/paper";
 import Question from "../../components/question";
 import { useSelector, useDispatch } from "react-redux";
 import questionList from "../../app/questionList";
-import { setScores } from "../../features/parts/part1Slice";
+import { setScores, setTypes } from "../../features/parts/part1Slice";
 import { Arrow } from "../../styles/components/arrow";
 import { usePage } from "../../hooks/usePage";
 import { useScrollTo } from "../../hooks/useScrollTo";
@@ -25,13 +25,16 @@ const Scr4 = () => {
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
-    const testName = useSelector(state=>state.part1.test.name);
     const scores = useSelector(state=>state.part1.test.scores);
+    const types = useSelector(state=>state.part1.test.types);
     const dispatch = useDispatch();
-    const handleClick = (index, score) => {
+    const handleClick = (index, score, type) => {
         const temp = [...scores];
         temp[index] = score;
+        const _type = [...types];
+        _type[index] = type;
         dispatch(setScores([...temp]));
+        dispatch(setTypes([..._type]));
         next(index);
     }
     const cardRef = useRef(null);
@@ -55,15 +58,15 @@ const Scr4 = () => {
                         />
                     </svg>
                 </Progress>
-                <Name>{testName} 척도 검사</Name>
+                <Name>나의 마음건강점수 확인하기</Name>
                 <Info>
                     <div>검사 시간은 10분 내외입니다.</div>
                     <div>솔직하게 답해주세요.</div>
                 </Info>
                 <Content className="content">
                     {
-                        questionList[testName].map((question, i)=>{
-                            return <Question index={i+1} content={question} handleChange={(score)=>handleClick(i, score)} value={scores[i]}/>
+                        questionList.map((question, i)=>{
+                            return <Question index={i+1} content={question?.sent} handleChange={(score)=>handleClick(i, score, question?.type)} value={scores[i]}/>
                         })
                     }
                 </Content>
