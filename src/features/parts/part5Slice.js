@@ -4,11 +4,11 @@ export const Part5Slice = createSlice({
     name : "part5",
     initialState : {
         myself : [],
-        test : {
+        test : {    // 마음 건강 점수
             types : [],
             scores : [],
         },
-        type : {
+        type : {    // 완벽주의 유형
             types : [],
             scores : [],
         }

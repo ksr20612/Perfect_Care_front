@@ -10,6 +10,8 @@ import Scr6 from "../containers/part5/scr6";
 import Scr7 from "../containers/part5/scr7";
 import Scr8 from "../containers/part5/scr8";
 import Scr9 from "../containers/part5/scr9";
+import Scr10 from "../containers/part5/scr10";
+import Scr11 from "../containers/part5/scr11";
 import Screen from "../components/screen";
 import ProgressBar from "../components/progressBar";
 import Header from "../components/header";
@@ -31,7 +33,9 @@ const Part5 = () => {
                 curPage === 6? <Scr6 /> :
                 curPage === 7? <Scr7 /> :
                 curPage === 8? <Scr8 /> :
-                <Scr9 />
+                curPage === 9? <Scr9 /> :
+                curPage === 10? <Scr10 /> :
+                <Scr11 />
             }
             </Screen>
         </>

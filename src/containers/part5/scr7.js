@@ -1,51 +1,61 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import pallette from "../../styles/pallette.css";
 import { lighten, darken } from "polished";
 import Title from "../../components/title";
+import Summary from "../../components/summary";
+import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
+import { Paper } from "../../styles/components/paper";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
-import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-import DataBox from "../../components/dataBox";
 import { usePage } from "../../hooks/usePage";
-import { setHistory } from "services/setHistory";
-import { useSelector } from "react-redux";
+import TypeResult from "../../components/typeResult";
+import useCalculateTest from "hooks/useCalculateTest";
+import Spinner from "../../components/spinner";
 
-const Scr6 = () => {
+const Scr2 = () => {
 
-    const userIdx = useSelector(state=>state.state.userIdx);
-    const [currentPage, partIdx, handlePage, renderArrow] = usePage({
-        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
-    });
+    const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
+    const result = useSelector(state=>state.part5.type);
+    const [testResult, high] = useCalculateTest(result);
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,6)}/>
-            <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%", marginTop : "5%"}}>
-                <div>#</div>
-                <div>#</div>
-                <div>#</div>
-                <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
-            </DataBox>
-            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>지금의 나는 어떻게 변화했나요?</Ask>
+            <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
+            {(testResult.length && high?.type)? (
+                <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
+                    <Subtitle>당신의 '완벽주의' 유형은?</Subtitle>
+                    <TypeResult type={high?.type} data={testResult} maxValue={20}></TypeResult>
+                </Box>
+            ) : (
+                <Spinner/>
+            )}
             {renderArrow()}
         </>
     )
 }
-const Exp = styled.div`
-    font-size : 2.8rem;
-    margin-top : 10px;
-    letter-spacing : -0.28px;
-    text-align : right;
-`
-const Ask = styled.div`
-    font-size : 4.4rem;
-    width : 100%;
+const Box = styled(Paper)`
+    padding : 5%;
+    margin-top : 5%;
     display : flex;
-    justify-content : center;
+    height : 80%;
+    flex-direction : column;
     align-items : center;
-    height : 40%;
-    font-family : "Bold";
+    justify-content : flex-start;
+`
+const Subtitle = styled.div`
+    text-align : center;
+    width : 80%;
+    height : 50px;
+    max-width : 300px;
+    margin-bottom : 5%;
+    border-radius : 5px;
+    font-size : 2.0rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    background-color : ${pallette.BLUISH};
 `
 
-export default Scr6;
+export default Scr2;

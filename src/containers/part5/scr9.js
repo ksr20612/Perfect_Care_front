@@ -6,12 +6,12 @@ import Title from "../../components/title";
 import { motion } from "framer-motion";
 import fadein from "../../styles/framer-motion/fadein";
 import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
-import { Paper } from "../../styles/components/paper";
+import DataBox from "../../components/dataBox";
 import { usePage } from "../../hooks/usePage";
 import { setHistory } from "services/setHistory";
 import { useSelector } from "react-redux";
 
-const Scr8 = () => {
+const Scr6 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
@@ -20,41 +20,32 @@ const Scr8 = () => {
 
     return (
         <>
-            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,8)}/>
-            <Box>
-                <Subtitle>완벽은 완전히 없애는 것이 아니라 "케어"하는 것</Subtitle>
-                <Content>
-                    완벽주의자들은 완벽이 타고난 것이고 <br/> 바뀔 수 없는 성격이라고 생각합니다. <br/>
-                    하지만 건강한 완벽주의는 키우고, <br/> 건강하지 못한 완벽주의는 줄이는 방향으로 케어해야 합니다. <br/> 
-                    느슨하고 단단한 심리는 여러분을 완벽한 성과에 조금씩 가까이 가도록 도와줄 것입니다.
-                </Content>
-            </Box>
+            <Title title={getPartTitle(5)} subTitle={getPageTitle(5,6)}/>
+            <DataBox title="완벽정리에서 나는..." customStyle={{height : "30vh", maxHeight : "40%", marginTop : "5%"}}>
+                <div>#</div>
+                <div>#</div>
+                <div>#</div>
+                <Exp>이러한 완벽주의의 모습을 바꾸고 싶다고 적었어요.</Exp>
+            </DataBox>
+            <Ask as={motion.div} initial="hidden" animate="visible" variants={fadein} custom={1}>지금의 나는 어떻게 변화했나요?</Ask>
             {renderArrow()}
         </>
     )
 }
-const Box = styled(Paper)`
-    padding : 5vh;
-    margin-top : 15vh;
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    flex-direction : column;
-    font-size : 2.4rem;
+const Exp = styled.div`
+    font-size : 2.8rem;
+    margin-top : 10px;
+    letter-spacing : -0.28px;
+    text-align : right;
 `
-const Subtitle = styled.div`
-    font-size : 3.6rem;
-    font-weight : bold;
-    margin-bottom : 10%;
-`
-const Content = styled.div`
+const Ask = styled.div`
+    font-size : 4.4rem;
+    width : 100%;
     display : flex;
-    flex-direction : column;
     justify-content : center;
     align-items : center;
-    line-height : 200%;
-    text-align : center;
-    word-break : keep-all;
+    height : 40%;
+    font-family : "Bold";
 `
 
-export default Scr8;
+export default Scr6;

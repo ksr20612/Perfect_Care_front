@@ -17,6 +17,11 @@ import { toastError } from "../../utils/toast";
 import useFetchREST from "../../hooks/useFetchREST";
 import { toString } from "../../utils/part3Converter";
 import { setHistory } from "services/setHistory";
+import ImgCard from "components/imgCard";
+import img1 from "assets/imgCards/img1.jpg";
+import img2 from "assets/imgCards/img2.jpg";
+import img3 from "assets/imgCards/img3.jpg";
+import img4 from "assets/imgCards/img4.jpg";
 
 const Scr7 = () => {
 
@@ -67,7 +72,12 @@ const Scr7 = () => {
                 <BlockBox title="감정" content={emotionString}/>
                 <BlockBox title="떠오른 생각들" content={scr6} fadein={true}/>
                 <AnswerBox title="그때 자신이 어떤 이미지로 느껴졌나요?" index="4/7" styles={{height : "100%"}}>
-                    <TextArea height="100%" value={scr7} handleChange={(v)=>{handleChange(v)}}/>
+                    <Wrapper>
+                        <ImgCard img={img1} description={"누구와도 어울리지 못하는 내 모습"} style={{backgroundPosition : "11% center"}}/>
+                        <ImgCard img={img2} description={"놀림받는 내 모습"}/>
+                        <ImgCard img={img3} description={"도망가고 싶은 내 모습"}/>
+                        <ImgCard img={img4} description={"실패한 내 모습"}/>
+                    </Wrapper>
                 </AnswerBox>
             </Box>
             {renderArrow()}
@@ -81,6 +91,14 @@ const Box = styled.div`
     padding-top : 5%;
     height : 60%;
     position : relative;
+`
+const Wrapper = styled.div`
+    width : 100%;
+    height : 100%;
+    display : grid;
+    grid-template-rows : 1fr;
+    grid-template-columns : repeat(4, 1fr);
+    gap : 2%;
 `
 
 export default Scr7;

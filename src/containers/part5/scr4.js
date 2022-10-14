@@ -11,7 +11,7 @@ import { setHistory } from "services/setHistory";
 import { useSelector, useDispatch } from "react-redux";
 import ClipboardIcon from "../../assets/clipboard.svg";
 import { useScrollTo } from "hooks/useScrollTo";
-import { setScores, setTypes } from "../../features/parts/part5Slice";
+import { setScores, setTestTypes } from "../../features/parts/part5Slice";
 import { Paper } from "../../styles/components/paper";
 import Question from "../../components/question";
 import questionList from "../../app/questionList";
@@ -31,7 +31,7 @@ const Scr3 = () => {
         const _type = [...types];
         _type[index] = type;
         dispatch(setScores([...temp]));
-        dispatch(setTypes([..._type]));
+        dispatch(setTestTypes([..._type]));
         next(index);
     }
     const cardRef = useRef(null);

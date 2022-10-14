@@ -27,7 +27,7 @@ const Scr5 = () => {
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,6)}/>
-            {(testResult && high)? (
+            {(testResult.length && high?.type)? (
                 <Wrapper>
                     <Box>
                         <Subtitle>나의 마음건강점수</Subtitle>
