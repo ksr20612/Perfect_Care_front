@@ -33,29 +33,37 @@ import { setMyself } from "../../features/parts/part1Slice";
 import { POST } from "../../services/dataService";
 import { toastError } from "../../utils/toast";
 import { setHistory } from "services/setHistory";
+import html2canvas from "html2canvas";
 
 const Scr3 = () => {
 
     const dispatch = useDispatch();
     const userIdx = useSelector(state=>state.state.userIdx);
     const myself = useSelector(state=>state.part1.myself);
-    const handleCheck = (v) => {
-        if(myself.length > 7) return;
-        if(myself.includes(v)){
-            dispatch(setMyself(myself.filter((item)=>item!==v)));
-        }else {
-            dispatch(setMyself([...myself, v]));
-        }
-    }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : ()=>{
+            const stringifiedPic = capture();
+            console.log(stringifiedPic);
+            // TODO : db 전달 : api (POST /api/myBrain)
+        },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
+    const picRef = useRef();
+    const capture = async () => {
+        if(!picRef?.current) return null;
+        console.log("captured");
+        const canvas = await html2canvas(picRef.current);
+        if(canvas) {
+            console.log(canvas.toDataURL());
+            return canvas.toDataURL();
+        }
+    }
 
     return (
         <>
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,2)}/>
             <Inst>내가 보는 나, 이런 모습이었네요</Inst>
-            <Box>
+            <Box ref={picRef}>
                 <Head>
                     <Brain emotions={myself}></Brain>
                 </Head>

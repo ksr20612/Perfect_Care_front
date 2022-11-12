@@ -33,7 +33,6 @@ const Scr1 = () => {
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,1)}/>
             <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                 <Warning />
-                {/* <Subtitle>시작하기에 앞서</Subtitle> */}
                 <div>본 프로그램은</div>
                 <div>사용자가 언제 어디서든 인지행동치료를 경험하여</div>
                 <div>완벽을 조절하도록 만들어진 프로그램이며,</div>
