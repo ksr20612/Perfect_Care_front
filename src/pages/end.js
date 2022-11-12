@@ -8,7 +8,7 @@ const End = () => {
 
     return (
         <Box>
-            <div>수고하셨습니다.</div>
+            <div><strong>수고하셨습니다.</strong></div>
             <div>
                 퍼펙트케어는 2주(15일)의 과정이지만 <br/>
                 전체 과정을 2~3번 반복해보시면 더욱 효과적일 것입니다. 
@@ -33,6 +33,7 @@ const Box = styled.div`
     padding-right : min(15vw, 110px);
     background-color : #f9f8f7;
     position : relative;
+    text-align : center;
 `
 
 export default End;

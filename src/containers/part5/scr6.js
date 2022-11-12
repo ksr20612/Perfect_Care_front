@@ -9,7 +9,7 @@ import PageInfo, { getPartTitle, getPageTitle } from "../../app/pageInfo";
 import { usePage } from "../../hooks/usePage";
 import { setHistory } from "services/setHistory";
 import { useSelector, useDispatch } from "react-redux";
-import { setTypeScores } from "features/parts/part5Slice";
+import { setTypeScores, setTypeTypes } from "features/parts/part5Slice";
 import { useScrollTo } from "hooks/useScrollTo";
 import ClipboardIcon from "../../assets/clipboard.svg";
 import { Paper } from "../../styles/components/paper";
@@ -23,6 +23,7 @@ const Scr4 = () => {
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : ()=>{
+            console.log(scores.length, typeQuestions.length);
             if(scores.length !== typeQuestions.length) {
                 toastError("모든 문항에 답해주세요");
                 return false;
@@ -31,26 +32,17 @@ const Scr4 = () => {
         },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
-    // const [phase, setPhase] = useState(0);
     const scores = useSelector(state=>state.part5.type.scores);
-    const [result, setResult] = useState({});
+    const types = useSelector(state=>state.part5.type.types);
     const dispatch = useDispatch();
-    const handleClick = (index, score) => {
+    const handleClick = (index, score, type) => {
         const temp = [...scores];
         temp[index] = score;
+        const _type = [...types];
+        _type[index] = type;
         dispatch(setTypeScores([...temp]));
-        /*
-            result : {
-                "안정형" : 
-                "게으른" :
-                "자책형" :
-            }
-        */
-        
-        if(typeQuestions.length > index) {
-            return next(index);
-        }
-        // setPhase(1);
+        dispatch(setTypeTypes([..._type]));
+        next(index);
     }
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({ container : cardRef });
@@ -75,7 +67,7 @@ const Scr4 = () => {
                 </Progress>
                 <Name>완벽주의 유형 검사</Name>
                 <Info>
-                    <div>검사 시간은 10분 내외입니다.</div>
+                    <div>검사 시간은 5분 내외입니다.</div>
                     <div>솔직하게 답해주세요.</div>
                 </Info>
                 <Content className="content">
