@@ -27,6 +27,10 @@ const Scr2 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(Object.keys(checks).filter((key)=>checks[key]?.from).length !== 4) {
+                toastError("모든 기준을 선택해주세요");
+                return false;
+            }
             POST("/part2/scr2", { userIdx, standards : checks }, 
                 (result) => {
                     if(result.data.message) {
@@ -50,6 +54,9 @@ const Scr2 = () => {
             }
         }
     )
+    useEffect(()=>{
+        console.log(checks);
+    }, []);
 
     return (
         <>

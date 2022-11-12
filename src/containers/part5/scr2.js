@@ -30,6 +30,7 @@ import { ReactComponent as Bubble10 } from '../../assets/ic_bub_def-9.svg';
 import { useSelector, useDispatch } from "react-redux";
 import { setMyself } from "../../features/parts/part5Slice";
 import { setHistory } from "services/setHistory";
+import { toastError } from "utils/toast";
 
 const list = [
     { content : "실수를 통해 배운다고 생각한다", image : Bubble1, style : { top : "77%", left : "17%" }},
@@ -59,6 +60,12 @@ const Scr2 = () => {
     const dispatch = useDispatch();
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : () => {
+            if(checked.length === 0) {
+                toastError("문장을 한 개 이상 선택해주세요");
+                return false;
+            };
+        },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     // const [checked, setChecked] = useState([]);

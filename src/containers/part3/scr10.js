@@ -36,6 +36,10 @@ const Scr10 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr10) {
+                toastError("나의 자동사고를 적어주세요");
+                return false;
+            }
             POST("/part3/scr10", { userIdx, conclusion : scr10 }, 
                 (result) => {
                     if(result.data.message) {
@@ -80,7 +84,7 @@ const Scr10 = () => {
                 </div>
                 <div>
                     <AnswerBox title="나의 자동사고는?" index="7/7" styles={{height : "70%"}}>
-                        <TextArea height="100%" value={scr10} handleChange={(v)=>{handleChange(v)}} placeholder={"예 : "}/>
+                        <TextArea height="100%" value={scr10} handleChange={(v)=>{handleChange(v)}} placeholder={"예 : 시험에서 한번이라도 실수를 하면 인생의 낙오자가 된다."}/>
                     </AnswerBox>
                     <Tip content="떠오른 생각, 이미지, 나는 어떤 사람, 최악의 경우를 종합했을 때 감정을 유발하는 핵심 생각을 한 문장으로 표현해보세요." styleOverrides={{flex : "1"}}/> 
                 </div>

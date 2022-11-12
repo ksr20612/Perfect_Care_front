@@ -20,10 +20,18 @@ const Scr2 = () => {
     const result = useSelector(state=>state.part5.type);
     const [testResult, high] = useCalculateTest(result);
 
+    useEffect(()=>{
+        console.log({
+            result,
+            testResult,
+            high
+        })
+    })
+
     return (
         <>
             <Title title={getPartTitle(0)} subTitle={getPageTitle(0,1)}/>
-            {(testResult.length && high?.type)? (
+            {(testResult?.length && high?.type)? (
                 <Box as={motion.div} initial="hidden" animate="visible" variants={fadein}>
                     <Subtitle>당신의 '완벽주의' 유형은?</Subtitle>
                     <TypeResult type={high?.type} data={testResult} maxValue={20}></TypeResult>

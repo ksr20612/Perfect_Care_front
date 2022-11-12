@@ -34,8 +34,10 @@ const Scr5 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
-            console.log(isClicked);
-            if(!isClicked) return false;
+            if(!isClicked) {
+                toastError("댓글을 남겨주세요");
+                return false;
+            }
             POST("/part2/scr5", { userIdx, comment : comment[0] }, 
                 (result) => {
                     if(result.data.message) {
@@ -57,6 +59,7 @@ const Scr5 = () => {
             }else {
                 dispatch(setComment(result.data.comments));
                 // nick, content, like만 가져올것
+                // TODO : 내 댓글이 있다면 isClicked => true로 교체하기
             }
         }
     )

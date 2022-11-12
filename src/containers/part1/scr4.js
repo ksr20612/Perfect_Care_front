@@ -84,6 +84,13 @@ const Scr3 = () => {
     const dispatch = useDispatch();
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : ()=>{
+            if(!clicked) {
+                toastError("증상을 한 개 선택해주세요");
+                return false;
+            }
+            // TODO : 백엔드에 저장
+        },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     const clicked = useSelector(state=>state.part1.test.name);

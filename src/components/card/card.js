@@ -16,10 +16,15 @@ const Card = ({
 }) => {
 
     // 0 : none, 1 : flipped
-    console.log(selected);
     const [isFlipped, setFlipped] = useState(0);
     const [score, setScore] = useState(selected?.score || 0);
     const handleClick = (target) => {
+        console.log(target.id);
+        if(target.id === "decided") {
+            console.log("clicked");
+            setFlipped(!isFlipped); 
+            handleSelected(name, score);
+        }
         console.log(target);
         setFlipped(!isFlipped);
     }
@@ -29,7 +34,7 @@ const Card = ({
     }
 
     return (
-        <Box isSelected={selected?.isSelected} isFlipped={isFlipped} onClick={(e)=>handleClick(e.target)}>
+        <Box isSelected={selected?.isSelected} isFlipped={isFlipped} onClick={(e)=>handleClick(e.currentTarget)}>
             <Front>
                 <Title>
                     <Name icon={icon}>{name}</Name>
@@ -43,7 +48,7 @@ const Card = ({
             <Back>
                 <Title>
                     <Name icon={icon}>{name}</Name>
-                    <FlipBtn onClick={(e)=>{console.log("clicked"); e.stopPropagation(); setFlipped(!isFlipped); handleSelected(name, score)}}>결정</FlipBtn>
+                    <FlipBtn id="decided" onClick={(e)=>{console.log("clicked"); e.stopPropagation(); setFlipped(!isFlipped); handleSelected(name, score)}}>결정</FlipBtn>
                 </Title>
                 <Wrapper>
                     <DiscreteSlider value={score} handleChange={(e)=>handleChange(e)} color={idx%2? "red" : "blue"}/> 
@@ -194,7 +199,6 @@ const FlipBtn = styled.button`
     justify-self : flex-end;
     color : ${pallette.BLUE};
     right : 0;
-    z-index : 2;
     &:active { background : #aaa }
     & + & { margin-left : 2%;}
 `

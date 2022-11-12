@@ -28,6 +28,10 @@ const Scr9 = () => {
     const futureReaction = useSelector(state=>state.part4.mistake.futureReaction);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!futureReaction) {
+                toastError("어떻게 대처할 수 있을지 적어주세요");
+                return false;
+            }
             POST("/part4/scr9", { userIdx, futureReaction }, 
                 (result) => {
                     if(result.data.message) {
@@ -66,7 +70,7 @@ const Scr9 = () => {
                     <SingleTalk as={motion.div} layoutId={"message_reaction"} isMe={true} transitionDelay={0.6} texts={[reaction]}/>
                 </Wrapper>
                 <Question>Q. 만약 다음번에 동일한 실수를 하게 된다면 어떻게 대처할 수 있을까?</Question>
-                <TextArea value={futureReaction} handleChange={(v)=>dispatch(setFutureReaction(v))} customStyle={{padding : "20px"}}/>
+                <TextArea value={futureReaction} handleChange={(v)=>dispatch(setFutureReaction(v))} customStyle={{padding : "20px"}} placeholder="예: 자책하지 않고, 실수를 만회할 수 있는 방법을 침착하게 생각해 본다."/>
             </Box>
             {renderArrow()}
         </>

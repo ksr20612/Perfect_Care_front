@@ -15,11 +15,19 @@ import { setScores, setTestTypes } from "../../features/parts/part5Slice";
 import { Paper } from "../../styles/components/paper";
 import Question from "../../components/question";
 import questionList from "../../app/questionList";
+import { toastError } from "../../utils/toast";
 
 const Scr3 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : ()=>{
+            if(scores.length !== questionList.length) {
+                toastError("모든 문항에 답해주세요");
+                return false;
+            }
+            // TODO : 백엔드에 저장
+        },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
     const scores = useSelector(state=>state.part5.test.scores);

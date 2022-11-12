@@ -31,6 +31,10 @@ const Scr6 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!emotionString) {
+                toastError("어떤 생각이 떠올랐는지 적어주세요");
+                return false;
+            }
             POST("/part3/scr6", { userIdx, thought : scr6 }, 
                 (result) => {
                     if(result.data.message) {
@@ -65,7 +69,7 @@ const Scr6 = () => {
                 <BlockBox title="상황" content={scr4} />
                 <BlockBox title="감정" content={emotionString} fadein={true}/>
                 <AnswerBox title="어떤 생각이 떠올랐나요? (떠오르는대로 적어보세요)" index="3/7" styles={{height : "100%"}}>
-                    <TextArea height="100%" value={scr6} handleChange={(v)=>{handleChange(v)}}/>
+                    <TextArea height="100%" value={scr6} handleChange={(v)=>{handleChange(v)}} placeholder="예: 왜 그런 실수를 하는지 이해가 되지 않았고, 다른 팀원들도 실수할 바에야 그냥 혼자 하는 것이 낫다는 생각이 들었다."/>
                 </AnswerBox>
             </Box>
             {renderArrow()}

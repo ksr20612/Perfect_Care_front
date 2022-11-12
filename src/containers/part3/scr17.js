@@ -32,10 +32,15 @@ const Scr16 = () => {
     const handleClick = (target, text) => {
         const newArr = [...active].map((__,i)=>i===target? true : false);
         setActive([...active].map((__,i)=>i===target? true : false));
+        text = text.split(`\n`)[0];
         dispatch(setScr16(text));
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr16) {
+                toastError("가장 유사한 자동사고 오류를 선택해주세요");
+                return false;
+            }
             POST("/part3/scr16", { userIdx, autoThought : scr16 }, 
                 (result) => {
                     if(result.data.message) {
@@ -60,6 +65,9 @@ const Scr16 = () => {
             }
         }
     )
+    useEffect(()=>{
+        console.log(scr16);
+    })
 
     return (
         <>

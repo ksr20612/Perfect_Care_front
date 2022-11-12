@@ -19,7 +19,10 @@ const Scr3 = () => {
     const messages = useSelector(state=>state.part4.message);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
-            if(!messages[0]) return false;
+            if(messages.length !== 2) {
+                toastError("Y양에게 문자를 보내주세요");
+                return false;
+            }
             POST("/part4/scr3", { userIdx, message : messages[0] }, 
                 (result) => {
                     console.log(result.data);

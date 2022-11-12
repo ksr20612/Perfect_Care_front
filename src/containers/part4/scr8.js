@@ -26,6 +26,14 @@ const Scr8 = () => {
     const reaction = useSelector(state=>state.part4.mistake.reaction);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!thought) {
+                toastError("어떤 생각이 들었는지 적어주세요");
+                return false;
+            }
+            if(!reaction) {
+                toastError("어떻게 대처하였는지 적어주세요");
+                return false;
+            }
             POST("/part4/scr8", { userIdx, data : {thought, reaction} }, 
                 (result) => {
                     if(result.data.message) {

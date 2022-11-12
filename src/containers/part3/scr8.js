@@ -33,6 +33,10 @@ const Scr8 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr8) {
+                toastError("어떤 사람이라는 생각이 들었는지 적어주세요");
+                return false;
+            }
             POST("/part3/scr8", { userIdx, selfReflection : scr8 }, 
                 (result) => {
                     if(result.data.message) {
@@ -70,7 +74,7 @@ const Scr8 = () => {
                 <BlockBox title="떠오른 생각들" content={scr6}/>
                 <BlockBox title="이미지" content={scr7} fadein={true}/>
                 <AnswerBox title="내가 어떤 사람이라는 생각이 들었나요?" index="5/7" styles={{height : "100%"}}>
-                    <TextArea height="100%" value={scr8} handleChange={(v)=>{handleChange(v)}}/>
+                    <TextArea height="100%" value={scr8} handleChange={(v)=>{handleChange(v)}} placeholder="예: 자꾸 실수를 저지르는 한심한 사람이라는 생각이 들었다."/>
                 </AnswerBox>
             </Box>
             {renderArrow()}

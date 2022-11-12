@@ -27,7 +27,10 @@ const Scr10 = () => {
     const dispatch = useDispatch();
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
-            if(before || after) return false;
+            if(!before || !after) {
+                toastError("완벽주의 두 모습을 모두 입력해주세요");
+                return false
+            };
             POST("/part1/scr10", { userIdx, before, after, }, 
                 (result) => {
                     if(result.data.message) {
@@ -62,11 +65,11 @@ const Scr10 = () => {
                 <Content>
                     <Card>
                         <div>바꾸고 싶은 내 완벽주의 모습</div>
-                        <TextArea value={before} handleChange={(v)=>{dispatch(setBefore(v))}}/>
+                        <TextArea value={before} handleChange={(v)=>{dispatch(setBefore(v))}} placeholder="예: 실수에 지나치게 민감한 모습"/>
                     </Card>
                     <Card>
                         <div>그대로 두고 싶은 내 완벽주의 모습</div>
-                        <TextArea value={after} handleChange={(v)=>{dispatch(setAfter(v))}}/>
+                        <TextArea value={after} handleChange={(v)=>{dispatch(setAfter(v))}} placeholder="예: 맡은 일에 최선을 다하는 모습"/>
                     </Card>
                 </Content>
             </Box>

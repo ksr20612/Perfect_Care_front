@@ -23,7 +23,17 @@ const Scr4 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
-        onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
+        onBeforeNext : ()=>{
+            if(scores.length !== questionList.length) {
+                toastError("모든 문항에 답해주세요");
+                return false;
+            }
+            // TODO : 백엔드에 저장
+        },
+        onAfterNext : ()=>{
+            // TODO : 백엔드
+            setHistory(userIdx, partIdx, currentPage);
+        },
     });
     const scores = useSelector(state=>state.part1.test.scores);
     const types = useSelector(state=>state.part1.test.types);

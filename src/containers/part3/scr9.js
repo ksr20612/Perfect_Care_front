@@ -34,6 +34,10 @@ const Scr9 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr9) {
+                toastError("최악의 경우 어떤 일이 일어날 것이라고 생각했는지 적어주세요");
+                return false;
+            }
             POST("/part3/scr9", { userIdx, disaster : scr9 }, 
                 (result) => {
                     if(result.data.message) {
@@ -73,7 +77,7 @@ const Scr9 = () => {
                 <BlockBox title="이미지" content={scr7}/>
                 <BlockBox title="나는 어떤 사람?" content={scr8} fadein={true}/>
                 <AnswerBox title="최악의 경우 어떤 일이 일어날 것이라고 생각했나요?" index="6/7" styles={{height : "100%"}}>
-                    <TextArea height="100%" value={scr9} handleChange={(v)=>{handleChange(v)}} />
+                    <TextArea height="100%" value={scr9} handleChange={(v)=>{handleChange(v)}} placeholder="예: F학점을 받고 결국 취직에도 실패하여 낙오자가 될 것 같다는 생각이 들었다." />
                 </AnswerBox>
             </Box>
             {renderArrow()}

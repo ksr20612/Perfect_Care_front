@@ -5,7 +5,7 @@ import pallette from "styles/pallette.css";
 const ImgCard = ({
     img = img1,
     description = "어느 곳에서도 어울리지 못하는 나의 모습",
-    selected = true,
+    selected = false,
     ...props
 }) => {
 

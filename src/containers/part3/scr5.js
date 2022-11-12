@@ -36,6 +36,10 @@ const Scr5 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(selected.length === 0) {
+                toastError("어떤 감정을 느꼈는지 선택해주세요");
+                return false;
+            }
             POST("/part3/scr5", { userIdx, emotion : scr5 }, 
                 (result) => {
                     if(result.data.message) {

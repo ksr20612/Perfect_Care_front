@@ -23,6 +23,13 @@ import img2 from "assets/imgCards/img2.jpg";
 import img3 from "assets/imgCards/img3.jpg";
 import img4 from "assets/imgCards/img4.jpg";
 
+const images = [
+    "누구와도 어울리지 못하는 내 모습",
+    "놀림받는 내 모습",
+    "도망가고 싶은 내 모습",
+    "실패한 내 모습"
+]
+
 const Scr7 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
@@ -37,6 +44,10 @@ const Scr7 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr7) {
+                toastError("먼저 이미지를 선택해주세요");
+                return false;
+            }
             POST("/part3/scr7", { userIdx, image : scr7 }, 
                 (result) => {
                     if(result.data.message) {
@@ -73,10 +84,10 @@ const Scr7 = () => {
                 <BlockBox title="떠오른 생각들" content={scr6} fadein={true}/>
                 <AnswerBox title="그때 자신이 어떤 이미지로 느껴졌나요?" index="4/7" styles={{height : "100%"}}>
                     <Wrapper>
-                        <ImgCard img={img1} description={"누구와도 어울리지 못하는 내 모습"} style={{backgroundPosition : "11% center"}}/>
-                        <ImgCard img={img2} description={"놀림받는 내 모습"}/>
-                        <ImgCard img={img3} description={"도망가고 싶은 내 모습"}/>
-                        <ImgCard img={img4} description={"실패한 내 모습"}/>
+                        <ImgCard img={img1} description={images[0]} selected={scr7===images[0]} onClick={()=>handleChange(images[0])} style={{backgroundPosition : "11% center"}}/>
+                        <ImgCard img={img2} description={images[1]} selected={scr7===images[1]} onClick={()=>handleChange(images[1])} />
+                        <ImgCard img={img3} description={images[2]} selected={scr7===images[2]} onClick={()=>handleChange(images[2])} />
+                        <ImgCard img={img4} description={images[3]} selected={scr7===images[3]} onClick={()=>handleChange(images[3])} />
                     </Wrapper>
                 </AnswerBox>
             </Box>

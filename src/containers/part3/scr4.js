@@ -27,6 +27,10 @@ const Scr4 = () => {
     }
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
         onBeforeNext : () => {
+            if(!scr4) {
+                toastError("상황을 묘사해주세요");
+                return false;
+            }
             POST("/part3/scr4", { userIdx, circumstance : scr4 }, 
                 (result) => {
                     if(result.data.message) {
@@ -62,7 +66,7 @@ const Scr4 = () => {
                 </Question>
                 <Answer>
                     <div className="subQuestion">✶ 상황 : 누가 / 언제 / 어디서 / 무엇을 (육하원칙에 따라서 적어주세요)<span>1/7</span></div>
-                    <TextArea color={pallette.GREY} width="100%" height="20vh" value={scr4} handleChange={(v)=>{handleChange(v)}}/>
+                    <TextArea color={pallette.GREY} width="100%" height="20vh" value={scr4} handleChange={(v)=>{handleChange(v)}} placeholder="예: 어제 팀프로젝트에서 한 팀원이 작은 실수를 했는데 짜증이 나서 팀원에게 화를 냈다. 팀 분위기가 엉망이 되어버려 당황스러웠다."/>
                 </Answer>
             </Box>
             {renderArrow()}

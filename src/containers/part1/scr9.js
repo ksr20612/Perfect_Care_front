@@ -25,7 +25,7 @@ const Scr8 = () => {
             <Title title={getPartTitle(1)} subTitle={getPageTitle(1,9)}/>
             <Box>
                 <div>
-                    부정적 감정도 때로는 필요합니다.
+                    <strong>부정적 감정도 때로는 필요합니다.</strong>
                 </div>
                 <div>
                     부정적 감정을 완벽히 없애고자 하는 <br/><strong>감정적 완벽주의</strong>를 경계해야 합니다.

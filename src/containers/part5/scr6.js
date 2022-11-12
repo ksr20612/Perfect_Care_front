@@ -16,14 +16,22 @@ import { Paper } from "../../styles/components/paper";
 import typeQuestions from "../../app/typeQuestionList";
 import Question from "../../components/question";
 import typeList from "../../assets/jsons/typeList";
+import { toastError } from "../../utils/toast";
 
 const Scr4 = () => {
 
     const userIdx = useSelector(state=>state.state.userIdx);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({
+        onBeforeNext : ()=>{
+            if(scores.length !== typeQuestions.length) {
+                toastError("모든 문항에 답해주세요");
+                return false;
+            }
+            // TODO : 백엔드에 저장
+        },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
-    const [phase, setPhase] = useState(0);
+    // const [phase, setPhase] = useState(0);
     const scores = useSelector(state=>state.part5.type.scores);
     const [result, setResult] = useState({});
     const dispatch = useDispatch();
@@ -42,7 +50,7 @@ const Scr4 = () => {
         if(typeQuestions.length > index) {
             return next(index);
         }
-        setPhase(1);
+        // setPhase(1);
     }
     const cardRef = useRef(null);
     const { scrollYProgress } = useScroll({ container : cardRef });
@@ -52,44 +60,32 @@ const Scr4 = () => {
         <>
             <Title title={getPartTitle(5)} subTitle={getPageTitle(5,4)}/>
             <Box ref={cardRef}>
-                {
-                    (phase===0)
-                    ? (
-                        <>
-                            <Progress>
-                                <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
-                                    <circle cx="50" cy="50" r="30" pathLength="1" className="bg" />
-                                    <motion.circle
-                                        cx="50"
-                                        cy="50"
-                                        r="30"
-                                        pathLength="1"
-                                        className="indicator"
-                                        style={{ pathLength: scrollYProgress }}
-                                    />
-                                </svg>
-                            </Progress>
-                            <Name>완벽주의 유형 검사</Name>
-                            <Info>
-                                <div>검사 시간은 10분 내외입니다.</div>
-                                <div>솔직하게 답해주세요.</div>
-                            </Info>
-                            <Content className="content">
-                                {
-                                    typeQuestions.map(({ sent, type }, i)=>{
-                                        return <Question index={i+1} content={sent} handleChange={(score)=>handleClick(i, score, type)} value={scores[i]}/>
-                                    })
-                                }
-                            </Content>
-                            <Button className="submit" onClick={()=>handlePage(1)}>제출하기</Button>
-                        </>
-                    )
-                    : (
-                        <>
-                            
-                        </>
-                    )
-                }
+                <Progress>
+                    <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="30" pathLength="1" className="bg" />
+                        <motion.circle
+                            cx="50"
+                            cy="50"
+                            r="30"
+                            pathLength="1"
+                            className="indicator"
+                            style={{ pathLength: scrollYProgress }}
+                        />
+                    </svg>
+                </Progress>
+                <Name>완벽주의 유형 검사</Name>
+                <Info>
+                    <div>검사 시간은 10분 내외입니다.</div>
+                    <div>솔직하게 답해주세요.</div>
+                </Info>
+                <Content className="content">
+                    {
+                        typeQuestions.map(({ sent, type }, i)=>{
+                            return <Question index={i+1} content={sent} handleChange={(score)=>handleClick(i, score, type)} value={scores[i]}/>
+                        })
+                    }
+                </Content>
+                <Button className="submit" onClick={()=>handlePage(1)}>제출하기</Button>
             </Box>
             {renderArrow()}
         </>
