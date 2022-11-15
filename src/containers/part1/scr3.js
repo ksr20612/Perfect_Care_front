@@ -44,7 +44,17 @@ const Scr3 = () => {
         onBeforeNext : ()=>{
             const stringifiedPic = capture();
             console.log(stringifiedPic);
-            // TODO : db 전달 : api (POST /api/myBrain)
+            // TODO : db 전달 : api (POST /part1/myBrain)
+            POST("/part1/myBrain", { userIdx, image : stringifiedPic },
+                (result) => {
+                    if(result.data.message) {
+                        toastError(result.data.message, {});
+                        return false;
+                    }else {
+                        return true;
+                    }
+                }
+            )
         },
         onAfterNext : ()=>setHistory(userIdx, partIdx, currentPage),
     });
