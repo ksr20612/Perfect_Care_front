@@ -15,10 +15,10 @@ const Download = ({
         <Wrapper>
             <Box>
                 <Close onClick={()=>handleClose()} />
-                <Inst>{"\"DAY-" + (day+"").padStart(2, "0") + "\" 의 \'" + docuName + "\' 기록지를 다운로드 할까요?"}</Inst>
-                현재까지 작성하신 '{docuName}' 기록지를 <br/> 다운로드 할 수 있어요.
+                <Inst>{"\"DAY-" + (day+"").padStart(2, "0") + "\" 의 오늘차 기록지를 다운로드 할까요?"}</Inst>
+                현재까지 작성하신 오늘차 기록지를 <br/> 다운로드 할 수 있어요.
                 <Down/>
-                <Button onClick={()=>handleDownload()}>다운로드 하기</Button>
+                <Button onClick={()=>handleDownload(day)}>다운로드 하기</Button>
             </Box>
         </Wrapper>
     )

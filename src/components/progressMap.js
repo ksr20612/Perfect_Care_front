@@ -21,6 +21,7 @@ import BlnkC from "../assets/blnk_c.svg";
 import Clicker from "../assets/clicker-svgrepo-com.svg";
 import DoneIcon from "../assets/btn_dcu.svg";
 import { convertPage } from "../app/pageInfo";
+import { toastError } from "utils/toast";
 
 const ProgressMap = ({
     hasBulge = true,
@@ -29,12 +30,15 @@ const ProgressMap = ({
 
     const [day, setDay] = useState(3);
     const [currentPage, partIdx, handlePage, renderArrow] = usePage({});
-    console.log(currentPage, partIdx);
     const [part, page] = convertPage(partIdx, currentPage);
-    console.log({part, page});
     const [isPopupOn, setIsPopupOn] = useState(false);
-    const handleDownload = () => {
-        saveAs("../../robots.txt", "퍼펙트 빙고.txt");        
+    const handleDownload = (day) => {
+        day = day * 1;
+        if(day < 1 || day > 15) {
+            return toastError("다운로드에 실패하였습니다");
+        }
+        saveAs(`../../dayFiles/DAY${day}.zip`, `${day}일차 기록지.zip`);
+        return setIsPopupOn(false);
     }
     const handleClose = () => {
         setIsPopupOn(false);
@@ -139,7 +143,7 @@ const ProgressMap = ({
             }
 
             <AnimatePresence>
-                {isPopupOn && <Download handleDownload={handleDownload} handleClose={handleClose}/>}
+                {isPopupOn && <Download handleDownload={handleDownload} handleClose={handleClose} day={day} />}
             </AnimatePresence>
         </Box>
     )
