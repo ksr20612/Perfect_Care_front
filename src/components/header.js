@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import ProgressMap from "../components/progressMap";
+import logoIcon from "../assets/logo.svg";
 
 const Header = () => {
 
@@ -46,7 +47,7 @@ const Header = () => {
                     {isMenuOn? <CloseIcon size="2.4rem"/> : <MenuIcon size="2.4rem"/> }
                     <span>메뉴</span>
                 </IconWrapper>
-                <div className="logo">Perfect Care(로고)</div>
+                <div className="logo">Perfect Care</div>
                 <div className="right">
                     <IconWrapper>
                         <span>커뮤니티</span>
