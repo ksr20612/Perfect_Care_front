@@ -12,6 +12,8 @@ import { toastError, toastSuccess } from "../utils/toast";
 import { POST } from "../services/userService";
 import { setId, setLoginState, setToken } from "../features/stateSlice";
 import Header from "../components/header";
+import { getHistory } from "services/setHistory";
+import { setPageIdx } from "../features/pageSlice";
 
 const Login = () => {
 
@@ -19,6 +21,7 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const id = useSelector(state => state.state.id);
+    const idx = useSelector(state => state.state.userIdx);
     const [password, setPassword] = useState("");
     const handleChange = (type, value) => {
         if(type === "id") {
@@ -32,7 +35,7 @@ const Login = () => {
             setLoading(true);
             console.log({id, password});
             POST("/user/login", {id, password}, 
-                (result) => {
+                async (result) => {
                     if(result.data.message) {
                         toastError(result.data.message, {
                             onClose : () => {
@@ -41,14 +44,24 @@ const Login = () => {
                         });
                     }else {
                         const token = result.data.token;
+                        const userIdx = result.data.idx;
+                        console.log(result.data);
                         dispatch(setToken(token));
                         dispatch(setLoginState(true));
-                        toastSuccess("로그인에 성공하였습니다.", {
-                            onClose : () => {
-                                navigate("/");
-                                // console.log("마지막 종료 시점 가져와야돼");
+                        const historyResult = await getHistory(userIdx);
+                        if(historyResult) {
+                            const partIdx = historyResult.partIdx;
+                            const pageIdx = historyResult.pageIdx;
+                            console.log({partIdx, pageIdx});
+                            if(partIdx && pageIdx) {
+                                toastSuccess("로그인에 성공하였습니다.", {
+                                    onClose : () => {
+                                        dispatch(setPageIdx(pageIdx));
+                                        navigate(`/${partIdx}`);
+                                    }
+                                });
                             }
-                        });
+                        }
                     }
                 }
             )
@@ -66,10 +79,10 @@ const Login = () => {
                     <TextBox label="아이디" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
                     <TextBox label="비밀번호" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
                     <Button customStyle={{ width : "100%", }} handleClick={()=>{handleClick()}} loading={loading}/>
-                    <Text href="/signup">회원가입</Text>
-                    <Text href="/search">아이디 비밀번호 찾기</Text>
+                    {/* <Text href="/signup">회원가입</Text> */}
+                    {/* <Text href="/search">아이디 비밀번호 찾기</Text> */}
                     <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} />
-                    <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin>
+                    {/* <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin> */}
                 </Card>
             </Box>
         </>

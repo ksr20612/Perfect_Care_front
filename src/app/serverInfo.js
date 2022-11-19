@@ -1,6 +1,6 @@
 const ServerInfo = {
-    "auth" : "http://localhost:8082",
-    "api" : "http://localhost:8086",
+    "auth" : "http://localhost:8084",
+    "api" : "http://localhost:8082",
 }
 Object.freeze(ServerInfo);
 
