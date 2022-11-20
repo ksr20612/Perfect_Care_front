@@ -10,10 +10,12 @@ import { motion } from "framer-motion";
 import fadein from "../styles/framer-motion/fadein";
 import { toastError, toastSuccess } from "../utils/toast";
 import { POST } from "../services/userService";
+import { POST as POSTApi } from "../services/dataService"; 
 import { setId, setLoginState, setToken } from "../features/stateSlice";
 import Header from "../components/header";
 import { getHistory } from "services/setHistory";
 import { setPageIdx } from "../features/pageSlice";
+import { FaSleigh } from "react-icons/fa";
 
 const Login = () => {
 
@@ -48,20 +50,39 @@ const Login = () => {
                         console.log(result.data);
                         dispatch(setToken(token));
                         dispatch(setLoginState(true));
-                        const historyResult = await getHistory(userIdx);
-                        if(historyResult) {
-                            const partIdx = historyResult.partIdx;
-                            const pageIdx = historyResult.pageIdx;
-                            console.log({partIdx, pageIdx});
-                            if(partIdx && pageIdx) {
-                                toastSuccess("로그인에 성공하였습니다.", {
-                                    onClose : () => {
-                                        dispatch(setPageIdx(pageIdx));
-                                        navigate(`/${partIdx}`);
+                        // const historyResult = await getHistory(userIdx);
+                        // if(historyResult) {
+                        //     const partIdx = historyResult.partIdx;
+                        //     const pageIdx = historyResult.pageIdx;
+                        //     console.log({partIdx, pageIdx});
+                        //     if(partIdx && pageIdx) {
+                        //         toastSuccess("로그인에 성공하였습니다.", {
+                        //             onClose : () => {
+                        //                 dispatch(setPageIdx(pageIdx));
+                        //                 navigate(`/${partIdx}`);
+                        //             }
+                        //         });
+                        //     }
+                        // }
+                        POSTApi("/hist/progress", {userIdx},
+                            (result) => {
+                                if(result.data.message) {
+                                    return toastError(result.data.message, {});
+                                }else {
+                                    console.log(result.data.progress[0][0]);
+                                    const {lastPage, lastPart} = result.data.progress[0][0];
+                                    console.log({lastPage, lastPart});
+                                    if(lastPage && lastPart) {
+                                        toastSuccess("로그인에 성공하였습니다.", {
+                                            onClose : () => {
+                                                dispatch(setPageIdx(lastPage));
+                                                navigate(`/${lastPart}`);
+                                            }
+                                        })
                                     }
-                                });
-                            }
-                        }
+                                }
+                            }    
+                        )
                     }
                 }
             )

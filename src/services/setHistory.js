@@ -17,7 +17,7 @@ export const setHistory = (userIdx, partIdx, pageIdx)=>{
 
 export const getHistory = async (userIdx)=>{
     console.log({userIdx});
-    POST("/hist/progress", {userIdx}, 
+    return POST("/hist/progress", {userIdx}, 
         (result) => {
             if(result.data.message) {
                 toastError(result.data.message, {});
