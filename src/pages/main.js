@@ -17,7 +17,7 @@ const Main = () => {
     const token = useSelector(state=>state.state.token);
     const navigate = useNavigate();
     const handleStart = () => {
-        navigate("/1");
+        navigate("/signin");
     }
 
     return (

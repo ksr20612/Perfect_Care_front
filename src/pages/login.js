@@ -11,7 +11,7 @@ import fadein from "../styles/framer-motion/fadein";
 import { toastError, toastSuccess } from "../utils/toast";
 import { POST } from "../services/userService";
 import { POST as POSTApi } from "../services/dataService"; 
-import { setId, setLoginState, setToken } from "../features/stateSlice";
+import { setId, setLoginState, setToken, setNick, setIdx } from "../features/stateSlice";
 import Header from "../components/header";
 import { getHistory } from "services/setHistory";
 import { setPageIdx } from "../features/pageSlice";
@@ -47,9 +47,12 @@ const Login = () => {
                     }else {
                         const token = result.data.token;
                         const userIdx = result.data.idx;
+                        const nick = result.data.nick;
                         console.log(result.data);
                         dispatch(setToken(token));
                         dispatch(setLoginState(true));
+                        dispatch(setNick(nick));
+                        dispatch(setIdx(userIdx));
                         // const historyResult = await getHistory(userIdx);
                         // if(historyResult) {
                         //     const partIdx = historyResult.partIdx;
@@ -64,25 +67,38 @@ const Login = () => {
                         //         });
                         //     }
                         // }
-                        POSTApi("/hist/progress", {userIdx},
-                            (result) => {
-                                if(result.data.message) {
-                                    return toastError(result.data.message, {});
-                                }else {
-                                    console.log(result.data.progress[0][0]);
-                                    const {lastPage, lastPart} = result.data.progress[0][0];
-                                    console.log({lastPage, lastPart});
-                                    if(lastPage && lastPart) {
-                                        toastSuccess("로그인에 성공하였습니다.", {
+                        try {
+                            POSTApi("/hist/progress", {userIdx},
+                                (result) => {
+                                    if(result.data.message) {
+                                        console.log(result.data.message);
+                                        return toastError(result.data.message, {
                                             onClose : () => {
-                                                dispatch(setPageIdx(lastPage));
-                                                navigate(`/${lastPart}`);
+                                                setLoading(false);
                                             }
-                                        })
+                                        });
+                                    }else {
+                                        console.log(result.data.progress[0][0]);
+                                        const {lastPage, lastPart} = result.data.progress[0][0];
+                                        console.log({lastPage, lastPart});
+                                        if(lastPage && lastPart) {
+                                            toastSuccess("로그인에 성공하였습니다.", {
+                                                onClose : () => {
+                                                    dispatch(setPageIdx(lastPage));
+                                                    navigate(`/${lastPart}`);
+                                                }
+                                            })
+                                        }
                                     }
+                                }    
+                            )
+                        }catch(err) {
+                            toastError("서버 연결에 실패하였습니다", {
+                                onClose : () => {
+                                    setLoading(false);
                                 }
-                            }    
-                        )
+                            })
+                        }
                     }
                 }
             )
@@ -100,9 +116,9 @@ const Login = () => {
                     <TextBox label="아이디" customStyle={{width:"100%"}} value={id} handleChange={(value)=>{handleChange("id", value)}} hasBackground={false}/>
                     <TextBox label="비밀번호" customStyle={{width:"100%"}} value={password} handleChange={(value)=>{handleChange("password", value)}} hasBackground={false}/>
                     <Button customStyle={{ width : "100%", }} handleClick={()=>{handleClick()}} loading={loading}/>
-                    {/* <Text href="/signup">회원가입</Text> */}
+                    <Text href="/signup">회원가입</Text>
                     {/* <Text href="/search">아이디 비밀번호 찾기</Text> */}
-                    <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} />
+                    {/* <div style={{width : "100%", height : "1px", backgroundColor : "#ccc"}} /> */}
                     {/* <KaKaoLogin>카카오톡으로 로그인하기</KaKaoLogin> */}
                 </Card>
             </Box>
@@ -141,12 +157,17 @@ const Title = styled.div`
 const Text = styled.a`
     width : 100%;
     font-family : "Light";
-    font-size : 1.6rem;
+    font-size : 2.0rem;
     text-align : end;
     margin-top : 1%;
     color : #888;
     text-decoration : none;
-
+    position : relative;
+    transition : all 0.2s ease-in;
+    &:hover {
+        color : ${pallette.YELLOW};
+        transition : all 0.2s ease-in;
+    }
     & + & {
         margin-bottom : 1%;
     }

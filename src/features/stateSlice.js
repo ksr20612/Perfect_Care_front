@@ -7,7 +7,7 @@ export const StateSlice = createSlice({
         id : "ksr20612",
         nick : "ethan",
         token : "",
-        loginState : true,
+        loginState : false,
     },
     reducers : {
         setIdx : (state, {payload}) => {
@@ -25,8 +25,15 @@ export const StateSlice = createSlice({
         setLoginState : (state, action) => {
             state.loginState = action.payload;
         },
+        reset : (state, {payload}) => {
+            state.userIdx = "";
+            state.id = "";
+            state.nick = "";
+            state.token = ""; 
+            state.loginState = false;
+        }
     }
 });
 
-export const { setIdx, setId, setNick, setToken, setLoginState } = StateSlice.actions;
+export const { setIdx, setId, setNick, setToken, setLoginState, reset } = StateSlice.actions;
 export default StateSlice.reducer;

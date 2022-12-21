@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import ProgressMap from "../components/progressMap";
 import logoIcon from "../assets/logo.svg";
+import { reset } from "features/stateSlice";
 
 const Header = () => {
 
@@ -37,6 +38,7 @@ const Header = () => {
     const nick = useSelector(state=>state.state.nick);
     const handleLogout = () => {
         if(window.confirm("로그아웃하시겠습니까?")){
+            dispatch(reset());
             navigate("/");
         }
     }
@@ -49,10 +51,10 @@ const Header = () => {
                 </IconWrapper>
                 <div className="logo">Perfect Care</div>
                 <div className="right">
-                    <IconWrapper>
+                    {/* <IconWrapper>
                         <span>커뮤니티</span>
                         <SpeechBubble size="2.4rem"/>
-                    </IconWrapper>
+                    </IconWrapper> */}
                     {isLoggedIn? 
                         <>
                             <IconWrapper exit={{opacity : 0}}>
@@ -63,6 +65,10 @@ const Header = () => {
                                 <span>로그아웃</span>
                                 <LogoutIcon size="2.4rem"/>
                             </IconWrapper>
+                            <IconWrapper onClick={()=>{setIsMapOn(!isMapOn); setIsMenuOn(false)}} style={isMapOn? {color : "#f5b117"} : {}}>
+                                <span></span>
+                                <MapIcon size="2.4rem"/>
+                            </IconWrapper>
                         </>
                         :
                         <IconWrapper onClick={()=>{navigate("/signin")}}>
@@ -70,10 +76,6 @@ const Header = () => {
                             <LoginIcon size="2.4rem"/>
                         </IconWrapper>
                     }
-                    <IconWrapper onClick={()=>{setIsMapOn(!isMapOn); setIsMenuOn(false)}} style={isMapOn? {color : "#f5b117"} : {}}>
-                        <span></span>
-                        <MapIcon size="2.4rem"/>
-                    </IconWrapper>
                 </div>
             {/* vertical_menu */}
             <ScreenList className={isMenuOn? "on" : null}>
